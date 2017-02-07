@@ -1,0 +1,3 @@
+body { background:#eee; overflow: hidden }
+oquonie { display:block; background:#fff; width:100vw; height:100vh;}
+stage { display: block; background:red; width:75vh; height:75vh; position:absolute; left:calc(50% - (75vh/2)); top:calc(50% - (75vh/2)); }

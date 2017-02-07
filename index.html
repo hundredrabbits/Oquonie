@@ -1,5 +1,13 @@
 <html>
   <head>
+    <script type="text/javascript" src="scripts/core/oquonie.js"></script>
+    <script type="text/javascript" src="scripts/core/dialog.js"></script>
+    <script type="text/javascript" src="scripts/core/interface.js"></script>
+    <script type="text/javascript" src="scripts/core/stage.js"></script>
+
+    <script type="text/javascript" src="scripts/core/event.js"></script>
+    <script type="text/javascript" src="scripts/core/tile.js"></script>
+
     <script type="text/javascript" src="scripts/core/keyboard.js"></script>
     <link rel="stylesheet" type="text/css" href="links/reset.css"/>
     <link rel="stylesheet" type="text/css" href="links/fonts.css"/>
@@ -7,16 +15,16 @@
     <title>Oquonie</title>
   </head>
   <body>
-    <div id='oquonie'>
-    </div>
     <script>
 
       var oquonie = new Oquonie();
+      oquonie.install();
       
       var keyboard = new Keyboard();
       document.onkeyup = function myFunction(){ keyboard.listen_onkeyup(event); };
       document.onkeydown = function myFunction(){ keyboard.listen_onkeydown(event); };
 
+      oquonie.start();
     </script>
   </body>
 </html>
