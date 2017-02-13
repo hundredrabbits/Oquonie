@@ -1,11 +1,11 @@
-//          (1,1)
-//       (1,0) (0,1)
-//   (1,-1) (0,0) (-1,1)
-//       (0,-1) (-1,0)
-//         (-1,-1)
-
-function Tile(x,y,id,type)
+function Floor(pos,id,type)
 {
+  Tile.call();
+
+  var t = [[1,-1],[1,0],[1,1],[0,-1],[0,0],[0,1],[-1,-1],[-1,0],[-1,1]];
+  var x = t[pos][0];
+  var y = t[pos][1];
+
   this.element = document.createElement("tile");
   this.element.className = type;
   this.element.setAttribute("pos",x+","+y);

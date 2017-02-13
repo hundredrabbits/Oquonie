@@ -16,17 +16,16 @@ function Room()
 
   this.show = function()
   {
-
+    // Floor
     for (var i = 0; i < this.floors.length; i++){
-      var pos = this.position_from_id(i);
-      var tile = new Tile(pos[0],pos[1],this.floors[i],"floor");
+      var tile = new Floor(i,this.floors[i],"floor");
       this.element.appendChild(tile.element);
     }
-  }
 
-  this.position_from_id = function(id)
-  {
-    var t = [[1,-1],[1,0],[1,1],[0,-1],[0,0],[0,1],[-1,-1],[-1,0],[-1,1]]
-    return t[id];
+    // Wall
+    for (var i = 0; i < this.walls.length; i++){
+      var tile = new Wall(i,this.walls[i],"wall");
+      this.element.appendChild(tile.element);
+    }
   }
 }
