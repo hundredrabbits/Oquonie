@@ -4,8 +4,8 @@ oquonie, stage, room, tile { display:block; }
 
 oquonie { background:#fff; width:100vw; height:100vh;}
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
-room { border:1px solid blue; width:100%; height:100%; }
-tile { border:0px !important; background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; }
-tile.floor { width:20%; height:20%; margin-left:-10%; margin-top:-10%; border:1px solid yellow; } 
-tile.wall { width:20%; height:40%; margin-left:-10%; margin-top:-30%; border:1px solid pink;}
+room { width:100%; height:100%; margin-top:5vh; position: relative }
+tile { border:0px !important; background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
+tile.floor {  margin-top:-20%; border:1px solid yellow; } 
+tile.wall {margin-top:-30%; border:1px solid pink;}
 tile.wall.left { -webkit-transform: scaleX(-1); transform: scaleX(-1);filter: FlipH;}
