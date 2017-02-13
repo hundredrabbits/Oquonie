@@ -1,5 +1,8 @@
 body { background:#eee; overflow: hidden }
-oquonie { display:block; background:#fff; width:100vw; height:100vh;}
-stage { display: block; background:red; width:75vh; height:75vh; position:absolute; left:calc(50% - (75vh/2)); top:calc(50% - (75vh/2)); }
-room { display: block; background:blue; width:200px; height:200px; }
-tile { display: block; background:purple; width:20px; height:20px; }
+
+oquonie, stage, room, tile { display:block; }
+
+oquonie { background:#fff; width:100vw; height:100vh;}
+stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
+room { border:1px solid blue; width:100%; height:100%; }
+tile { border:1px solid purple; width:20%; height:20%; margin-left:-10%; margin-top:-10%; background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; }
