@@ -24,65 +24,65 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,10));
-    // room.add_event(new Pillar(1,-1,pillar_nephtaline));
-    // room.add_event(new Door(0,2,"nephtaline",40,-1,-1));
-    // room.add_event(new Door(2,0,2,-1,0));
+    room.add_event(new Pillar(1,-1,"nephtaline"));
+    room.add_event(new Door(0,2,"nephtaline",40,-1,-1));
+    room.add_event(new Door(2,0,2,-1,0));
     this.rooms[1] = room;
     
-    // room = new Room();
-    // room.floors = [ 1,4,1, 1,5,1, 1,1,5 ]
-    // room.walls  = [ 16,12,19, 25,25,25 ]
-    // room.steps  = [ 0,7,0, 0,0,0 ]
-    // room.audio  = "lobby";
-    // room.theme  = Theme.white
-    // room.add_event(new Blocker(1,1,24))
-    // room.add_event(new Ramen(1,0, isWizard:true))
-    // room.add_event(new Map(-1,2, world: "lobby"))
-    // room.add_event(new Door(-2,0,1,1,0))
-    // room.add_event(new Door(0,2,3,0,-1))
-    // all[2] = room
+    room = new Room();
+    room.floors = [ 1,4,1, 1,5,1, 1,1,5 ];
+    room.walls  = [ 16,12,19, 25,25,25 ];
+    room.steps  = [ 0,7,0, 0,0,0 ];
+    room.audio  = "lobby";
+    room.theme  = "white";
+    room.add_event(new Blocker(1,1,24));
+    room.add_event(new Ramen(1,0,true));
+    // room.add_event(new Map(-1,2,"lobby"));
+    room.add_event(new Door(-2,0,1,1,0));
+    room.add_event(new Door(0,2,3,0,-1));
+    this.rooms[2] = room;
     
-    // room = new Room();
-    // room.floors = [ 1,23,1, 6,5,1, 1,1,4 ]
-    // room.walls  = [ 1,7,1, 1,1,1 ]
-    // room.steps  = [ 0,7,0, 0,7,0]
+    room = new Room();
+    room.floors = [ 1,23,1, 6,5,1, 1,1,4 ];
+    room.walls  = [ 1,7,1, 1,1,1 ];
+    room.steps  = [ 0,7,0, 0,7,0];
     // room.audio  = .lobby
     // room.theme  = .white
     // room.add_event(new Pillar(-1,1,pillar_neomine))
     // room.add_event(new Owl(1,1, orientation:.r))
-    // room.add_event(new Blocker(-1,-1, id:1))
-    // room.add_event(new Door(0,2, requirement:.neomine,60, to_x:0,-1))
-    // room.add_event(new Door(-2,0,4,1,0))
-    // room.add_event(new Door(0,-2,2,0,1))
+    room.add_event(new Blocker(-1,-1,1));
+    // room.add_event(new Door(0,2, requirement:.neomine,60, to_x:0,-1));
+    room.add_event(new Door(-2,0,4,1,0));
+    room.add_event(new Door(0,-2,2,0,1));
     // room.add_event(new DoorBroken(2,0,111,-1,0))
-    // all[3] = room
+    this.rooms[3] = room
     
-    // room = new Room();
-    // room.floors = [ 1,1,1, 6,5,6, 1,1,1 ]
-    // room.walls  = [ 26,14,26,1,12,1 ]
-    // room.steps  = [ 0,0,0, 0,7,0 ]
-    // room.audio  = .lobby
-    // room.theme  = .white
-    // room.add_event(new Blocker(1,1, id:9))
-    // room.add_event(new Speaker(-1,1, orientation: .r))
-    // room.add_event(new Door(0,2,14,0,-1))
-    // room.add_event(new Door(2,0,3,-1,0))
-    // room.add_event(new Door(0,-2,5,0,1))
-    // all[4] = room
+    room = new Room();
+    room.floors = [ 1,1,1, 6,5,6, 1,1,1 ];
+    room.walls  = [ 26,14,26,1,12,1 ];
+    room.steps  = [ 0,0,0, 0,7,0 ];
+    // room.audio  = .lobby;
+    // room.theme  = .white;
+    room.add_event(new Blocker(1,1,9));
+    // room.add_event(new Speaker(-1,1, orientation: .r));
+    room.add_event(new Door(0,2,14,0,-1));
+    room.add_event(new Door(2,0,3,-1,0));
+    room.add_event(new Door(0,-2,5,0,1));
+    this.rooms[4] = room;
     
-    // room = new Room();
-    // room.floors = [ 9,10,9, 4,5,14, 9,9,6 ]
-    // room.walls  = [ 3,14,3, 3,4,3 ]
-    // room.steps  = [ 0,7,0, 0,7,0 ]
+    room = new Room();
+    room.floors = [ 9,10,9, 4,5,14, 9,9,6 ]
+    room.walls  = [ 3,14,3, 3,4,3 ]
+    room.steps  = [ 0,7,0, 0,7,0 ]
     // room.audio  = "lobby";
     // room.theme  = Theme.white
     // room.add_event(new Pillar(1,1,pillar_necomedre))
-    // room.add_event(new Blocker(-1,1, id:30))
-    // room.add_event(new Door(0,2,4,0,-1))
+    room.add_event(new Blocker(-1,1,30))
+    room.add_event(new Door(0,2,4,0,-1))
     // room.add_event(new Door(2,0,necomedre,32, to_x:-1,0))
-    // room.add_event(new Door(-2,0,9,1,0))
-    // room.add_event(new Door(0,-2,6,0,1))
-    // all[5] = room
+    room.add_event(new Door(-2,0,9,1,0))
+    room.add_event(new Door(0,-2,6,0,1))
+    this.rooms[5] = room
     
     // room = new Room();
     // room.floors = [ 9,4,9, 10,5,6, 9,10,9 ]

@@ -32,5 +32,7 @@ function Room()
     for (var i = 0; i < this.events.length; i++){
       this.element.appendChild(this.events[i].element);
     }
+
+    this.element.appendChild(oquonie.player.element);
   }
 }

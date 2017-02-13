@@ -1,8 +1,8 @@
-function Pillar(x,y,id)
+function Ramen(x,y,id)
 {
-  Event.call(this,"pillar");
+  Tile.call(this,"event");
 
-  var bg = "url(media/graphics/event.pillar.base.png)";
+  var bg = "url(media/graphics/event.ramen.1.png)";
 
   var p = this.position_at(x,y,100);
   var top = p[0];

@@ -6,6 +6,7 @@ function Oquonie()
   this.dialog = new Dialog();
   this.interface = new Interface();
   this.stage = new Stage();
+  this.player = new Player();
 
   this.install = function()
   {

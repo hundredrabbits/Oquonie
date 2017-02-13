@@ -9,4 +9,5 @@ tile { border:0px !important; background-size:contain; background-position:cente
 tile.floor {  margin-top:-20%; border:1px solid yellow; } 
 tile.wall {margin-top:-30%; border:1px solid pink;}
 tile.wall.left { -webkit-transform: scaleX(-1); transform: scaleX(-1);filter: FlipH;}
-tile.event {margin-top:-30%; }
+tile.event { margin-top:-29%; }
+tile.event.player { border:1px solid red !important; z-index:900;}

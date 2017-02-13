@@ -1,6 +1,6 @@
 function Blocker(x,y,id)
 {
-  Tile.call(this,"event");
+  Event.call(this,"blocker");
 
   var bg = "url(media/graphics/blocker."+id+".png)";
 

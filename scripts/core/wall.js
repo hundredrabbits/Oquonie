@@ -2,7 +2,7 @@ function Wall(pos,id,type)
 {
   Tile.call(this,"wall "+( pos < 3 ? "left" : "right"));
 
-  var t = [[2,-1],[2,0],[2,1],[1,2],[0,2],[-1,2]];
+  var t = [[-1,2],[0,2],[1,2],[2,1],[2,0],[2,-1]];
   var x = t[pos][0];
   var y = t[pos][1];
 
