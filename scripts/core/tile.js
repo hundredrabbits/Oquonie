@@ -4,9 +4,10 @@
 //       (0,-1) (-1,0)
 //         (-1,-1)
 
-function Tile()
+function Tile(type)
 {
   this.element = document.createElement("tile");
+  this.element.className = type;
 
   this.position_at = function(x,y,z)
   {

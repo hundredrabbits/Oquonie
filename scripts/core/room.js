@@ -27,5 +27,10 @@ function Room()
       var tile = new Wall(i,this.walls[i],"wall");
       this.element.appendChild(tile.element);
     }
+
+    // Events
+    for (var i = 0; i < this.events.length; i++){
+      this.element.appendChild(this.events[i].element);
+    }
   }
 }
