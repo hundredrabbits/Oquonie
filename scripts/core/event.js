@@ -8,6 +8,17 @@ function Event(subtype)
     
   }
 
+  this.move_at = function(x,y)
+  {
+    this.x = x;
+    this.y = y;
+
+    console.log(x);
+    console.log(y);
+
+    this.update();
+  }
+
   this.is_collider = function()
   {
     return false;

@@ -12,22 +12,29 @@ function Stage()
   this.leave_room = function()
   {
     if(!this.room){ return; }
-    this.room.hide();
+
+    while (this.element.firstChild) {
+      this.element.removeChild(this.element.firstChild);
+    }
   }
 
-  this.enter_room = function(room_id)
+  this.enter_room = function(room_id,x = 0,y = 0)
   {
     console.log("Entering Room: "+room_id);
 
     if(!oquonie.world.rooms[room_id]){
       console.log("Missing room:("+room_id+")");
+      return;
     }
 
-    this.room = oquonie.world.rooms[room_id];
+    this.leave_room();
 
+    this.room = oquonie.world.rooms[room_id];
     this.element.appendChild(this.room.element);
 
     this.room.show();
+
+    oquonie.player.move_at(x,y);
   }
 
   this.tile_at = function(x,y)
@@ -35,7 +42,6 @@ function Stage()
     for (var i = 0; i < this.room.events.length; i++){
       var tile = this.room.events[i];
       if(tile.x == x && tile.y == y){ return tile; }
-      else{ console.log("target:"+x+","+y+" / "+tile.x+","+tile.y); }
     }
   }
 
