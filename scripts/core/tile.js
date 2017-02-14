@@ -1,7 +1,9 @@
-function Tile(type)
+function Tile(type = "unknown")
 {
   this.element = document.createElement("tile");
   this.element.className = type;
+  this.x = 0;
+  this.y = 0;
 
   this.position_at = function(x,y,z)
   {
@@ -15,10 +17,10 @@ function Tile(type)
 
     if(x == 0 && y == 1){ top = "45%"; left = "40%"; zIndex += 20; }
     if(x == 0 && y == 0){ top = "50%"; left = "50%"; zIndex += 30; }
-    if(x == 0 && y == -1){ top = "55%"; left = "40%"; zIndex += 40; }
+    if(x == 0 && y == -1){ top = "55%"; left = "60%"; zIndex += 40; }
 
     if(x == -1 && y == 1){ top = "50%"; left = "30%"; zIndex += 30; }
-    if(x == -1 && y == 0){ top = "55%"; left = "60%"; zIndex += 40; }
+    if(x == -1 && y == 0){ top = "55%"; left = "40%"; zIndex += 40; }
     if(x == -1 && y == -1){ top = "60%"; left = "50%"; zIndex += 50; }
 
     // Wall

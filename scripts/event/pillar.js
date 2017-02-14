@@ -2,6 +2,14 @@ function Pillar(x,y,id)
 {
   Event.call(this,"pillar");
 
+  this.x = x;
+  this.y = y;
+
+  this.is_collider = function()
+  {
+    return true;
+  }
+
   var bg = "url(media/graphics/event.pillar.base.png)";
 
   var p = this.position_at(x,y,100);

@@ -1,6 +1,14 @@
 function Ramen(x,y,id)
 {
-  Tile.call(this,"event");
+  Event.call(this,"event");
+
+  this.x = x;
+  this.y = y;
+
+  this.is_collider = function()
+  {
+    return true;
+  }
 
   var bg = "url(media/graphics/event.ramen.1.png)";
 

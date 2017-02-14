@@ -2,6 +2,14 @@ function Blocker(x,y,id)
 {
   Event.call(this,"blocker");
 
+  this.x = x;
+  this.y = y;
+
+  this.is_collider = function()
+  {
+    return true;
+  }
+
   var bg = "url(media/graphics/blocker."+id+".png)";
 
   var p = this.position_at(x,y,100);

@@ -30,21 +30,25 @@ function Keyboard()
   this.key_arrow_up = function()
   {
     console.log("arrow.up");
+    oquonie.player.try_move(0,1);
   }
 
   this.key_arrow_down = function()
   {
     console.log("arrow.down");
+    oquonie.player.try_move(0,-1);
   }
 
   this.key_arrow_left = function()
   {
     console.log("arrow.left");
+    oquonie.player.try_move(-1,0);
   }
 
   this.key_arrow_right = function()
   {
     console.log("arrow.right");
+    oquonie.player.try_move(1,0);
   }
   this.key_escape = function()
   {
