@@ -7,8 +7,6 @@ function Player()
     var destination = [this.x + x, this.y + y];
     var target_tile = oquonie.stage.tile_at(this.x + x, this.y + y);
     var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
-
-    console.log(target_tile);
     
     if(target_tile && target_tile.is_collider() == true){
       console.log("Blocked by: "+target_tile.constructor.name);

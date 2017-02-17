@@ -13,9 +13,6 @@ function Event(subtype)
     this.x = x;
     this.y = y;
 
-    console.log(x);
-    console.log(y);
-
     this.update();
   }
 
