@@ -58,7 +58,7 @@ function Player()
     sprite_name += (this.orientation == "front" ? "f" : "b")+".";
     sprite_name += this.animation_frame;
 
-    $(this.element).css('background-image', "url(media/graphics/char."+sprite_name+".png)");
+    $(this.element).css('background-image', "url(media/graphics/player/"+sprite_name+".png)");
   }
 
   this.update();

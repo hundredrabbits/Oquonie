@@ -8,7 +8,7 @@ function Floor(pos,id,type)
 
   this.element.setAttribute("pos",x+","+y);
 
-  var bg = "url(media/graphics/tile."+id+".png); ";
+  var bg = "url(media/graphics/floor/"+id+".png); ";
 
   var p = this.position_at(x,y,100);
   var top = p[0];

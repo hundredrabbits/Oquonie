@@ -9,7 +9,7 @@ function Step(pos,id,type)
   this.element.setAttribute("pos",x+","+y);
 
   if(id != 0){
-    var bg = "url(media/graphics/step."+id+".png)";
+    var bg = "url(media/graphics/step/"+id+".png)";
 
     var p = this.position_at(x,y,50);
     var top = p[0];
