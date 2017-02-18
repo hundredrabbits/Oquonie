@@ -1,6 +1,6 @@
 function Ramen(x,y,id)
 {
-  Event.call(this,"event");
+  Event.call(this,"ramen");
 
   this.x = x;
   this.y = y;
@@ -18,4 +18,9 @@ function Ramen(x,y,id)
   var zIndex = p[2];
 
   this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+
+  this.on_collision = function()
+  {
+    oquonie.dialog.show(this,["letter","letter","letter"]);
+  }
 }

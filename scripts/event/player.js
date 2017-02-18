@@ -4,6 +4,11 @@ function Player()
 
   this.try_move = function(x,y)
   {
+    if(oquonie.dialog.content){
+      oquonie.dialog.hide();
+      return;
+    }
+
     var destination = [this.x + x, this.y + y];
     var target_tile = oquonie.stage.tile_at(this.x + x, this.y + y);
     var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);

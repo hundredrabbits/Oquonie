@@ -47,17 +47,18 @@ function Stage()
 
   this.floor_at = function(x,y)
   {
-    if(x == -1 && y ==  1){ return 0; }
-    if(x ==  0 && y ==  1){ return 1; }
-    if(x ==  1 && y ==  1){ return 2; }
+    if(x == -1 && y ==  1){ return this.room.floors[0]; }
+    if(x ==  0 && y ==  1){ return this.room.floors[1]; }
+    if(x ==  1 && y ==  1){ return this.room.floors[2]; }
 
-    if(x == -1 && y ==  0){ return 3; }
-    if(x ==  0 && y ==  0){ return 4; }
-    if(x ==  1 && y ==  0){ return 5; }
+    if(x == -1 && y ==  0){ return this.room.floors[3]; }
+    if(x ==  0 && y ==  0){ return this.room.floors[4]; }
+    if(x ==  1 && y ==  0){ return this.room.floors[5]; }
 
-    if(x == -1 && y == -1){ return 6; }
-    if(x ==  0 && y == -1){ return 7; }
-    if(x ==  1 && y == -1){ return 8; }
-    return 99;
+    if(x == -1 && y == -1){ return this.room.floors[6]; }
+    if(x ==  0 && y == -1){ return this.room.floors[7]; }
+    if(x ==  1 && y == -1){ return this.room.floors[8]; }
+    
+    return null;
   }
 }

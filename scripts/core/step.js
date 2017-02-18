@@ -8,12 +8,14 @@ function Step(pos,id,type)
 
   this.element.setAttribute("pos",x+","+y);
 
-  var bg = "url(media/graphics/step."+id+".png)";
+  if(id != 0){
+    var bg = "url(media/graphics/step."+id+".png)";
 
-  var p = this.position_at(x,y,50);
-  var top = p[0];
-  var left = p[1];
-  var zIndex = 900+p[2];
+    var p = this.position_at(x,y,50);
+    var top = p[0];
+    var left = p[1];
+    var zIndex = 900+p[2];
 
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+    this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+  }
 }

@@ -1,6 +1,9 @@
 function Event(subtype)
 {
   Tile.call(this,"event");
+  
+  this.name = subtype;
+
   this.element.className += " "+subtype;
 
   this.update = function()
@@ -17,7 +20,7 @@ function Event(subtype)
     var el = this.element;
     var bg = "media/graphics/char.neomine.stand.f.1.png";
     
-    $(el).animate({ left: _x, top: _y }, 200, function(){});
+    $(el).animate({ left: _x, top: _y }, 50, function(){});
   }
 
   this.move_at = function(x,y)
