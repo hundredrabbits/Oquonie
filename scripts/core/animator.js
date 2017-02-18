@@ -15,6 +15,6 @@ function Animator(host)
 
     var anim = this.animations[this.host.state];
 
-    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+this.host.id+"."+this.host.state+"."+anim.run()+".png)");
+    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.host.state+"."+anim.run()+".png)");
   }
 }

@@ -5,7 +5,7 @@ oquonie, stage, room, tile, dialog { display:block; }
 oquonie { background:#fff; width:100vw; height:100vh;}
 oquonie dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: relative; opacity: 0 }
 oquonie dialog portrait, oquonie dialog bubble { display:block; width:50vw; height:50vh; left:calc(25vw); top:calc(35vh); background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; z-index:9000;}
-oquonie dialog bubble { background-image:url(../media/graphics/dialog.bubble.png); }
+oquonie dialog bubble { background-image:url(../media/graphics/interface/bubble.png); }
 oquonie dialog bubble letter { display:block; width:7vw; height:7vw; background:red; position:absolute; }
 oquonie dialog bubble letter:nth-child(1) {left:10%;bottom:20%}
 oquonie dialog bubble letter:nth-child(2) {left:25%;bottom:20%}

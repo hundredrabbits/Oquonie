@@ -24,7 +24,7 @@ function Dialog()
   {
     console.log("Dialog with: "+host.name);
 
-    $(this.portrait).css("background-image","url(media/graphics/event."+host.name+".portrait.png)");
+    $(this.portrait).css("background-image","url(media/graphics/"+host.name+"/portrait.png)");
     $(this.element).animate({ opacity:1 }, 50, function(){});
 
     this.content = message;
