@@ -9,8 +9,10 @@ function Room()
   this.theme = null;
   this.events = [];
 
-  this.add_event = function(event)
+  this.add_event = function(event,is_mirrored = false)
   {
+    if(is_mirrored == true){ event.mirror(); }
+    
     this.events.push(event);
   }
 

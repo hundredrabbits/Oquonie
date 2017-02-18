@@ -23,4 +23,4 @@ tile.step {margin-top:-20%; -webkit-transform: scaleX(-1); transform: scaleX(-1)
 tile.step.left { -webkit-transform: scaleX(1); transform: scaleX(1); }
 tile.event { margin-top:-29%; }
 tile.event.player { z-index:900;}
-tile.event.player.right { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
+tile.event.mirror { -webkit-transform: scaleX(-1); transform: scaleX(-1); }

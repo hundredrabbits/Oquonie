@@ -5,8 +5,9 @@ function Event(subtype)
   this.name = subtype;
   this.state = "idle";
   this.animator = new Animator(this);
+  this.is_mirrored = false;
 
-  this.element.className += " "+subtype;
+  $(this.element).addClass(subtype);
 
   this.update = function()
   {
@@ -40,6 +41,12 @@ function Event(subtype)
   this.is_collider = function()
   {
     return false;
+  }
+
+  this.mirror = function()
+  {
+    this.is_mirrored = true;
+    $(this.element).addClass("mirror");
   }
 
   this.on_collision = function()

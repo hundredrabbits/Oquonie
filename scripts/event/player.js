@@ -46,10 +46,10 @@ function Player()
     this.animation_frame = 1;
 
     if(this.direction == "right"){
-      $(this.element).addClass("right");
+      $(this.element).addClass("mirror");
     }
     else{
-      $(this.element).removeClass("right"); 
+      $(this.element).removeClass("mirror"); 
     }
 
     var sprite_name = "";
