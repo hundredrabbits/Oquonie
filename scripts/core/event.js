@@ -11,7 +11,11 @@ function Event(subtype)
 
   this.update = function()
   {
-    
+    var p = this.position_at(this.x,this.y,100);
+    var top = p[0];
+    var left = p[1];
+
+    $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",900);
   }
 
   this.move_to = function(x,y)
