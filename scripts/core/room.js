@@ -28,6 +28,12 @@ function Room()
       this.element.appendChild(tile.element);
     }
 
+    // Steps
+    for (var i = 0; i < this.steps.length; i++){
+      var tile = new Step(i,this.steps[i],"step");
+      this.element.appendChild(tile.element);
+    }
+
     // Events
     for (var i = 0; i < this.events.length; i++){
       this.element.appendChild(this.events[i].element);
