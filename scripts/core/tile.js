@@ -33,5 +33,4 @@ function Tile(type = "unknown")
 
     return [top,left,zIndex];
   }
-
 }
