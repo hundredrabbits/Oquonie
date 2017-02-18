@@ -10,7 +10,7 @@ function Blocker(x,y,id)
     return true;
   }
 
-  var bg = "url(media/graphics/blocker."+id+".png)";
+  var bg = "url(media/graphics/blocker/"+id+".png)";
 
   var p = this.position_at(x,y,100);
   var top = p[0];
