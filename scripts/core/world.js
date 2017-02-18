@@ -736,7 +736,7 @@ function World()
     this.rooms[67] = room
     
     room = new Room();
-    room.floors = [ 38,10,38, 6,9,10, 5,4,10 ]
+    room.floors = [ 38,100,38, 6,9,10, 5,4,10 ]
     room.walls  = [ 20,38,20, 30,30,30 ]
     room.steps  = [ 0,0,0, 0,0,0 ]
     room.audio  = "neomine"
@@ -749,18 +749,19 @@ function World()
     this.rooms[68] = room
     
     room = new Room();
-    room.floors = [ 35,35,34, 35,35,12, 35,34,35 ]
+    room.floors = [ 35,35,34, 35,35,12, 35,35,34 ]
     room.walls  = [ 35,34,35, 34,8,34 ]
     room.steps  = [ 0,3,0, 0,0,0 ]
     room.audio  = "neomine"
     room.theme  = "black"
     room.add_event(new Speaker(1,1))
+    room.add_event(new Blocker(-1,1,11))
     room.add_event(new Door(2,0, "nestorine",70,-1,0))
     room.add_event(new Door(-2,0,68,1,0))
     this.rooms[69] = room
     
     room = new Room();
-    room.floors = [ 39,40,39, 40,7,40, 39,39,40 ]
+    room.floors = [ 39,40,39, 40,7,40, 39,40,39 ]
     room.walls  = [ 29,29,29, 29,29,29 ]
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "warp"
@@ -776,7 +777,7 @@ function World()
     this.rooms[70] = room
     
     room = new Room();
-    room.floors = [ 1,29,1, 29,8,29, 1,1,29 ]
+    room.floors = [ 1,29,1, 29,8,29, 1,29,1 ]
     room.walls  = [ 18,17,18, 18,17,18 ]
     room.steps  = [ 0,3,0, 0,0,0 ]
     room.audio  = "pillar"
@@ -791,7 +792,7 @@ function World()
     var room = new Room();
   
     room = new Room();
-    room.floors = [ 35,35,7, 34,8,35, 35,35,34 ]
+    room.floors = [ 35,35,7, 34,8,35, 35,34,35 ]
     room.walls  = [ 35,15,35, 34,15,34 ]
     room.steps  = [ 0,7,0, 0,7,0 ]
     room.audio  = "nestorine"
@@ -803,7 +804,7 @@ function World()
     this.rooms[80] = room
     
     room = new Room();
-    room.floors = [ 34,35,35, 35,35,35, 34,34,35 ]
+    room.floors = [ 34,35,35, 35,35,35, 34,35,34 ]
     room.walls  = [ 34,35,34, 25,15,25 ]
     room.steps  = [ 0,1,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -813,7 +814,7 @@ function World()
     this.rooms[81] = room
     
     room = new Room();
-    room.floors = [ 34,35,34, 35,35,34, 34,34,35 ]
+    room.floors = [ 34,35,34, 35,35,34, 34,35,34 ]
     room.walls  = [ 25,15,25, 35,34,35 ]
     room.steps  = [ 0,1,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -824,7 +825,7 @@ function World()
     this.rooms[82] = room
     
     room = new Room();
-    room.floors = [ 34,34,34, 35,35,35, 35,0,35 ]
+    room.floors = [ 34,34,34, 35,35,35, 35,35,0 ]
     room.walls  = [ 35,34,35, 26,15,26 ]
     room.steps  = [ 0,1,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -835,7 +836,7 @@ function World()
     this.rooms[83] = room
     
     room = new Room();
-    room.floors = [ 34,35,35, 35,35,35, 35,34,35 ]
+    room.floors = [ 34,35,35, 35,35,35, 35,35,34 ]
     room.walls  = [ 35,15,34, 34,15,35 ]
     room.steps  = [ 0,1,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -847,7 +848,7 @@ function World()
     this.rooms[84] = room
     
     room = new Room();
-    room.floors = [ 34,35,35, 35,35,35, 0,34,35 ]
+    room.floors = [ 34,35,35, 35,35,35, 0,35,34 ]
     room.walls  = [ 26,15,26, 34,16,34 ]
     room.steps  = [ 0,1,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -859,7 +860,7 @@ function World()
     this.rooms[85] = room
     
     room = new Room();
-    room.floors = [ 34,10,34, 0,35,35, 34,34,35 ]
+    room.floors = [ 34,10,34, 35,35,35, 34,0,34 ]
     room.walls  = [ 34,34,34, 25,15,25 ]
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "nestorine"
@@ -868,8 +869,8 @@ function World()
     this.rooms[86] = room
     
     room = new Room();
-    room.floors = [ 35,35,35, 35,35,35, 35,0,35 ]
-    room.walls  = [ 25,15,25, 26,15,26 ]
+    room.floors = [ 35,35,35, 35,35,35, 35,35,0 ]
+    room.walls  = [ 25,15,25, 26,15,0 ]
     room.steps  = [ 0,0,0, 0,1,0 ]
     room.audio  = "nestorine"
     room.theme  = "white"
@@ -878,17 +879,18 @@ function World()
     this.rooms[87] = room
     
     room = new Room();
-    room.floors = [ 34,35,35, 34,35,35, 34,0,35 ]
+    room.floors = [ 34,35,35, 35,35,35, 34,35,0 ]
     room.walls  = [ 36,15,36, 36,15,0 ]
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "nestorine"
     room.theme  = "white"
     // room.add_event(new ramen_nestorine)
+    room.add_event(new Ramen(1,1,"nestorine"));
     room.add_event(new Door(-2,0,91,1,0))
     this.rooms[88] = room
     
     room = new Room();
-    room.floors = [ 34,35,0, 35,35,34, 34,34,34 ]
+    room.floors = [ 34,35,0, 34,35,34, 34,35,34 ]
     room.walls  = [ 26,15,0, 0,34,34 ]
     room.steps  = [ 0,0,0, 0,1,0 ]
     room.audio  = "nestorine"
@@ -898,7 +900,7 @@ function World()
     this.rooms[89] = room
     
     room = new Room();
-    room.floors = [ 35,34,35, 34,8,34, 35,35,34 ]
+    room.floors = [ 35,34,35, 34,8,34, 35,34,35 ]
     room.walls  = [ 0,0,0, 0,0,0 ]
     room.steps  = [ 0,0,0, 0,6,0 ]
     room.audio  = "pillar"
@@ -914,13 +916,13 @@ function World()
     room.audio  = "nestorine"
     room.theme  = "white"
     room.add_event(new Wizard(1,1,"nephtaline",true))// requiresPillar:
-    room.add_event(new Blocker(-1,-1,23))
+    room.add_event(new Blocker(1,-1,23))
     room.add_event(new Door(-2,0,93,1,0))
     room.add_event(new Door(0,-2,94,0,1))
     this.rooms[91] = room
     
     room = new Room();
-    room.floors = [ 28,38,28, 38,7,36, 28,28,36 ]
+    room.floors = [ 28,38,28, 36,7,36, 28,38,28 ]
     room.walls  = [ 31,37,31, 31,37,31 ]
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "warp"
@@ -966,7 +968,7 @@ function World()
     this.rooms[95] = room
     
     room = new Room();
-    room.floors = [ 35,35,35, 35,7,35, 35,35,34 ]
+    room.floors = [ 35,35,35, 35,7,35, 35,35,34 ] // Wall and floor mistakes:
     room.walls  = [ 34,35,34, 19,19,19 ]
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "warp"
