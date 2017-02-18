@@ -7,6 +7,7 @@ function Oquonie()
   this.interface = new Interface();
   this.stage = new Stage();
   this.player = new Player();
+  this.animation_timer = null;
 
   this.install = function()
   {
@@ -22,5 +23,22 @@ function Oquonie()
   {
     console.log("Starting Oquonie");
     this.stage.enter_room(68);
+    animate();
+  }
+
+  function animate()
+  {
+    this.animation_timer = setTimeout(function(){ animate(); }, 100);
+
+    oquonie.player.animator.animate();
+
+    for (var i = 0; i < oquonie.stage.room.events.length; i++){
+      oquonie.stage.room.events[i].animator.animate();
+    }
+  }
+
+  function stop_animation()
+  {
+    clearTimeout(this.animation_timer);
   }
 }

@@ -3,6 +3,8 @@ function Event(subtype)
   Tile.call(this,"event");
   
   this.name = subtype;
+  this.state = "idle";
+  this.animator = new Animator(this);
 
   this.element.className += " "+subtype;
 
