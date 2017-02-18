@@ -13,12 +13,5 @@ function Wizard(x,y,id)
     return true;
   }
 
-  var bg = "url(media/graphics/event."+this.id+".1.png)";
-
-  var p = this.position_at(x,y,100);
-  var top = p[0];
-  var left = p[1];
-  var zIndex = p[2];
-
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+  this.update();
 }

@@ -376,7 +376,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "warp"
     room.theme  = "white"
-    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Teleport(0,0,1))
     room.add_event(new Door(-2,0,38,1,0))
     this.rooms[39] = room
     
@@ -616,7 +616,7 @@ function World()
     room.steps  = [ 0,0,0, 0,4,0 ]
     room.audio  = "warp"
     room.theme  = "white"
-    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Teleport(0,0,1))
     room.add_event(new Gate("neomine",0,-2,58,0,1))
     this.rooms[59] = room
     
@@ -766,7 +766,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "warp"
     room.theme  = "black"
-    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Teleport(0,0,1))
     room.add_event(new Door(-1,2,70,-1,-1))
     room.add_event(new Door(0,2,70,0,-1))
     room.add_event(new Door(1,2,70,1,-1))
@@ -927,7 +927,7 @@ function World()
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "warp"
     room.theme  = "white"
-    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Teleport(0,0,1))
     room.add_event(new Door(-2,0,94,1,0))
     this.rooms[92] = room
     
@@ -1053,7 +1053,7 @@ function World()
     room.steps  = [ 0,6,0, 0,0,0 ]
     room.audio  = "warp"
     room.theme  = "white"
-    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Teleport(0,0,1))
     room.add_event(new Door(-2,0,101,1,0))
     this.rooms[105] = room
     

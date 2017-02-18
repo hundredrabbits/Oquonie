@@ -22,7 +22,7 @@ function Oquonie()
   this.start = function()
   {
     console.log("Starting Oquonie");
-    this.stage.enter_room(1);
+    this.stage.enter_room(6);
     animate();
   }
 

@@ -42,6 +42,11 @@ function Event(subtype)
     $(this.element).css('top', _y).css('left', _x);
   }
 
+  this.warp_at = function(room,x,y)
+  {
+    oquonie.stage.enter_room(room,x,y);
+  }
+
   this.is_collider = function()
   {
     return false;
@@ -56,5 +61,10 @@ function Event(subtype)
   this.on_collision = function()
   {
     console.log("On collision, no effect");
+  }
+
+  this.on_step = function()
+  {
+    console.log("On step, no effect");
   }
 }

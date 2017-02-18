@@ -38,7 +38,9 @@ function Room()
 
     // Events
     for (var i = 0; i < this.events.length; i++){
-      this.element.appendChild(this.events[i].element);
+      var event = this.events[i];
+      event.animator.animate();
+      this.element.appendChild(event.element);
     }
 
     this.element.appendChild(oquonie.player.element);
