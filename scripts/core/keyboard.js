@@ -53,5 +53,6 @@ function Keyboard()
   this.key_escape = function()
   {
     console.log("escape");
+    oquonie.dialog.hide();
   }
 }

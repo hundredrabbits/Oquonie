@@ -10,6 +10,16 @@ function Owl(x,y)
     return true;
   }
 
+  this.on_collision = function()
+  {
+    oquonie.dialog.show(this,["letter","letter","letter"]);
+  }
+
+  this.on_sight = function()
+  {
+    // save
+  }
+
   var bg = "url(media/graphics/event.owl.1.png)";
 
   var p = this.position_at(x,y,100);

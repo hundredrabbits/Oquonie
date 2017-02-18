@@ -11,13 +11,16 @@ oquonie dialog bubble letter:nth-child(1) {left:10%;bottom:20%}
 oquonie dialog bubble letter:nth-child(2) {left:25%;bottom:20%}
 oquonie dialog bubble letter:nth-child(3) {left:40%;bottom:20%}
 
+oquonie.black { background:black; }
+
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
 room { width:100%; height:100%; margin-top:5vh; position: relative }
-tile { border:0px !important; background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
-tile.floor {  margin-top:-20%; border:1px solid yellow; } 
-tile.wall {margin-top:-30%; border:1px solid pink;}
+tile { background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
+tile.floor {  margin-top:-20%; } 
+tile.wall {margin-top:-30%; }
 tile.wall.left { -webkit-transform: scaleX(-1); transform: scaleX(-1);}
-tile.step {margin-top:-20%; border:1px solid pink; -webkit-transform: scaleX(-1); transform: scaleX(-1);}
+tile.step {margin-top:-20%; -webkit-transform: scaleX(-1); transform: scaleX(-1);}
 tile.step.left { -webkit-transform: scaleX(1); transform: scaleX(1); }
 tile.event { margin-top:-29%; }
-tile.event.player { border:1px solid red !important; z-index:900;}
+tile.event.player { z-index:900;}
+tile.event.player.right { -webkit-transform: scaleX(-1); transform: scaleX(-1); }

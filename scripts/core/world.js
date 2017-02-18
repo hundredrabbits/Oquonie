@@ -644,7 +644,7 @@ function World()
     room.add_event(new Blocker(0,1,13))
     room.add_event(new Door(2,1,62,-1,1))
     room.add_event(new Plan(2,0,"neomine"))
-    room.add_event(new Door(0,-2, "neomine",3,0,1))
+    room.add_event(new Gate("neomine",0,-2,3,0,1))
     room.add_event(new Door(2,-1,61,-1,-1))
     this.rooms[60] = room
     

@@ -9,6 +9,11 @@ function Player()
       return;
     }
 
+    if(x == 0 && y == -1){ $(this.element).attr("orientation","front").attr("direction","right"); }
+    if(x == -1 && y == 0){ $(this.element).attr("orientation","front").attr("direction","left"); }
+    if(x == 0 && y == 1){ $(this.element).attr("orientation","back").attr("direction","left"); }
+    if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
+
     var destination = [this.x + x, this.y + y];
     var target_tile = oquonie.stage.tile_at(this.x + x, this.y + y);
     var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
@@ -35,7 +40,25 @@ function Player()
 
   this.update = function()
   {
-    $(this.element).css('background-image', 'url(media/graphics/char.neomine.stand.f.1.png)');
+    this.character = "neomine";
+    this.orientation = $(this.element).attr("orientation");
+    this.direction = $(this.element).attr("direction");
+    this.animation_frame = 1;
+
+    if(this.direction == "right"){
+      $(this.element).addClass("right");
+    }
+    else{
+      $(this.element).removeClass("right"); 
+    }
+
+    var sprite_name = "";
+    sprite_name += this.character+".";
+    sprite_name += "walk.";
+    sprite_name += (this.orientation == "front" ? "f" : "b")+".";
+    sprite_name += this.animation_frame;
+
+    $(this.element).css('background-image', "url(media/graphics/char."+sprite_name+".png)");
   }
 
   this.update();

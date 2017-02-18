@@ -35,6 +35,8 @@ function Stage()
     this.room.show();
 
     oquonie.player.move_at(x,y);
+
+    oquonie.element.setAttribute("class",this.room.theme);
   }
 
   this.tile_at = function(x,y)
@@ -58,7 +60,7 @@ function Stage()
     if(x == -1 && y == -1){ return this.room.floors[6]; }
     if(x ==  0 && y == -1){ return this.room.floors[7]; }
     if(x ==  1 && y == -1){ return this.room.floors[8]; }
-    
+
     return null;
   }
 }
