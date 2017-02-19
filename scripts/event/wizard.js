@@ -26,6 +26,7 @@ function Wizard(x,y,id)
   this.on_collision = function()
   {
     oquonie.spellbook.toggle_spell(this);
+    this.update_notification();
   }
 
   this.on_sight = function()
@@ -35,12 +36,23 @@ function Wizard(x,y,id)
 
   this.hide_notification = function()
   {
-    
+    $(this.notification).css("display","none");
   }
 
   this.show_notification = function()
   {
-    
+    $(this.notification).css("display","block");
+    console.log("show");
+  }
+
+  this.update_notification = function()
+  {
+    if(oquonie.spellbook.has_spell(this) == true){
+      this.hide_notification();
+    }
+    else{
+      this.show_notification();
+    }
   }
 
   this.update();

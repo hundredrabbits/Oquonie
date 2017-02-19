@@ -37,16 +37,43 @@ function Spellbook()
     this.update();
   }
 
+  this.has_spell = function(wizard)
+  {
+    for(spell in this.content){
+      if(wizard.spell_name() == spell){ return true; }
+    }
+    return false;
+  }
+
+  this.clear = function()
+  {
+    var blank = {};
+    for(spell in this.content){
+      if(this.content[spell] != null){
+        blank[spell] = this.content[spell];
+      }
+    }
+    this.content = blank;
+
+    // Clear tiles
+    $(this.spell1).css("background-image","");
+    $(this.spell2).css("background-image","");
+    $(this.spell3).css("background-image","");
+  }
+
   this.update = function()
   {
+    this.clear();
+
     var i = 0;
     var spell = null;
     for(spell in this.content){
-      spell = this.content[spell].id;
-      if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
-      if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
-      if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
+      if(!this.content[spell]){ continue; }
       
+      spell_name = this.content[spell].id;
+      if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
+      if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
+      if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
       i += 1;
     }
   }
