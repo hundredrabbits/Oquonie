@@ -1,6 +1,10 @@
 function Player()
 {
   Event.call(this,"player");
+  this.id = "neomine";
+  this.orientation = "front";
+
+  this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2]));
 
   this.try_move = function(x,y)
   {

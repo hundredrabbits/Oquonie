@@ -26,8 +26,13 @@ function Event(subtype)
     var _z = p[2];
     var el = this.element;
     var bg = "media/graphics/char.neomine.stand.f.1.png";
+
+    var target = this;
+    target.state = "walk";
     
-    $(el).animate({ left: _x, top: _y }, 50, function(){});
+    $(el).animate({ left: _x, top: _y }, 50, function(){
+      target.state = "idle";
+    });
   }
 
   this.move_at = function(x,y)
