@@ -25,7 +25,7 @@ function Wizard(x,y,id)
 
   this.on_collision = function()
   {
-    oquonie.spellbook.toggle_spell(this.spell_name());
+    oquonie.spellbook.toggle_spell(this);
   }
 
   this.on_sight = function()

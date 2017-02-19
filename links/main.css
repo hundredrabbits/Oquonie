@@ -13,7 +13,7 @@ dialog bubble letter:nth-child(2) {left:25%;bottom:20%}
 dialog bubble letter:nth-child(3) {left:40%;bottom:20%}
 
 spellbook { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2));}
-spellbook spell { width:50px; height:50px; border:1px solid black; margin-top:5px; }
+spellbook spell { width:50px; height:50px; margin-top:5px; background-size:cover; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); }
 spellbook spell:nth-child(1) {left:10%;bottom:20%}
 spellbook spell:nth-child(2) {left:25%;bottom:20%}
 spellbook spell:nth-child(3) {left:40%;bottom:20%}

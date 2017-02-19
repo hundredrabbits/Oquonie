@@ -15,8 +15,39 @@ function Spellbook()
     this.element.appendChild(this.spell3);
   }  
 
-  this.toggle_spell = function(spell_name)
+  this.toggle_spell = function(wizard)
   {
-    console.log("Toggle Spell: "+spell_name);
+    if(this.content[wizard.spell_name()]){
+      this.remove_spell(wizard);
+    }
+    else{
+      this.add_spell(wizard);
+    }
+  }
+
+  this.add_spell = function(wizard)
+  {
+    this.content[wizard.spell_name()] = wizard;
+    this.update();
+  }
+
+  this.remove_spell = function(wizard)
+  {
+    this.content[wizard.spell_name()] = null;
+    this.update();
+  }
+
+  this.update = function()
+  {
+    var i = 0;
+    var spell = null;
+    for(spell in this.content){
+      spell = this.content[spell].id;
+      if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
+      if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
+      if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell+".png)"); }
+      
+      i += 1;
+    }
   }
 }
