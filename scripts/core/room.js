@@ -14,7 +14,7 @@ function Room(id)
   this.add_event = function(event,is_mirrored = false)
   {
     if(is_mirrored == true){ event.mirror(); }
-    event.room = this.id;
+    event.location = this.id;
     
     this.events.push(event);
   }

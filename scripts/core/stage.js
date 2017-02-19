@@ -11,7 +11,7 @@ function Stage()
 
   this.leave_room = function()
   {
-    if(!this.room){ return; }
+    if(!this.room){ console.log("No room to leave."); return; }
 
     while (this.element.firstChild) {
       this.element.removeChild(this.element.firstChild);

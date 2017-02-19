@@ -15,7 +15,7 @@ function Wizard(x,y,id)
 
   this.spell_name = function()
   {
-    return this.room+"."+this.id;
+    return this.id+"_"+this.location;
   }
 
   this.is_collider = function()
