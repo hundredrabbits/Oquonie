@@ -17,6 +17,6 @@ function Spellbook()
 
   this.toggle_spell = function(spell_name)
   {
-
+    console.log("Toggle Spell: "+spell_name);
   }
 }

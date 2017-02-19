@@ -13,6 +13,11 @@ function Wizard(x,y,id)
 
   this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
 
+  this.spell_name = function()
+  {
+    return this.room+"."+this.id;
+  }
+
   this.is_collider = function()
   {
     return true;

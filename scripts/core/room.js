@@ -1,6 +1,8 @@
-function Room()
+function Room(id)
 {
   this.element = document.createElement("room");
+
+  this.id = id;
 
   this.floors = [];
   this.walls = [];
@@ -12,6 +14,7 @@ function Room()
   this.add_event = function(event,is_mirrored = false)
   {
     if(is_mirrored == true){ event.mirror(); }
+    event.room = this.id;
     
     this.events.push(event);
   }
