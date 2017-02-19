@@ -11,6 +11,11 @@ function Player()
 
   this.animator.state = "idle.front";
 
+  this.transform = function(spell)
+  {
+    this.id = spell;
+  }
+
   this.try_move = function(x,y)
   {
     if(oquonie.dialog.content){

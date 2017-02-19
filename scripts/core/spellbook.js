@@ -28,6 +28,7 @@ function Spellbook()
   this.add_spell = function(wizard)
   {
     this.content[wizard.spell_name()] = wizard;
+    this.try_transform();
     this.update();
   }
 
@@ -43,6 +44,22 @@ function Spellbook()
       if(wizard.spell_name() == spell){ return true; }
     }
     return false;
+  }
+
+  this.try_transform = function()
+  {
+    var a = {};
+    for(spell in this.content){
+      var name = this.content[spell].id;
+      a[name] = a[name] ? a[name]+1 : 1;
+    }
+    for(spell in a){
+      if(a[spell] == 3){ 
+        oquonie.player.transform(spell); 
+        this.content = {};
+        this.update();
+      }
+    }
   }
 
   this.clear = function()

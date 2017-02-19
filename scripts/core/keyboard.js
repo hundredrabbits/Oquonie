@@ -19,40 +19,40 @@ function Keyboard()
 
   this.key_enter = function()
   {
-    console.log("enter");
+    console.info("enter");
   }
 
   this.key_space = function()
   {
-    console.log("space");
+    console.info("space");
   }
 
   this.key_arrow_up = function()
   {
-    console.log("arrow.up");
+    console.info("arrow.up");
     oquonie.player.try_move(0,1);
   }
 
   this.key_arrow_down = function()
   {
-    console.log("arrow.down");
+    console.info("arrow.down");
     oquonie.player.try_move(0,-1);
   }
 
   this.key_arrow_left = function()
   {
-    console.log("arrow.left");
+    console.info("arrow.left");
     oquonie.player.try_move(-1,0);
   }
 
   this.key_arrow_right = function()
   {
-    console.log("arrow.right");
+    console.info("arrow.right");
     oquonie.player.try_move(1,0);
   }
   this.key_escape = function()
   {
-    console.log("escape");
+    console.info("escape");
     oquonie.dialog.hide();
   }
 }

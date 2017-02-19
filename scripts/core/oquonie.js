@@ -8,6 +8,7 @@ function Oquonie()
   this.stage = new Stage();
   this.player = new Player();
   this.spellbook = new Spellbook();
+  this.walkthrough = new Walkthrough();
   this.animation_timer = null;
 
   this.install = function()
@@ -23,9 +24,11 @@ function Oquonie()
 
   this.start = function()
   {
-    console.log("Starting Oquonie");
-    this.stage.enter_room(32);
+    console.info("Starting Oquonie");
+    this.stage.enter_room(1);
     animate();
+
+    this.walkthrough.start();
   }
 
   function animate()

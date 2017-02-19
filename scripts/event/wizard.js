@@ -42,7 +42,6 @@ function Wizard(x,y,id)
   this.show_notification = function()
   {
     $(this.notification).css("display","block");
-    console.log("show");
   }
 
   this.update_notification = function()
