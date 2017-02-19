@@ -1,7 +1,9 @@
 function Animator(host)
 {
   this.host = host;
-  this.animations = [];
+  this.animations = {};
+  this.state = "idle";
+  this.orientation = null;
 
   this.add = function(animation)
   {
@@ -11,10 +13,10 @@ function Animator(host)
 
   this.animate = function()
   {
-    if(!this.animations[this.host.state]){ return; }
+    if(!this.animations[this.state]){ return; }
 
-    var anim = this.animations[this.host.state];
+    var anim = this.animations[this.state];
 
-    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.host.state+"."+(this.host.orientation ? this.host.orientation+"." : "")+anim.run()+".png)");
+    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+"."+anim.run()+".png)");
   }
 }

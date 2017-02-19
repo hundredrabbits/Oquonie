@@ -4,7 +4,12 @@ function Player()
   this.id = "neomine";
   this.orientation = "front";
 
-  this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2]));
+  this.animator.add(new Animation("idle.front",[1,1,1,1,1,2,3,2]));
+  this.animator.add(new Animation("idle.back",[1]));
+  this.animator.add(new Animation("walk.front",[1,2]));
+  this.animator.add(new Animation("walk.back",[1,2]));
+
+  this.animator.state = "idle.front";
 
   this.try_move = function(x,y)
   {
@@ -33,9 +38,7 @@ function Player()
       console.log("Blocked by: Floor("+target_floor+")");
     }
     else{
-      this.x += x;
-      this.y += y;
-      this.move_to(this.x,this.y);
+      this.move_by(x,y);
       console.log("Moved to: Floor("+this.x+","+this.y+")");
     }
 
@@ -59,14 +62,6 @@ function Player()
     else{
       $(this.element).removeClass("mirror"); 
     }
-
-    var sprite_name = "";
-    sprite_name += this.character+".";
-    sprite_name += "walk.";
-    sprite_name += (this.orientation == "front" ? "f" : "b")+".";
-    sprite_name += this.animation_frame;
-
-    $(this.element).css('background-image', "url(media/graphics/player/"+sprite_name+".png)");
   }
 
   this.update();

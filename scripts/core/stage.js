@@ -37,6 +37,10 @@ function Stage()
     oquonie.player.move_at(x,y);
 
     oquonie.element.setAttribute("class",this.room.theme);
+
+    for (var i = 0; i < this.room.events.length; i++){
+      this.room.events[i].on_sight();
+    }
   }
 
   this.tile_at = function(x,y)

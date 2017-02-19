@@ -25,13 +25,34 @@ function Event(subtype)
     var _x = p[1];
     var _z = p[2];
     var el = this.element;
-    var bg = "media/graphics/char.neomine.stand.f.1.png";
 
-    var target = this;
-    target.state = "walk";
+    var target = this.animator;
+    target.state = "walk.front";
     
     $(el).animate({ left: _x, top: _y }, 50, function(){
-      target.state = "idle";
+      target.state = "idle.front";
+    });
+  }
+
+  this.move_by = function(x,y)
+  {
+    this.x += x;
+    this.y += y;
+
+    var p = this.position_at(this.x,this.y,200);
+    var _y = p[0];
+    var _x = p[1];
+    var _z = p[2];
+
+    var target = this.animator;
+    target.state = "walk.front";
+
+    if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "walk.front"; }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "walk.back"; }
+    
+    $(this.element).animate({ left: _x, top: _y }, 50, function(){
+      if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
+      if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
     });
   }
 
@@ -65,11 +86,16 @@ function Event(subtype)
 
   this.on_collision = function()
   {
-    console.log("On collision, no effect");
+    // console.log("On collision, no effect");
   }
 
   this.on_step = function()
   {
-    console.log("On step, no effect");
+    // console.log("On step, no effect");
+  }
+
+  this.on_sight = function()
+  {
+    // console.log("On sight, no effect");
   }
 }
