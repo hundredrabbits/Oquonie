@@ -13,5 +13,10 @@ function Shark(x,y)
     return true;
   }
 
+  this.on_collision = function()
+  {
+    oquonie.player.transform("necomedre");
+  }
+
   this.update();
 }

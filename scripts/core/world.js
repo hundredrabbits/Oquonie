@@ -951,7 +951,7 @@ function World()
     room.audio  = "nestorine"
     room.theme  = "white"
     room.add_event(new Wizard(1,1,"nemedique"))
-    room.add_event(new Door(2,0,"nemedique",92,-1,0))
+    room.add_event(new Gate("nemedique",2,0,92,-1,0))
     room.add_event(new Door(-2,0,95,1,0))
     this.rooms[94] = room
     
@@ -1011,7 +1011,7 @@ function World()
     room.theme  = "white"
     room.add_event(new Ramen(1,1,"nemedique"),true);
     room.add_event(new Door(0,2,102,0,-1))
-    room.add_event(new Door(2,0,"necomedre",103,-1,0))
+    room.add_event(new Gate("necomedre",2,0,103,-1,0))
     room.add_event(new Door(-2,0,100,1,0))
     this.rooms[101] = room
     
