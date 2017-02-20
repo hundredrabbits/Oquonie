@@ -2,8 +2,8 @@
 
 # TODOs
 
-= Spellbook
-= Notifications
+- Gates
+- Ramen
 - Parallax
 - Audio Players
 - Intro sequence

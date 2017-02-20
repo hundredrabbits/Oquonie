@@ -756,7 +756,7 @@ function World()
     room.theme  = "black"
     room.add_event(new Speaker(1,1))
     room.add_event(new Blocker(-1,1,11))
-    room.add_event(new Door(2,0, "nestorine",70,-1,0))
+    room.add_event(new Gate("nestorine",2,0,70,-1,0))
     room.add_event(new Door(-2,0,68,1,0))
     this.rooms[69] = room
     

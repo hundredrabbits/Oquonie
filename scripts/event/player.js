@@ -1,7 +1,7 @@
 function Player()
 {
   Event.call(this,"player");
-  this.id = "neomine";
+  this.id = "necomedre";
   this.orientation = "front";
 
   this.animator.add(new Animation("idle.front",[1,1,1,1,1,2,3,2]));

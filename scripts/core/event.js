@@ -30,7 +30,7 @@ function Event(subtype)
     var target = this.animator;
     target.state = "walk.front";
     
-    $(el).animate({ left: _x, top: _y }, 50, function(){
+    $(el).animate({ left: _x, top: _y }, oquonie.speed, function(){
       target.state = "idle.front";
     });
   }
@@ -51,7 +51,7 @@ function Event(subtype)
     if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "walk.front"; }
     if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "walk.back"; }
     
-    $(this.element).animate({ left: _x, top: _y }, 50, function(){
+    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
       if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
       if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
     });

@@ -2,15 +2,19 @@ function Walkthrough()
 {
   var U = "U", D = "D", L = "L", R = "R";
 
-  this.speed = 200;
-  this.room = 32;
+  var necomedre  = [R,R,R,U,U,U,L,L,L,D,D,D,R,R,R,D,D,D,R,R,U,L,L,U,R,"",U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,R,R,R];
+  var nephtaline = [U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,L,L,L,U,U,U,U,U,R,R,D,D,U,R,L,D,L,D,D,D,U,D,D,L,L,L,L,U,U,U,R,R,R,R,U,U,U];
+  var neomine    = [R,R,R,U,U,U,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,L,L,U,U,"",D,R,R,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,D,L,U,R,R,R,R,R];
 
-  // Necomedre Stage
-  this.inputs = [D,D,D,R,R,U,L,L,U,R,"",U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,R,R,R];
+  // this.inputs = necomedre.concat(nephtaline);
+  this.inputs = neomine;
 
   this.start = function()
   {
     console.info("Walkthrough has started.");
+    this.room = 1;
+    oquonie.speed = 100;
+    oquonie.player.id = "neomine";
     oquonie.stage.enter_room(this.room);
     this.run();
   }
@@ -27,6 +31,6 @@ function Walkthrough()
 
     this.inputs.shift();
 
-    setTimeout(function(){ oquonie.walkthrough.run(); }, this.speed);
+    setTimeout(function(){ oquonie.walkthrough.run(); }, oquonie.speed * 2);
   }
 }

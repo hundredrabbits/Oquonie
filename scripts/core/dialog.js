@@ -25,14 +25,14 @@ function Dialog()
     console.log("Dialog with: "+host.name);
 
     $(this.portrait).css("background-image","url(media/graphics/"+host.name+"/portrait.png)");
-    $(this.element).animate({ opacity:1 }, 50, function(){});
+    $(this.element).animate({ opacity:1 }, oquonie.speed, function(){});
 
     this.content = message;
   }
 
   this.hide = function()
   {
-    $(this.element).animate({ opacity:0 }, 50, function(){});
+    $(this.element).animate({ opacity:0 }, oquonie.speed, function(){});
     this.content = null;
   }
 }
