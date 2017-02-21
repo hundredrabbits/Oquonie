@@ -60,6 +60,7 @@ function Ramen(x,y,character = null)
         this.id = "away";
       }
     }
+    this.animator.animate();
   }
 
   this.spell_name = function()

@@ -124,13 +124,13 @@ function Walkthrough()
 
     oquonie.speed = 50;
 
-    this.walk_all();
+    this.manual();
   }
 
   this.manual = function()
   {
-    oquonie.player.id = "necomedre";
-    this.room = 23;
+    oquonie.player.id = "nastazie";
+    this.room = 1;
     oquonie.stage.enter_room(this.room);
   }
 
