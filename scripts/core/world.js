@@ -386,7 +386,7 @@ function World()
     room.steps  = [ 0,0,0, 0,6,0 ]
     room.audio  = "pillar"
     room.theme  = "pillar"
-    room.add_event(new Pillar(0,0,"nemedique",1))
+    room.add_event(new Pillar(0,0,"necomedre",5))
     room.add_event(new Door(0,-2,34,1,1))
     this.rooms[120] = room
   }
