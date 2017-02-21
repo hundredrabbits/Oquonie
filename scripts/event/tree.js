@@ -15,7 +15,15 @@ function Tree(x,y)
 
   this.on_sight = function()
   {
-    this.id = oquonie.spellbook.pillars.length < 1 ? 1 : oquonie.spellbook.pillars.length;
+    if(oquonie.spellbook.pillars.length < 1){
+      this.id = 1;
+    }
+    else if(oquonie.spellbook.pillars.length > 4){
+      this.id = 5;
+    }
+    else{
+      this.id = oquonie.spellbook.pillars.length;
+    }
   }
 
   this.update();

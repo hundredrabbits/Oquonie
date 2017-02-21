@@ -23,8 +23,7 @@ function Ramen(x,y,character = null)
 
     // In Lobby
     if(this.location == 2){
-      oquonie.dialog.show(this,["letter","letter","letter"]);
-      if(oquonie.player.character == "necomedre"){
+      if(oquonie.player.id == "necomedre"){
         this.character = "nestorine";
       }
       else if(oquonie.player.id == "nestorine"){
@@ -36,7 +35,7 @@ function Ramen(x,y,character = null)
       else{
         this.character = "nemedique";
       }
-      oquonie.spellbook.add_spell(this);
+      oquonie.spellbook.add_spell(this.spell_name());
     }
     this.on_sight();
   }

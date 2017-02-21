@@ -92,7 +92,6 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,5));
-    room.add_event(new Shark(1,-1));
     room.add_event(new Door(0,2,5,0,-1));
     room.add_event(new Door(2,0,7,-1,0));
     this.rooms[6] = room;
