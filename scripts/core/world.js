@@ -386,7 +386,7 @@ function World()
     room.steps  = [ 0,0,0, 0,6,0 ]
     room.audio  = "pillar"
     room.theme  = "pillar"
-    room.add_event(new Pillar(0,0,"necomedre",5))
+    room.add_event(new Pillar(0,0,"necomedre",5,"neomine"))
     room.add_event(new Door(0,-2,34,1,1))
     this.rooms[120] = room
   }
@@ -905,7 +905,7 @@ function World()
     room.steps  = [ 0,0,0, 0,6,0 ]
     room.audio  = "pillar"
     room.theme  = "pillar"
-    // room.add_event(new pillar_nestorine)
+    room.add_event(new Pillar(0,0,"nestorine",7))
     room.add_event(new Gate("nephtaline",0,-2,93,0,1))
     this.rooms[90] = room
     
@@ -939,7 +939,7 @@ function World()
     room.theme  = "white"
     room.add_event(new Wizard(1,1,"nemedique"))
     room.add_event(new Blocker(1,-1,11))
-    room.add_event(new Door(0,2,"nephtaline",90,0,-1))
+    room.add_event(new Gate("nephtaline",0,2,90,0,-1))
     room.add_event(new Door(-2,0,80,1,0))
     room.add_event(new Door(0,-2,95,0,1))
     this.rooms[93] = room

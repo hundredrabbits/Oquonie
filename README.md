@@ -11,9 +11,7 @@
 - Bump() animation
 - Red events
 
-New flow
-- Collect 1st pillar
-- Remain Necomedre
-- Collect 
-
-- Necomedre stage | Nestorine Gate
+New flow for nestorine pillar
+- Get 1st from ramen
+- get second from the lobby
+- get last from nestorine world

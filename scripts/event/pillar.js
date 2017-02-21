@@ -1,4 +1,4 @@
-function Pillar(x,y,character,warp = 1)
+function Pillar(x,y,character,warp = 1,transform = null)
 {
   Event.call(this,"pillar");
 
@@ -7,6 +7,7 @@ function Pillar(x,y,character,warp = 1)
   this.id = "full";
   this.warp = warp;
   this.character = character;
+  this.transform = transform;
 
   this.animator.add(new Animation("idle",[1]));
 
@@ -20,6 +21,9 @@ function Pillar(x,y,character,warp = 1)
     oquonie.spellbook.add_pillar(this);
     this.on_sight();
     oquonie.player.warp_at(this.warp,0,0);
+    if(this.transform){
+      oquonie.player.transform(this.transform);
+    }
   }
 
   this.on_sight = function()

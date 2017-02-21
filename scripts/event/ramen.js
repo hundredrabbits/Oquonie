@@ -19,6 +19,9 @@ function Ramen(x,y,id)
     if(oquonie.player.id == "necomedre"){
       this.id = "nestorine";
     }
+    else if(oquonie.player.id == "nestorine"){
+      this.id = "nephtaline";
+    }
     else{
       this.id = "nemedique";
     }

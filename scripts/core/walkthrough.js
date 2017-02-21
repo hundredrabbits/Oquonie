@@ -26,29 +26,33 @@ function Walkthrough()
 
   // Chapter 2
 
-  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R];
-  var nephtaline_pillar_lobby  = [R,R,R,R,"",L,L,L,U,U];
+  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,"",L,L,L,U,U];
   var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
 
-  var nephtaline_pillar = [].concat(nephtaline_pillar_stage);
-  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_lobby);
+  var nephtaline_pillar = [];
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_stage);
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
 
-  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R];
-  var nephtaline_pillar_lobby  = [R,R,R,R,"",L,L,L,U,U];
+  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,"",L,L,L,U,U];
   var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
 
-  var nephtaline_pillar = [].concat(nephtaline_pillar_stage);
-  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_lobby);
+  var nephtaline_pillar = [];
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_stage);
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
 
-  var nemedique_pillar_stage  = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U];
-  var nemedique_pillar_lobby  = [R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,"",U,U,U,L,L,L,D,D,D,R,R,R];
-  var nemedique_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U];
+  var necomedre_pillar_stage  = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,"",U,U,U,L,L,L,D,D,D,R,R,R];
+  var necomedre_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U];
 
-  var nemedique_pillar = [].concat(nemedique_pillar_stage);
-  nemedique_pillar = nemedique_pillar.concat(nemedique_pillar_lobby);
-  nemedique_pillar = nemedique_pillar.concat(nemedique_pillar_pillar);
+  var necomedre_pillar = [];
+  necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_stage);
+  necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_pillar);
+
+  var nestorine_pillar_stage  = [U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,"",U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
+  var nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U];
+
+  var nestorine_pillar = [];
+  nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_stage);
+  nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_pillar);
 
   // Everything
 
@@ -64,7 +68,8 @@ function Walkthrough()
   full = [];
 
   full = full.concat(nephtaline_pillar);
-  full = full.concat(nemedique_pillar);
+  full = full.concat(necomedre_pillar);
+  full = full.concat(nestorine_pillar);
 
   var chapter_2 = full;
 
@@ -72,7 +77,7 @@ function Walkthrough()
   {
     console.info("Walkthrough has started.");
 
-    oquonie.speed = 50;
+    oquonie.speed = 20;
 
     this.walk_chapter2();
   }
