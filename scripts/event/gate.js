@@ -16,7 +16,7 @@ function Gate(requirement,x,y,room,to_x,to_y)
 
   this.on_collision = function()
   {
-    if(this.requirement != oquonie.player.id){
+    if(this.requirement != oquonie.player.id && oquonie.player.id != "nastazie"){
       console.warn("Gate requires: "+this.requirement+", is "+oquonie.player.id);
       return;
     }
@@ -26,6 +26,6 @@ function Gate(requirement,x,y,room,to_x,to_y)
   this.on_sight = function()
   {
     var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    $("#wall_"+wall_id).css("background-image","url(media/graphics/wall/gate."+this.requirement+"."+(this.requirement == oquonie.player.id ? "open" : "close")+".png)")
+    $("#wall_"+wall_id).css("background-image","url(media/graphics/wall/gate."+this.requirement+"."+(this.requirement == oquonie.player.id || oquonie.player.id == "nastazie" ? "open" : "close")+".png)")
   }
 }

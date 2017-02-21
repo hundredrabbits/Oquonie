@@ -2,7 +2,6 @@
 
 # TODOs
 
-- Pillar
 - Ramen
 - Parallax
 - Audio Players
@@ -11,7 +10,4 @@
 - Bump() animation
 - Red events
 
-New flow for nestorine pillar
-- Get 1st from ramen
-- get second from the lobby
-- get last from nestorine world
+- Unlock all doors as Nastazie

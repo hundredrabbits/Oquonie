@@ -54,6 +54,25 @@ function Walkthrough()
   nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_stage);
   nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_pillar);
 
+  var neomine_pillar_stage  = [L,L,L,U,U,U,U,U,U,R,R,R,D,D,D,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,L,L,L,U,U,U,U,U,R,R,D,D,U,R,L,D,L,D,D,D,U,D,D,L,L,L,U,U,U,R,R,R,R,L,L,U,R,R,D,D,U,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,R,"",U,U,U,U,U,U,R,U,R,R,R,D,R,R,R];
+  var neomine_pillar_pillar = [];
+
+  var neomine_pillar = [];
+  neomine_pillar = neomine_pillar.concat(neomine_pillar_stage);
+  neomine_pillar = neomine_pillar.concat(neomine_pillar_pillar);
+
+  // Chapter 3
+
+  var nastazie_pillar_nemedique = [L,L,L,U,U,U,U,U,L,U,R,U,R,R,L,L,L,U,U,D,R,R,R,R,R,D,U,D,L,U,L,L,L,U,U,D,L,L,D,R,R,R,R,R,U,L,U,U,U,U];
+  var nastazie_pillar_neomine = [U,R,D,D,D,D,D,L,L,L,U,U,U,U,L,L,U,R,R,R,U,U,U,U,U,U];
+  var nastazie_pillar_nephtaline = [U,R,D,D,D,D,L,L,L,L,U,U,U,U,L,D,L,D,D,R,D,D,D,R,R,R,U,L,L,U,U,U,U,U,R,U,U]
+  var nastazie_pillar_nastazie = [U,R,D,D,D,D,D,L,D,R,R,R,R,R,U,L,L,L,L,U,U,U,D,R,D,D,D,D,D,L,D,R,R,D,R,R,R];
+
+  var nastazie_pillar = [];
+  nastazie_pillar.concat(nastazie_pillar_nemedique);
+
+  var extra_missing_rooms = ["W81",L,L,L,L,L,L,"W89",D,D,D,"W112"];
+
   // Everything
 
   var full = [];
@@ -70,16 +89,36 @@ function Walkthrough()
   full = full.concat(nephtaline_pillar);
   full = full.concat(necomedre_pillar);
   full = full.concat(nestorine_pillar);
+  full = full.concat(neomine_pillar);
 
   var chapter_2 = full;
+
+  full = [];
+  full = full.concat(nastazie_pillar_nemedique);
+  full = full.concat(nastazie_pillar_neomine);
+  full = full.concat(nastazie_pillar_nephtaline);
+  full = full.concat(nastazie_pillar_nastazie);
+
+  var chapter_3 = full;
+
+  full = [];
+  full = full.concat(extra_missing_rooms);
+
+  var chapter_4 = full;
+
+  var chapter_all = [];
+  chapter_all = chapter_all.concat(chapter_1);
+  chapter_all = chapter_all.concat(chapter_2);
+  chapter_all = chapter_all.concat(chapter_3);
+  chapter_all = chapter_all.concat(chapter_4);
 
   this.start = function()
   {
     console.info("Walkthrough has started.");
 
-    oquonie.speed = 20;
+    oquonie.speed = 50;
 
-    this.walk_chapter2();
+    this.walk_all();
   }
 
   this.manual = function()
@@ -107,18 +146,63 @@ function Walkthrough()
     this.run();
   }
 
+  this.walk_chapter3 = function()
+  {
+    oquonie.player.id = "necomedre";
+    this.room = 3;
+    this.inputs = chapter_3;
+    oquonie.stage.enter_room(this.room);
+    this.run();
+  }
+
+  this.walk_chapter4 = function()
+  {
+    oquonie.player.id = "nastazie";
+    this.room = 4;
+    this.inputs = chapter_4;
+    oquonie.stage.enter_room(this.room);
+    this.run();
+  }
+
+  this.walk_all = function()
+  {
+    oquonie.player.id = "necomedre";
+    this.room = 1;
+    this.inputs = chapter_all;
+    oquonie.stage.enter_room(this.room);
+    this.run();
+  }
+
   this.run = function()
   {
-    if(this.inputs.length < 1){ return; }
+    if(this.inputs.length < 1){ this.end(); return; }
 
     if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); }
     else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); }
     else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); }
     else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); }  
     else if(this.inputs[0] == ""){ keyboard.key_escape(); }    
+    else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); }  
 
     this.inputs.shift();
 
     setTimeout(function(){ oquonie.walkthrough.run(); }, oquonie.speed * 2);
+  }
+
+  this.end = function()
+  {
+    this.analysis();
+  }
+
+  this.analysis = function()
+  {
+    var unused_rooms = [];
+    for(room in oquonie.world.rooms){
+      if(!oquonie.world.rooms[room].is_known){
+        unused_rooms.push(oquonie.world.rooms[room])
+      }
+    }
+    console.log(unused_rooms.length+" Unused Rooms: ");
+    console.log(unused_rooms);
   }
 }

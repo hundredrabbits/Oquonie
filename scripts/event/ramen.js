@@ -22,6 +22,9 @@ function Ramen(x,y,id)
     else if(oquonie.player.id == "nestorine"){
       this.id = "nephtaline";
     }
+    else if(oquonie.player.id == "neomine"){
+      this.id = "necomedre";
+    }
     else{
       this.id = "nemedique";
     }
