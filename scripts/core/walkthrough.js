@@ -2,6 +2,8 @@ function Walkthrough()
 {
   var U = "U", D = "D", L = "L", R = "R";
 
+  // Chapter 1
+
   var necomedre_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,R,R,R];
   var necomedre_stage = [D,D,D,R,R,U,L,L,U,R,"",U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,R,R,R];
   var necomedre = necomedre_lobby.concat(necomedre_stage);
@@ -22,6 +24,34 @@ function Walkthrough()
   var nemedique_stage = [R,R,R,U,R,"",U,U,U,D,D,D,R,R,R];
   var nemedique = nemedique_lobby.concat(nemedique_stage);
 
+  // Chapter 2
+
+  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R];
+  var nephtaline_pillar_lobby  = [R,R,R,R,"",L,L,L,U,U];
+  var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
+
+  var nephtaline_pillar = [].concat(nephtaline_pillar_stage);
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_lobby);
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
+
+  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R];
+  var nephtaline_pillar_lobby  = [R,R,R,R,"",L,L,L,U,U];
+  var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
+
+  var nephtaline_pillar = [].concat(nephtaline_pillar_stage);
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_lobby);
+  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
+
+  var nemedique_pillar_stage  = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U];
+  var nemedique_pillar_lobby  = [R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,"",U,U,U,L,L,L,D,D,D,R,R,R];
+  var nemedique_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U];
+
+  var nemedique_pillar = [].concat(nemedique_pillar_stage);
+  nemedique_pillar = nemedique_pillar.concat(nemedique_pillar_lobby);
+  nemedique_pillar = nemedique_pillar.concat(nemedique_pillar_pillar);
+
+  // Everything
+
   var full = [];
   full = full.concat(necomedre);
   full = full.concat(nephtaline);
@@ -29,14 +59,45 @@ function Walkthrough()
   full = full.concat(nestorine);
   full = full.concat(nemedique);
 
-  this.inputs = full;
+  var chapter_1 = full;
+
+  full = [];
+
+  full = full.concat(nephtaline_pillar);
+  full = full.concat(nemedique_pillar);
+
+  var chapter_2 = full;
 
   this.start = function()
   {
     console.info("Walkthrough has started.");
-    this.room = 1;
-    oquonie.speed = 100;
+
+    oquonie.speed = 50;
+
+    this.walk_chapter2();
+  }
+
+  this.manual = function()
+  {
     oquonie.player.id = "necomedre";
+    this.room = 1;
+    oquonie.stage.enter_room(this.room);
+  }
+
+  this.walk_chapter1 = function()
+  {
+    oquonie.player.id = "necomedre";
+    this.room = 1;
+    this.inputs = chapter_1;
+    oquonie.stage.enter_room(this.room);
+    this.run();
+  }
+
+  this.walk_chapter2 = function()
+  {
+    oquonie.player.id = "necomedre";
+    this.room = 9;
+    this.inputs = chapter_2;
     oquonie.stage.enter_room(this.room);
     this.run();
   }

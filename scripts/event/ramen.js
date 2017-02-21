@@ -4,6 +4,7 @@ function Ramen(x,y,id)
 
   this.x = x;
   this.y = y;
+  this.id = "nemedique";
 
   this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
 
@@ -15,6 +16,18 @@ function Ramen(x,y,id)
   this.on_collision = function()
   {
     oquonie.dialog.show(this,["letter","letter","letter"]);
+    if(oquonie.player.id == "necomedre"){
+      this.id = "nestorine";
+    }
+    else{
+      this.id = "nemedique";
+    }
+    oquonie.spellbook.add_spell(this);
+  }
+
+  this.spell_name = function()
+  {
+    return this.id+"_"+this.location;
   }
 
   this.update();
