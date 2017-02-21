@@ -30,6 +30,7 @@ function Room(id)
     // Wall
     for (var i = 0; i < this.walls.length; i++){
       var tile = new Wall(i,this.walls[i],"wall");
+      tile.element.setAttribute("id","wall_"+i);
       this.element.appendChild(tile.element);
     }
 

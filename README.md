@@ -2,7 +2,7 @@
 
 # TODOs
 
-- Gates
+- Pillar
 - Ramen
 - Parallax
 - Audio Players
@@ -10,6 +10,3 @@
 - Splash
 - Bump() animation
 - Red events
-- Pillar animation
-- Pillar events
-- NPC Tester

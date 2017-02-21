@@ -1,21 +1,36 @@
-function Pillar(x,y,id)
+function Pillar(x,y,character,warp = 1)
 {
   Event.call(this,"pillar");
 
   this.x = x;
   this.y = y;
+  this.is = "full";
+  this.warp = warp;
+  this.character = character;
+
+  this.animator.add(new Animation("idle",[1]));
 
   this.is_collider = function()
   {
     return true;
   }
 
-  var bg = "url(media/graphics/pillar/base.png)";
+  this.on_collision = function()
+  {
+    oquonie.spellbook.add_pillar(this);
+    this.on_sight();
+    oquonie.player.warp_at(this.warp,0,0);
+  }
 
-  var p = this.position_at(x,y,100);
-  var top = p[0];
-  var left = p[1];
-  var zIndex = p[2];
+  this.on_sight = function()
+  {
+    if(oquonie.spellbook.has_pillar(this)){
+      this.id = "gone";
+    }
+    else{
+      this.id = "full";
+    }
+  }
 
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+  this.update();
 }

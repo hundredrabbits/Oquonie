@@ -6,6 +6,7 @@ function Spellbook()
   this.spell3 = document.createElement("spell");
 
   this.content = {};
+  this.pillars = [];
 
   this.install = function()
   {
@@ -45,6 +46,23 @@ function Spellbook()
     }
     return false;
   }
+
+  // Pillars
+
+  this.add_pillar = function(pillar)
+  {
+    this.pillars.push(pillar.character);
+  }
+
+  this.has_pillar = function(pillar)
+  {
+    console.log(this.pillars);
+    if(this.pillars.indexOf(pillar.character) > -1){
+      return true;
+    }
+  }
+
+  // Etc..
 
   this.try_transform = function()
   {

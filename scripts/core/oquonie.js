@@ -25,10 +25,10 @@ function Oquonie()
   this.start = function()
   {
     console.info("Starting Oquonie");
-    this.stage.enter_room(1);
-    animate();
+    // this.stage.enter_room(1);
 
     this.walkthrough.start();
+    animate();
   }
 
   function animate()

@@ -24,7 +24,7 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,10));
-    room.add_event(new Pillar(1,-1,"nephtaline"));
+    room.add_event(new PillarBase(1,-1,"nephtaline"));
     room.add_event(new Gate("nephtaline",0,2,40,-1,-1));
     room.add_event(new Door(2,0,2,-1,0));
     this.rooms[1] = room;
@@ -48,7 +48,7 @@ function World()
     room.steps  = [ 0,7,0, 0,7,0];
     room.audio  = "lobby";
     room.theme  = "white";
-    room.add_event(new Pillar(-1,1,"neomine"));
+    room.add_event(new PillarBase(-1,1,"neomine"));
     room.add_event(new Owl(1,1),true);   
     room.add_event(new Blocker(-1,-1,1));
     room.add_event(new Gate("neomine",0,2,60,0,-1));
@@ -76,7 +76,7 @@ function World()
     room.steps  = [ 0,7,0, 0,7,0 ]
     room.audio  = "lobby";
     room.theme  = "white";
-    room.add_event(new Pillar(1,1,"necomedre"));
+    room.add_event(new PillarBase(1,1,"necomedre"));
     room.add_event(new Blocker(-1,1,30));
     room.add_event(new Door(0,2,4,0,-1));
     room.add_event(new Gate("necomedre",2,0,32,-1,0));
@@ -102,7 +102,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "lobby";
     room.theme  = "white";
-    room.add_event(new Pillar(-1,-1,"nestorine"));
+    room.add_event(new PillarBase(-1,-1,"nestorine"));
     room.add_event(new Blocker(0,1,11));
     room.add_event(new Gate("nestorine",2,0,96,-1,0));
     room.add_event(new Door(-2,0,6,1,0));
@@ -114,7 +114,7 @@ function World()
     room.steps  = [ 0,0,0, 0,7,0 ];
     room.audio  = "lobby";
     room.theme  = "white";
-    room.add_event(new Pillar(-1,1,"nemedique"));
+    room.add_event(new PillarBase(-1,1,"nemedique"));
     room.add_event(new Gate("nemedique",0,2,100,0,-1));
     room.add_event(new Door(2,0,5,-1,0));
     room.add_event(new Door(0,-2,11,0,1));
@@ -1034,8 +1034,8 @@ function World()
     room.steps  = [ 0,6,0, 0,0,0 ]
     room.audio  = "pillar"
     room.theme  = "pillar"
-    // room.add_event(new pillar_nemedique)
-    room.add_event(new Door(-2,0,"necomedre",101,1,0))
+    room.add_event(new Pillar(0,0,"nemedique",9));
+    room.add_event(new Gate("necomedre",-2,0,101,1,0))
     this.rooms[103] = room
     
     room = new Room(104);

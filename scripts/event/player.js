@@ -14,6 +14,7 @@ function Player()
   this.transform = function(spell)
   {
     this.id = spell;
+    oquonie.stage.look();
   }
 
   this.try_move = function(x,y)
