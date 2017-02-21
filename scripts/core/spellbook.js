@@ -56,7 +56,6 @@ function Spellbook()
 
   this.has_pillar = function(pillar)
   {
-    console.log(this.pillars);
     if(this.pillars.indexOf(pillar.character) > -1){
       return true;
     }

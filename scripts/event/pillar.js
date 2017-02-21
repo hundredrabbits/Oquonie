@@ -4,7 +4,7 @@ function Pillar(x,y,character,warp = 1)
 
   this.x = x;
   this.y = y;
-  this.is = "full";
+  this.id = "full";
   this.warp = warp;
   this.character = character;
 
