@@ -25,7 +25,7 @@ function Wizard(x,y,id)
 
   this.on_collision = function()
   {
-    oquonie.spellbook.toggle_spell(this);
+    oquonie.spellbook.toggle_spell(this.spell_name());
     this.update_notification();
   }
 
@@ -46,7 +46,7 @@ function Wizard(x,y,id)
 
   this.update_notification = function()
   {
-    if(oquonie.spellbook.has_spell(this) == true){
+    if(oquonie.spellbook.has_spell(this.spell_name()) == true || oquonie.player.id == this.id){
       this.hide_notification();
     }
     else{

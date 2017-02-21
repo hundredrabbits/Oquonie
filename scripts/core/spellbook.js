@@ -5,8 +5,9 @@ function Spellbook()
   this.spell2 = document.createElement("spell");
   this.spell3 = document.createElement("spell");
 
-  this.content = {};
+  this.spells  = [];
   this.pillars = [];
+  this.ramens  = [];
 
   this.install = function()
   {
@@ -16,35 +17,40 @@ function Spellbook()
     this.element.appendChild(this.spell3);
   }  
 
-  this.toggle_spell = function(wizard)
+  // Spells
+
+  this.toggle_spell = function(spell_name)
   {
-    if(this.content[wizard.spell_name()]){
-      this.remove_spell(wizard);
+    if(this.has_spell(spell_name)){
+      this.remove_spell(spell_name);
     }
     else{
-      this.add_spell(wizard);
+      this.add_spell(spell_name);
     }
   }
 
-  this.add_spell = function(wizard)
+  this.add_spell = function(spell_name)
   {
-    this.content[wizard.spell_name()] = wizard;
+    if(this.spells.length > 2){ console.warn("Spellbook is full."); return; }
+    console.log("Add spell: "+spell_name);
+    this.spells.push(spell_name);
     this.try_transform();
     this.update();
   }
 
-  this.remove_spell = function(wizard)
+  this.remove_spell = function(spell_name)
   {
-    this.content[wizard.spell_name()] = null;
+    console.log("Removed spell: "+spell_name);
+    var index = this.spells.indexOf(spell_name);
+    this.spells.splice(index,1);
     this.update();
   }
 
-  this.has_spell = function(wizard)
+  this.has_spell = function(spell_name)
   {
-    for(spell in this.content){
-      if(wizard.spell_name() == spell){ return true; }
+    if(this.spells.indexOf(spell_name) > -1){
+      return true;
     }
-    return false;
   }
 
   // Pillars
@@ -61,35 +67,46 @@ function Spellbook()
     }
   }
 
+  // Ramen
+
+  this.add_ramen = function(ramen_character)
+  {
+    console.log("Add Ramen: "+ramen_character);
+    this.ramens.push(ramen_character);
+  }
+
+  this.has_ramen = function(ramen_character)
+  {
+    if(this.ramens.indexOf(ramen_character) > -1){
+      return true;
+    }
+  }
+
   // Etc..
 
   this.try_transform = function()
   {
-    var a = {};
-    for(spell in this.content){
-      var name = this.content[spell].id;
-      a[name] = a[name] ? a[name]+1 : 1;
+    if(this.spells.length < 3){ return; }
+
+    var target_spell = this.spells[0].split("_")[0];
+
+    a = {};
+    for (var i = 0; i < this.spells.length; i++) {
+      a[this.spells[i].split("_")[0]] = a[this.spells[i].split("_")[0]] ? a[this.spells[i].split("_")[0]]+1 : 1;
     }
-    for(spell in a){
-      if(a[spell] == 3){ 
-        oquonie.player.transform(spell); 
-        this.content = {};
-        this.update();
-      }
+    
+    if(a[target_spell] == 3){
+      oquonie.player.transform(target_spell);
+      this.spells = [];
+      this.update();
+    }
+    else{
+      console.warn("Not sequence");
     }
   }
 
   this.clear = function()
   {
-    var blank = {};
-    for(spell in this.content){
-      if(this.content[spell] != null){
-        blank[spell] = this.content[spell];
-      }
-    }
-    this.content = blank;
-
-    // Clear tiles
     $(this.spell1).css("background-image","");
     $(this.spell2).css("background-image","");
     $(this.spell3).css("background-image","");
@@ -99,16 +116,11 @@ function Spellbook()
   {
     this.clear();
 
-    var i = 0;
-    var spell = null;
-    for(spell in this.content){
-      if(!this.content[spell]){ continue; }
-      
-      spell_name = this.content[spell].id;
+    for (var i = 0; i < this.spells.length; i++) {
+      var spell_name = this.spells[i].split("_")[0];
       if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
       if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
       if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
-      i += 1;
     }
   }
 }

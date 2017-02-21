@@ -36,7 +36,7 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,24));
-    room.add_event(new Ramen(1,0,true));
+    room.add_event(new Ramen(1,0));
     room.add_event(new Plan(-1,2,"lobby"));
     room.add_event(new Door(-2,0,1,1,0));
     room.add_event(new Door(0,2,3,0,-1));
@@ -262,14 +262,12 @@ function World()
     room = new Room(30);
     room.floors = [ 21,21,21, 21,1,1, 21,21,1 ];
     room.walls  = [ 20,20,20, 20,21,20 ];
-    room.steps  = [ 0,3,0, 0,0,0 ];
+    room.steps  = [ 0,0,0, 0,0,0 ];
     room.audio  = "office";
     room.theme  = "white";
     room.add_event(new Blocker(-1,1,16));
     room.add_event(new Blocker(1,-1,1));
-    // room.add_event(new Boss(1,0));
-//    room.add_event(new Door(0,2,31,0,-1))
-//    room.add_event(new Door(-2,0,29,1,0))
+    room.add_event(new Boss(1,0),true);
     this.rooms[30] = room
     
     room = new Room(31);
@@ -278,8 +276,6 @@ function World()
     room.steps  = [ 0,3,0, 0,0,0 ];
     room.audio  = "pillar";
     room.theme  = "black";
-    // room.add_event(new Red(0,1));
-//    room.add_event(new Door(2,0,necomedre))
     this.rooms[31] = room;
     
     room = new Room(32);
@@ -558,7 +554,6 @@ function World()
     room.steps  = [ 0,0,0, 0,7,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    // room.add_event(new ramen_nephtaline)
     room.add_event(new Ramen(1,1,"nephtaline"));
     room.add_event(new Door(2,0,58,-1,0))
     room.add_event(new Door(0,-2,56,0,1))
@@ -646,7 +641,6 @@ function World()
     room.steps  = [ 0,0,0, 0,0,0 ]
     room.audio  = "neomine"
     room.theme  = "black"
-    // room.add_event(new ramen_neomine)
     room.add_event(new Blocker(0,0,9))
     room.add_event(new Ramen(-1,1,"neomine"),true);
     room.add_event(new Door(2,1,66,-1,1))
@@ -851,7 +845,6 @@ function World()
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "nestorine"
     room.theme  = "white"
-    // room.add_event(new ramen_nestorine)
     room.add_event(new Ramen(1,1,"nestorine"));
     room.add_event(new Door(-2,0,91,1,0))
     this.rooms[88] = room
@@ -956,7 +949,7 @@ function World()
     room.audio  = "nemedique"
     room.theme  = "white"
     room.add_event(new Wizard(-1,1,"nestorine"),true)
-    // room.add_event(new DoorRed(0,2,104,0,-1))
+    room.add_event(new Gate("nastazie",0,2,104,0,-1))
     room.add_event(new Door(2,0,101,-1,0))
     room.add_event(new Gate("nemedique",0,-2,9,0,1))
     this.rooms[100] = room

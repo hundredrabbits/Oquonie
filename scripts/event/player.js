@@ -13,6 +13,7 @@ function Player()
 
   this.transform = function(spell)
   {
+    console.log("Transform: "+spell)
     this.id = spell;
     oquonie.stage.look();
   }
