@@ -1,20 +1,25 @@
 function Stage()
 {
   this.element = document.createElement("stage");
+  this.parallax_over = document.createElement("parallax");
+  this.parallax_under = document.createElement("parallax");
 
   this.room = null;
 
   this.install = function()
   {
     oquonie.element.appendChild(this.element);
+    this.element.appendChild(this.parallax_over);
+    this.element.appendChild(this.parallax_under);
+    this.parallax_over.setAttribute("class","over");
+    this.parallax_under.setAttribute("class","under");
   }
 
   this.leave_room = function()
   {
     if(!this.room){ console.warn("No room to leave."); return; }
 
-    $(this.room.element).empty();
-    $(this.element).empty();
+    $(this.room.element).remove();
   }
 
   this.enter_room = function(room_id,x = 0,y = 0)
@@ -39,6 +44,9 @@ function Stage()
     oquonie.element.setAttribute("class",this.room.theme);
 
     this.look();
+    this.center(oquonie.player.x,oquonie.player.y);
+    $(this.element).css("opacity",0);
+    $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
   }
 
   this.look = function()
@@ -82,5 +90,19 @@ function Stage()
     if(x ==  2 && y ==  1){ return 3; }
     if(x ==  2 && y ==  0){ return 4; }
     if(x ==  2 && y == -1){ return 5; }
+  }
+
+  this.animate = function(x,y)
+  {
+    $(this.element).animate({ marginLeft: (x * -0.5)+"%",marginTop: (y * 0.5)+"%" }, oquonie.speed);
+    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
+    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
+  }
+
+  this.center = function(x,y)
+  {
+    $(this.element).css("margin-left",(x * -0.5)+"%").css("margin-top",(y * 0.5)+"%");
+    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
+    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
   }
 }

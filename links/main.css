@@ -1,6 +1,6 @@
 body { background:#eee; overflow: hidden }
 
-oquonie, stage, room, tile, dialog, spellbook, spell { display:block; }
+oquonie, stage, room, tile, dialog, spellbook, spell, parallax { display:block; }
 
 oquonie { background:#fff; width:100vw; height:100vh;}
 
@@ -12,16 +12,16 @@ dialog bubble letter:nth-child(1) {left:10%;bottom:20%}
 dialog bubble letter:nth-child(2) {left:25%;bottom:20%}
 dialog bubble letter:nth-child(3) {left:40%;bottom:20%}
 
-spellbook { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2));}
-spellbook spell { width:50px; height:50px; margin-top:5px; background-size:cover; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); }
-spellbook spell:nth-child(1) {left:10%;bottom:20%}
-spellbook spell:nth-child(2) {left:25%;bottom:20%}
-spellbook spell:nth-child(3) {left:40%;bottom:20%}
+spellbook { width:100%; height:100vh; position:fixed; top:5vh; text-align: center; left:0px; z-index:9500;}
+spellbook spell { width:7vw; height:7vw; max-width:7vh; max-height: 7vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
 
 .black { background:black; }
 
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
-room { width:100%; height:100%; margin-top:5vh; position: relative }
+stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
+stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat;}
+stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
+stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
 tile,notification { background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
 tile.floor {  margin-top:-20%; } 
 tile.wall {margin-top:-30%; }

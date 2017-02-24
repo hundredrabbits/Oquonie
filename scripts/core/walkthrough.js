@@ -122,7 +122,7 @@ function Walkthrough()
   {
     console.info("Walkthrough has started.");
 
-    oquonie.speed = 50;
+    oquonie.speed = 150;
 
     this.manual();
   }

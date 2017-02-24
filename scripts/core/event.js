@@ -33,6 +33,8 @@ function Event(subtype)
     $(el).animate({ left: _x, top: _y }, oquonie.speed, function(){
       target.state = "idle.front";
     });
+
+    oquonie.stage.animate(this.x,this.y);
   }
 
   this.move_by = function(x,y)
@@ -55,6 +57,8 @@ function Event(subtype)
       if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
       if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
     });
+    
+    oquonie.stage.animate(this.x,this.y);
   }
 
   this.move_at = function(x,y)
