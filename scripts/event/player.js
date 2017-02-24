@@ -37,6 +37,7 @@ function Player()
     if(target_tile && target_tile.is_collider() == true){
       console.log("Blocked by: "+target_tile.constructor.name);
       target_tile.on_collision();
+      this.bump(x,y,target_tile);
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
       console.log("Blocked by: Edge");

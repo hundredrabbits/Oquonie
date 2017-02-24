@@ -89,6 +89,12 @@ function Event(subtype)
     $(this.element).addClass("mirror");
   }
 
+  this.bump = function(x,y,target)
+  {
+    var origin_pos_y = parseInt(target.element.style.top);
+    $(target.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
+  }
+
   this.on_collision = function()
   {
     // console.log("On collision, no effect");
