@@ -41,4 +41,11 @@ function Tile(type = "unknown")
 
     return [top,left,zIndex];
   }
+
+  this.animate = function()
+  {
+    var origin = parseInt(this.position_at(this.x,this.y)[0]);
+    var offset = (origin*(1+(Math.random()/20)));
+    $(this.element).css("opacity", 0).css("top", offset+"%").animate({ opacity: 1, top: origin+"%" }, oquonie.speed*2);
+  }
 }

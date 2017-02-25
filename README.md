@@ -2,7 +2,6 @@
 
 # TODOs
 
-- Animate tile
 - Fade music
 - Intro Sequence
 - Credit sequence

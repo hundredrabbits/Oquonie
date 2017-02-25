@@ -8,14 +8,19 @@ function Step(pos,id,type)
 
   this.element.setAttribute("pos",x+","+y);
 
-  if(id != 0){
-    var bg = "url(media/graphics/step/"+id+".png)";
+  this.x = t[pos][0];
+  this.y = t[pos][1];
+  this.id = id;
 
-    var p = this.position_at(x,y,50);
-    var top = p[0];
-    var left = p[1];
-    var zIndex = 900+p[2];
+  this.element.setAttribute("pos",this.x+","+this.y);
 
-    this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
-  }
+  var bg = "";
+
+  var p = this.position_at(this.x,this.y,50);
+  var top = p[0];
+  var left = p[1];
+  var zIndex = p[2];
+
+  $(this.element).css("left",left).css("top",top).css("z-index",zIndex);
+  if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/step/"+this.id+".png)"); }
 }

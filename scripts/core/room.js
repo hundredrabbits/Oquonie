@@ -25,6 +25,7 @@ function Room(id)
     for (var i = 0; i < this.floors.length; i++){
       var tile = new Floor(i,this.floors[i],"floor");
       this.element.appendChild(tile.element);
+      tile.animate();
     }
 
     // Wall
@@ -32,12 +33,14 @@ function Room(id)
       var tile = new Wall(i,this.walls[i],"wall");
       tile.element.setAttribute("id","wall_"+i);
       this.element.appendChild(tile.element);
+      tile.animate();
     }
 
     // Steps
     for (var i = 0; i < this.steps.length; i++){
       var tile = new Step(i,this.steps[i],"step");
       this.element.appendChild(tile.element);
+      tile.animate();
     }
 
     // Events
@@ -45,6 +48,7 @@ function Room(id)
       var event = this.events[i];
       event.animator.animate();
       this.element.appendChild(event.element);
+      tile.animate();
     }
 
     this.element.appendChild(oquonie.player.element);
