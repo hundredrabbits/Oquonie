@@ -1,6 +1,7 @@
 function Player()
 {
   Event.call(this,"player");
+
   this.id = "necomedre";
   this.orientation = "front";
 
@@ -8,15 +9,12 @@ function Player()
   this.animator.add(new Animation("idle.back",[1]));
   this.animator.add(new Animation("walk.front",[1,2]));
   this.animator.add(new Animation("walk.back",[1,2]));
+  this.animator.add(new Animation("warp",[1]));
 
   this.animator.state = "idle.front";
+  this.shadow = new Shadow();
 
-  this.transform = function(spell)
-  {
-    console.log("Transform: "+spell)
-    this.id = spell;
-    oquonie.stage.look();
-  }
+  this.element.appendChild(this.shadow.element);
 
   this.try_move = function(x,y)
   {
@@ -71,6 +69,50 @@ function Player()
       $(this.element).removeClass("mirror"); 
     }
     $(this.element).css("z-index",this.depth(10));
+  }
+
+  // Transform
+
+  this.transform = function(spell)
+  {
+    console.log("Transform(init): "+spell);
+    keyboard.lock();
+
+    this.animator.state = "warp";
+
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, oquonie.speed*2, function(){
+      oquonie.player.transform_lift(spell);
+    });
+    $(oquonie.player.shadow.element).delay(300).animate({ top: 10+"%", opacity:0 }, oquonie.speed*2);
+  }
+
+  this.transform_lift = function(spell)
+  {
+    console.log("Transform(lift): "+spell);
+
+    $(oquonie.player.element).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.85)+"%" }, oquonie.speed*4, function(){
+      oquonie.player.transform_character(spell);
+    });
+  }
+
+  this.transform_character = function(spell)
+  {
+    console.log("Transform(char): "+spell);
+
+    oquonie.player.id = spell;
+    oquonie.stage.look();
+
+    $(oquonie.player.element).delay(1000).animate({ top: oquonie.player.position_at(oquonie.player.x,oquonie.player.y)[0] }, oquonie.speed*8, function(){
+      oquonie.player.transform_done();
+    });
+    $(oquonie.player.shadow.element).delay(1300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*8);
+  }
+
+  this.transform_done = function()
+  {
+    console.log("Transform(done)");
+    keyboard.unlock();
+    oquonie.player.animator.state = "idle.front";
   }
 
   this.update();

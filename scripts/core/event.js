@@ -12,7 +12,7 @@ function Event(subtype)
 
   this.update = function()
   {
-    var p = this.position_at(this.x,this.y,100);
+    var p = this.position_at(this.x,this.y);
     var top = p[0];
     var left = p[1];
 

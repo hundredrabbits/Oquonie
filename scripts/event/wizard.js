@@ -25,6 +25,7 @@ function Wizard(x,y,id)
 
   this.on_collision = function()
   {
+    if(oquonie.player.id == this.id){ console.warn("Already is "+this.id); return; }
     oquonie.spellbook.toggle_spell(this.spell_name());
     this.update_notification();
   }
@@ -32,6 +33,7 @@ function Wizard(x,y,id)
   this.on_sight = function()
   {
     console.log("Sighted Wizard: "+this.id);
+    this.update_notification();
   }
 
   this.hide_notification = function()
@@ -46,6 +48,8 @@ function Wizard(x,y,id)
 
   this.update_notification = function()
   {
+    console.log("test",oquonie.player.id,this.id);
+
     if(oquonie.spellbook.has_spell(this.spell_name()) == true || oquonie.player.id == this.id){
       this.hide_notification();
     }

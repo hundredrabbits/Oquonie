@@ -132,6 +132,9 @@ function Walkthrough()
     oquonie.player.id = "necomedre";
     // this.room = 1; // Lobby
     this.room = 25; // Lobby
+
+    oquonie.spellbook.add_spell("document_1");
+    oquonie.spellbook.add_spell("document_2");
     oquonie.stage.enter_room(this.room);
   }
 

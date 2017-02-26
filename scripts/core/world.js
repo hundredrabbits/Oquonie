@@ -225,7 +225,7 @@ function World()
     room.audio  = "office";
     room.theme  = "black";
     room.add_event(new Blocker(-1,1,15));
-    room.add_event(new Speaker(0,1),true);
+    room.add_event(new Speaker(0,1,"radio"),true);
     room.add_event(new Blocker(1,1,15));
     room.add_event(new Blocker(1,-1,16));
     room.add_event(new Door(0,-2,28,0,1));

@@ -13,6 +13,6 @@ function Floor(pos,id,type)
   var top = p[0];
   var left = p[1];
 
-  $(this.element).css("left",left).css("top",top).css("z-index",this.depth(10));
+  $(this.element).css("left",left).css("top",top).css("z-index",this.depth(5));
   if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/floor/"+this.id+".png)"); }
 }

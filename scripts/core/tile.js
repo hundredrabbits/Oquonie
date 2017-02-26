@@ -5,11 +5,10 @@ function Tile(type = "unknown")
   this.x = 0;
   this.y = 0;
 
-  this.position_at = function(x,y,z)
+  this.position_at = function(x,y)
   {
     var top = "0px";
     var left = "0px";
-    var zIndex = z;
 
     if(x == 1 && y == 1){ top = "40%"; left = "50%"; }
     if(x == 1 && y == 0){ top = "45%"; left = "60%"; }

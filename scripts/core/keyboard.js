@@ -1,11 +1,14 @@
 function Keyboard()
 {
+  this.is_locked = false;
+
   this.listen_onkeydown = function(event)
   {
   }
 
   this.listen_onkeyup = function(event)
   {
+    if(this.is_locked == true){ console.warn("Keyboard is locked!"); return; }
     switch (event.keyCode)
     {
       case 38: this.key_arrow_up(); break;
@@ -54,5 +57,17 @@ function Keyboard()
   {
     console.info("escape");
     oquonie.dialog.hide();
+  }
+
+  this.lock = function()
+  {
+    console.log("Keyboard is locked.")
+    this.is_locked = true;
+  }
+
+  this.unlock = function()
+  {
+    console.log("Keyboard is unlocked.")
+    this.is_locked = false;
   }
 }
