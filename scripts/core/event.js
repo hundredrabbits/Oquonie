@@ -16,7 +16,7 @@ function Event(subtype)
     var top = p[0];
     var left = p[1];
 
-    $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",900);
+    $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",this.depth());
   }
 
   this.move_to = function(x,y)

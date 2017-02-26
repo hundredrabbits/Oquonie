@@ -15,13 +15,6 @@ function Stage()
     this.parallax_under.setAttribute("class","under");
   }
 
-  this.leave_room = function()
-  {
-    if(!this.room){ console.warn("No room to leave."); return; }
-
-    $(this.room.element).remove();
-  }
-
   this.enter_room = function(room_id,x = 0,y = 0)
   {
     console.log("Entering Room: "+room_id);
@@ -31,11 +24,10 @@ function Stage()
       return;
     }
 
-    this.leave_room();
+    if(this.room){ $(this.room.element).empty(); $(this.room.element).remove(); }
 
     this.room = oquonie.world.rooms[room_id];
     this.element.appendChild(this.room.element);
-
     this.room.show();
     this.room.is_known = true;
 

@@ -12,3 +12,7 @@
 - Splash
 - Petunia event
 - Cat wizards
+- Warp animation
+- Stage shake event
+- Save/Load
+- Z-Index

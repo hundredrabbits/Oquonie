@@ -16,6 +16,6 @@ function Wall(pos,id,type)
   var left = p[1];
   var zIndex = p[2];
 
-  $(this.element).css("left",left).css("top",top).css("z-index",zIndex);
+  $(this.element).css("left",left).css("top",top).css("z-index",this.depth());
   if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/wall/"+id+".png)"); }  
 }

@@ -42,6 +42,11 @@ function Tile(type = "unknown")
     return [top,left,zIndex];
   }
 
+  this.depth = function()
+  {
+    return 1;
+  }
+
   this.animate = function()
   {
     var origin = parseInt(this.position_at(this.x,this.y)[0]);

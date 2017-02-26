@@ -129,8 +129,9 @@ function Walkthrough()
 
   this.manual = function()
   {
-    oquonie.player.id = "nastazie";
-    this.room = 1;
+    oquonie.player.id = "necomedre";
+    // this.room = 1; // Lobby
+    this.room = 25; // Lobby
     oquonie.stage.enter_room(this.room);
   }
 

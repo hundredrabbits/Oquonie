@@ -17,5 +17,5 @@ function Blocker(x,y,id)
   var left = p[1];
   var zIndex = p[2];
 
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+zIndex);
+  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+this.depth());
 }
