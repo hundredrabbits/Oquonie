@@ -4,6 +4,7 @@ function Oquonie()
 
   this.world = new World();
   this.dialog = new Dialog();
+  this.overlay = new Overlay();
   this.interface = new Interface();
   this.stage = new Stage();
   this.player = new Player();
@@ -17,6 +18,7 @@ function Oquonie()
 
     this.world.install();
     this.dialog.install();
+    this.overlay.install();
     this.interface.install();
     this.stage.install();
     this.spellbook.install();

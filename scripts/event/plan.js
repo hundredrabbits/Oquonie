@@ -13,6 +13,6 @@ function Plan(x,y,id)
 
   this.on_collision = function()
   {
-    console.log("!")
+    oquonie.overlay.show(this.id);
   }
 }

@@ -22,6 +22,10 @@ function Player()
       oquonie.dialog.hide();
       return;
     }
+    if(oquonie.overlay.content){
+      oquonie.overlay.hide();
+      return;
+    }
 
     if(x == 0 && y == -1){ $(this.element).attr("orientation","front").attr("direction","right"); }
     if(x == -1 && y == 0){ $(this.element).attr("orientation","front").attr("direction","left"); }

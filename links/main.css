@@ -34,3 +34,5 @@ tile.event { margin-top:-29%; }
 tile.event.mirror { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
 tile.shadow { background-image:url(../media/graphics/player/shadow.png); width:100%; height:100%; margin-left:0px; position: absolute; top:0px; z-index:5;}
 tile.event notification { width:100%;height:100%;top:-15%; left:10%; }
+
+overlay { position:absolute; display:block; width:100vw; height:100vh; z-index:8000; background-size:contain; background-position:center center; background-repeat: no-repeat; background-color: white; top:0px; left:0px; opacity:0;}

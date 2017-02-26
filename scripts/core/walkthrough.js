@@ -130,9 +130,9 @@ function Walkthrough()
   this.manual = function()
   {
     oquonie.player.id = "necomedre";
-    // this.room = 1; // Lobby
+    this.room = 1; // Lobby
     // this.room = 25; // Intro
-    this.room = 39; // Intro
+    // this.room = 39; // Intro
     // oquonie.spellbook.add_spell("nephtaline_1")
     // oquonie.spellbook.add_spell("nephtaline_2")
 
