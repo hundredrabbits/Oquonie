@@ -38,9 +38,11 @@ function Ramen(x,y,character = null)
   {
     if(oquonie.spellbook.has_ramen(oquonie.player.id) != true){
       console.warn("Ramen for "+oquonie.player.id+" is unfound.");
+      oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
       return;
     }
     oquonie.spellbook.toggle_spell(this.spell_name());
+    oquonie.dialog.show(this.name,["help","friend",oquonie.player.id]);
   }
 
   this.on_collision_world = function()
@@ -50,6 +52,7 @@ function Ramen(x,y,character = null)
       return;
     }
     oquonie.spellbook.add_ramen(this.character);
+    oquonie.dialog.show(this.name,["help","friend",oquonie.player.id]);
   }
   
   // On Sight

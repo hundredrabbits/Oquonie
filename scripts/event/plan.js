@@ -14,5 +14,6 @@ function Plan(x,y,id)
   this.on_collision = function()
   {
     oquonie.overlay.show(this.id);
+    oquonie.dialog.show("owl",["help","guide","friend"]);
   }
 }

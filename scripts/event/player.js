@@ -89,8 +89,8 @@ function Player()
   {
     keyboard.lock();
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
-    $(oquonie.player.shadow.element).delay(1300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*8);
+    $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
+    $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*20);
   }
 
   // Transform

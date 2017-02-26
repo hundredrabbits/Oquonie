@@ -14,7 +14,13 @@ function Owl(x,y)
 
   this.on_collision = function()
   {
-    oquonie.dialog.show(this,["letter","letter","letter"]);
+    if(oquonie.spellbook.pillars.length > 0){
+      oquonie.dialog.show(this.name,["guide","locked","pillar"]);
+    }
+    else{
+      oquonie.dialog.show(this.name,["door","guide","friend"]);
+    }
+    oquonie.save()
   }
 
   this.on_sight = function()

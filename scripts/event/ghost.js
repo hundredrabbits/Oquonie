@@ -14,7 +14,14 @@ function Ghost(x,y)
 
   this.on_sight = function()
   {
-    $(this.element).delay(oquonie.speed * 2).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 2, function(){
+    $(this.element).delay(oquonie.speed * 5).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 10, function(){
+      this.is_known = true;
+    });
+  }
+
+  this.on_step = function()
+  {
+    $(this.element).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 5, function(){
       this.is_known = true;
     });
   }

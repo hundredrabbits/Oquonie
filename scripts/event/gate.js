@@ -18,6 +18,7 @@ function Gate(requirement,x,y,room,to_x,to_y)
   {
     if(this.requirement != oquonie.player.id && oquonie.player.id != "nastazie"){
       console.warn("Gate requires: "+this.requirement+", is "+oquonie.player.id);
+      oquonie.dialog.show("owl",["door","locked",this.requirement])
       return;
     }
     oquonie.stage.enter_room(this.room,this.to_x,this.to_y);

@@ -27,11 +27,22 @@ function Oquonie()
   this.start = function()
   {
     console.info("Starting Oquonie");
-    // this.stage.enter_room(1);
+
+    this.load();
 
     this.walkthrough.start();
     this.spellbook.hide();
     animate();
+  }
+
+  this.save = function()
+  {
+    console.info("Saving..");
+  }
+
+  this.load = function()
+  {
+    console.info("Loading..");
   }
 
   function animate()

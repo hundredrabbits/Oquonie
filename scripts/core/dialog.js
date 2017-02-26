@@ -20,12 +20,16 @@ function Dialog()
     this.bubble.appendChild(this.letter3);
   }  
 
-  this.show = function(host,message)
+  this.show = function(host_name,message)
   {
-    console.log("Dialog with: "+host.name);
+    console.log("Dialog with: "+host_name);
 
-    $(this.portrait).css("background-image","url(media/graphics/"+host.name+"/portrait.png)");
+    $(this.portrait).css("background-image","url(media/graphics/"+host_name+"/portrait.png)");
     $(this.element).animate({ opacity:1 }, oquonie.speed, function(){});
+
+    $(this.letter1).css("background-image","url(media/graphics/camilare/"+message[0]+".png)");
+    $(this.letter2).css("background-image","url(media/graphics/camilare/"+message[1]+".png)");
+    $(this.letter3).css("background-image","url(media/graphics/camilare/"+message[2]+".png)");
 
     this.content = message;
   }

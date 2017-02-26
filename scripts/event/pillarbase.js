@@ -14,6 +14,16 @@ function PillarBase(x,y,character)
     return true;
   }
 
+  this.on_collision = function()
+  {
+    if(oquonie.spellbook.has_pillar(this) == true){
+      oquonie.dialog.show("owl",["pillar","friend",this.character]);
+    }
+    else{
+      oquonie.dialog.show("owl",["pillar","foe",this.character]);  
+    }
+  }
+
   this.on_sight = function()
   {
     if(oquonie.spellbook.has_pillar(this)){

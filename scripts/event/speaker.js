@@ -19,6 +19,7 @@ function Speaker(x,y,id = "disc")
   this.on_collision = function()
   {
     this.toggle();
+    oquonie.dialog.show("speaker",["outside",this.is_playing ? "correct" : "incorrect","sound"]);
   }
 
   this.toggle = function()

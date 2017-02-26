@@ -26,5 +26,15 @@ function Tree(x,y)
     }
   }
 
+  this.on_collision = function()
+  {
+    if(oquonie.spellbook.pillars.length > 4){
+      oquonie.dialog.show("noface",["confusion1","friend","pillar"]);
+    }
+    else{
+      oquonie.dialog.show("noface",["confusion1","confusion3","pillar"]);
+    }
+  }
+
   this.update(20);
 }
