@@ -12,7 +12,6 @@ function Boss(x,y)
 
   this.is_collider = function()
   {
-    console.log("???",this.is_gone);
     return this.is_gone === true ? false : true;
   }
 

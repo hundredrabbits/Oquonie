@@ -9,6 +9,8 @@ function Spellbook()
   this.pillars = [];
   this.ramens  = [];
 
+  this.autohide_timer = null;
+
   this.install = function()
   {
     oquonie.element.appendChild(this.element);
@@ -27,11 +29,14 @@ function Spellbook()
     else{
       this.add_spell(spell_name);
     }
+    this.autohide_timer = setTimeout(function(){ oquonie.spellbook.check_autohide(); }, 2000);
   }
 
   this.add_spell = function(spell_name)
   {
     if(this.spells.length > 2){ console.warn("Spellbook is full."); return; }
+
+    this.show();
     console.log("Add spell: "+spell_name);
     this.spells.push(spell_name);
     this.try_transform();
@@ -121,6 +126,29 @@ function Spellbook()
       if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
       if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
       if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
+    }
+  }
+
+  this.show = function()
+  {
+    $(this.spell1).delay(0).animate({ marginTop:0 ,opacity: 1 }, oquonie.speed/2);
+    $(this.spell2).delay(100).animate({ marginTop:0 ,opacity: 1 }, oquonie.speed/2);
+    $(this.spell3).delay(200).animate({ marginTop:0 ,opacity: 1 }, oquonie.speed/2);
+  }
+
+  this.hide = function()
+  {
+    $(this.spell1).delay(0).animate({ marginTop:-5 ,opacity: 0 }, oquonie.speed/2);
+    $(this.spell2).delay(100).animate({ marginTop:-5 ,opacity: 0 }, oquonie.speed/2);
+    $(this.spell3).delay(200).animate({ marginTop:-5 ,opacity: 0 }, oquonie.speed/2);
+  }
+
+  this.check_autohide = function()
+  {
+    clearTimeout(this.autohide_timer);
+
+    if(this.spells.length == 0){
+      this.hide();
     }
   }
 }

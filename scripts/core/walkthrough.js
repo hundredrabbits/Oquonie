@@ -129,9 +129,12 @@ function Walkthrough()
 
   this.manual = function()
   {
-    oquonie.player.id = "document";
+    oquonie.player.id = "necomedre";
     // this.room = 1; // Lobby
-    this.room = 30; // Boss
+    // this.room = 25; // Intro
+    this.room = 39; // Intro
+    // oquonie.spellbook.add_spell("nephtaline_1")
+    // oquonie.spellbook.add_spell("nephtaline_2")
 
     oquonie.stage.enter_room(this.room);
   }

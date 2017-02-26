@@ -4,10 +4,9 @@
 
 - Fade music
 - Credit sequence
-- Mouse click movements
-- Splash
+- Mouse movements
+- Add Splash
 - Petunia event
-- Cat wizards
-- Warp animation
 - Save/Load
-- Auto hide spellbook
+- Map Event
+- Owl event

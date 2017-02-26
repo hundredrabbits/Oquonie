@@ -71,6 +71,24 @@ function Player()
     $(this.element).css("z-index",this.depth(20));
   }
 
+  this.lift = function()
+  {
+    keyboard.lock();
+
+    this.animator.state = "warp";
+
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, oquonie.speed*20);
+    $(oquonie.player.shadow.element).delay(300).animate({ top: 10+"%", opacity:0 }, oquonie.speed*10);
+  }
+
+  this.land = function()
+  {
+    keyboard.lock();
+
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
+    $(oquonie.player.shadow.element).delay(1300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*8);
+  }
+
   // Transform
 
   this.transform = function(spell)
@@ -90,7 +108,7 @@ function Player()
   {
     console.log("Transform(lift): "+spell);
 
-    $(oquonie.player.element).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.85)+"%" }, oquonie.speed*4, function(){
+    $(oquonie.player.element).animate({ opacity:0, top: (parseInt(this.position_at(this.x,this.y)[0])*0.85)+"%" }, oquonie.speed*4, function(){
       oquonie.player.transform_character(spell);
     });
   }
@@ -102,7 +120,7 @@ function Player()
     oquonie.player.id = spell;
     oquonie.stage.look();
 
-    $(oquonie.player.element).delay(1000).animate({ top: oquonie.player.position_at(oquonie.player.x,oquonie.player.y)[0] }, oquonie.speed*8, function(){
+    $(oquonie.player.element).animate({ opacity:1 }, oquonie.speed*2).delay(1000).animate({ top: oquonie.player.position_at(oquonie.player.x,oquonie.player.y)[0] }, oquonie.speed*8, function(){
       oquonie.player.transform_done();
     });
     $(oquonie.player.shadow.element).delay(1300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*8);

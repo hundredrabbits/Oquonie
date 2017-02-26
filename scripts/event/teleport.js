@@ -15,7 +15,10 @@ function Teleport(x,y,room,to_x = 0,to_y = 0)
 
   this.on_step = function()
   {
-    console.log("Teleport to: "+this.room);
-    oquonie.player.warp_at(this.room,this.to_x,this.to_y);
+    keyboard.lock();
+    var r = this.room;
+    var to_x = this.to_x;
+    var to_y = this.to_y;
+    setTimeout(function(){ oquonie.stage.warp_to(r,to_x,to_y); }, 500);
   }
 }

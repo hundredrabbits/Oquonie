@@ -28,6 +28,7 @@ function Oquonie()
     // this.stage.enter_room(1);
 
     this.walkthrough.start();
+    this.spellbook.hide();
     animate();
   }
 

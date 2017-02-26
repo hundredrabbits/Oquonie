@@ -102,6 +102,56 @@ function Stage()
     oquonie.element.setAttribute("class",theme);
   }
 
+  //
+
+  this.warp_to = function(room,x,y)
+  {
+    console.log("Teleporting to: "+room);
+    keyboard.lock();
+    this.pan_up();
+    setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*20)+400);
+    setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*20));
+  }
+
+  this.pan_up = function()
+  {
+    oquonie.player.lift();
+    $(this.element).delay(300).animate({ top: "100vh" }, oquonie.speed*20);
+  }
+
+  this.pan_down = function()
+  {
+    oquonie.player.land();
+    $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*20, function(){
+      keyboard.unlock();
+    });
+  }
+
+  this.load_room = function(room_id,x,y)
+  {
+    console.log("Entering Room: "+room_id);
+
+    if(!oquonie.world.rooms[room_id]){
+      console.warn("Missing room:("+room_id+")");
+      return;
+    }
+
+    if(this.room){ $(this.room.element).empty(); $(this.room.element).remove(); }
+
+    this.room = oquonie.world.rooms[room_id];
+    this.element.appendChild(this.room.element);
+    this.room.show();
+    this.room.is_known = true;
+
+    oquonie.player.move_at(x,y);
+    oquonie.stage.set_theme(this.room.theme);
+
+    this.look();
+    this.center(oquonie.player.x,oquonie.player.y);
+    $(this.element).css("opacity",0);
+    $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
+  }
+
   // Shake event
 
   this.shake = function(radius,time)
