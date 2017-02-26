@@ -22,6 +22,8 @@ stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
 stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat;}
 stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
 stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
+.black stage parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
+.black stage parallax.under { background-image:url(../media/graphics/effects/parallax.4.png); }
 tile,notification { background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
 tile.floor {  margin-top:-20%; } 
 tile.wall {margin-top:-30%; }

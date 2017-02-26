@@ -32,8 +32,7 @@ function Stage()
     this.room.is_known = true;
 
     oquonie.player.move_at(x,y);
-
-    oquonie.element.setAttribute("class",this.room.theme);
+    oquonie.stage.set_theme(this.room.theme);
 
     this.look();
     this.center(oquonie.player.x,oquonie.player.y);
@@ -98,17 +97,35 @@ function Stage()
     $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
   }
 
+  this.set_theme = function(theme)
+  {
+    oquonie.element.setAttribute("class",theme);
+  }
+
   // Shake event
 
   this.shake = function(radius,time)
   {
     if(time < 1){ return; }
-    console.log("shake");
 
     var r1 = Math.random() * 6;
     var r2 = Math.random() * 6;
 
     $(this.element).css("margin-top",r2).css("margin-left",r1);
     setTimeout(function(){ oquonie.stage.shake(radius,time-1); }, 50);
+  }
+
+  this.destroy = function(step = 6)
+  {
+    if(step < 1){ return; }
+
+    if(step == 6){ $("#wall_1").css("background-image","url(media/graphics/wall/19.png)"); }
+    if(step == 5){ $("#wall_5").css("background-image","url(media/graphics/wall/15.png)"); }
+    if(step == 4){ $("#wall_3").css("background-image","url(media/graphics/wall/25.png)"); }
+    if(step == 3){ $("#wall_0").css("background-image","url(media/graphics/wall/26.png)"); }
+    if(step == 2){ $("#wall_4").css("background-image","url(media/graphics/wall/gate.necomedre.open.png)"); }
+    if(step == 1){ $("#wall_2").css("background-image","url(media/graphics/wall/15.png)"); }
+
+    setTimeout(function(){ oquonie.stage.destroy(step-1); }, 50);
   }
 }

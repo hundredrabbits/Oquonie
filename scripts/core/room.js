@@ -24,6 +24,7 @@ function Room(id)
     // Floor
     for (var i = 0; i < this.floors.length; i++){
       var tile = new Floor(i,this.floors[i],"floor");
+      tile.element.setAttribute("id","floor_"+i);
       this.element.appendChild(tile.element);
       tile.animate();
     }

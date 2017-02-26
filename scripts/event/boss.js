@@ -3,30 +3,34 @@ function Boss(x,y)
   Event.call(this,"boss");
 
   this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
+  this.animator.add(new Animation("ghost",[1,1,1,1,1,2,3,2]));
 
   this.x = x;
   this.y = y;
 
+  this.is_gone = false;
+
   this.is_collider = function()
   {
-    return true;
+    console.log("???",this.is_gone);
+    return this.is_gone === true ? false : true;
   }
 
   this.on_collision = function()
   {
-    var boss = this.start_sequence();
-    this.is_known = true;
-    
-    oquonie.stage.shake(5,50);
-    // oquonie.stage.room.walls[2].id = 19;
-    // oquonie.stage.room.walls[2].update();
-    // setTimeout(function(){ boss.start_sequence(); }, 2-50);
-  }
+    if(this.is_gone === true){ return; }
 
-  this.start_sequence = function()
-  {
-    // oquonie.player.transform("necomedre");
-    // oquonie.player.warp_at(1,0,0);
+    keyboard.lock();
+    
+    setTimeout(function(){ oquonie.stage.shake(5,80); }, 1500);
+    setTimeout(function(){ oquonie.stage.destroy(); }, 2000);
+    setTimeout(function(){ oquonie.player.transform("necomedre"); }, 2300);
+    setTimeout(function(){ oquonie.stage.set_theme("black"); }, 2300);
+
+    this.animator.state = "ghost";
+
+    $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 2);
+    this.is_gone = true;
   }
 
   this.update(20);
