@@ -70,6 +70,7 @@ function Player()
     else{
       $(this.element).removeClass("mirror"); 
     }
+    $(this.element).css("z-index",this.depth(10));
   }
 
   this.update();

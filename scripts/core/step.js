@@ -21,6 +21,6 @@ function Step(pos,id,type)
   var left = p[1];
   var zIndex = p[2];
 
-  $(this.element).css("left",left).css("top",top).css("z-index",this.depth());
+  $(this.element).css("left",left).css("top",top).css("z-index",this.depth(100));
   if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/step/"+this.id+".png)"); }
 }
