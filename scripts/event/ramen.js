@@ -45,7 +45,7 @@ function Ramen(x,y,character = null)
 
   this.on_collision_world = function()
   {
-    if(!oquonie.spellbook.has_ramen(this.character) == true){
+    if(oquonie.spellbook.has_ramen(this.character) == true){
       console.warn("Ramen for "+oquonie.player.id+" was already found.");
       return;
     }
@@ -74,11 +74,11 @@ function Ramen(x,y,character = null)
 
   this.on_sight_world = function()
   {
-    if(oquonie.spellbook.has_ramen(this.character)){
-      this.id = "away";
+    if(!oquonie.spellbook.has_ramen(this.character)){
+      this.id = "active";
     }
     else{
-      this.id = "active";
+      this.id = "away";
     }
   }
 
@@ -95,7 +95,10 @@ function Ramen(x,y,character = null)
 
   this.update_notification = function()
   {
-    if(oquonie.spellbook.has_ramen(oquonie.player.id) != true){
+    if(this.character){
+      this.hide_notification();
+    }
+    else if(oquonie.spellbook.has_ramen(oquonie.player.id) != true){
       this.hide_notification();
     }
     else if(oquonie.spellbook.has_spell(this.spell_name()) != true){

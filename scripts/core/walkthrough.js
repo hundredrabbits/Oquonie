@@ -135,7 +135,7 @@ function Walkthrough()
     // this.room = 39; // Intro
     // oquonie.spellbook.add_spell("nephtaline_1")
     // oquonie.spellbook.add_spell("nephtaline_2")
-    oquonie.spellbook.add_ramen("necomedre");
+    // oquonie.spellbook.add_ramen("necomedre");
     oquonie.stage.enter_room(this.room);
   }
 

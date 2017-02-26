@@ -8,3 +8,4 @@
 - Petunia event
 - Save/Load
 - Owl event
+- Improve noface event
