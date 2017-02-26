@@ -9,10 +9,7 @@ function Floor(pos,id,type)
 
   this.element.setAttribute("pos",this.x+","+this.y);
 
-  var p = this.position_at(this.x,this.y,100);
-  var top = p[0];
-  var left = p[1];
+  this.update(5);
 
-  $(this.element).css("left",left).css("top",top).css("z-index",this.depth(5));
   if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/floor/"+this.id+".png)"); }
 }

@@ -52,7 +52,7 @@ function Player()
       target_tile.on_step();
     }
 
-    this.update();
+    this.update(20);
   }
 
   this.update = function()
@@ -68,7 +68,7 @@ function Player()
     else{
       $(this.element).removeClass("mirror"); 
     }
-    $(this.element).css("z-index",this.depth(10));
+    $(this.element).css("z-index",this.depth(20));
   }
 
   // Transform
@@ -115,5 +115,5 @@ function Player()
     oquonie.player.animator.state = "idle.front";
   }
 
-  this.update();
+  this.update(20);
 }

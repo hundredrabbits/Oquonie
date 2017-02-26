@@ -18,5 +18,5 @@ function Shark(x,y)
     oquonie.player.transform("necomedre");
   }
 
-  this.update();
+  this.update(20);
 }

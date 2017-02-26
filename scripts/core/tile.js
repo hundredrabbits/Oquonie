@@ -5,6 +5,15 @@ function Tile(type = "unknown")
   this.x = 0;
   this.y = 0;
 
+  this.update = function(depth_offset = 0)
+  {
+    var p = this.position_at(this.x,this.y);
+    var top = p[0];
+    var left = p[1];
+
+    $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",this.depth(depth_offset));
+  }
+
   this.position_at = function(x,y)
   {
     var top = "0px";
@@ -55,9 +64,9 @@ function Tile(type = "unknown")
     if(this.x == -1 && this.y == 0){  zIndex += 4; }
     if(this.x == -1 && this.y == -1){ zIndex += 5; }
     // Wall
-    if(this.x == -1 && this.y == 2){ zIndex += 4; }
-    if(this.x == 0 && this.y == 2) { zIndex += 3; }
-    if(this.x == 1 && this.y == 2) { zIndex += 2; }
+    if(this.x == -1 && this.y == 2){ zIndex += 3; }
+    if(this.x == 0 && this.y == 2) { zIndex += 2; }
+    if(this.x == 1 && this.y == 2) { zIndex += 1; }
     if(this.x == 2 && this.y == 1) { zIndex += 1; }
     if(this.x == 2 && this.y == 0) { zIndex += 2; }
     if(this.x == 2 && this.y == -1){ zIndex += 3; }

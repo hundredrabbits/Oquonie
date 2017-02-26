@@ -17,5 +17,5 @@ function Noface(x,y)
     oquonie.player.warp_at(130)
   }
 
-  this.update();
+  this.update(20);
 }

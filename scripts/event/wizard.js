@@ -48,8 +48,6 @@ function Wizard(x,y,id)
 
   this.update_notification = function()
   {
-    console.log("test",oquonie.player.id,this.id);
-
     if(oquonie.spellbook.has_spell(this.spell_name()) == true || oquonie.player.id == this.id){
       this.hide_notification();
     }
@@ -58,5 +56,5 @@ function Wizard(x,y,id)
     }
   }
 
-  this.update();
+  this.update(20);
 }

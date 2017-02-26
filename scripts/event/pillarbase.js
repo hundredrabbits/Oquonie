@@ -24,5 +24,5 @@ function PillarBase(x,y,character)
     }
   }
 
-  this.update();
+  this.update(20);
 }

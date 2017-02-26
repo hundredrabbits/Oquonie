@@ -22,5 +22,5 @@ function Owl(x,y)
     // save
   }
 
-  this.update();
+  this.update(20);
 }

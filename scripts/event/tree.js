@@ -26,5 +26,5 @@ function Tree(x,y)
     }
   }
 
-  this.update();
+  this.update(20);
 }

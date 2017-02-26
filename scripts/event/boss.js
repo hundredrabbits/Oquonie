@@ -14,9 +14,20 @@ function Boss(x,y)
 
   this.on_collision = function()
   {
-    oquonie.player.transform("necomedre");
-    oquonie.player.warp_at(1,0,0);
+    var boss = this.start_sequence();
+    this.is_known = true;
+    
+    oquonie.stage.shake(5,50);
+    // oquonie.stage.room.walls[2].id = 19;
+    // oquonie.stage.room.walls[2].update();
+    // setTimeout(function(){ boss.start_sequence(); }, 2-50);
   }
 
-  this.update();
+  this.start_sequence = function()
+  {
+    // oquonie.player.transform("necomedre");
+    // oquonie.player.warp_at(1,0,0);
+  }
+
+  this.update(20);
 }

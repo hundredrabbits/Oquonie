@@ -44,5 +44,5 @@ function Speaker(x,y,id = "disc")
     this.animator.state = "off";
   }
 
-  this.update();
+  this.update(20);
 }

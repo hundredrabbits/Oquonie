@@ -19,5 +19,5 @@ function Ghost(x,y)
     });
   }
 
-  this.update();
+  this.update(20);
 }

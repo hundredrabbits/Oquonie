@@ -10,15 +10,6 @@ function Event(subtype)
 
   $(this.element).addClass(subtype);
 
-  this.update = function()
-  {
-    var p = this.position_at(this.x,this.y);
-    var top = p[0];
-    var left = p[1];
-
-    $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",this.depth(10));
-  }
-
   this.move_to = function(x,y)
   {
     var p = this.position_at(this.x,this.y,200);

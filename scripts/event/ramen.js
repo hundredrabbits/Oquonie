@@ -68,5 +68,5 @@ function Ramen(x,y,character = null)
     return this.character+"_"+this.location;
   }
 
-  this.update();
+  this.update(20);
 }

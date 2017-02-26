@@ -9,4 +9,6 @@ function Petunia(x,y)
   {
     return true;
   }
+
+  this.update(20);
 }

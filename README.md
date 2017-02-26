@@ -12,3 +12,4 @@
 - Warp animation
 - Stage shake event
 - Save/Load
+- Auto hide spellbook

@@ -36,5 +36,5 @@ function Pillar(x,y,character,warp = 1,transform = null)
     }
   }
 
-  this.update();
+  this.update(20);
 }

@@ -97,4 +97,18 @@ function Stage()
     $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
     $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
   }
+
+  // Shake event
+
+  this.shake = function(radius,time)
+  {
+    if(time < 1){ return; }
+    console.log("shake");
+
+    var r1 = Math.random() * 6;
+    var r2 = Math.random() * 6;
+
+    $(this.element).css("margin-top",r2).css("margin-left",r1);
+    setTimeout(function(){ oquonie.stage.shake(radius,time-1); }, 50);
+  }
 }

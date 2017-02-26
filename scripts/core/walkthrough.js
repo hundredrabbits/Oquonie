@@ -129,12 +129,10 @@ function Walkthrough()
 
   this.manual = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.id = "document";
     // this.room = 1; // Lobby
-    this.room = 25; // Lobby
+    this.room = 30; // Boss
 
-    oquonie.spellbook.add_spell("document_1");
-    oquonie.spellbook.add_spell("document_2");
     oquonie.stage.enter_room(this.room);
   }
 

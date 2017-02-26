@@ -4,18 +4,14 @@ function Blocker(x,y,id)
 
   this.x = x;
   this.y = y;
+  this.id = id;
 
   this.is_collider = function()
   {
     return true;
   }
 
-  var bg = "url(media/graphics/blocker/"+id+".png)";
+  this.update(20);
 
-  var p = this.position_at(x,y,100);
-  var top = p[0];
-  var left = p[1];
-  var zIndex = p[2];
-
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+this.depth(10));
+  if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/blocker/"+this.id+".png)"); }
 }
