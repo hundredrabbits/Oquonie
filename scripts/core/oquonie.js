@@ -2,6 +2,7 @@ function Oquonie()
 {
   this.element = document.createElement("oquonie");
 
+  this.game = new Game();
   this.world = new World();
   this.dialog = new Dialog();
   this.overlay = new Overlay();
@@ -28,21 +29,9 @@ function Oquonie()
   {
     console.info("Starting Oquonie");
 
-    this.load();
-
     this.walkthrough.start();
     this.spellbook.hide();
     animate();
-  }
-
-  this.save = function()
-  {
-    console.info("Saving..");
-  }
-
-  this.load = function()
-  {
-    console.info("Loading..");
   }
 
   function animate()

@@ -77,6 +77,7 @@ function Ramen(x,y,character = null)
 
   this.on_sight_world = function()
   {
+    console.log(oquonie.spellbook.ramens);
     if(!oquonie.spellbook.has_ramen(this.character)){
       this.id = "active";
     }

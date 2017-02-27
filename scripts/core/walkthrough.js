@@ -124,19 +124,30 @@ function Walkthrough()
 
     oquonie.speed = 150;
 
-    this.manual();
+    if(oquonie.game.is_found() == true){
+      oquonie.game.load()
+    }
+    else{
+      oquonie.game.new()
+    }
+    oquonie.stage.enter_room(oquonie.player.location);
+  }
+
+  this.default = function()
+  {
+
   }
 
   this.manual = function()
   {
     oquonie.player.id = "necomedre";
-    this.room = 11; // Lobby
+    this.room = 2; // Lobby
     // this.room = 25; // Intro
     // this.room = 39; // Intro
     // oquonie.spellbook.add_spell("nephtaline_1")
     // oquonie.spellbook.add_spell("nephtaline_2")
     // oquonie.spellbook.add_ramen("necomedre");
-    oquonie.stage.enter_room(this.room);
+    
   }
 
   this.walk_all = function()

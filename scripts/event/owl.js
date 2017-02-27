@@ -20,12 +20,11 @@ function Owl(x,y)
     else{
       oquonie.dialog.show(this.name,["door","guide","friend"]);
     }
-    oquonie.save()
   }
 
   this.on_sight = function()
   {
-    // save
+    oquonie.game.save();
   }
 
   this.update(20);
