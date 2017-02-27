@@ -5,17 +5,26 @@ function Red(x,y)
   this.x = x;
   this.y = y;
 
+  this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
+
   this.is_collider = function()
   {
     return true;
   }
 
-  var bg = "url(media/graphics/event.noface.1.png)";
+  this.on_collision = function()
+  {
+    oquonie.dialog.show(this.name,["foe","pillar","friend"]);
+    keyboard.lock("red_end");
+    setTimeout(function(){ oquonie.stage.pan_up(oquonie.speed * 100); }, 1000);
+    setTimeout(function(){ oquonie.dialog.hide(); }, oquonie.speed * 75);
+  }
 
-  var p = this.position_at(x,y,100);
-  var top = p[0];
-  var left = p[1];
-  var zIndex = p[2];
+  this.on_sight = function()
+  {
+    keyboard.lock("red_delay");
+    setTimeout(function(){ keyboard.unlock("red_delay"); }, 1000);
+  }
 
-  this.element.setAttribute("style","background-image:"+bg+"; left:"+left+"; top:"+top+";z-index:"+this.depth());
+  this.update(20);
 }

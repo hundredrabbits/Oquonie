@@ -18,7 +18,7 @@ function Pillar(x,y,character,warp = 1,transform = null)
 
   this.on_collision = function()
   {
-    oquonie.spellbook.add_pillar(this);
+    oquonie.spellbook.add_pillar(this.character);
     this.on_sight();
     oquonie.player.warp_at(this.warp,0,0);
     if(this.transform){

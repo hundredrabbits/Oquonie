@@ -66,14 +66,14 @@ function Spellbook()
 
   // Pillars
 
-  this.add_pillar = function(pillar)
+  this.add_pillar = function(pillar_character)
   {
-    this.pillars.push(pillar.character);
+    this.pillars.push(pillar_character);
   }
 
-  this.has_pillar = function(pillar)
+  this.has_pillar = function(pillar_character)
   {
-    if(this.pillars.indexOf(pillar.character) > -1){
+    if(this.pillars.indexOf(pillar_character) > -1){
       return true;
     }
   }
@@ -98,6 +98,7 @@ function Spellbook()
   this.try_transform = function()
   {
     if(this.spells.length < 3){ return; }
+    if(this.id == "nastazie"){ return; }
 
     var target_spell = this.spells[0].split("_")[0];
 

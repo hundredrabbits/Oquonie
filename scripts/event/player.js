@@ -78,12 +78,12 @@ function Player()
     $(this.element).css("z-index",this.depth(20));
   }
 
-  this.lift = function()
+  this.lift = function(speed)
   {
     this.animator.state = "warp";
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, oquonie.speed*20);
-    $(oquonie.player.shadow.element).delay(300).animate({ top: 10+"%", opacity:0 }, oquonie.speed*10);
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, speed);
+    $(oquonie.player.shadow.element).delay(300).animate({ top: 10+"%", opacity:0 },speed/2);
   }
 
   this.land = function()
@@ -95,7 +95,7 @@ function Player()
   // Transform
 
   this.transform = function(spell)
-  {
+  {    
     console.log("Transform(init): "+spell);
     keyboard.lock("transform");
 

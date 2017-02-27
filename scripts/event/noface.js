@@ -22,7 +22,8 @@ function Noface(x,y)
     }
     else{
       oquonie.dialog.show("noface",["help","friend","pillar"]);      
-      oquonie.player.warp_at(130);
+      keyboard.lock("teleport");
+      setTimeout(function(){ oquonie.stage.warp_to(130,0,0); }, 500);
     }
   }
 

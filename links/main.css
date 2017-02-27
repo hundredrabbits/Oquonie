@@ -16,6 +16,7 @@ spellbook { width:100%; height:100vh; position:fixed; top:5vh; text-align: cente
 spellbook spell { width:8vw; height:8vw; max-width:8vh; max-height: 8vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
 
 .black { background:black; }
+.pillars { background:black; }
 
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
@@ -24,6 +25,8 @@ stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.
 stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
 .black stage parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
 .black stage parallax.under { background-image:url(../media/graphics/effects/parallax.4.png); }
+.pillars stage parallax.over { background-image:url(../media/graphics/effects/parallax.6.png); }
+.pillars stage parallax.under { background-image:url(../media/graphics/effects/parallax.7.png); }
 tile,notification { background-size:contain; background-position:center center; background-repeat:no-repeat; position:absolute; width:20%; height:40%; margin-left:-10%;}
 tile.floor {  margin-top:-20%; } 
 tile.wall {margin-top:-30%; }

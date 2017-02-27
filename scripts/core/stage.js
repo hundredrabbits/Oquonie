@@ -32,6 +32,9 @@ function Stage()
     this.room.is_known = true;
 
     oquonie.player.move_at(x,y);
+    
+    var theme = oquonie.spellbook.pillars.length > 0 && this.room.id < 15 ? "black" : this.room.theme;
+
     oquonie.stage.set_theme(this.room.theme);
 
     this.look();
@@ -39,7 +42,7 @@ function Stage()
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
 
-    // oquonie.music.play_ambient(this.room.audio);
+    oquonie.music.play_ambient(this.room.audio);
   }
 
   this.look = function()
@@ -116,10 +119,10 @@ function Stage()
     setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*20));
   }
 
-  this.pan_up = function()
+  this.pan_up = function(speed = oquonie.speed*20)
   {
-    oquonie.player.lift();
-    $(this.element).delay(300).animate({ top: "100vh" }, oquonie.speed*20);
+    oquonie.player.lift(speed);
+    $(this.element).delay(300).animate({ top: "100vh" }, speed);
   }
 
   this.pan_down = function()
