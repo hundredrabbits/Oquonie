@@ -4,10 +4,11 @@ Oquonie is a textless puzzle game for iPad and iPhone created in collaboration w
 
 Feel free to send pull requests if you find an issue that you wish to correct.
 
-# TODOs
+## Electron Build
 
-- Credit sequence
-- Mouse movements
+```
+electron-packager . Oquonie --all --out ~/Desktop/builds --overwrite --icon=~/Github/HundredRabbits/Oquonie/icon.icn
+```
 
 ## License
 

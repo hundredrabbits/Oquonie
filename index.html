@@ -57,7 +57,7 @@
     <title>Oquonie</title>
   </head>
   <body>
-    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
+    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:none'>
       <div id='logo' style='width:120px;height:120px; margin:25vh auto'></div>
     </div>
     <script>
@@ -69,14 +69,16 @@
       document.onkeyup = function myFunction(){ keyboard.listen_onkeyup(event); };
       document.onkeydown = function myFunction(){ keyboard.listen_onkeydown(event); };
 
-      var logo = new Logo(document.getElementById("logo"));
+      // var logo = new Logo(document.getElementById("logo"));
 
-      setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ oquonie.start(); }, 7000);
+      // setTimeout(function(){ logo.install(); }, 1500);
+      // setTimeout(function(){ oquonie.start(); }, 7000);
 
-      $("#splash").delay(7500).animate({ opacity: 0 }, 1000,function(){
-        $(logo.element).remove();
-      }); 
+      // $("#splash").delay(7500).animate({ opacity: 0 }, 1000,function(){
+      //   $(logo.element).remove();
+      // }); 
+
+      oquonie.start();
 
     </script>
   </body>
