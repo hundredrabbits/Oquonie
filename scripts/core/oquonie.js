@@ -4,6 +4,7 @@ function Oquonie()
 
   this.game = new Game();
   this.world = new World();
+  this.music = new Music();
   this.dialog = new Dialog();
   this.overlay = new Overlay();
   this.interface = new Interface();

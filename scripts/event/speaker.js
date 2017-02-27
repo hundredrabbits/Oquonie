@@ -37,12 +37,14 @@ function Speaker(x,y,id = "disc")
   {
     this.is_playing = true;
     this.animator.state = "on";
+    oquonie.music.resume_ambience();
   }
 
   this.stop = function()
   {
     this.is_playing = false;
     this.animator.state = "off";
+    oquonie.music.pause_ambience();
   }
 
   this.update(20);

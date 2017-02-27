@@ -38,6 +38,8 @@ function Stage()
     this.center(oquonie.player.x,oquonie.player.y);
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
+
+    oquonie.music.play_ambience(this.room.audio);
   }
 
   this.look = function()

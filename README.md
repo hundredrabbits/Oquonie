@@ -7,3 +7,4 @@
 - Mouse movements
 - Petunia event
 - Save/Load
+- Swap themes at pillar quests
