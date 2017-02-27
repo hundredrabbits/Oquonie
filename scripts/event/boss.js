@@ -30,6 +30,8 @@ function Boss(x,y)
 
     $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 2);
     this.is_gone = true;
+    oquonie.music.play_effect("teleport");
+    oquonie.dialog.show("boss",["document","teleport","guide"])
   }
 
   this.update(20);

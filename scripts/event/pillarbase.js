@@ -22,6 +22,7 @@ function PillarBase(x,y,character)
     else{
       oquonie.dialog.show("owl",["pillar","foe",this.character]);  
     }
+    oquonie.music.play_effect("bump.1");
   }
 
   this.on_sight = function()

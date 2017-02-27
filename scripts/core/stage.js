@@ -39,7 +39,7 @@ function Stage()
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
 
-    oquonie.music.play_ambience(this.room.audio);
+    // oquonie.music.play_ambient(this.room.audio);
   }
 
   this.look = function()
@@ -111,6 +111,8 @@ function Stage()
     console.log("Teleporting to: "+room);
     keyboard.lock();
     this.pan_up();
+
+    oquonie.music.play_effect("teleport");
     setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*20)+400);
     setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*20));
   }

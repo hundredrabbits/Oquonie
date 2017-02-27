@@ -43,13 +43,16 @@ function Player()
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
       console.log("Blocked by: Edge");
+      oquonie.music.play_effect("bump.2");
     }
     else if(target_floor == 0){
       console.log("Blocked by: Floor("+target_floor+")");
+      oquonie.music.play_effect("bump.3");
     }
     else{
       this.move_by(x,y);
       console.log("Moved to: Floor("+this.x+","+this.y+")");
+      oquonie.music.play_effect("walk");
     }
 
     if(target_tile){
@@ -101,6 +104,8 @@ function Player()
     keyboard.lock();
 
     this.animator.state = "warp";
+
+    oquonie.music.play_effect("transform");
 
     $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, oquonie.speed*2, function(){
       oquonie.player.transform_lift(spell);

@@ -11,6 +11,11 @@ function Blocker(x,y,id)
     return true;
   }
 
+  this.on_collision = function()
+  {
+    oquonie.music.play_effect("bump.1");
+  }
+
   this.update(20);
 
   if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/blocker/"+this.id+".png)"); }

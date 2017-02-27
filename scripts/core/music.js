@@ -1,20 +1,53 @@
 function Music()
 {
-  this.track1 = new Audio();
-  this.track1.loop = true;
+  this.track_ambient = new Audio();
+  this.track_effect = new Audio();
+  this.track_dialog = new Audio();
+
   this.is_muted = false;
 
-  this.play_ambience = function(name)
+  this.play_effect = function(name)
   {
-    if(this.track1.name == name){ return; }
+    console.log("Effect: ",name);
+
+    if(this.track_effect.name == name){ 
+      oquonie.music.track_effect.currentTime = 0; 
+      oquonie.music.track_effect.play(); 
+      return; 
+    }
+
+    oquonie.music.track_effect.name = name;
+    oquonie.music.track_effect.src = "media/audio/effect/"+name+".ogg";
+    oquonie.music.track_effect.play()
+  }
+
+  this.play_dialog = function(name)
+  {
+    console.log("Dialog: ",name);
+
+    if(this.track_dialog.name == name){ 
+      oquonie.music.track_dialog.currentTime = 0; 
+      oquonie.music.track_dialog.play(); 
+      return; 
+    }
+
+    oquonie.music.track_dialog.name = name;
+    oquonie.music.track_dialog.src = "media/audio/dialog/"+name+".ogg";
+    oquonie.music.track_dialog.play();
+  }
+
+  this.play_ambient = function(name)
+  {
+    if(this.track_ambient.name == name){ return; }
 
     // Fadeout
-    $(this.track1).animate({volume: 0}, 1000, function(){
+    $(this.track_ambient).animate({volume: 0}, 1000, function(){
       console.log("Music: ",name);
-      oquonie.music.track1.name = name;
-      oquonie.music.track1.src = "media/music/ambient."+name+".mp3";
-      if(oquonie.music.is_muted == false){ oquonie.music.track1.play(); }
-      $(oquonie.music.track1).animate({volume: 1}, 1000);
+      oquonie.music.track_ambient.src = "media/audio/ambient/"+name+".mp3";
+      oquonie.music.track_ambient.name = name;
+      oquonie.music.track_ambient.loop = true;
+      if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
+      $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
     });
   }
 
@@ -22,16 +55,16 @@ function Music()
   {
     this.is_muted = true;
 
-    $(this.track1).animate({volume: 0}, 1000, function(){
-      oquonie.music.track1.pause();
+    $(this.track_ambient).animate({volume: 0}, 1000, function(){
+      oquonie.music.track_ambient.pause();
     });
   }
 
   this.resume_ambience = function()
   {
-    oquonie.music.track1.play();
-    oquonie.music.track1.volume = 0;
-    $(this.track1).animate({volume: 1}, 1000);
+    oquonie.music.track_ambient.play();
+    oquonie.music.track_ambient.volume = 0;
+    $(this.track_ambient).animate({volume: 1}, 1000);
     this.is_muted = false;
   }
 }

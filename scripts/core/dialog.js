@@ -20,11 +20,11 @@ function Dialog()
     this.bubble.appendChild(this.letter3);
   }  
 
-  this.show = function(host_name,message)
+  this.show = function(host_name,message,path = "media/graphics/"+host_name+"/")
   {
     console.log("Dialog with: "+host_name);
 
-    $(this.portrait).css("background-image","url(media/graphics/"+host_name+"/portrait.png)");
+    $(this.portrait).css("background-image","url("+path+"portrait.png)");
     $(this.element).animate({ opacity:1 }, oquonie.speed, function(){});
 
     $(this.letter1).css("background-image","url(media/graphics/camilare/"+message[0]+".png)");
@@ -32,6 +32,8 @@ function Dialog()
     $(this.letter3).css("background-image","url(media/graphics/camilare/"+message[2]+".png)");
 
     this.content = message;
+
+    oquonie.music.play_dialog(host_name);
   }
 
   this.hide = function()

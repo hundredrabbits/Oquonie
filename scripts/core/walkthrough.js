@@ -130,6 +130,8 @@ function Walkthrough()
     else{
       oquonie.game.new()
     }
+
+    this.manual();
     oquonie.stage.enter_room(oquonie.player.location);
   }
 
@@ -141,7 +143,7 @@ function Walkthrough()
   this.manual = function()
   {
     oquonie.player.id = "necomedre";
-    this.room = 2; // Lobby
+    oquonie.player.location = 1; // Lobby
     // this.room = 25; // Intro
     // this.room = 39; // Intro
     // oquonie.spellbook.add_spell("nephtaline_1")

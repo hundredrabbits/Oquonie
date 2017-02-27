@@ -15,7 +15,7 @@ function Gate(requirement,x,y,room,to_x,to_y)
   }
 
   this.on_collision = function()
-  {
+  {    
     if(this.requirement != oquonie.player.id && oquonie.player.id != "nastazie"){
       console.warn("Gate requires: "+this.requirement+", is "+oquonie.player.id);
       oquonie.dialog.show("owl",["door","locked",this.requirement])

@@ -15,5 +15,6 @@ function Plan(x,y,id)
   {
     oquonie.overlay.show(this.id);
     oquonie.dialog.show("owl",["help","guide","friend"]);
+    oquonie.music.play_effect("bump.2");
   }
 }

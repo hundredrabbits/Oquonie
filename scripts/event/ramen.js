@@ -29,6 +29,8 @@ function Ramen(x,y,character = null)
 
   this.on_collision = function()
   {
+    oquonie.music.play_effect("bump.1");
+
     if(this.character){ this.on_collision_world(); }
     if(this.location == 2){ this.on_collision_lobby(); }
     this.on_sight();

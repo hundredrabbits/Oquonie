@@ -24,9 +24,14 @@ function Wizard(x,y,id)
 
   this.on_collision = function()
   {
-    if(oquonie.player.id == this.id){ console.warn("Already is "+this.id); return; }
+    if(oquonie.player.id == this.id){ 
+      oquonie.dialog.show(this.id,["friend","unlocked",this.id]); 
+      console.warn("Already is "+this.id); 
+      return; 
+    }
     oquonie.spellbook.toggle_spell(this.spell_name());
     this.update_notification();
+    oquonie.dialog.show(this.id,["friend","locked",this.id],"media/graphics/wizard/"+this.id+"."); 
   }
 
   this.on_sight = function()

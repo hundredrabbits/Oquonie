@@ -16,5 +16,6 @@ function Door(x,y,room,to_x,to_y)
   this.on_collision = function()
   {
     oquonie.stage.enter_room(this.room,this.to_x,this.to_y);
+    oquonie.music.play_effect("bump.2");
   }
 }

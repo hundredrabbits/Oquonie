@@ -51,6 +51,12 @@ function Spellbook()
     this.update();
   }
 
+  this.remove_spells = function()
+  {
+    this.spells = [];
+    this.update();
+  }
+
   this.has_spell = function(spell_name)
   {
     if(this.spells.indexOf(spell_name) > -1){
