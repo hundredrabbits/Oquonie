@@ -21,8 +21,10 @@ function Event(subtype)
     var target = this.animator;
     target.state = "walk.front";
     
+    keyboard.lock("moving");
     $(el).animate({ left: _x, top: _y }, oquonie.speed, function(){
       target.state = "idle.front";
+      keyboard.unlock("moving");
     });
 
     oquonie.stage.animate(this.x,this.y);

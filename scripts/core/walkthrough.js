@@ -4,12 +4,12 @@ function Walkthrough()
 
   // Chapter 0
 
-  var tutorial = [U,U,U,U,R,D,R,R,U,L,L,L,L,D,R,R,U,U,U,D,D,D,D,D,D,R,R,R,R];
+  var tutorial = [U,U,U,L,L,D,R,R,R,U,R,U,L,L,D,D,D,R,R,R,R,R,R];
 
   // Chapter 1
 
   var necomedre_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,R,R,R];
-  var necomedre_stage = [D,D,D,R,R,U,L,L,U,R,"",U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,R,R,R];
+  var necomedre_stage = [D,D,D,R,R,U,L,L,U,R,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,R,R,R];
   var necomedre = necomedre_lobby.concat(necomedre_stage);
 
   var nephtaline_lobby = [U,U];
@@ -17,15 +17,15 @@ function Walkthrough()
   var nephtaline = nephtaline_lobby.concat(nephtaline_stage);
 
   var neomine_lobby = [R,R,R,U,U,U,U,U];
-  var neomine_stage = [U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,L,L,U,U,"",D,R,R,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,D,L,U,R,R,R,R,R];
+  var neomine_stage = [U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,L,L,U,U,D,R,R,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,D,L,U,R,R,R,R,R];
   var neomine = neomine_lobby.concat(neomine_stage);
   
   var nestorine_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
-  var nestorine_stage  = [D,D,D,D,D,D,L,L,U,"",L,L,L,L,L,L,U,L,D,D,R,D,D,D,D,D,D,D,D,D,D,L,L,L,L,L,L,D,D,R,D,R,R,R];
+  var nestorine_stage  = [D,D,D,D,D,D,L,L,U,L,L,L,L,L,L,U,L,D,D,R,D,D,D,D,D,D,D,D,D,D,L,L,L,L,L,L,D,D,R,D,R,R,R];
   var nestorine = nestorine_lobby.concat(nestorine_stage);
 
   var nemedique_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U];
-  var nemedique_stage = [R,R,R,U,R,"",U,U,U,D,D,D,R,R,R];
+  var nemedique_stage = [R,R,R,U,R,U,U,U,D,D,D,R,R,R];
   var nemedique = nemedique_lobby.concat(nemedique_stage);
 
   // Chapter 2
@@ -121,17 +121,22 @@ function Walkthrough()
   this.start = function()
   {
     console.info("Walkthrough has started.");
+    oquonie.speed = 50;
 
+    this.walk_chapter1();
+  }
+
+  this.release = function()
+  {
     oquonie.speed = 150;
 
     if(oquonie.game.is_found() == true){
-      oquonie.game.load()
+      oquonie.game.load();
     }
     else{
-      oquonie.game.new()
+      oquonie.game.new();
     }
 
-    this.manual();
     oquonie.stage.enter_room(oquonie.player.location);
   }
 
@@ -143,12 +148,13 @@ function Walkthrough()
   this.manual = function()
   {
     oquonie.player.id = "necomedre";
-    oquonie.player.location = 1; // Lobby
+    oquonie.player.location = 29; // Lobby
     // this.room = 25; // Intro
     // this.room = 39; // Intro
     // oquonie.spellbook.add_spell("nephtaline_1")
     // oquonie.spellbook.add_spell("nephtaline_2")
     // oquonie.spellbook.add_ramen("necomedre");
+    oquonie.stage.enter_room(oquonie.player.location);
     
   }
 
@@ -210,14 +216,18 @@ function Walkthrough()
   {
     if(this.inputs.length < 1){ this.end(); return; }
 
-    if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); }
-    else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); }
-    else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); }
-    else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); }  
-    else if(this.inputs[0] == ""){ keyboard.key_escape(); }    
-    else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); }  
+    if(oquonie.dialog.content){ keyboard.key_escape(); }
+    if(oquonie.overlay.content){ keyboard.key_escape(); }
 
-    this.inputs.shift();
+    if(keyboard.locks.length > 0){ console.warn("Locked: ",keyboard.locks);}
+    else if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); this.inputs.shift();}
+    else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); this.inputs.shift();}
+    else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); this.inputs.shift();}
+    else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); this.inputs.shift();}  
+    else if(this.inputs[0] == ""){ keyboard.key_escape(); this.inputs.shift();}    
+    else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
+
+    console.info(this.inputs);
 
     setTimeout(function(){ oquonie.walkthrough.run(); }, oquonie.speed * 2);
   }

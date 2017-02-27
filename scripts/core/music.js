@@ -8,6 +8,7 @@ function Music()
 
   this.play_effect = function(name)
   {
+    return;
     console.log("Effect: ",name);
 
     if(this.track_effect.name == name){ 
@@ -23,6 +24,7 @@ function Music()
 
   this.play_dialog = function(name)
   {
+    return;
     console.log("Dialog: ",name);
 
     if(this.track_dialog.name == name){ 
@@ -38,6 +40,7 @@ function Music()
 
   this.play_ambient = function(name)
   {
+    return;
     if(this.track_ambient.name == name){ return; }
 
     // Fadeout

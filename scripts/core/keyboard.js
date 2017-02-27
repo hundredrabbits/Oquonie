@@ -1,6 +1,6 @@
 function Keyboard()
 {
-  this.is_locked = false;
+  this.locks = [];
 
   this.listen_onkeydown = function(event)
   {
@@ -8,7 +8,7 @@ function Keyboard()
 
   this.listen_onkeyup = function(event)
   {
-    if(this.is_locked == true){ console.warn("Keyboard is locked!"); return; }
+    if(this.locks.length > 0){ console.warn("Keyboard has locks: ",this.locks); return; }
     
     switch (event.keyCode)
     {
@@ -61,15 +61,21 @@ function Keyboard()
     oquonie.overlay.hide();
   }
 
-  this.lock = function()
+  this.lock = function(lock_name)
   {
-    console.log("Keyboard is locked.")
-    this.is_locked = true;
+    console.log("Added lock: ",lock_name);
+    this.locks.push(lock_name);
   }
 
-  this.unlock = function()
+  this.unlock = function(lock_name)
   {
-    console.log("Keyboard is unlocked.")
-    this.is_locked = false;
+    var target = this.locks.indexOf(lock_name);
+    if(target > -1) {
+      this.locks.splice(target, 1);
+      console.info("Unlocked: ",lock_name);
+    }
+    else{
+      console.warn("No lock named: ",lock_name);
+    }
   }
 }

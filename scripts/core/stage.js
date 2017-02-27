@@ -109,7 +109,6 @@ function Stage()
   this.warp_to = function(room,x,y)
   {
     console.log("Teleporting to: "+room);
-    keyboard.lock();
     this.pan_up();
 
     oquonie.music.play_effect("teleport");
@@ -127,7 +126,7 @@ function Stage()
   {
     oquonie.player.land();
     $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*20, function(){
-      keyboard.unlock();
+      keyboard.unlock("teleport");
     });
   }
 

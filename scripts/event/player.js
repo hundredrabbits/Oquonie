@@ -80,8 +80,6 @@ function Player()
 
   this.lift = function()
   {
-    keyboard.lock();
-
     this.animator.state = "warp";
 
     $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0])*0.9)+"%" }, oquonie.speed*20);
@@ -90,8 +88,6 @@ function Player()
 
   this.land = function()
   {
-    keyboard.lock();
-
     $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
     $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*20);
   }
@@ -101,7 +97,7 @@ function Player()
   this.transform = function(spell)
   {
     console.log("Transform(init): "+spell);
-    keyboard.lock();
+    keyboard.lock("transform");
 
     this.animator.state = "warp";
 
@@ -138,7 +134,7 @@ function Player()
   this.transform_done = function()
   {
     console.log("Transform(done)");
-    keyboard.unlock();
+    keyboard.unlock("transform");
     oquonie.player.animator.state = "idle.front";
   }
 

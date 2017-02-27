@@ -15,7 +15,8 @@ function Teleport(x,y,room,to_x = 0,to_y = 0)
 
   this.on_step = function()
   {
-    keyboard.lock();
+    console.log("--------------------");
+    keyboard.lock("teleport");
     var r = this.room;
     var to_x = this.to_x;
     var to_y = this.to_y;
