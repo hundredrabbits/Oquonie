@@ -120,7 +120,7 @@ function Walkthrough()
 
     oquonie.speed = 50;
 
-    this.release();
+    this.walk_all();
   }
 
   this.release = function()
@@ -234,7 +234,7 @@ function Walkthrough()
     if(oquonie.dialog.content){ keyboard.key_escape(); }
     if(oquonie.overlay.content){ keyboard.key_escape(); }
 
-    if(keyboard.locks.length > 0){ console.warn("Locked: ",keyboard.locks);}
+    if(keyboard.locks.length > 0){ }
     else if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); this.inputs.shift();}
     else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); this.inputs.shift();}
     else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); this.inputs.shift();}
