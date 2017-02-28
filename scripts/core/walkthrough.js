@@ -120,7 +120,7 @@ function Walkthrough()
 
     oquonie.speed = 50;
 
-    this.walk_all();
+    this.release();
   }
 
   this.release = function()
