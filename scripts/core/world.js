@@ -950,7 +950,7 @@ function World()
     room.audio  = "nemedique"
     room.theme  = "white"
     room.add_event(new Wizard(-1,1,"nestorine"),true)
-    room.add_event(new Gate("nastazie",0,2,104,0,-1))
+    room.add_event(new PillarGate(0,2,104,0,-1))
     room.add_event(new Door(2,0,101,-1,0))
     room.add_event(new Gate("nemedique",0,-2,9,0,1))
     this.rooms[100] = room
