@@ -1229,7 +1229,7 @@ function World()
     room.steps  = [ 0,0,0, 0,8,0 ]
     room.audio  = "glitch"
     room.theme  = "black"
-    room.add_event(new Door(0,-2,3,1,0))
+    room.add_event(new Door(0,-2,46,0,1))
     room.add_event(new Wizard(0,1,"catfishbird"),true)
     this.rooms[149] = room
 
@@ -1240,7 +1240,7 @@ function World()
     room.steps  = [ 0,8,0, 0,0,0 ]
     room.audio  = "glitch"
     room.theme  = "black"
-    room.add_event(new Door(-2,0,3,1,0))
+    room.add_event(new Door(-2,0,102,1,0))
     room.add_event(new Wizard(0,1,"catfishbird"),true)
     this.rooms[150] = room
 
