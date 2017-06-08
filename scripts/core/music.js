@@ -39,6 +39,7 @@ function Music()
   this.play_ambient = function(name)
   {
     if(this.track_ambient.name == name){ return; }
+    if(DEBUG){ return; }
 
     // Fadeout
     $(this.track_ambient).animate({volume: 0}, 1000, function(){

@@ -1,6 +1,7 @@
 function Keyboard()
 {
   this.locks = [];
+  this.history = "";
 
   this.listen_onkeydown = function(event)
   {
@@ -19,6 +20,8 @@ function Keyboard()
       case 27: this.key_escape(); break;
       case 32: this.key_space(); break;
     }
+
+    this.record(event.key);
   };
 
   this.key_enter = function()
@@ -77,5 +80,26 @@ function Keyboard()
     else{
       console.warn("No lock named: ",lock_name);
     }
+  }
+
+  this.record = function(key)
+  {
+    if(this.history.length > 30){ this.history = this.history.substr(this.history.length - 30,30); }
+
+    this.history += event.key;
+
+    if(this.history.indexOf("necomedre") > -1){
+      this.history = "";
+      oquonie.player.transform("necomedre");
+    }
+    if(this.history.indexOf("lobby") > -1){
+      this.history = "";
+      oquonie.stage.enter_room(1,0,0);
+    }
+    if(this.history.indexOf("fishfishfish") > -1){
+      this.history = "";
+      oquonie.player.transform("catfishbird");
+    }
+
   }
 }

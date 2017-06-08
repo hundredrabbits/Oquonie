@@ -63,6 +63,7 @@
     </div>
     <script>
 
+      var DEBUG = false;
       var oquonie = new Oquonie();
       oquonie.install();
       
@@ -73,13 +74,11 @@
       var logo = new Logo(document.getElementById("logo"));
 
       setTimeout(function(){ logo.install(); }, 1500);
-      setTimeout(function(){ oquonie.start(); }, 7000);
+      setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 7000);
 
-      $("#splash").delay(7500).animate({ opacity: 0 }, 1000,function(){
+      $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
         $(logo.element).remove();
       }); 
-
-      // oquonie.start();
 
     </script>
   </body>
