@@ -72,6 +72,8 @@ function Game()
     oquonie.player.location = 29;
     oquonie.player.id = "necomedre";
 
+    this.save();
+
     return "Created a new game.";
   }
 }
