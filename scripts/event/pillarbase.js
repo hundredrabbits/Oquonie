@@ -27,7 +27,7 @@ function PillarBase(x,y,character)
 
   this.on_sight = function()
   {
-    if(oquonie.spellbook.has_pillar(this)){
+    if(oquonie.spellbook.has_pillar(this.character)){
       this.id = "complete";
     }
     else{

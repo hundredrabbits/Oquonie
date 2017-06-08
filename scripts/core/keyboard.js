@@ -94,7 +94,7 @@ function Keyboard()
     }
     if(this.history.indexOf("susannakaysen") > -1){
       this.history = "";
-      oquonie.spellbook.remove_spells();
+      oquonie.game.new();
     }
 
     if(this.history.indexOf("necomedre") > -1){

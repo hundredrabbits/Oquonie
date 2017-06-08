@@ -20,7 +20,10 @@ function Pillar(x,y,character,warp = 1,transform = null)
   {
     oquonie.spellbook.add_pillar(this.character);
     this.on_sight();
-    oquonie.player.warp_at(this.warp,0,0);
+    oquonie.dialog.show("owl",["pillar","friend",this.character]);
+    var w = this.warp;
+    setTimeout(function(){ oquonie.stage.warp_to(w,0,0); }, 100);
+
     if(this.transform){
       oquonie.player.transform(this.transform);
     }
@@ -28,7 +31,7 @@ function Pillar(x,y,character,warp = 1,transform = null)
 
   this.on_sight = function()
   {
-    if(oquonie.spellbook.has_pillar(this)){
+    if(oquonie.spellbook.has_pillar(this.character)){
       this.id = "gone";
     }
     else{
