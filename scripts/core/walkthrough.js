@@ -125,7 +125,7 @@ function Walkthrough()
 
   this.release = function()
   {
-    oquonie.speed = 150;
+    oquonie.speed = 300;
 
     if(oquonie.game.is_found() == true){
       console.warn("Found a saved game!");
@@ -146,7 +146,7 @@ function Walkthrough()
 
   this.manual = function()
   {
-    oquonie.speed = 150;
+    oquonie.speed = 300;
     oquonie.player.id = "nastazie";
     oquonie.player.location = 142;
     oquonie.spellbook.add_pillar("1")
@@ -250,6 +250,7 @@ function Walkthrough()
   this.end = function()
   {
     this.analysis();
+    oquonie.speed = 300;
   }
 
   this.analysis = function()
