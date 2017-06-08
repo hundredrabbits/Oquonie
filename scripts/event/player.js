@@ -39,14 +39,16 @@ function Player()
     if(target_tile && target_tile.is_collider() == true){
       console.log("Blocked by: "+target_tile.constructor.name);
       target_tile.on_collision();
-      this.bump(x,y,target_tile);
+      this.bump_against(x,y,target_tile);
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
       console.log("Blocked by: Edge");
+      this.bump_up(x,y);
       oquonie.music.play_effect("bump.2");
     }
     else if(target_floor == 0){
       console.log("Blocked by: Floor("+target_floor+")");
+      this.bump_up(x,y);
       oquonie.music.play_effect("bump.3");
     }
     else{
