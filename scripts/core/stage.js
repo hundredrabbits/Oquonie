@@ -38,16 +38,29 @@ function Stage()
 
     oquonie.player.move_at(x,y);
     
-    var theme = oquonie.spellbook.pillars.length > 0 && this.room.id < 15 ? "black" : this.room.theme;
+    var numPillars = oquonie.spellbook.pillars.length;
+    var theme = numPillars >= 5 ? "black" : this.room.theme;
 
-    oquonie.stage.set_theme(this.room.theme);
+    oquonie.stage.set_theme(theme);
 
     this.look();
     this.center(oquonie.player.x,oquonie.player.y);
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
 
-    oquonie.music.play_ambient(this.room.audio);
+    var audio = this.room.audio;
+    if (audio == "lobby")
+    {
+      if (numPillars >= 5)
+      {
+        audio = "lobby.3";
+      }
+      else if (numPillars > 0) {
+        audio = "lobby.2";
+      }
+    }
+
+    oquonie.music.play_ambient(audio);
   }
 
   this.look = function()
