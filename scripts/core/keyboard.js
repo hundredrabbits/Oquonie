@@ -88,18 +88,30 @@ function Keyboard()
 
     this.history += event.key;
 
+    if(this.history.indexOf("noplacelikehome") > -1){
+      this.history = "";
+      oquonie.stage.enter_room(1,0,0);
+    }
+    if(this.history.indexOf("susannakaysen") > -1){
+      this.history = "";
+      oquonie.spellbook.remove_spells();
+    }
+
     if(this.history.indexOf("necomedre") > -1){
       this.history = "";
       oquonie.player.transform("necomedre");
     }
-    if(this.history.indexOf("lobby") > -1){
+    if(this.history.indexOf("nemedique") > -1){
       this.history = "";
-      oquonie.stage.enter_room(1,0,0);
+      oquonie.player.transform("nemedique");
     }
-    if(this.history.indexOf("fishfishfish") > -1){
+    if(this.history.indexOf("catfishbird") > -1){
       this.history = "";
       oquonie.player.transform("catfishbird");
     }
-
+    if(this.history.indexOf("redgate") > -1){
+      this.history = "";
+      oquonie.stage.enter_room(100,0,0);
+    }
   }
 }
