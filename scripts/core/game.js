@@ -27,6 +27,9 @@ function Game()
     localStorage.pillar_nestorine = oquonie.spellbook.has_pillar("nestorine");
     localStorage.pillar_nemedique = oquonie.spellbook.has_pillar("nemedique");
     localStorage.pillar_nastazie = oquonie.spellbook.has_pillar("nastazie");
+
+    localStorage.is_muted = oquonie.music.is_muted;
+
   }
 
   this.load = function()
@@ -49,6 +52,19 @@ function Game()
     if(localStorage.pillar_nestorine){ oquonie.spellbook.has_pillar("nestorine")}
     if(localStorage.pillar_nemedique){ oquonie.spellbook.has_pillar("nemedique")}
     if(localStorage.pillar_nastazie){ oquonie.spellbook.has_pillar("nastazie")}
+
+    var is_muted = localStorage.is_muted == "true";
+    if (is_muted != oquonie.music.is_muted)
+    {
+      if (is_muted)
+      {
+        oquonie.music.pause_ambience();
+      }
+      else
+      {
+        oquonie.music.resume_ambience();
+      }
+    }
   }
 
   this.is_found = function()
