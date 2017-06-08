@@ -108,16 +108,20 @@ function Stage()
 
   this.animate = function(x,y)
   {
-    $(this.element).animate({ marginLeft: (x * -0.5)+"%",marginTop: (y * 0.5)+"%" }, oquonie.speed);
-    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
+    var xSlant = x - y;
+    var ySlant = -x - y;
+    $(this.element).animate({ marginLeft: (xSlant * 0.5)+"%",marginTop: (ySlant * 0.5)+"%" }, oquonie.speed);
+    $(this.parallax_over).animate({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).animate({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.center = function(x,y)
   {
-    $(this.element).css("margin-left",(x * -0.5)+"%").css("margin-top",(y * 0.5)+"%");
-    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
+    var xSlant = x - y;
+    var ySlant = -x - y;
+    $(this.element).css("margin-left",(xSlant * 0.5)+"%").css("margin-top",(ySlant * 0.5)+"%");
+    $(this.parallax_over).animate({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).animate({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.set_theme = function(theme)
