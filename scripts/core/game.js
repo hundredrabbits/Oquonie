@@ -11,8 +11,6 @@ function Game()
 
     console.info("Saving..");
 
-    var h = {};
-
     localStorage.character = oquonie.player.id;
     localStorage.room = oquonie.stage.room.id;
 
@@ -29,8 +27,6 @@ function Game()
     localStorage.pillar_nestorine = oquonie.spellbook.has_pillar("nestorine");
     localStorage.pillar_nemedique = oquonie.spellbook.has_pillar("nemedique");
     localStorage.pillar_nastazie = oquonie.spellbook.has_pillar("nastazie");
-
-    return h;
   }
 
   this.load = function()
@@ -38,7 +34,7 @@ function Game()
     console.info("Loading..");
 
     oquonie.player.id = localStorage.character;
-    oquonie.player.location = localStorage.room;
+    oquonie.player.location = parseInt(localStorage.room);
 
     if(localStorage.ramen_necomedre){ oquonie.spellbook.add_ramen("necomedre")}
     if(localStorage.ramen_nephtaline){ oquonie.spellbook.add_ramen("nephtaline")}
@@ -53,12 +49,11 @@ function Game()
     if(localStorage.pillar_nestorine){ oquonie.spellbook.has_pillar("nestorine")}
     if(localStorage.pillar_nemedique){ oquonie.spellbook.has_pillar("nemedique")}
     if(localStorage.pillar_nastazie){ oquonie.spellbook.has_pillar("nastazie")}
-
   }
 
   this.is_found = function()
   {
-    if(localStorage.character){
+    if(localStorage.character && parseInt(localStorage.room) > 0){
       return true;
     }
     return false;
@@ -67,12 +62,10 @@ function Game()
   this.new = function()
   {
     console.info("New Game..");
-    this.clear();
+    localStorage.clear();
 
     oquonie.player.location = 29;
     oquonie.player.id = "necomedre";
-
-    this.save();
 
     return "Created a new game.";
   }

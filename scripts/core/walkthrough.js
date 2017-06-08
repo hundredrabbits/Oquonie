@@ -128,9 +128,11 @@ function Walkthrough()
     oquonie.speed = 150;
 
     if(oquonie.game.is_found() == true){
+      console.warn("Found a saved game!");
       oquonie.game.load();
     }
     else{
+      console.warn("Found no saved game?");
       oquonie.game.new();
     }
 
