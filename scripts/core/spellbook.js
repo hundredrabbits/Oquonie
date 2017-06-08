@@ -158,4 +158,12 @@ function Spellbook()
       this.hide();
     }
   }
+
+  this.reset = function()
+  {
+    this.spells  = [];
+    this.pillars = [];
+    this.ramens  = [];
+    this.update();
+  }
 }

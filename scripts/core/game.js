@@ -80,6 +80,8 @@ function Game()
     console.info("New Game..");
     localStorage.clear();
 
+    oquonie.spellbook.reset();
+
     oquonie.player.location = 29;
     oquonie.player.id = "necomedre";
 
