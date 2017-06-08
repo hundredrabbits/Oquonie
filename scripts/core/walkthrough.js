@@ -149,12 +149,20 @@ function Walkthrough()
     oquonie.speed = 300;
     oquonie.player.id = "nastazie";
     oquonie.player.location = 142;
-    oquonie.spellbook.add_pillar("1")
-    oquonie.spellbook.add_pillar("2")
-    oquonie.spellbook.add_pillar("3")
-    oquonie.spellbook.add_pillar("4")
-    oquonie.spellbook.add_pillar("5")
-    oquonie.spellbook.add_pillar("6")
+    
+    oquonie.spellbook.add_ramen("necomedre")
+    oquonie.spellbook.add_ramen("nephtaline")
+    oquonie.spellbook.add_ramen("neomine")
+    oquonie.spellbook.add_ramen("nestorine")
+    oquonie.spellbook.add_ramen("nemedique")
+    oquonie.spellbook.add_ramen("nastazie")
+
+    oquonie.spellbook.add_pillar("necomedre")
+    oquonie.spellbook.add_pillar("nephtaline")
+    oquonie.spellbook.add_pillar("neomine")
+    oquonie.spellbook.add_pillar("nestorine")
+    oquonie.spellbook.add_pillar("nemedique")
+    oquonie.spellbook.add_pillar("nastazie")
     oquonie.stage.enter_room(oquonie.player.location);
   }
 
@@ -218,12 +226,12 @@ function Walkthrough()
     this.room = 1;
     this.inputs = secrets;
 
-    oquonie.spellbook.add_pillar("1")
-    oquonie.spellbook.add_pillar("2")
-    oquonie.spellbook.add_pillar("3")
-    oquonie.spellbook.add_pillar("4")
-    oquonie.spellbook.add_pillar("5")
-    oquonie.spellbook.add_pillar("6")
+    oquonie.spellbook.add_pillar("necomedre")
+    oquonie.spellbook.add_pillar("nephtaline")
+    oquonie.spellbook.add_pillar("neomine")
+    oquonie.spellbook.add_pillar("nestorine")
+    oquonie.spellbook.add_pillar("nemedique")
+    oquonie.spellbook.add_pillar("nastazie")
 
     oquonie.stage.enter_room(this.room);
     this.run();
