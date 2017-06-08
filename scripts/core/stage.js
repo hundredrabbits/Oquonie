@@ -24,6 +24,11 @@ function Stage()
       return;
     }
 
+    $(this.element).finish();
+    $(this.parallax_over).finish();
+    $(this.parallax_under).finish();
+    oquonie.player.stand_by_door(x,y);
+
     if(this.room){ $(this.room.element).empty(); $(this.room.element).remove(); }
 
     this.room = oquonie.world.rooms[room_id];

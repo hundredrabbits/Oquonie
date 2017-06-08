@@ -66,6 +66,17 @@ function Event(subtype)
     $(this.element).css('top', _y).css('left', _x);
   }
 
+  this.stand_by_door = function(x,y)
+  {
+    $(this.element).finish();
+    var target = this.animator;
+    x = -x;
+    y = -y;
+    if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
+    target.animate();
+  }
+
   this.warp_at = function(room,x,y)
   {
     oquonie.stage.enter_room(room,x,y);
