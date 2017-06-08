@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
@@ -71,8 +72,8 @@
       oquonie.install();
       
       var keyboard = new Keyboard();
-      document.onkeyup = function myFunction(){ keyboard.listen_onkeyup(event); };
-      document.onkeydown = function myFunction(){ keyboard.listen_onkeydown(event); };
+      document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
+      document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
 
       var logo = new Logo(document.getElementById("logo"));
 
