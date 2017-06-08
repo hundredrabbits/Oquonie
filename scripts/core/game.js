@@ -46,12 +46,12 @@ function Game()
     if(localStorage.ramen_nemedique){ oquonie.spellbook.add_ramen("nemedique")}
     if(localStorage.ramen_nastazie){ oquonie.spellbook.add_ramen("nastazie")}
 
-    if(localStorage.pillar_necomedre){ oquonie.spellbook.has_pillar("necomedre")}
-    if(localStorage.pillar_nephtaline){ oquonie.spellbook.has_pillar("nephtaline")}
-    if(localStorage.pillar_neomine){ oquonie.spellbook.has_pillar("neomine")}
-    if(localStorage.pillar_nestorine){ oquonie.spellbook.has_pillar("nestorine")}
-    if(localStorage.pillar_nemedique){ oquonie.spellbook.has_pillar("nemedique")}
-    if(localStorage.pillar_nastazie){ oquonie.spellbook.has_pillar("nastazie")}
+    if(localStorage.pillar_necomedre){ oquonie.spellbook.add_pillar("necomedre")}
+    if(localStorage.pillar_nephtaline){ oquonie.spellbook.add_pillar("nephtaline")}
+    if(localStorage.pillar_neomine){ oquonie.spellbook.add_pillar("neomine")}
+    if(localStorage.pillar_nestorine){ oquonie.spellbook.add_pillar("nestorine")}
+    if(localStorage.pillar_nemedique){ oquonie.spellbook.add_pillar("nemedique")}
+    if(localStorage.pillar_nastazie){ oquonie.spellbook.add_pillar("nastazie")}
 
     var is_muted = localStorage.is_muted == "true";
     if (is_muted != oquonie.music.is_muted)
