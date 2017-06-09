@@ -11,5 +11,5 @@ function Floor(pos,id,type)
 
   this.update(5);
 
-  if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/floor/"+this.id+".png)"); }
+  if(this.id != 0){ oquonie.artbook.set_art(this.element,"media/graphics/floor/"+this.id+".png"); }
 }

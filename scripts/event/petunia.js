@@ -16,22 +16,22 @@ function Petunia(x,y)
   {
     oquonie.dialog.show("petunia",["confusion1","confusion3","confusion2"]);
 
-    $("#wall_1").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
-    $("#wall_2").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
-    $("#wall_3").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
-    $("#wall_4").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
-    $("#wall_5").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
-    $("#wall_6").css("background-image","url(media/graphics/wall/"+parseInt(Math.random() * 40)+".png)")
+    oquonie.artbook.set_art("#wall_1","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_2","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_3","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_4","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_5","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_6","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
     
-    $("#floor_1").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_2").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_3").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_4").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_5").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_6").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_7").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_8").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
-    $("#floor_9").css("background-image","url(media/graphics/floor/"+parseInt(Math.random() * 40)+".png)")
+    oquonie.artbook.set_art("#floor_1","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_2","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_3","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_4","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_5","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_6","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_7","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_8","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#floor_9","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
   }
 
   this.update(20);

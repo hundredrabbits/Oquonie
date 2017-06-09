@@ -4,6 +4,8 @@ function Music()
   this.track_effect = new Audio();
   this.track_dialog = new Audio();
 
+  this.audio_catalog = {};
+
   this.is_muted = false;
 
   this.play_effect = function(name)
@@ -11,14 +13,13 @@ function Music()
     console.log("Effect: ",name);
 
     if(this.track_effect.name == name){ 
-      oquonie.music.track_effect.currentTime = 0; 
-      oquonie.music.track_effect.play(); 
+      this.track_effect.currentTime = 0; 
+      this.track_effect.play(); 
       return; 
     }
 
-    oquonie.music.track_effect.name = name;
-    oquonie.music.track_effect.src = "media/audio/effect/"+name+".ogg";
-    oquonie.music.track_effect.play()
+    this.track_effect = this.fetch_audio(name, "media/audio/effect/"+name+".ogg");
+    this.track_effect.play()
   }
 
   this.play_dialog = function(name)
@@ -26,14 +27,13 @@ function Music()
     console.log("Dialog: ",name);
 
     if(this.track_dialog.name == name){ 
-      oquonie.music.track_dialog.currentTime = 0; 
-      oquonie.music.track_dialog.play(); 
+      this.track_dialog.currentTime = 0; 
+      this.track_dialog.play(); 
       return; 
     }
 
-    oquonie.music.track_dialog.name = name;
-    oquonie.music.track_dialog.src = "media/audio/dialog/"+name+".ogg";
-    oquonie.music.track_dialog.play();
+    this.track_dialog = this.fetch_audio(name, "media/audio/dialog/"+name+".ogg");
+    this.track_dialog.play();
   }
 
   this.play_ambient = function(name)
@@ -44,12 +44,26 @@ function Music()
     // Fadeout
     $(this.track_ambient).animate({volume: 0}, 1000, function(){
       console.log("Music: ",name);
-      oquonie.music.track_ambient.src = "media/audio/ambient/"+name+".mp3";
-      oquonie.music.track_ambient.name = name;
-      oquonie.music.track_ambient.loop = true;
+
+      oquonie.music.track_ambient.pause();
+      oquonie.music.track_ambient = oquonie.music.fetch_audio(name, "media/audio/ambient/"+name+".mp3", true);
+      oquonie.music.track_ambient.currentTime = 0;
       if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
       $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
     });
+  }
+
+  this.fetch_audio = function(name, src, loop = false)
+  {
+      if (!(name in this.audio_catalog))
+      {
+        var audio = new Audio();
+        audio.name = name;
+        audio.src = src;
+        audio.loop = loop;
+        this.audio_catalog[name] = audio;
+      }
+      return this.audio_catalog[name];
   }
 
   this.pause_ambience = function()
@@ -63,8 +77,8 @@ function Music()
 
   this.resume_ambience = function()
   {
-    oquonie.music.track_ambient.play();
-    oquonie.music.track_ambient.volume = 0;
+    this.track_ambient.play();
+    this.track_ambient.volume = 0;
     $(this.track_ambient).animate({volume: 1}, 1000);
     this.is_muted = false;
   }

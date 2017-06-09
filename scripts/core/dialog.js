@@ -24,12 +24,12 @@ function Dialog()
   {
     console.log("Dialog with: "+host_name);
 
-    $(this.portrait).css("background-image","url("+path+"portrait.png)");
+    oquonie.artbook.set_art(this.portrait, path+"portrait.png");
     $(this.element).animate({ opacity:1 }, oquonie.speed, function(){});
 
-    $(this.letter1).css("background-image","url(media/graphics/camilare/"+message[0]+".png)");
-    $(this.letter2).css("background-image","url(media/graphics/camilare/"+message[1]+".png)");
-    $(this.letter3).css("background-image","url(media/graphics/camilare/"+message[2]+".png)");
+    oquonie.artbook.set_art(this.letter1, "media/graphics/camilare/"+message[0]+".png");
+    oquonie.artbook.set_art(this.letter2, "media/graphics/camilare/"+message[1]+".png");
+    oquonie.artbook.set_art(this.letter3, "media/graphics/camilare/"+message[2]+".png");
 
     this.content = message;
 

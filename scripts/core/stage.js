@@ -197,12 +197,12 @@ function Stage()
   {
     if(step < 1){ return; }
 
-    if(step == 6){ $("#wall_1").css("background-image","url(media/graphics/wall/19.png)"); }
-    if(step == 5){ $("#wall_5").css("background-image","url(media/graphics/wall/15.png)"); }
-    if(step == 4){ $("#wall_3").css("background-image","url(media/graphics/wall/25.png)"); }
-    if(step == 3){ $("#wall_0").css("background-image","url(media/graphics/wall/26.png)"); }
-    if(step == 2){ $("#wall_4").css("background-image","url(media/graphics/wall/gate.necomedre.open.png)"); }
-    if(step == 1){ $("#wall_2").css("background-image","url(media/graphics/wall/15.png)"); }
+    if(step == 6){ oquonie.artbook.set_art("#wall_1","media/graphics/wall/19.png"); }
+    if(step == 5){ oquonie.artbook.set_art("#wall_5","media/graphics/wall/15.png"); }
+    if(step == 4){ oquonie.artbook.set_art("#wall_3","media/graphics/wall/25.png"); }
+    if(step == 3){ oquonie.artbook.set_art("#wall_0","media/graphics/wall/26.png"); }
+    if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
+    if(step == 1){ oquonie.artbook.set_art("#wall_2","media/graphics/wall/15.png"); }
 
     setTimeout(function(){ oquonie.stage.destroy(step-1); }, 50);
   }

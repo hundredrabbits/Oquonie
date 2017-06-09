@@ -28,7 +28,7 @@ function PillarGate(x,y,room,to_x,to_y)
       return;
     }
     var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    $("#wall_"+wall_id).css("background-image","url(media/graphics/wall/27.png)");
+    oquonie.artbook.set_art("#wall_"+wall_id,"media/graphics/wall/27.png");
   }
 
   this.is_unlocked = function()

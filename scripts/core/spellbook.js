@@ -119,9 +119,9 @@ function Spellbook()
 
   this.clear = function()
   {
-    $(this.spell1).css("background-image","");
-    $(this.spell2).css("background-image","");
-    $(this.spell3).css("background-image","");
+    oquonie.artbook.remove_art(this.spell1);
+    oquonie.artbook.remove_art(this.spell2);
+    oquonie.artbook.remove_art(this.spell3);
   }
 
   this.update = function()
@@ -130,9 +130,9 @@ function Spellbook()
 
     for (var i = 0; i < this.spells.length; i++) {
       var spell_name = this.spells[i].split("_")[0];
-      if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
-      if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
-      if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
+      if(i == 0){ oquonie.artbook.set_art(this.spell1,"media/graphics/spellbook/"+spell_name+".png"); }
+      if(i == 1){ oquonie.artbook.set_art(this.spell2,"media/graphics/spellbook/"+spell_name+".png"); }
+      if(i == 2){ oquonie.artbook.set_art(this.spell3,"media/graphics/spellbook/"+spell_name+".png"); }
     }
   }
 

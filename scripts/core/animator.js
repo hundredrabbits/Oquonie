@@ -20,7 +20,7 @@ function Animator(host)
     var height = $(this.host.element).height();
     var frames = unique(this.animations[this.state].frames).length;
 
-    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+".png)");
+    oquonie.artbook.set_art(this.host.element, "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+".png");
     $(this.host.element).css('background-size',(width*frames)+"px "+(width*1.5)+"px");
     $(this.host.element).css('background-position',(anim.run() * -width + width)+"px center");
   }

@@ -24,6 +24,6 @@ function Broken(x,y,id,room,to_x,to_y)
   {
     if(oquonie.spellbook.pillars.length < 5){ return; }
     var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    $("#wall_"+wall_id).css("background-image","url(media/graphics/broken/"+id+".png)")
+    oquonie.artbook.set_art("#wall_"+wall_id,"media/graphics/broken/"+this.id+".png");
   }
 }

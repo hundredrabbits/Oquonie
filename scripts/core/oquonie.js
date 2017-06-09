@@ -2,6 +2,7 @@ function Oquonie()
 {
   this.element = document.createElement("oquonie");
 
+  this.artbook = new Artbook();
   this.game = new Game();
   this.world = new World();
   this.music = new Music();

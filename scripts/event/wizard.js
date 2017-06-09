@@ -8,7 +8,7 @@ function Wizard(x,y,id)
 
   this.notification = document.createElement("notification");
   this.element.appendChild(this.notification);
-  $(this.notification).css("background-image","url(media/graphics/notification/"+this.id+".png)")
+  oquonie.artbook.set_art(this.notification, "media/graphics/notification/"+this.id+".png");
 
   this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
 
