@@ -172,7 +172,10 @@ function Stage()
     this.room.is_known = true;
 
     oquonie.player.move_at(x,y);
-    oquonie.stage.set_theme(this.room.theme);
+
+    var numPillars = oquonie.spellbook.pillars.length;
+    var theme = numPillars >= 5 ? "black" : this.room.theme;
+    oquonie.stage.set_theme(theme);
 
     this.look();
     this.center(oquonie.player.x,oquonie.player.y);
