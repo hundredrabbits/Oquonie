@@ -995,7 +995,7 @@ function World()
     room.steps  = [ 0,0,0, 0,11,0 ]
     room.audio  = "nepturne"
     room.theme  = "pillars"
-    room.add_event(new Red(0,1),true)
+    room.add_event(new Red(0,1,9),true)
     this.rooms[104] = room
   }
   

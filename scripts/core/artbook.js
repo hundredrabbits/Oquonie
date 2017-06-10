@@ -1,8 +1,8 @@
 function Artbook()
 {
   this.asset_catalog = {};
-  this.selector_registry = {};
-  this.selector_registry_unique_id = 0;
+  this.element_registry = {};
+  this.element_registry_unique_id = 0;
   this.class_unique_id = 0;
 
   var stylesheet_element = document.createElement("style");
@@ -30,45 +30,59 @@ function Artbook()
       this.asset_catalog[asset_url] = className;
     }
 
-    var id = this.get_selector_id(selector);
-    if (id in this.selector_registry)
+    var id = this.get_element_id(selector);
+
+    if (id == null)
     {
-      if (this.selector_registry[id] == asset_url)
+      console.warn("no element for selector " + selector);
+    }
+
+    if (id in this.element_registry)
+    {
+      if (this.element_registry[id] == asset_url)
       {
         return;
       }
       this.remove_art(selector);
     }
-    this.selector_registry[id] = asset_url;
+    this.element_registry[id] = asset_url;
     $(selector).addClass(this.asset_catalog[asset_url]);
   }
 
   this.remove_art = function(selector)
   {
-    var id = this.get_selector_id(selector);
-    if (id in this.selector_registry)
+    var id = this.get_element_id(selector);
+    if (id in this.element_registry)
     {
-      var asset_url = this.selector_registry[id];
+      var asset_url = this.element_registry[id];
       if (asset_url in this.asset_catalog) {
         $(selector).removeClass(this.asset_catalog[asset_url]);
       }
-      delete this.selector_registry[id];
+      delete this.element_registry[id];
     }
   }
 
-  this.get_selector_id = function(selector)
+  this.get_element_id = function(selector)
   {
-    var id = selector.toString();
-    if (typeof(selector) == "object")
+    var element = $(selector)[0];
+
+    if (element == null)
     {
-      if (!selector.hasOwnProperty("artbook_id"))
-      {
-        selector.artbook_id = "artbook_id_" + this.selector_registry_unique_id;
-        this.selector_registry_unique_id++;
-      }
-      id = selector.artbook_id;
+      return null;
     }
 
-    return id;
+    if (!element.hasOwnProperty("artbook_id"))
+    {
+      if (element.hasOwnProperty("id"))
+      {
+        element.artbook_id = element.id;
+      }
+      else
+      {
+        element.artbook_id = "artbook_id_" + this.element_registry_unique_id;
+        this.element_registry_unique_id++;
+      }
+    }
+    return element.artbook_id;
   }
 }
