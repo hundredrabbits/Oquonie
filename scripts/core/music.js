@@ -11,13 +11,6 @@ function Music()
   this.play_effect = function(name)
   {
     console.log("Effect: ",name);
-
-    if(this.track_effect.name == name){ 
-      this.track_effect.currentTime = 0; 
-      this.track_effect.play(); 
-      return; 
-    }
-
     this.track_effect = this.fetch_audio(name, "media/audio/effect/"+name+".ogg");
     this.track_effect.play()
   }
@@ -25,13 +18,6 @@ function Music()
   this.play_dialog = function(name)
   {
     console.log("Dialog: ",name);
-
-    if(this.track_dialog.name == name){ 
-      this.track_dialog.currentTime = 0; 
-      this.track_dialog.play(); 
-      return; 
-    }
-
     this.track_dialog = this.fetch_audio(name, "media/audio/dialog/"+name+".ogg");
     this.track_dialog.play();
   }
@@ -47,7 +33,6 @@ function Music()
 
       oquonie.music.track_ambient.pause();
       oquonie.music.track_ambient = oquonie.music.fetch_audio(name, "media/audio/ambient/"+name+".mp3", true);
-      oquonie.music.track_ambient.currentTime = 0;
       if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
       $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
     });
@@ -63,6 +48,7 @@ function Music()
         audio.loop = loop;
         this.audio_catalog[name] = audio;
       }
+      this.audio_catalog[name].currentTime = 0;
       return this.audio_catalog[name];
   }
 

@@ -26,7 +26,7 @@ function Artbook()
       var className = "artbook_" + this.class_unique_id;
       this.class_unique_id++;
       
-      this.stylesheet.insertRule("." + className + "{background-image:url("+asset_url+")}");
+      this.stylesheet.insertRule("." + className + "{background-image:url("+asset_url+")}", 0);
       this.asset_catalog[asset_url] = className;
     }
 
