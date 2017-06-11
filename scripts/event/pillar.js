@@ -1,4 +1,4 @@
-function Pillar(x,y,character,warp = 1,transform = null)
+function Pillar(x,y,character,warp = 1)
 {
   Event.call(this,"pillar");
 
@@ -7,8 +7,6 @@ function Pillar(x,y,character,warp = 1,transform = null)
   this.id = "full";
   this.warp = warp;
   this.character = character;
-  this.transform = transform;
-
   this.animator.add(new Animation("idle",[1]));
 
   this.is_collider = function()
@@ -23,10 +21,6 @@ function Pillar(x,y,character,warp = 1,transform = null)
     oquonie.dialog.show("owl",["pillar","friend",this.character]);
     var w = this.warp;
     setTimeout(function(){ oquonie.stage.warp_to(w,0,0); }, 100);
-
-    if(this.transform){
-      oquonie.player.transform(this.transform);
-    }
   }
 
   this.on_sight = function()

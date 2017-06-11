@@ -51,7 +51,7 @@ function Walkthrough()
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_stage);
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_pillar);
 
-  var nestorine_pillar_stage  = [U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
+  var nestorine_pillar_stage  = ["Tneomine",U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
   var nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U];
 
   var nestorine_pillar = [];
@@ -251,6 +251,7 @@ function Walkthrough()
     else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); this.inputs.shift();}  
     else if(this.inputs[0] == ""){ keyboard.key_escape(); this.inputs.shift();}    
     else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
+    else if(this.inputs[0][0] == "T"){ oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift();}
 
     setTimeout(function(){ oquonie.walkthrough.run(); }, oquonie.speed * 2);
   }
