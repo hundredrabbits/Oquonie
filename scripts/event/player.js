@@ -90,8 +90,8 @@ function Player()
 
   this.land = function()
   {
-    $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
-    $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*20);
+    $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*10, function(){ oquonie.player.animator.state = "idle.front"; });
+    $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*10);
   }
 
   // Transform

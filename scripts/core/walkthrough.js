@@ -21,44 +21,37 @@ function Walkthrough()
   var neomine = neomine_lobby.concat(neomine_stage);
   
   var nestorine_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
-  var nestorine_stage  = [D,D,D,D,D,D,L,L,U,L,L,L,L,L,L,U,L,D,D,R,D,D,D,D,D,D,D,D,D,D,L,L,L,L,L,L,D,D,R,D,R,R,R];
+  var nestorine_stage = [D,D,D,D,D,D,L,L,U,L,L,L,L,L,L,U,L,D,D,R,D,D,D,D,D,D,D,D,D,D,L,L,L,L,L,L,D,D,R,D,R,R,R];
   var nestorine = nestorine_lobby.concat(nestorine_stage);
 
   var nemedique_lobby = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U];
-  var nemedique_stage = [R,R,R,U,R,U,U,U,D,D,D,R,R,R];
+  var nemedique_stage = [R,R,R,U,R,U,U,U,D,D,D,R,R,R,R];
   var nemedique = nemedique_lobby.concat(nemedique_stage);
 
   // Chapter 2
 
-  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U];
-  var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
+  var nephtaline_pillar_stage = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U];
+  var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U,U];
 
   var nephtaline_pillar = [];
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_stage);
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
 
-  var nephtaline_pillar_stage  = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U];
-  var nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
-
-  var nephtaline_pillar = [];
-  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_stage);
-  nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
-
-  var necomedre_pillar_stage  = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,U,U,U,L,L,L,D,D,D,R,R,R];
-  var necomedre_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U];
+  var necomedre_pillar_stage = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,U,U,U,L,L,L,D,D,D,R,R,R];
+  var necomedre_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U,U];
 
   var necomedre_pillar = [];
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_stage);
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_pillar);
 
-  var nestorine_pillar_stage  = ["Tneomine",U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
-  var nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U];
+  var nestorine_pillar_stage = ["Tneomine",U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
+  var nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U,U];
 
   var nestorine_pillar = [];
   nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_stage);
   nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_pillar);
 
-  var neomine_pillar_stage  = [L,L,L,U,U,U,U,U,U,R,R,R,D,D,D,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,L,L,L,U,U,U,U,U,R,R,D,D,U,R,L,D,L,D,D,D,U,D,D,L,L,L,U,U,U,R,R,R,R,L,L,U,R,R,D,D,U,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,R,U,U,U,U,U,U,R,U,R,R,R,D,R,R,R];
+  var neomine_pillar_stage = [L,L,L,U,U,U,U,U,U,R,R,R,D,D,D,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,L,L,L,U,U,U,U,U,R,R,D,D,U,R,L,D,L,D,D,D,U,D,D,L,L,L,U,U,U,R,R,R,R,L,L,U,R,R,D,D,U,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,R,U,U,U,U,U,U,R,U,R,R,R,D,R,R,R,R];
   var neomine_pillar_pillar = [];
 
   var neomine_pillar = [];
@@ -70,10 +63,7 @@ function Walkthrough()
   var nastazie_pillar_nemedique = [L,L,L,U,U,U,U,U,L,U,R,U,R,R,L,L,L,U,U,D,R,R,R,R,R,D,U,D,L,U,L,L,L,U,U,D,L,L,D,R,R,R,R,R,U,L,U,U,U,U];
   var nastazie_pillar_neomine = [U,R,D,D,D,D,D,L,L,L,U,U,U,U,L,L,U,R,R,R,U,U,U,U,U,U];
   var nastazie_pillar_nephtaline = [U,R,D,D,D,D,L,L,L,L,U,U,U,U,L,D,L,D,D,R,D,D,D,R,R,R,U,L,L,U,U,U,U,U,R,U,U]
-  var nastazie_pillar_nastazie = [U,R,D,D,D,D,D,L,D,R,R,R,R,R,U,L,L,L,L,U,U,U,D,R,D,D,D,D,D,L,D,R,R,D,R,R,R];
-
-  var nastazie_pillar = [];
-  nastazie_pillar.concat(nastazie_pillar_nemedique);
+  var nastazie_pillar_nastazie = [U,R,D,D,D,D,D,L,D,R,R,R,R,R,U,L,L,L,L,U,U,U,D,R,D,D,D,D,D,L,D,R,R,D,R,R,R,R];
 
   var secrets = ["W3",R,R,R,R,"W46",U,U,U,U,"W102",R,R,R,U,"W131",R,D,"W142",R,R,R];
 
@@ -113,6 +103,9 @@ function Walkthrough()
   chapter_all = chapter_all.concat(chapter_2);
   chapter_all = chapter_all.concat(chapter_3);
   chapter_all = chapter_all.concat(secrets);
+
+  var counter = 0;
+  var section = "";
 
   this.start = function()
   {
@@ -244,14 +237,19 @@ function Walkthrough()
     if(oquonie.dialog.content){ keyboard.key_escape(); }
     if(oquonie.overlay.content){ keyboard.key_escape(); }
 
-    if(keyboard.locks.length > 0){ }
-    else if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); this.inputs.shift();}
-    else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); this.inputs.shift();}
-    else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); this.inputs.shift();}
-    else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); this.inputs.shift();}  
-    else if(this.inputs[0] == ""){ keyboard.key_escape(); this.inputs.shift();}    
-    else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
-    else if(this.inputs[0][0] == "T"){ oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift();}
+    if(keyboard.locks.length <= 0){
+      console.log("walkthrough run:", section, counter, this.inputs[0]);
+      counter++;
+      if(this.inputs[0] == "U"){ keyboard.key_arrow_up(); this.inputs.shift();}
+      else if(this.inputs[0] == "D"){ keyboard.key_arrow_down(); this.inputs.shift();}
+      else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); this.inputs.shift();}
+      else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); this.inputs.shift();}  
+      else if(this.inputs[0] == ""){ keyboard.key_escape(); this.inputs.shift();}    
+      else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
+      else if(this.inputs[0][0] == "_"){ section = this.inputs[0]; console.log("walkthrough section:", section); counter = 0; this.inputs.shift();}
+      else if(this.inputs[0][0] == "T"){ oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift();}
+      else if(this.inputs[0][0] == "S"){ oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift();}
+    }
 
     setTimeout(function(){ oquonie.walkthrough.run(); }, oquonie.speed * 2);
   }

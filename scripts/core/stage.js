@@ -137,11 +137,11 @@ function Stage()
     this.pan_up();
 
     oquonie.music.play_effect("teleport");
-    setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*20)+400);
-    setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*20));
+    setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*10)+400);
+    setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*10));
   }
 
-  this.pan_up = function(speed = oquonie.speed*20)
+  this.pan_up = function(speed = oquonie.speed*10)
   {
     oquonie.player.lift(speed);
     $(this.element).delay(300).animate({ top: "100vh" }, speed);
@@ -150,7 +150,7 @@ function Stage()
   this.pan_down = function()
   {
     oquonie.player.land();
-    $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*20, function(){
+    $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*10, function(){
       keyboard.unlock("teleport");
     });
   }
