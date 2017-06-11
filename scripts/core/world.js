@@ -267,7 +267,7 @@ function World()
     room.theme  = "white";
     room.add_event(new Blocker(-1,1,16));
     room.add_event(new Blocker(1,-1,1));
-    room.add_event(new Boss(1,0),false);
+    room.add_event(new Boss(1,0));
     room.add_event(new Door(2,0,1,0,0));
     this.rooms[30] = room
     

@@ -204,7 +204,8 @@ function Stage()
     if(step == 5){ oquonie.artbook.set_art("#wall_5","media/graphics/wall/15.png"); }
     if(step == 4){ oquonie.artbook.set_art("#wall_3","media/graphics/wall/25.png"); }
     if(step == 3){ oquonie.artbook.set_art("#wall_0","media/graphics/wall/26.png"); }
-    if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
+    // if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
+    if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/40.png"); }
     if(step == 1){ oquonie.artbook.set_art("#wall_2","media/graphics/wall/15.png"); }
 
     setTimeout(function(){ oquonie.stage.destroy(step-1); }, 50);
