@@ -110,9 +110,9 @@ function Stage()
   {
     var xSlant = x - y;
     var ySlant = -x - y;
-    $(this.element).animate({ marginLeft: (xSlant * 0.5)+"%",marginTop: (ySlant * 0.5)+"%" }, oquonie.speed);
-    $(this.parallax_over).animate({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
+    $(this.element).transition({ marginLeft: (xSlant * 0.5)+"%",marginTop: (ySlant * 0.5)+"%" }, oquonie.speed);
+    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.center = function(x,y)
@@ -120,8 +120,8 @@ function Stage()
     var xSlant = x - y;
     var ySlant = -x - y;
     $(this.element).css("margin-left",(xSlant * 0.5)+"%").css("margin-top",(ySlant * 0.5)+"%");
-    $(this.parallax_over).animate({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
+    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.set_theme = function(theme)
