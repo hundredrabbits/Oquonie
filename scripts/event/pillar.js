@@ -29,7 +29,7 @@ function Pillar(x,y,character,warp = 1)
     } else {
       keyboard.lock("teleport");
       var w = this.warp;
-      setTimeout(function(){ oquonie.stage.warp_to(w,0,0); }, 100);
+      setTimeout(function(){ oquonie.stage.warp_to(w,0,0); }, 500);
     }
   }
 
