@@ -59,9 +59,7 @@ function Spellbook()
 
   this.has_spell = function(spell_name)
   {
-    if(this.spells.indexOf(spell_name) > -1){
-      return true;
-    }
+    return this.spells.indexOf(spell_name) > -1;
   }
 
   // Pillars
@@ -73,9 +71,7 @@ function Spellbook()
 
   this.has_pillar = function(pillar_character)
   {
-    if(this.pillars.indexOf(pillar_character) > -1){
-      return true;
-    }
+    return this.pillars.indexOf(pillar_character) > -1;
   }
 
   // Ramen
@@ -88,9 +84,7 @@ function Spellbook()
 
   this.has_ramen = function(ramen_character)
   {
-    if(this.ramens.indexOf(ramen_character) > -1){
-      return true;
-    }
+    return this.ramens.indexOf(ramen_character) > -1;
   }
 
   // Etc..
