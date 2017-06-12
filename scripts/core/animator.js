@@ -4,6 +4,7 @@ function Animator(host)
   this.animations = {};
   this.state = "idle";
   this.orientation = null;
+  this.last_art_id = null;
 
   this.add = function(animation)
   {
@@ -20,7 +21,13 @@ function Animator(host)
     var height = $(this.host.element).height();
     var frames = unique(this.animations[this.state].frames).length;
 
-    $(this.host.element).css('background-image', "url(media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+".png)");
+    var art_id = "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+".png";
+    if (this.last_art_id != art_id)
+    {
+      this.last_art_id = art_id;
+      oquonie.artbook.set_art(this.host.element, art_id);
+    }
+    
     $(this.host.element).css('background-size',(width*frames)+"px "+(width*1.5)+"px");
     $(this.host.element).css('background-position',(anim.run() * -width + width)+"px center");
   }

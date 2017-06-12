@@ -22,11 +22,15 @@ function Gate(requirement,x,y,room,to_x,to_y)
       return;
     }
     oquonie.stage.enter_room(this.room,this.to_x,this.to_y);
+    oquonie.music.play_effect("bump.2");
   }
 
   this.on_sight = function()
   {
     var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    $("#wall_"+wall_id).css("background-image","url(media/graphics/wall/gate."+this.requirement+"."+(this.requirement == oquonie.player.id || oquonie.player.id == "nastazie" ? "open" : "close")+".png)")
+    if (wall_id != null)
+    {
+      oquonie.artbook.set_art("#wall_"+wall_id,"media/graphics/wall/gate."+this.requirement+"."+(this.requirement == oquonie.player.id || oquonie.player.id == "nastazie" ? "open" : "close")+".png");
+    }
   }
 }

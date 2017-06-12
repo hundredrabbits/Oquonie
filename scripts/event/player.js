@@ -38,15 +38,17 @@ function Player()
 
     if(target_tile && target_tile.is_collider() == true){
       console.log("Blocked by: "+target_tile.constructor.name);
+      this.bump_against(x,y,target_tile);
       target_tile.on_collision();
-      this.bump(x,y,target_tile);
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
       console.log("Blocked by: Edge");
+      this.bump_up(x,y);
       oquonie.music.play_effect("bump.2");
     }
     else if(target_floor == 0){
       console.log("Blocked by: Floor("+target_floor+")");
+      this.bump_up(x,y);
       oquonie.music.play_effect("bump.3");
     }
     else{
@@ -88,8 +90,8 @@ function Player()
 
   this.land = function()
   {
-    $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*20, function(){ oquonie.player.animator.state = "idle.front"; });
-    $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*20);
+    $(oquonie.player.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*0.6)+"%").delay(300).animate({ top: (parseInt(this.position_at(this.x,this.y)[0]))+"%" }, oquonie.speed*10, function(){ oquonie.player.animator.state = "idle.front"; });
+    $(oquonie.player.shadow.element).css("top",(parseInt(this.position_at(this.x,this.y)[0])*1.4)+"%").delay(300).animate({ top: 0+"%", opacity:1 }, oquonie.speed*10);
   }
 
   // Transform

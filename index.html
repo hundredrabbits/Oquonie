@@ -1,6 +1,10 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.transit.min.js"></script>
     <script type="text/javascript" src="scripts/logo.js"></script>
 
     <script type="text/javascript" src="scripts/core/oquonie.js"></script>
@@ -13,6 +17,7 @@
     <script type="text/javascript" src="scripts/core/spellbook.js"></script>
     <script type="text/javascript" src="scripts/core/game.js"></script>
     <script type="text/javascript" src="scripts/core/music.js"></script>
+    <script type="text/javascript" src="scripts/core/artbook.js"></script>
 
     <script type="text/javascript" src="scripts/core/world.js"></script>
 
@@ -70,8 +75,8 @@
       oquonie.install();
       
       var keyboard = new Keyboard();
-      document.onkeyup = function myFunction(){ keyboard.listen_onkeyup(event); };
-      document.onkeydown = function myFunction(){ keyboard.listen_onkeydown(event); };
+      document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
+      document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
 
       var logo = new Logo(document.getElementById("logo"));
 

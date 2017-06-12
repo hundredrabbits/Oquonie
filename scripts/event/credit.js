@@ -15,7 +15,7 @@ function Credit(x,y,id)
 
   this.on_collision = function()
   {
-    oquonie.dialog.show("rekka",["confusion1","confusion3","confusion2"],"media/graphics/credit/"+this.id+".");
+    oquonie.dialog.show(this.id,["confusion1","confusion3","confusion2"],"media/graphics/credit/"+this.id+".");
   }
 
   this.update(20);

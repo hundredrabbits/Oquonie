@@ -24,6 +24,11 @@ function Stage()
       return;
     }
 
+    $(this.element).finish();
+    $(this.parallax_over).finish();
+    $(this.parallax_under).finish();
+    oquonie.player.stand_by_door(x,y);
+
     if(this.room){ $(this.room.element).empty(); $(this.room.element).remove(); }
 
     this.room = oquonie.world.rooms[room_id];
@@ -33,16 +38,29 @@ function Stage()
 
     oquonie.player.move_at(x,y);
     
-    var theme = oquonie.spellbook.pillars.length > 0 && this.room.id < 15 ? "black" : this.room.theme;
+    var numPillars = oquonie.spellbook.pillars.length;
+    var theme = numPillars >= 5 ? "black" : this.room.theme;
 
-    oquonie.stage.set_theme(this.room.theme);
+    oquonie.stage.set_theme(theme);
 
     this.look();
     this.center(oquonie.player.x,oquonie.player.y);
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
 
-    oquonie.music.play_ambient(this.room.audio);
+    var audio = this.room.audio;
+    if (audio == "lobby")
+    {
+      if (numPillars >= 5)
+      {
+        audio = "lobby.3";
+      }
+      else if (numPillars > 0) {
+        audio = "lobby.2";
+      }
+    }
+
+    oquonie.music.play_ambient(audio);
   }
 
   this.look = function()
@@ -90,16 +108,20 @@ function Stage()
 
   this.animate = function(x,y)
   {
-    $(this.element).animate({ marginLeft: (x * -0.5)+"%",marginTop: (y * 0.5)+"%" }, oquonie.speed);
-    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
+    var xSlant = x - y;
+    var ySlant = -x - y;
+    $(this.element).transition({ marginLeft: (xSlant * 0.5)+"%",marginTop: (ySlant * 0.5)+"%" }, oquonie.speed);
+    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.center = function(x,y)
   {
-    $(this.element).css("margin-left",(x * -0.5)+"%").css("margin-top",(y * 0.5)+"%");
-    $(this.parallax_over).animate({ marginLeft: (x * -0.75)+"%",marginTop: (y * 0.75)+"%" }, oquonie.speed);
-    $(this.parallax_under).animate({ marginLeft: (x * -0.25)+"%",marginTop: (y * 0.25)+"%" }, oquonie.speed);
+    var xSlant = x - y;
+    var ySlant = -x - y;
+    $(this.element).css("margin-left",(xSlant * 0.5)+"%").css("margin-top",(ySlant * 0.5)+"%");
+    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
+    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
   }
 
   this.set_theme = function(theme)
@@ -115,11 +137,11 @@ function Stage()
     this.pan_up();
 
     oquonie.music.play_effect("teleport");
-    setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*20)+400);
-    setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*20));
+    setTimeout(function(){ oquonie.stage.pan_down(); }, (oquonie.speed*10)+400);
+    setTimeout(function(){ oquonie.stage.load_room(room,x,y); }, (oquonie.speed*10));
   }
 
-  this.pan_up = function(speed = oquonie.speed*20)
+  this.pan_up = function(speed = oquonie.speed*10)
   {
     oquonie.player.lift(speed);
     $(this.element).delay(300).animate({ top: "100vh" }, speed);
@@ -128,7 +150,7 @@ function Stage()
   this.pan_down = function()
   {
     oquonie.player.land();
-    $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*20, function(){
+    $(this.element).css("top","-100vh").delay(300).animate({ top: 0 }, oquonie.speed*10, function(){
       keyboard.unlock("teleport");
     });
   }
@@ -150,7 +172,10 @@ function Stage()
     this.room.is_known = true;
 
     oquonie.player.move_at(x,y);
-    oquonie.stage.set_theme(this.room.theme);
+
+    var numPillars = oquonie.spellbook.pillars.length;
+    var theme = numPillars >= 5 ? "black" : this.room.theme;
+    oquonie.stage.set_theme(theme);
 
     this.look();
     this.center(oquonie.player.x,oquonie.player.y);
@@ -175,12 +200,13 @@ function Stage()
   {
     if(step < 1){ return; }
 
-    if(step == 6){ $("#wall_1").css("background-image","url(media/graphics/wall/19.png)"); }
-    if(step == 5){ $("#wall_5").css("background-image","url(media/graphics/wall/15.png)"); }
-    if(step == 4){ $("#wall_3").css("background-image","url(media/graphics/wall/25.png)"); }
-    if(step == 3){ $("#wall_0").css("background-image","url(media/graphics/wall/26.png)"); }
-    if(step == 2){ $("#wall_4").css("background-image","url(media/graphics/wall/gate.necomedre.open.png)"); }
-    if(step == 1){ $("#wall_2").css("background-image","url(media/graphics/wall/15.png)"); }
+    if(step == 6){ oquonie.artbook.set_art("#wall_1","media/graphics/wall/19.png"); }
+    if(step == 5){ oquonie.artbook.set_art("#wall_5","media/graphics/wall/15.png"); }
+    if(step == 4){ oquonie.artbook.set_art("#wall_3","media/graphics/wall/25.png"); }
+    if(step == 3){ oquonie.artbook.set_art("#wall_0","media/graphics/wall/26.png"); }
+    // if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
+    if(step == 2){ oquonie.artbook.set_art("#wall_4","media/graphics/wall/40.png"); }
+    if(step == 1){ oquonie.artbook.set_art("#wall_2","media/graphics/wall/15.png"); }
 
     setTimeout(function(){ oquonie.stage.destroy(step-1); }, 50);
   }

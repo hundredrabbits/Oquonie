@@ -66,6 +66,17 @@ function Event(subtype)
     $(this.element).css('top', _y).css('left', _x);
   }
 
+  this.stand_by_door = function(x,y)
+  {
+    $(this.element).finish();
+    var target = this.animator;
+    x = -x;
+    y = -y;
+    if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
+    target.animate();
+  }
+
   this.warp_at = function(room,x,y)
   {
     oquonie.stage.enter_room(room,x,y);
@@ -82,10 +93,38 @@ function Event(subtype)
     $(this.element).addClass("mirror");
   }
 
-  this.bump = function(x,y,target)
+  this.bump_up = function(x,y)
   {
-    var origin_pos_y = parseInt(target.element.style.top);
-    $(target.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
+    var animator = this.animator;
+    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.state = "idle.front"; }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.state = "idle.back"; }
+    animator.animate();
+
+    $(this.element).finish();
+    var origin_pos_y = parseInt(this.element.style.top);
+    $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
+  }
+
+  this.bump_against = function(x,y,target)
+  {
+    var animator = this.animator;
+    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.state = "idle.front"; }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.state = "idle.back"; }
+    animator.animate();
+
+    var xSlant = x - y;
+    var ySlant = (-x - y) * 0.5;
+
+    $(this.element).finish();
+    var origin_pos_x = parseInt(this.element.style.left);
+    var origin_pos_y = parseInt(this.element.style.top);
+
+    $(this.element).css("top", origin_pos_y + 0.5 * ySlant + "%").css("left", origin_pos_x + 0.5 * xSlant + "%");
+    $(this.element).animate({ top: origin_pos_y+"%", left: origin_pos_x+"%" }, oquonie.speed/2);
+
+    $(target.element).finish();
+    var origin_target_pos_y = parseInt(target.element.style.top);
+    $(target.element).css("top", (origin_target_pos_y-0.5)+"%").animate({ top: origin_target_pos_y+"%" }, oquonie.speed/2);
   }
 
   this.on_collision = function()

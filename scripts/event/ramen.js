@@ -96,7 +96,7 @@ function Ramen(x,y,character = null)
   this.show_notification = function()
   {
     $(this.notification).css("display","block");
-    $(this.notification).css("background-image","url(media/graphics/notification/"+this.lobby_spell()+".png)")
+    oquonie.artbook.set_art(this.notification,"media/graphics/notification/"+this.lobby_spell()+".png");
   }
 
   this.update_notification = function()

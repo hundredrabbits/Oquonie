@@ -16,7 +16,7 @@ function PillarBase(x,y,character)
 
   this.on_collision = function()
   {
-    if(oquonie.spellbook.has_pillar(this) == true){
+    if(oquonie.spellbook.has_pillar(this.character) == true){
       oquonie.dialog.show("owl",["pillar","friend",this.character]);
     }
     else{

@@ -2,6 +2,7 @@ function Oquonie()
 {
   this.element = document.createElement("oquonie");
 
+  this.artbook = new Artbook();
   this.game = new Game();
   this.world = new World();
   this.music = new Music();
@@ -37,7 +38,7 @@ function Oquonie()
 
   function animate()
   {
-    this.animation_timer = setTimeout(function(){ animate(); }, 100);
+    this.animation_timer = setTimeout(function(){ animate(); }, 200);
 
     oquonie.player.animator.animate();
 

@@ -59,9 +59,7 @@ function Spellbook()
 
   this.has_spell = function(spell_name)
   {
-    if(this.spells.indexOf(spell_name) > -1){
-      return true;
-    }
+    return this.spells.indexOf(spell_name) > -1;
   }
 
   // Pillars
@@ -73,9 +71,7 @@ function Spellbook()
 
   this.has_pillar = function(pillar_character)
   {
-    if(this.pillars.indexOf(pillar_character) > -1){
-      return true;
-    }
+    return this.pillars.indexOf(pillar_character) > -1;
   }
 
   // Ramen
@@ -88,9 +84,7 @@ function Spellbook()
 
   this.has_ramen = function(ramen_character)
   {
-    if(this.ramens.indexOf(ramen_character) > -1){
-      return true;
-    }
+    return this.ramens.indexOf(ramen_character) > -1;
   }
 
   // Etc..
@@ -119,9 +113,9 @@ function Spellbook()
 
   this.clear = function()
   {
-    $(this.spell1).css("background-image","");
-    $(this.spell2).css("background-image","");
-    $(this.spell3).css("background-image","");
+    oquonie.artbook.remove_art(this.spell1);
+    oquonie.artbook.remove_art(this.spell2);
+    oquonie.artbook.remove_art(this.spell3);
   }
 
   this.update = function()
@@ -130,9 +124,9 @@ function Spellbook()
 
     for (var i = 0; i < this.spells.length; i++) {
       var spell_name = this.spells[i].split("_")[0];
-      if(i == 0){ $(this.spell1).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
-      if(i == 1){ $(this.spell2).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
-      if(i == 2){ $(this.spell3).css("background-image","url(media/graphics/spellbook/"+spell_name+".png)"); }
+      if(i == 0){ oquonie.artbook.set_art(this.spell1,"media/graphics/spellbook/"+spell_name+".png"); }
+      if(i == 1){ oquonie.artbook.set_art(this.spell2,"media/graphics/spellbook/"+spell_name+".png"); }
+      if(i == 2){ oquonie.artbook.set_art(this.spell3,"media/graphics/spellbook/"+spell_name+".png"); }
     }
   }
 
@@ -157,5 +151,13 @@ function Spellbook()
     if(this.spells.length == 0){
       this.hide();
     }
+  }
+
+  this.reset = function()
+  {
+    this.spells  = [];
+    this.pillars = [];
+    this.ramens  = [];
+    this.update();
   }
 }

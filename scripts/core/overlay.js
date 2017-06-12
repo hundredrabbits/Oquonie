@@ -11,7 +11,7 @@ function Overlay()
 
   this.show = function(message)
   {
-    $(this.element).css("background-image","url(media/graphics/plan/"+message+".png)");
+    oquonie.artbook.set_art(this.element,"media/graphics/plan/"+message+".png");
     $(this.element).animate({ opacity:1 }, oquonie.speed);
 
     this.content = message;

@@ -11,5 +11,5 @@ function Wall(pos,id,type)
 
   this.update();
 
-  if(this.id != 0){ $(this.element).css("background-image","url(media/graphics/wall/"+id+".png)"); }  
+  if(this.id != 0){ oquonie.artbook.set_art(this.element,"media/graphics/wall/"+this.id+".png"); }
 }

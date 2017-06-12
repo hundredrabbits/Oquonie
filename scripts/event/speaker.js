@@ -47,5 +47,13 @@ function Speaker(x,y,id = "disc")
     oquonie.music.pause_ambience();
   }
 
+  this.on_sight = function()
+  {
+    if (oquonie.music.is_muted == this.is_playing)
+    {
+      this.toggle();
+    }
+  }
+
   this.update(20);
 }
