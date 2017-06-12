@@ -16,7 +16,12 @@ function Shark(x,y,is_transformer = true)
 
   this.on_collision = function()
   {
-    if(this.is_transformer == true && oquonie.player.id != "necomedre"){
+    if(oquonie.player.id == "catfishbird"){
+      keyboard.lock("teleport");
+      var w = this.warp;
+      setTimeout(function(){ oquonie.stage.warp_to(9,0,0); }, 500);      
+    }
+    else if(this.is_transformer == true && oquonie.player.id != "necomedre"){
       oquonie.player.transform("necomedre");  
       oquonie.dialog.show("shark",["guide","friend","necomedre"]);
     }
