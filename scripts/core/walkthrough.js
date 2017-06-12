@@ -60,14 +60,14 @@ function Walkthrough()
 
   // Chapter 3
 
-  var nastazie_pillar_nemedique = [L,L,L,U,U,U,U,U,L,U,R,U,R,R,L,L,L,U,U,D,R,R,R,R,R,D,U,D,L,U,L,L,L,U,U,D,L,L,D,R,R,R,R,R,U,L,U,U,U,U];
+  var nastazie_pillar_begin = ["W3",L,L,L,U,U,U,U,U,L,U,R,U,R,R,L,L,L,U,U,D,R,R,R,R,R,D,U,D,L,U,L,L,L,U,U,D,L,L,D,R,R,R,R,R,U,L,U,U,U,U];
   var nastazie_pillar_neomine = [U,R,D,D,D,D,D,L,L,L,U,U,U,U,L,L,U,R,R,R,U,U,U,U,U,U];
   var nastazie_pillar_nephtaline = [U,R,D,D,D,D,L,L,L,L,U,U,U,U,L,D,L,D,D,R,D,D,D,R,R,R,U,L,L,U,U,U,U,U,R,U,U]
   var nastazie_pillar_nastazie = [U,R,D,D,D,D,D,L,D,R,R,R,R,R,U,L,L,L,L,U,U,U,D,R,D,D,D,D,D,L,D,R,R,D,R,R,R,R];
 
   var secrets = ["W3",R,R,R,R,"W46",U,U,U,U,"W102",R,R,R,U,"W131",R,D,"W142",R,R,R];
 
-  var catfishbird = ["W5","Tnecomedre",R,R,R,D,D,D,R,R,U,L,L,L,L,L,L,L,L,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,U,U,U,D,D,D,D,D,U,U,U,U,U,R,R,R,U,U,U,R,R,R,R,L,L,L,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,U,L,L,L,D,D,D,L,L,L,U];
+  var catfishbird = ["W5","Tnecomedre",R,R,R,D,D,D,R,R,U,L,L,L,L,L,L,L,L,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,U,U,U,D,D,D,D,D,U,U,U,U,U,R,R,R,U,U,U,R,R,R,R,L,L,L,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,U,L,L,L,U];
 
   // Everything
 
@@ -93,7 +93,8 @@ function Walkthrough()
   var chapter_2 = full;
 
   full = [];
-  full = full.concat(nastazie_pillar_nemedique);
+  full = full.concat(catfishbird);
+  full = full.concat(nastazie_pillar_begin);
   full = full.concat(nastazie_pillar_neomine);
   full = full.concat(nastazie_pillar_nephtaline);
   full = full.concat(nastazie_pillar_nastazie);
