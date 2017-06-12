@@ -15,8 +15,8 @@ function PillarGate(x,y,room,to_x,to_y)
 
   this.on_collision = function()
   {    
-    if(this.is_unlocked() != true){
-      oquonie.dialog.show("owl",["pillar","foe",this.is_unlocked()]);
+    if(this.missing_pillar()){
+      oquonie.dialog.show("owl",["pillar","foe",this.missing_pillar()]);
       return
     }
     oquonie.stage.enter_room(this.room,this.to_x,this.to_y);
@@ -24,14 +24,12 @@ function PillarGate(x,y,room,to_x,to_y)
 
   this.on_sight = function()
   {
-    if(this.is_unlocked() != true){
-      return;
-    }
     var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    oquonie.artbook.set_art("#wall_"+wall_id,"media/graphics/wall/27.png");
+    var src = !this.missing_pillar() ? "media/graphics/wall/gate.red.open.png" : "media/graphics/wall/gate.red.close.png";
+    oquonie.artbook.set_art("#wall_"+wall_id, src);
   }
 
-  this.is_unlocked = function()
+  this.missing_pillar = function()
   {
     if(!oquonie.spellbook.has_pillar("necomedre")){ return "necomedre"; }
     if(!oquonie.spellbook.has_pillar("nephtaline")){ return "nephtaline"; }
@@ -40,6 +38,6 @@ function PillarGate(x,y,room,to_x,to_y)
     if(!oquonie.spellbook.has_pillar("nemedique")){ return "nemedique"; }
     if(!oquonie.spellbook.has_pillar("nastazie")){ return "nastazie"; }
 
-    return true;
+    return null;
   }
 }
