@@ -67,6 +67,8 @@ function Walkthrough()
 
   var secrets = ["W3",R,R,R,R,"W46",U,U,U,U,"W102",R,R,R,U,"W131",R,D,"W142",R,R,R];
 
+  var catfishbird = ["W5","Tnecomedre",R,R,R,D,D,D,R,R,U,L,L,L,L,L,L,L,L,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U,U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,U,U,U,D,D,D,D,D,U,U,U,U,U,R,R,R,U,U,U,R,R,R,R,L,L,L,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,R,R,R,U,L,L,L,D,D,D,L,L,L,U];
+
   // Everything
 
   var full = [];
