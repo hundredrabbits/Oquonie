@@ -1235,16 +1235,17 @@ function World()
 
     // Cat Wizard 3
     room = new Room(150);
-    room.floors = [ 0,2,0, 2,2,0, 0,0,0 ]
+    room.floors = [ 0,2,0, 2,2,2, 0,0,0 ]
     room.walls  = [ 0,25,0, 0,0,0 ]
     room.steps  = [ 0,8,0, 0,0,0 ]
     room.audio  = "glitch"
     room.theme  = "black"
     room.add_event(new Door(-2,0,102,1,0))
+    room.add_event(new Gate("catfishbird",2,0,152,-1,0))
     room.add_event(new Wizard(0,1,"catfishbird"),true)
     this.rooms[150] = room
 
-    // Cat Wizard 2
+    // Rekka & Devine
     room = new Room(151);
     room.floors = [ 101,39,101, 1,1,1, 101,39,101 ]
     room.walls  = [ 99,99,99, 99,100,99 ]
@@ -1255,6 +1256,17 @@ function World()
     room.add_event(new Credit(1,0,"rekka"))
     room.add_event(new Credit(0,1,"devine"))
     this.rooms[151] = room
+
+    // Cat Teleport
+    room = new Room(152);
+    room.floors = [ 2,2,7, 2,0,0, 0,0,5 ] // 8
+    room.walls  = [ 0,0,0, 0,0,13 ]
+    room.steps  = [ 0,8,0, 0,0,7 ]
+    room.audio  = "glitch"
+    room.theme  = "black"
+    room.add_event(new Teleport(1,1,9))
+    room.add_event(new Gate("catfishbird",-2,0,150,1,0))
+    this.rooms[152] = room
     
   }
 }
