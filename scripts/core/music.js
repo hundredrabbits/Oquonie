@@ -32,7 +32,7 @@ function Music()
       console.log("Music: ",name);
 
       oquonie.music.track_ambient.pause();
-      oquonie.music.track_ambient = oquonie.music.fetch_audio(name, "ambienct", "media/audio/ambient/"+name+".mp3", true);
+      oquonie.music.track_ambient = oquonie.music.fetch_audio(name, "ambient", "media/audio/ambient/"+name+".mp3", true);
       if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
       $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
     });

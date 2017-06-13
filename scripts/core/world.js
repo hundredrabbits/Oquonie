@@ -945,7 +945,7 @@ function World()
     
     room = new Room(100);
     room.floors = [ 10,31,10, 10,4,6, 10,5,10 ]
-    room.walls  = [ 18,29,18, 18,12,18 ]
+    room.walls  = [ 18,27,18, 18,12,18 ]
     room.steps  = [ 0,0,0, 0,7,0 ]
     room.audio  = "nemedique"
     room.theme  = "white"
@@ -1256,7 +1256,7 @@ function World()
     room.add_event(new Credit(1,0,"rekka"))
     room.add_event(new Credit(0,1,"devine"))
     this.rooms[151] = room
-
+    
     // Cat Teleport
     room = new Room(152);
     room.floors = [ 2,2,7, 2,0,0, 0,0,5 ] // 8
