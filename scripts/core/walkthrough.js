@@ -248,7 +248,7 @@ function Walkthrough()
       else if(this.inputs[0] == "L"){ keyboard.key_arrow_left(); this.inputs.shift();}
       else if(this.inputs[0] == "R"){ keyboard.key_arrow_right(); this.inputs.shift();}  
       else if(this.inputs[0] == ""){ keyboard.key_escape(); this.inputs.shift();}    
-      else if(this.inputs[0][0] == "W"){ oquonie.player.warp_at(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
+      else if(this.inputs[0][0] == "W"){ oquonie.stage.enter_room(parseInt(this.inputs[0].substr(1))); this.inputs.shift();}  
       else if(this.inputs[0][0] == "_"){ section = this.inputs[0]; console.log("walkthrough section:", section); counter = 0; this.inputs.shift();}
       else if(this.inputs[0][0] == "T"){ oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift();}
       else if(this.inputs[0][0] == "S"){ oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift();}

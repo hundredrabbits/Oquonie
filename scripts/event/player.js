@@ -66,7 +66,6 @@ function Player()
 
   this.update = function()
   {
-    this.character = "neomine";
     this.orientation = $(this.element).attr("orientation");
     this.direction = $(this.element).attr("direction");
     this.animation_frame = 1;

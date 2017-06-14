@@ -77,11 +77,6 @@ function Event(subtype)
     target.animate();
   }
 
-  this.warp_at = function(room,x,y)
-  {
-    oquonie.stage.enter_room(room,x,y);
-  }
-
   this.is_collider = function()
   {
     return false;
