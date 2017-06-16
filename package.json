@@ -5,5 +5,8 @@
   "start": "",
   "dependencies": {
     "electron-packager": "^8.4.0"
+  },
+  "devDependencies": {
+    "electron": "^1.6.11"
   }
 }
