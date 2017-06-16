@@ -16,8 +16,9 @@ function World()
   
   this.createLobby = function()
   {
-    var room = new Room(1);
+    var room;
     
+    room = new Room(1);
     room.floors = [ 0,25,2, 2,8,4, 2,2,2 ];
     room.walls  = [ 0,5,2,2,12,15 ];
     room.steps  = [ 0,0,0, 0,0,0 ];
@@ -144,7 +145,7 @@ function World()
   
   this.createNecomedre = function()
   {
-    var room = new Room(21);
+    var room;
   
     room = new Room(21);
     room.floors = [ 21,21,21, 21,21,21, 21,21,21 ];
@@ -391,7 +392,7 @@ function World()
   
   this.createNephtaline = function()
   {
-    var room = new Room(40);
+    var room;
   
     room = new Room(40);
     room.floors = [ 18,6,4, 5,0,30, 25,0,32 ]
@@ -584,7 +585,7 @@ function World()
     this.rooms[59] = room
     
     room = new Room(121);
-    room.floors = [ 97,31,97, 31,8,31, 98,98,31 ]
+    room.floors = [ 97,31,97, 31,8,31, 98,31,98 ]
     room.walls  = [ 25,18,25, 25,18,25 ]
     room.steps  = [ 0,0,0, 0,3,0 ]
     room.audio  = "pillar"
@@ -596,7 +597,7 @@ function World()
   
   this.createNeomine = function()
   {
-    var room = new Room(60);
+    var room;
   
     room = new Room(60);
     room.floors = [ 1,4,18, 1,4,1, 1,23,1 ]
@@ -751,7 +752,7 @@ function World()
   
   this.createNestorine = function()
   {
-    var room = new Room(80);
+    var room;
   
     room = new Room(80);
     room.floors = [ 35,35,7, 34,8,35, 35,34,35 ]
@@ -941,7 +942,7 @@ function World()
   
   this.createNemedique = function()
   {
-    var room = new Room(100);
+    var room;
     
     room = new Room(100);
     room.floors = [ 10,31,10, 10,4,6, 10,5,10 ]
@@ -1001,7 +1002,7 @@ function World()
   
   this.createNastazie = function()
   {
-    var room = new Room(130);
+    var room;
   
     room = new Room(130);
     room.floors = [ 36,39,36, 39,8,39, 36,39,36 ]
