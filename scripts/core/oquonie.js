@@ -36,6 +36,25 @@ function Oquonie()
     animate();
   }
 
+  this.mousedown = function(e)
+  {
+    var ratio_x = e.screenX/window.innerWidth;
+    var ratio_y = e.screenY/window.innerHeight;
+
+    if(ratio_y < 0.5 && ratio_x < 0.5){
+      oquonie.player.try_move(0,1);
+    }
+    else if(ratio_y < 0.5 && ratio_x > 0.5){
+      oquonie.player.try_move(1,0);
+    }
+    else if(ratio_y > 0.5 && ratio_x < 0.5){
+      oquonie.player.try_move(-1,0);
+    }
+    else if(ratio_y > 0.5 && ratio_x > 0.5){
+      oquonie.player.try_move(0,-1);
+    }
+  }
+
   function animate()
   {
     this.animation_timer = setTimeout(function(){ animate(); }, 200);
@@ -51,4 +70,5 @@ function Oquonie()
   {
     clearTimeout(this.animation_timer);
   }
+
 }

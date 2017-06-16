@@ -100,6 +100,10 @@ function Player()
     console.log("Transform(init): "+spell);
     keyboard.lock("transform");
 
+    if(spell == "catfishbird"){
+      oquonie.game.save();
+    }
+
     this.animator.state = "warp";
 
     oquonie.music.play_effect("transform");
