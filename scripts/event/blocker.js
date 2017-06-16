@@ -11,9 +11,14 @@ function Blocker(x,y,id)
     return true;
   }
 
+  this.elicits_collision_bump = function()
+  {
+    return this.id != 0;
+  }
+
   this.on_collision = function()
   {
-    oquonie.music.play_effect("bump.1");
+    if(this.id != 0) { oquonie.music.play_effect("bump.1"); }
   }
 
   this.update(20);

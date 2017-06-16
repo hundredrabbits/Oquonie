@@ -716,7 +716,7 @@ function World()
     room.theme  = "black"
     room.add_event(new Ghost(-1,1),true)
     room.add_event(new Door(2,1,64,-1,1))
-    room.add_event(new Hiversaires(0,2))
+    room.add_event(new HiversairesGate(0,2,153,0,-1))
     room.add_event(new Door(2,0,69,-1,0))
     room.add_event(new Door(2,-1,66,-1,-1))
     this.rooms[68] = room
@@ -1288,5 +1288,18 @@ function World()
     room.add_event(new Gate("catfishbird",-2,0,150,1,0)) // 152 - 150
     this.rooms[152] = room
     
+    // Hiversaires
+    room = new Room(153);
+    room.floors = [ 109,107,105, 111,0,106, 112,110,108 ]
+    room.walls  = [ 102,103,102, 0,0,0 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "glitch"
+    room.theme  = "hiversaires"
+    room.add_event(new Blocker(1,0,29));
+    room.add_event(new Door(0,-2,68,0,1));
+    room.add_event(new Blocker(1,-1,0));
+    room.add_event(new Blocker(-1,-1,0));
+    room.add_event(new HiversairesSauvegarde(0,0));   
+    this.rooms[153] = room
   }
 }

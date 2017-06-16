@@ -27,18 +27,23 @@ function Player()
       return;
     }
 
-    if(x == 0 && y == -1){ $(this.element).attr("orientation","front").attr("direction","right"); }
-    if(x == -1 && y == 0){ $(this.element).attr("orientation","front").attr("direction","left"); }
-    if(x == 0 && y == 1){ $(this.element).attr("orientation","back").attr("direction","left"); }
-    if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
-
     var destination = [this.x + x, this.y + y];
     var target_tile = oquonie.stage.tile_at(this.x + x, this.y + y);
     var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
 
+    if (target_tile == null || target_tile.elicits_collision_bump())
+    {
+      if(x == 0 && y == -1){ $(this.element).attr("orientation","front").attr("direction","right"); }
+      if(x == -1 && y == 0){ $(this.element).attr("orientation","front").attr("direction","left"); }
+      if(x == 0 && y == 1){ $(this.element).attr("orientation","back").attr("direction","left"); }
+      if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
+    }
+
     if(target_tile && target_tile.is_collider() == true){
       console.log("Blocked by: "+target_tile.constructor.name);
-      this.bump_against(x,y,target_tile);
+      if (target_tile.elicits_collision_bump() == true){
+        this.bump_against(x,y,target_tile);
+      }
       target_tile.on_collision();
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
