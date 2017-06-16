@@ -18,6 +18,7 @@ spellbook spell { width:8vw; height:8vw; max-width:8vh; max-height: 8vh; margin-
 oquonie.white { background-color:white; }
 oquonie.black { background-color:black; }
 oquonie.pillars { background-color:lightgrey; }
+oquonie.hiversaires { background-color:lightgrey; }
 
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }

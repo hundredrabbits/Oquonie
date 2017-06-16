@@ -16,12 +16,12 @@ function Petunia(x,y)
   {
     oquonie.dialog.show("petunia",["confusion1","confusion3","confusion2"]);
 
-    oquonie.artbook.set_art("#wall_1","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
-    oquonie.artbook.set_art("#wall_2","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
-    oquonie.artbook.set_art("#wall_3","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
-    oquonie.artbook.set_art("#wall_4","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
-    oquonie.artbook.set_art("#wall_5","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
-    // oquonie.artbook.set_art("#wall_6","media/graphics/wall/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.set_art("#wall_1","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    oquonie.artbook.set_art("#wall_2","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    oquonie.artbook.set_art("#wall_3","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    oquonie.artbook.set_art("#wall_4","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    oquonie.artbook.set_art("#wall_5","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    // oquonie.artbook.set_art("#wall_6","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
     
     oquonie.artbook.set_art("#floor_1","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
     oquonie.artbook.set_art("#floor_2","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
