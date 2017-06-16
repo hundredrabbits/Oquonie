@@ -109,6 +109,8 @@ function World()
     room.add_event(new Gate("nestorine",2,0,96,-1,0)); // 7 - 96
     room.add_event(new Door(-2,0,6,1,0));
     this.rooms[7] = room;
+
+    // 8
     
     room = new Room(9);
     room.floors = [ 10,27,10, 9,4,5, 0,6,10 ];
@@ -121,6 +123,8 @@ function World()
     room.add_event(new Door(2,0,5,-1,0));
     room.add_event(new Door(0,-2,11,0,1));
     this.rooms[9] = room;
+
+    // 10
   
     room = new Room(11);
     room.floors = [ 4,5,6, 5,33,4, 4,6,5 ];
@@ -132,6 +136,8 @@ function World()
     room.add_event(new Tree(0,0));
     this.rooms[11] = room;
     
+    // 12-13
+
     room = new Room(14);
     room.floors = [ 0,0,0, 0,5,0, 0,5,0 ];
     room.walls  = [ 0,0,0, 0,0,0 ];
@@ -141,6 +147,8 @@ function World()
     room.add_event(new Noface(0,1),true);
     room.add_event(new Door(0,-2,4,0,1));
     this.rooms[14] = room;
+
+    // 15-20
   }
   
   this.createNecomedre = function()
@@ -529,6 +537,8 @@ function World()
     room.add_event(new Door(0,2,50,0,-1))
     room.add_event(new Door(-2,0,48,1,0))
     this.rooms[51] = room
+
+    // 52-54
     
     room = new Room(55);
     room.floors = [ 0,5,0, 5,10,0, 0,0,0 ]
@@ -748,6 +758,8 @@ function World()
     room.add_event(new Pillar(0,0,"neomine",3))
     room.add_event(new Gate("necomedre",-2,0,62,1,0)) // 71 - 62
     this.rooms[71] = room
+
+    // 72-79
   }
   
   this.createNestorine = function()
@@ -938,6 +950,9 @@ function World()
     room.add_event(new Teleport(0,0,80,0,0))
     room.add_event(new Gate("nestorine",-2,0,7,1,0)) // 96 - 7
     this.rooms[96] = room
+
+    // 97-99
+
   }
   
   this.createNemedique = function()
@@ -998,10 +1013,14 @@ function World()
     room.theme  = "pillars"
     room.add_event(new Red(0,1,9),true)
     this.rooms[104] = room
+
+    // 105-119
   }
   
   this.createNastazie = function()
   {
+    // 122-129
+    
     var room;
   
     room = new Room(130);
