@@ -82,6 +82,11 @@ function Event(subtype)
     return false;
   }
 
+  this.elicits_collision_bump = function()
+  {
+    return true;
+  }
+
   this.mirror = function()
   {
     this.is_mirrored = true;
