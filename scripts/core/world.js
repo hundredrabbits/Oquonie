@@ -37,7 +37,7 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,24));
-    room.add_event(new Ramen(1,0));
+    var ramen = new Ramen(1,0); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Plan(-1,2,"lobby"));
     room.add_event(new Door(-2,0,1,1,0));
     room.add_event(new Door(0,2,3,0,-1));
@@ -333,7 +333,7 @@ function World()
     room.steps  = [ 0,6,0, 0,0,0 ];
     room.audio  = "necomedre";
     room.theme  = "white";
-    room.add_event(new Ramen(1,1,"necomedre"));
+    var ramen = new Ramen(1,1,"necomedre"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Speaker(1,-1));
     room.add_event(new Door(0,2,32,0,-1));
     room.add_event(new Door(2,0,36,-1,0));
@@ -566,7 +566,7 @@ function World()
     room.steps  = [ 0,0,0, 0,7,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    room.add_event(new Ramen(1,1,"nephtaline"));
+    var ramen = new Ramen(1,1,"nephtaline"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Door(2,0,58,-1,0))
     room.add_event(new Door(0,-2,56,0,1))
     this.rooms[57] = room
@@ -658,7 +658,7 @@ function World()
     room.audio  = "neomine"
     room.theme  = "black"
     room.add_event(new Blocker(0,0,9))
-    room.add_event(new Ramen(-1,1,"neomine"),true);
+    var ramen = new Ramen(-1,1,"neomine"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
     room.add_event(new Door(2,1,66,-1,1))
     room.add_event(new Door(2,0,64,-1,0))
     room.add_event(new Door(2,-1,62,-1,-1))
@@ -863,7 +863,7 @@ function World()
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "nestorine"
     room.theme  = "white"
-    room.add_event(new Ramen(1,1,"nestorine"));
+    var ramen = new Ramen(1,1,"nestorine"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Door(-2,0,91,1,0))
     this.rooms[88] = room
     
@@ -981,7 +981,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "nemedique"
     room.theme  = "white"
-    room.add_event(new Ramen(1,1,"nemedique"),true);
+    var ramen = new Ramen(1,1,"nemedique"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
     room.add_event(new Door(0,2,102,0,-1))
     room.add_event(new Gate("necomedre",2,0,103,-1,0)) // 101 - 103
     room.add_event(new Door(-2,0,100,1,0))

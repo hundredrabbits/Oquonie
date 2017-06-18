@@ -105,7 +105,7 @@ function Event(subtype)
     $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
   }
 
-  this.bump_against = function(x,y,target)
+  this.bump_against = function(x,y)
   {
     var animator = this.animator;
     if(x == 0 && y == -1 || x == -1 && y == 0){ animator.state = "idle.front"; }
@@ -121,10 +121,13 @@ function Event(subtype)
 
     $(this.element).css("top", origin_pos_y + 0.5 * ySlant + "%").css("left", origin_pos_x + 0.5 * xSlant + "%");
     $(this.element).animate({ top: origin_pos_y+"%", left: origin_pos_x+"%" }, oquonie.speed/2);
+  }
 
-    $(target.element).finish();
-    var origin_target_pos_y = parseInt(target.element.style.top);
-    $(target.element).css("top", (origin_target_pos_y-0.5)+"%").animate({ top: origin_target_pos_y+"%" }, oquonie.speed/2);
+  this.receive_bump = function()
+  {
+    $(this.element).finish();
+    var origin_pos_y = parseInt(this.element.style.top);
+    $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
   }
 
   this.on_collision = function()

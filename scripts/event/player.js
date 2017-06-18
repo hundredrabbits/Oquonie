@@ -28,10 +28,21 @@ function Player()
     }
 
     var destination = [this.x + x, this.y + y];
-    var target_tile = oquonie.stage.tile_at(this.x + x, this.y + y);
+    var target_tiles = oquonie.stage.tiles_at(this.x + x, this.y + y);
     var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
 
-    if (target_tile == null || target_tile.elicits_collision_bump())
+    var elicits_collision_bump = target_tiles.length == 0;
+    var colliders = [];
+    for (var i = 0; i < target_tiles.length; i++)
+    {
+      elicits_collision_bump = elicits_collision_bump || target_tiles[i].elicits_collision_bump();
+      if (target_tiles[i].is_collider())
+      {
+        colliders.push(target_tiles[i]);
+      }
+    }
+
+    if (elicits_collision_bump)
     {
       if(x == 0 && y == -1){ $(this.element).attr("orientation","front").attr("direction","right"); }
       if(x == -1 && y == 0){ $(this.element).attr("orientation","front").attr("direction","left"); }
@@ -39,12 +50,15 @@ function Player()
       if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
     }
 
-    if(target_tile && target_tile.is_collider() == true){
-      console.log("Blocked by: "+target_tile.constructor.name);
-      if (target_tile.elicits_collision_bump() == true){
-        this.bump_against(x,y,target_tile);
+    if(colliders.length > 0 && elicits_collision_bump){
+      this.bump_against(x,y);
+      for (var i = 0; i < colliders.length; i++) {
+        console.log("Blocked by: "+colliders[i].constructor.name);
+        if (colliders[i].elicits_collision_bump() == true){
+          colliders[i].receive_bump();
+        }
+        colliders[i].on_collision();
       }
-      target_tile.on_collision();
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){
       console.log("Blocked by: Edge");
@@ -62,8 +76,9 @@ function Player()
       oquonie.music.play_effect("walk");
     }
 
-    if(target_tile){
-      target_tile.on_step();
+    for (var i = 0; i < target_tiles.length; i++)
+    {
+      target_tiles[i].on_step();
     }
 
     this.update(20);

@@ -70,12 +70,14 @@ function Stage()
     }
   }
 
-  this.tile_at = function(x,y)
+  this.tiles_at = function(x,y)
   {
+    var tiles = [];
     for (var i = 0; i < this.room.events.length; i++){
       var tile = this.room.events[i];
-      if(tile.x == x && tile.y == y){ return tile; }
+      if(tile.x == x && tile.y == y){ tiles.push(tile); }
     }
+    return tiles;
   }
 
   this.floor_at = function(x,y)
