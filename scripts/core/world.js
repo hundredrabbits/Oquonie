@@ -619,7 +619,11 @@ function World()
     room.add_event(new Door(2,1,62,-1,1))
     room.add_event(new Plan(2,0,"neomine"))
     room.add_event(new Gate("neomine",0,-2,3,0,1)) // 60 - 3
-    room.add_event(new Door(2,-1,61,-1,-1))
+    var door = new Door(2,-1,61,-1,-1);
+    door.add_destination(function() { 
+        return oquonie.player.id == "nastazie";
+    }, 154,-1,-1);
+    room.add_event(door);
     this.rooms[60] = room
     
     room = new Room(61);
@@ -1313,6 +1317,7 @@ function World()
     room.add_event(new Blocker(1,1,19))
     room.add_event(new Wizard(1,0,"nestorine"))
     room.add_event(new Door(0,2,155,0,-1))
+    room.add_event(new Door(-2,-1,60,1,-1))
     this.rooms[154] = room
 
     // Petunia Lobby
