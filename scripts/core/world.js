@@ -1044,7 +1044,7 @@ function World()
     room.add_event(new Door(0,2,142,0,-1))
     room.add_event(new Door(2,0,133,-1,0))
     room.add_event(new Door(-1,-2,130,-1,1))
-    room.add_event(new Petunia(1,-1))
+    // room.add_event(new Petunia(1,-1)) // Moved to Rm 154
     this.rooms[131] = room
     
     room = new Room(132);
@@ -1273,7 +1273,7 @@ function World()
     room.audio  = "glitch"
     room.theme  = "black"
     room.add_event(new Door(-2,0,142,1,0))
-    room.add_event(new Credit(1,0,"rekka"))
+    room.add_event(new Credit(1,0,"rekka"),true)
     room.add_event(new Credit(0,1,"devine"))
     this.rooms[151] = room
     
@@ -1301,5 +1301,41 @@ function World()
     room.add_event(new Blocker(-1,-1,0));
     room.add_event(new HiversairesSauvegarde(0,0));   
     this.rooms[153] = room
+
+    // Neomine Pig-Wizard Shuffle
+    room = new Room(154);
+    room.floors = [ 1,1,1, 38,1,38, 1,1,1 ]
+    room.walls  = [ 31,30,31, 33,31,33 ]
+    room.steps  = [ 0,0,3, 0,0,0 ]
+    room.audio  = "neomine"
+    room.theme  = "black"
+    room.add_event(new Blocker(-1,1,19))
+    room.add_event(new Blocker(1,1,19))
+    room.add_event(new Wizard(1,0,"nestorine"))
+    room.add_event(new Door(0,2,155,0,-1))
+    this.rooms[154] = room
+
+    // Petunia Lobby
+    room = new Room(155);
+    room.floors = [ 36,36,36, 36,36,36, 36,36,36 ]
+    room.walls  = [ 31,31,31, 31,31,31 ]
+    room.steps  = [ 0,0,0, 0,3,0 ]
+    room.audio  = "neomine"
+    room.theme  = "black"
+    room.add_event(new Petunia(0,1))
+    room.add_event(new Door(0,-2,154,0,1))
+    room.add_event(new Door(2,0,156,-1,0))
+    this.rooms[155] = room
+
+    // TODO: Daniel's room
+    room = new Room(156);
+    room.floors = [ 31,29,31, 29,20,29, 31,29,31 ]
+    room.walls  = [ 34,37,34, 35,37,35 ]
+    room.steps  = [ 0,7,0, 0,0,0 ]
+    room.audio  = "neomine"
+    room.theme  = "black"
+    room.add_event(new Credit(1,0,"daniel"))
+    room.add_event(new Door(-2,0,155,1,0))
+    this.rooms[156] = room
   }
 }
