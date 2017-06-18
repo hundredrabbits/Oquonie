@@ -1,6 +1,6 @@
 function Speaker(x,y,id = "disc")
 {
-  Event.call(this,"speaker");
+  Event.call(this,id);
 
   this.animator.add(new Animation("on",[1,2,3,2]));
   this.animator.add(new Animation("off",[1]));
@@ -19,7 +19,7 @@ function Speaker(x,y,id = "disc")
   this.on_collision = function()
   {
     this.toggle();
-    oquonie.dialog.show("speaker",["outside",this.is_playing ? "correct" : "incorrect","sound"]);
+    oquonie.dialog.show(this.id,["outside",this.is_playing ? "correct" : "incorrect","sound"]);
   }
 
   this.toggle = function()
