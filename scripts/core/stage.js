@@ -39,7 +39,7 @@ function Stage()
     oquonie.player.move_at(x,y);
     
     var numPillars = oquonie.spellbook.pillars.length;
-    var theme = numPillars >= 5 ? "black" : this.room.theme;
+    var theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
 
     oquonie.stage.set_theme(theme);
 
@@ -127,6 +127,8 @@ function Stage()
   this.set_theme = function(theme)
   {
     oquonie.element.setAttribute("class",theme);
+
+    $(this.room.element).css("z-index", (theme == "pillars" ? 1000 : 3000))
   }
 
   //
@@ -157,7 +159,7 @@ function Stage()
 
   this.load_room = function(room_id,x,y)
   {
-    console.log("Entering Room: "+room_id);
+    console.log("Loading Room: "+room_id);
 
     if(!oquonie.world.rooms[room_id]){
       console.warn("Missing room:("+room_id+")");
@@ -174,7 +176,7 @@ function Stage()
     oquonie.player.move_at(x,y);
 
     var numPillars = oquonie.spellbook.pillars.length;
-    var theme = numPillars >= 5 ? "black" : this.room.theme;
+    var theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
     oquonie.stage.set_theme(theme);
 
     this.look();
