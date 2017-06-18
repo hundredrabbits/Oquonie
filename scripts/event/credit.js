@@ -6,7 +6,7 @@ function Credit(x,y,id)
   this.y = y;
   this.id = id;
 
-  this.animator.add(new Animation("idle",[1]));
+  this.animator.add(new Animation("idle",[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,2]));
 
   this.is_collider = function()
   {
