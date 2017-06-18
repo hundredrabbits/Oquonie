@@ -14,6 +14,7 @@ function Oquonie()
   this.spellbook = new Spellbook();
   this.walkthrough = new Walkthrough();
   this.animation_timer = null;
+  this.started = false;
 
   this.install = function()
   {
@@ -34,10 +35,15 @@ function Oquonie()
     this.walkthrough.start();
     this.spellbook.hide();
     animate();
+    this.started = true;
   }
 
   this.mousedown = function(e)
   {
+    if (!this.started)
+    {
+      return;
+    }
     var ratio_x = e.screenX/window.innerWidth;
     var ratio_y = e.screenY/window.innerHeight;
 
