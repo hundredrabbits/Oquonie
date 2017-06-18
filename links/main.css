@@ -22,7 +22,7 @@ oquonie.hiversaires { background-color:lightgrey; }
 
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); }
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
-stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat;}
+stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000}
 stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
 stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
 .black stage parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
