@@ -34,11 +34,13 @@ function Dialog()
     this.content = message;
 
     oquonie.music.play_dialog(host_name);
+    oquonie.music.play_interface("interface.dialog.open");
   }
 
   this.hide = function()
   {
     $(this.element).animate({ opacity:0 }, oquonie.speed, function(){});
     this.content = null;
+    oquonie.music.play_interface("interface.dialog.close");
   }
 }

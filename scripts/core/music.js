@@ -2,6 +2,7 @@ function Music()
 {
   this.track_ambient = new Audio();
   this.track_effect = new Audio();
+  this.track_interface = new Audio();
   this.track_dialog = new Audio();
 
   this.audio_catalog = {};
@@ -13,6 +14,13 @@ function Music()
     console.log("Effect: ",name);
     this.track_effect = this.fetch_audio(name, "effect", "media/audio/effect/"+name+".ogg");
     this.track_effect.play()
+  }
+
+  this.play_interface = function(name)
+  {
+    console.log("Interface: ",name);
+    this.track_interface = this.fetch_audio(name, "interface", "media/audio/interface/"+name+".ogg");
+    this.track_interface.play()
   }
 
   this.play_dialog = function(name)
