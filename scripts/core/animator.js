@@ -31,6 +31,15 @@ function Animator(host)
     $(this.host.element).css('background-size',(width*frames)+"px "+(width*1.5)+"px");
     $(this.host.element).css('background-position',(anim.run() * -width + width)+"px center");
   }
+
+  this.set_state = function(new_state, update_immediately = true)
+  {
+    this.state = new_state;
+    if (update_immediately)
+    {
+      this.animate();
+    }
+  }
 }
 
 function unique(list)

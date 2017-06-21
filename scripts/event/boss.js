@@ -27,7 +27,7 @@ function Boss(x,y)
     setTimeout(function(){ oquonie.stage.set_theme("black"); }, 2300);
     setTimeout(function(){ keyboard.unlock("boss"); }, 7000);
 
-    this.animator.state = "ghost";
+    this.animator.set_state("ghost");
 
     $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35+"%", opacity:0 }, oquonie.speed * 2);
     this.is_gone = true;

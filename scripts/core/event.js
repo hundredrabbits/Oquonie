@@ -16,14 +16,13 @@ function Event(subtype)
     var _y = p[0];
     var _x = p[1];
     var _z = p[2];
-    var el = this.element;
-
+    
     var target = this.animator;
-    target.state = "walk.front";
+    target.set_state("walk.front");
     
     keyboard.lock("moving");
-    $(el).animate({ left: _x, top: _y }, oquonie.speed, function(){
-      target.state = "idle.front";
+    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
+      target.set_state("idle.front");
       keyboard.unlock("moving");
     });
 
@@ -41,14 +40,14 @@ function Event(subtype)
     var _z = p[2];
 
     var target = this.animator;
-    target.state = "walk.front";
+    target.set_state("walk.front");
 
-    if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "walk.front"; }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "walk.back"; }
+    if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("walk.front"); }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("walk.back"); }
     
     $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
-      if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
-      if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
+      if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
+      if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("idle.back"); }
     });
     
     oquonie.stage.animate(this.x,this.y);
@@ -72,8 +71,8 @@ function Event(subtype)
     var target = this.animator;
     x = -x;
     y = -y;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ target.state = "idle.front"; }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ target.state = "idle.back"; }
+    if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("idle.back"); }
     target.animate();
   }
 
@@ -96,8 +95,8 @@ function Event(subtype)
   this.bump_up = function(x,y)
   {
     var animator = this.animator;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.state = "idle.front"; }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.state = "idle.back"; }
+    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
     animator.animate();
 
     $(this.element).finish();
@@ -108,8 +107,8 @@ function Event(subtype)
   this.bump_against = function(x,y)
   {
     var animator = this.animator;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.state = "idle.front"; }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.state = "idle.back"; }
+    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
+    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
     animator.animate();
 
     var xSlant = x - y;

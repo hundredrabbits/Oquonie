@@ -34,15 +34,15 @@ function Shark(x,y,is_transformer = true)
 
   this.on_sight = function()
   {
-    this.animator.state = "away";
+    var animation_state = "away";
 
     if(this.is_transformer == true && oquonie.player.id != "necomedre"){
-      this.animator.state = "active";
+      animation_state = "active";
     }
     else if(oquonie.spellbook.spells.length > 0){
-      this.animator.state = "active";
+      animation_state = "active";
     }
-    this.animator.animate();
+    this.animator.set_state(animation_state);
   }
 
   this.update(20);
