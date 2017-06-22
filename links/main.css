@@ -27,8 +27,8 @@ stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.
 stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
 .black stage parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
 .black stage parallax.under { background-image:url(../media/graphics/effects/parallax.4.png); }
-.pillars stage parallax.over { background-image:url(../media/graphics/effects/parallax.6.png); }
-.pillars stage parallax.under { background-image:url(../media/graphics/effects/parallax.7.png); }
+.pillars stage parallax.over { background-image:url(../media/graphics/effects/parallax.7.png); }
+.pillars stage parallax.under { background-image:url(../media/graphics/effects/parallax.6.png); }
 tile,notification { background-size:100%; background-position:0px center; background-repeat:repeat-x; position:absolute; width:20%; height:40%; margin-left:-10%;}
 tile.floor {  margin-top:-20%; } 
 tile.wall {margin-top:-30%; }
