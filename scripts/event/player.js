@@ -2,7 +2,7 @@ function Player()
 {
   Event.call(this,"player");
 
-  this.id = "necomedre";
+  this.id = "";
   this.orientation = "front";
 
   this.animator.add(new Animation("idle.front",[1,1,1,1,1,2,3,2]));
@@ -15,6 +15,15 @@ function Player()
   this.shadow = new Shadow();
 
   this.element.appendChild(this.shadow.element);
+
+  this.set_id = function(new_id)
+  {
+    if (this.id != new_id)
+    {
+      this.id = new_id;
+      this.animator.preload();
+    }
+  }
 
   this.try_move = function(x,y)
   {
@@ -147,7 +156,7 @@ function Player()
   {
     console.log("Transform(char): "+spell);
 
-    oquonie.player.id = spell;
+    oquonie.player.set_id(spell);
     oquonie.stage.look();
 
     $(oquonie.player.element).animate({ opacity:1 }, oquonie.speed*2).delay(1000).animate({ top: oquonie.player.position_at(oquonie.player.x,oquonie.player.y)[0] }, oquonie.speed*8, function(){

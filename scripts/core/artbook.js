@@ -28,6 +28,7 @@ function Artbook()
       
       this.stylesheet.insertRule("." + className + "{background-image:url("+asset_url+")}", 0);
       this.asset_catalog[asset_url] = className;
+      console.log("RULES:", this.stylesheet.cssRules.length, asset_url);
     }
 
     var id = this.get_element_id(selector);

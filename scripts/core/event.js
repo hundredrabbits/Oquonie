@@ -97,8 +97,7 @@ function Event(subtype)
     var animator = this.animator;
     if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
     if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
-    animator.animate();
-
+    
     $(this.element).finish();
     var origin_pos_y = parseInt(this.element.style.top);
     $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
@@ -109,8 +108,7 @@ function Event(subtype)
     var animator = this.animator;
     if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
     if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
-    animator.animate();
-
+    
     var xSlant = x - y;
     var ySlant = (-x - y) * 0.5;
 
