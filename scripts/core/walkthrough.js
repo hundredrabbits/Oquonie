@@ -143,7 +143,7 @@ function Walkthrough()
   this.manual = function()
   {
     oquonie.speed = 300;
-    oquonie.player.id = "nastazie";
+    oquonie.player.set_id("nastazie");
     oquonie.player.location = 142;
     
     oquonie.spellbook.add_ramen("necomedre")
@@ -164,7 +164,7 @@ function Walkthrough()
 
   this.walk_all = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
     this.room = 29;
     this.inputs = chapter_all;
     oquonie.stage.enter_room(this.room);
@@ -173,7 +173,7 @@ function Walkthrough()
 
   this.walk_chapter0 = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
     this.room = 29;
     this.inputs = chapter_0;
     oquonie.stage.enter_room(this.room);
@@ -182,7 +182,7 @@ function Walkthrough()
 
   this.walk_chapter1 = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
     this.room = 1;
     this.inputs = chapter_1;
     oquonie.stage.enter_room(this.room);
@@ -191,7 +191,7 @@ function Walkthrough()
 
   this.walk_chapter2 = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
     this.room = 9;
     this.inputs = chapter_2;
     oquonie.stage.enter_room(this.room);
@@ -200,7 +200,7 @@ function Walkthrough()
 
   this.walk_chapter3 = function()
   {
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
     this.room = 3;
     this.inputs = chapter_3;
     oquonie.stage.enter_room(this.room);
@@ -209,7 +209,7 @@ function Walkthrough()
 
   this.walk_chapter4 = function()
   {
-    oquonie.player.id = "nastazie";
+    oquonie.player.set_id("nastazie");
     this.room = 4;
     this.inputs = chapter_4;
     oquonie.stage.enter_room(this.room);
@@ -218,7 +218,7 @@ function Walkthrough()
 
   this.walk_secrets = function()
   {
-    oquonie.player.id = "nastazie";
+    oquonie.player.set_id("nastazie");
     this.room = 1;
     this.inputs = secrets;
 

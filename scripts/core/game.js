@@ -36,7 +36,7 @@ function Game()
   {
     console.info("Loading..");
 
-    oquonie.player.id = localStorage.character;
+    oquonie.player.set_id(localStorage.character);
     oquonie.player.location = parseInt(localStorage.room);
 
     if(localStorage.ramen_necomedre == "true"){ oquonie.spellbook.add_ramen("necomedre")}
@@ -83,7 +83,7 @@ function Game()
     oquonie.spellbook.reset();
 
     oquonie.player.location = 29;
-    oquonie.player.id = "necomedre";
+    oquonie.player.set_id("necomedre");
 
     return "Created a new game.";
   }
