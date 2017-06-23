@@ -44,6 +44,9 @@ function Oquonie()
     {
       return;
     }
+
+    if(keyboard.locks.length > 0){ console.warn("Keyboard has locks: ",keyboard.locks); return; }
+
     var ratio_x = e.screenX/window.innerWidth;
     var ratio_y = e.screenY/window.innerHeight;
 
