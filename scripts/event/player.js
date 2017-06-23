@@ -59,14 +59,16 @@ function Player()
       if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
     }
 
-    if(colliders.length > 0 && elicits_collision_bump){
-      this.bump_against(x,y);
-      for (var i = 0; i < colliders.length; i++) {
-        console.log("Blocked by: "+colliders[i].constructor.name);
-        if (colliders[i].elicits_collision_bump() == true){
-          colliders[i].receive_bump();
+    if(colliders.length > 0){
+      if (elicits_collision_bump) {
+        this.bump_against(x,y);
+        for (var i = 0; i < colliders.length; i++) {
+          console.log("Blocked by: "+colliders[i].constructor.name);
+          if (colliders[i].elicits_collision_bump() == true){
+            colliders[i].receive_bump();
+          }
+          colliders[i].on_collision();
         }
-        colliders[i].on_collision();
       }
     }
     else if(destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1){

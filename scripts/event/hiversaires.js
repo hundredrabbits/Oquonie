@@ -13,11 +13,6 @@ function HiversairesGate(x,y,room,to_x,to_y)
     return true;
   }
 
-  this.elicits_collision_bump = function()
-  {
-    return false;
-  }
-
   this.on_collision = function()
   {    
     if(oquonie.player.id != "nastazie"){
