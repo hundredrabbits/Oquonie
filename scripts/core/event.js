@@ -20,6 +20,8 @@ function Event(subtype)
     var _x = p[1];
     var _z = p[2];
 
+    $(this.element).finish();
+
     var target = this.animator;
     target.set_state("walk.front");
 
