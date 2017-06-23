@@ -10,25 +10,6 @@ function Event(subtype)
 
   $(this.element).addClass(subtype);
 
-  this.move_to = function(x,y)
-  {
-    var p = this.position_at(this.x,this.y,200);
-    var _y = p[0];
-    var _x = p[1];
-    var _z = p[2];
-    
-    var target = this.animator;
-    target.set_state("walk.front");
-    
-    keyboard.lock("moving");
-    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
-      target.set_state("idle.front");
-      keyboard.unlock("moving");
-    });
-
-    oquonie.stage.animate(this.x,this.y);
-  }
-
   this.move_by = function(x,y)
   {
     this.x += x;
@@ -45,6 +26,9 @@ function Event(subtype)
     if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("walk.front"); }
     if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("walk.back"); }
     
+    keyboard.lock("moving");
+    setTimeout(function(){ keyboard.unlock("moving"); }, oquonie.speed * 0.5);
+
     $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
       if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
       if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("idle.back"); }
