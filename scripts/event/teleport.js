@@ -1,4 +1,4 @@
-function Teleport(x,y,room,to_x = 0,to_y = 0)
+function Teleport(x,y,room,to_x = 0,to_y = 0, reset = false)
 {
   Event.call(this,"teleport");
 
@@ -7,6 +7,7 @@ function Teleport(x,y,room,to_x = 0,to_y = 0)
   this.room = room;
   this.to_x = to_x;
   this.to_y = to_y;
+  this.reset = reset;
 
   this.is_collider = function()
   {
@@ -20,5 +21,10 @@ function Teleport(x,y,room,to_x = 0,to_y = 0)
     var to_x = this.to_x;
     var to_y = this.to_y;
     setTimeout(function(){ oquonie.stage.warp_to(r,to_x,to_y); }, 500);
+
+    if (this.reset)
+    {
+      oquonie.spellbook.reset();
+    }
   }
 }

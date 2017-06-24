@@ -1,4 +1,4 @@
-function Boss(x,y)
+function Boss(x,y, reset)
 {
   Event.call(this,"boss");
 
@@ -7,6 +7,7 @@ function Boss(x,y)
 
   this.x = x;
   this.y = y;
+  this.reset = reset;
 
   this.is_gone = false;
 
@@ -17,6 +18,11 @@ function Boss(x,y)
 
   this.on_collision = function()
   {
+    if (this.reset) {
+      oquonie.dialog.show("boss",["teleport","incorrect","document"])
+      return;
+    }
+
     if(this.is_gone === true){ return; }
      
     keyboard.lock("boss");

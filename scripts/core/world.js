@@ -89,13 +89,14 @@ function World()
     room = new Room(6);
     room.floors = [ 9,4,9, 10,5,6, 9,10,9 ]
     room.walls  = [ 3,13,3, 26,13,26 ]
-    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.steps  = [ 0,0,0, 0,98,0 ]
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,5));
     room.add_event(new Shark(1,-1,false));
     room.add_event(new Door(0,2,5,0,-1));
     room.add_event(new Door(2,0,7,-1,0));
+    room.add_event(new Door(0,-2,15,0,-1));
     this.rooms[6] = room;
     
     room = new Room(7);
@@ -148,7 +149,19 @@ function World()
     room.add_event(new Door(0,-2,4,0,1));
     this.rooms[14] = room;
 
-    // 15-20
+    room = new Room(15);
+    room.floors = [ 98,7,98, 98,98,97, 97,98,98 ];
+    room.walls  = [ 15,97,1, 98,0,0 ];
+    room.steps  = [ 0,0,0, 0,98,0 ]
+    room.audio  = "office";
+    room.theme  = "tear";
+    room.add_event(new Teleport(0,1,29, 0,0, true))
+    room.add_event(new Blocker(1,1,15),true);
+    room.add_event(new Door(0,-2,6,0,-1));
+    room.add_event(new Boss(1,-1, true));
+    this.rooms[15] = room;
+
+    // 16-20
   }
   
   this.createNecomedre = function()
@@ -538,7 +551,50 @@ function World()
     room.add_event(new Door(-2,0,48,1,0))
     this.rooms[51] = room
 
-    // 52-54
+    /*
+    room = new Room(52);
+    room.floors = [ 0,5,0, 0,10,5, 0,0,0 ]
+    room.walls  = [ 0,13,0, 0,13,0 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "nephtaline"
+    room.theme  = "white"
+    room.add_event(new Door(0,2,47,0,-1))
+    room.add_event(new Door(2,0,49,-1,0))
+    this.rooms[52] = room
+
+    room = new Room(53);
+    room.floors = [ 0,0,0, 5,10,5, 0,0,0 ]
+    room.walls  = [ 0,0,0, 3,13,3 ]
+    room.steps  = [ 0,0,0, 0,7,0 ]
+    room.audio  = "nephtaline"
+    room.theme  = "white"
+    room.add_event(new Door(2,0,41,-1,0))
+    room.add_event(new Door(0,-2,48,0,1))
+    this.rooms[53] = room
+
+    room = new Room(54);
+    room.floors = [ 3,4,3, 5,10,3, 3,3,4 ]
+    room.walls  = [ 3,8,3, 3,3,3 ]
+    room.steps  = [ 0,7,0, 0,7,0 ]
+    room.audio  = "nephtaline"
+    room.theme  = "white"
+    //    room.add_event(new Wizard(1,1, spell: null))
+    //    > gateNestorine
+    //    10 > 8|gateNestorine
+    room.add_event(new Door(-2,0,47,1,0))
+    room.add_event(new Door(0,-2,51,0,1))
+    this.rooms[54] = room
+    */
+
+    room = new Room(97);
+    room.floors = [ 35,35,35, 35,7,35, 35,35,35 ]
+    room.walls  = [ 25,15,25, 0,0,0 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "nestorine"
+    room.theme  = "white"
+    room.add_event(new Door(0,2,94,0,-1))
+    this.rooms[97] = room
+
     
     room = new Room(55);
     room.floors = [ 0,5,0, 5,10,0, 0,0,0 ]
@@ -1014,11 +1070,77 @@ function World()
     room.walls  = [ 39,33,39, 39,33,39 ]
     room.steps  = [ 0,0,0, 0,11,0 ]
     room.audio  = "nepturne"
-    room.theme  = "pillars"
-    room.add_event(new Red(0,1,9),true)
+    room.theme  = "finale"
+    room.add_event(new Red(0,1,106/*9*/),true)
     this.rooms[104] = room
 
-    // 105-119
+    /*
+    room = new Room(105);
+    room.floors = [ 3,3,3, 3,7,3, 3,3,3 ]
+    room.walls  = [ 0,0,0, 0,0,0 ]
+    room.steps  = [ 0,6,0, 0,0,0 ]
+    room.audio  = "warp"
+    room.theme  = "white"
+    room.add_event(new Teleport(0,0,0,0))
+    room.add_event(new Door(-2,0,101,1,0))
+    this.rooms[105] = room
+    */
+
+    room = new Room(106);
+    room.floors = [ 40,40,40, 40,8,40, 40,40,40 ]
+    room.walls  = [ 29,29,29, 29,29,29 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "nepturne"
+    room.theme  = "finale"
+    room.add_event(new Door(-1,2,107,-1,-1))
+    room.add_event(new Door(0,2,107,0,-1))
+    room.add_event(new Door(1,2,107,1,-1))
+    room.add_event(new Door(2,1,107,-1,1))
+    room.add_event(new Door(2,0,107,-1,0))
+    room.add_event(new Door(2,-1,107,-1,-1))
+    this.rooms[106] = room
+
+    room = new Room(107);
+    room.floors = [ 40,40,40, 40,40,40, 40,40,40 ]
+    room.walls  = [ 29,29,29, 29,29,29 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "nepturne"
+    room.theme  = "finale"
+    room.add_event(new Credit(0,0, "rekka", ["guide","outside","friend"],"credit.rekka"))
+    room.add_event(new Door(-1,2,108,-1,-1))
+    room.add_event(new Door(0,2,108,0,-1))
+    room.add_event(new Door(1,2,108,1,-1))
+    room.add_event(new Door(2,1,108,-1,1))
+    room.add_event(new Door(2,0,108,-1,0))
+    room.add_event(new Door(2,-1,108,-1,-1))
+    this.rooms[107] = room
+
+    room = new Room(108);
+    room.floors = [ 40,40,40, 40,40,40, 40,40,40 ]
+    room.walls  = [ 29,29,29, 29,29,29 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
+    room.audio  = "nepturne"
+    room.theme  = "finale"
+    room.add_event(new Credit(0,0, "devine", ["guide","inside","friend"],"credit.devine"))
+    room.add_event(new Door(-1,2,11,-1,-1))
+    room.add_event(new Door(0,2,11,0,-1))
+    room.add_event(new Door(1,2,11,1,-1))
+    room.add_event(new Door(2,1,11,-1,1))
+    room.add_event(new Door(2,0,11,-1,0))
+    room.add_event(new Door(2,-1,11,-1,-1))
+    this.rooms[108] = room
+
+    room = new Room(109);
+    room.floors = [ 4,5,6, 5,2,6, 6,5,4 ]
+    room.walls  = [ 13,13,13, 13,13,13 ]
+    room.steps  = [ 0,0,0, 0,6,0 ]
+    room.audio  = "nepturne"
+    room.theme  = "finale"
+    room.add_event(new Wizard(0,0, "catfishbird"),true)
+    room.add_event(new Door(0,-2,100,0,1))
+    this.rooms[109] = room
+
+    // 110-119
   }
   
   this.createNastazie = function()
@@ -1277,8 +1399,8 @@ function World()
     room.audio  = "glitch"
     room.theme  = "black"
     room.add_event(new Door(-2,0,142,1,0))
-    room.add_event(new Credit(1,0,"rekka"),true)
-    room.add_event(new Credit(0,1,"devine"))
+    room.add_event(new Credit(1,0,"rekka"), ["confusion1","confusion3","confusion2"],true)
+    room.add_event(new Credit(0,1,"devine", ["confusion1","confusion3","confusion2"]))
     this.rooms[151] = room
     
     // Cat Teleport
@@ -1339,7 +1461,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "neomine"
     room.theme  = "black"
-    room.add_event(new Credit(1,0,"daniel"))
+    room.add_event(new Credit(1,0,"daniel", ["confusion1","confusion3","confusion2"]))
     room.add_event(new Door(-2,0,155,1,0))
     this.rooms[156] = room
   }
