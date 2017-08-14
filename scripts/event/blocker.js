@@ -19,6 +19,16 @@ function Blocker(x,y,id)
   this.on_collision = function()
   {
     if(this.id != 0) { oquonie.music.play_effect("bump.1"); }
+    if(oquonie.player.location == 43){ this.rez_easteregg(); }
+  }
+
+  this.rez_easteregg = function()
+  {
+    if(oquonie.player.id != "nastazie"){ return; }
+
+    oquonie.world.rooms[43].remove_event(10);
+    oquonie.world.rooms[43].add_event(new Cameo("rez",1,1,["help","unlocked","door"]),true);
+    oquonie.world.rooms[43].refresh();
   }
 
   this.update(20);
