@@ -35,6 +35,7 @@ function Stage()
     this.element.appendChild(this.room.element);
     this.room.show();
     this.room.is_known = true;
+    oquonie.player.location = room_id;
 
     oquonie.player.move_at(x,y);
     

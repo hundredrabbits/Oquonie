@@ -16,7 +16,7 @@ function Cameo(id,x,y,dialog)
 
   this.on_collision = function()
   {    
-    oquonie.dialog.show("cameo/"+this.id,this.dialog);
+    oquonie.dialog.show("cameo/"+this.id,this.dialog,null,"daniel");
   }
 
   this.update(20);
