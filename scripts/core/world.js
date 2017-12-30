@@ -89,14 +89,13 @@ function World()
     room = new Room(6);
     room.floors = [ 9,4,9, 10,5,6, 9,10,9 ]
     room.walls  = [ 3,13,3, 26,13,26 ]
-    room.steps  = [ 0,0,0, 0,98,0 ]
+    room.steps  = [ 0,0,0, 0,0,0 ]
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,5));
     room.add_event(new Shark(1,-1,false));
     room.add_event(new Door(0,2,5,0,-1));
     room.add_event(new Door(2,0,7,-1,0));
-    room.add_event(new Door(0,-2,15,0,-1));
     this.rooms[6] = room;
     
     room = new Room(7);

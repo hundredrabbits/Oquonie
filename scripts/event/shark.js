@@ -16,7 +16,11 @@ function Shark(x,y,is_transformer = true)
 
   this.on_collision = function()
   {
-    if(oquonie.player.id == "catfishbird"){
+    // Failsafe
+    if(oquonie.player.id == "document"){
+      oquonie.player.transform("necomedre");  
+    }
+    else if(oquonie.player.id == "catfishbird"){
       keyboard.lock("teleport");
       var w = this.warp;
       setTimeout(function(){ oquonie.stage.warp_to(9,0,0); }, 500);      

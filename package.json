@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "main": "main.js",
   "start": "",
+  "scripts": {
+    "start": "electron ."
+  },
   "dependencies": {
     "electron-packager": "^8.4.0"
   },

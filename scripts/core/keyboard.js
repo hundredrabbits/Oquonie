@@ -95,6 +95,7 @@ function Keyboard()
     if(this.history.indexOf("susannakaysen") > -1){
       this.history = "";
       oquonie.game.new();
+      oquonie.stage.enter_room(25,0,0);
     }
 
     if(this.history.indexOf("necomedre") > -1){
