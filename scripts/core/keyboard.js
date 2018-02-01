@@ -10,13 +10,19 @@ function Keyboard()
   this.listen_onkeyup = function(event)
   {
     if(this.locks.length > 0){ console.warn("Keyboard has locks: ",this.locks); return; }
-    
+  
     switch (event.keyCode)
     {
+      case 87: this.key_arrow_up(); break;    // w
+      case 83: this.key_arrow_down(); break;  // S
+      case 65: this.key_arrow_left(); break;  // A
+      case 68: this.key_arrow_right(); break; // D
+
       case 38: this.key_arrow_up(); break;
       case 40: this.key_arrow_down(); break;
       case 37: this.key_arrow_left(); break;
       case 39: this.key_arrow_right(); break;
+
       case 27: this.key_escape(); break;
       case 32: this.key_space(); break;
     }
