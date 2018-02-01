@@ -47,8 +47,11 @@ function Oquonie()
 
     if(keyboard.locks.length > 0){ console.warn("Keyboard has locks: ",keyboard.locks); return; }
 
-    var ratio_x = e.screenX/window.innerWidth;
-    var ratio_y = e.screenY/window.innerHeight;
+    var ratio_x = e.clientX/window.innerWidth;
+    var ratio_y = e.clientY/window.innerHeight;
+
+    console.log(e.clientX,window.innerWidth)
+    console.log(e.clientY,window.innerHeight)
 
     if(ratio_y < 0.5 && ratio_x < 0.5){
       oquonie.player.try_move(0,1);
