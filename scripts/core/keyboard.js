@@ -120,5 +120,13 @@ function Keyboard()
       this.history = "";
       oquonie.stage.enter_room(100,0,0);
     }
+    if(this.history.indexOf("speaker") > -1){
+      this.history = "";
+      oquonie.music.pause_ambience();
+    }
+    if(this.history.indexOf("walkthrough") > -1){
+      this.history = "";
+      oquonie.walkthrough.walk_all();
+    }
   }
 }

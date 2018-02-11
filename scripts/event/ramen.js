@@ -44,7 +44,7 @@ function Ramen(x,y,character = null)
   {
     if(oquonie.spellbook.has_ramen(oquonie.player.id) != true){
       console.warn("Ramen for "+oquonie.player.id+" is unfound.");
-      oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
+      // oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
       return;
     }
     oquonie.spellbook.toggle_spell(this.spell_name());
