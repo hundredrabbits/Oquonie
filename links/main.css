@@ -22,6 +22,9 @@ oquonie.hiversaires { background-color:lightgrey; }
 oquonie.tear { background-color:lightgrey; }
 
 stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); will-change:top,left,transform; }
+@media screen and (orientation:portrait) {
+  stage { width:100vw; height:100vw; position:absolute; left:calc(50% - (100vw/2)); top:calc(50% - (100vw/2)); will-change:top,left,transform; }
+}
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
 stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000; will-change: transform; }
 stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
