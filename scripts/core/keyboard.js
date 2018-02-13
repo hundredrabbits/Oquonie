@@ -92,7 +92,7 @@ function Keyboard()
   {
     if(this.history.length > 30){ this.history = this.history.substr(this.history.length - 30,30); }
 
-    this.history += event.key;
+    this.history += key;
 
     if(this.history.indexOf("noplacelikehome") > -1){
       this.history = "";
