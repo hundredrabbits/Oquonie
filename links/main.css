@@ -5,7 +5,7 @@ oquonie, stage, room, tile, dialog, spellbook, spell, parallax { display:block; 
 oquonie { width:100vw; height:100vh; transition: background-color 1s; position: relative; overflow: hidden;}
 
 dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed; opacity: 0; will-change: opacity; }
-dialog portrait, oquonie dialog bubble { display:block; width:400px; height:400px; left:50%; top:50%; margin-top:-200px; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }
+dialog portrait, oquonie dialog bubble { display:block; width:400px; height:400px; left:50%; bottom:0%; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }
 dialog bubble { background-image:url(../media/graphics/interface/bubble.png); }
 dialog bubble letter { display:block; position:absolute; bottom:5%; width:75px; height:75px; background-size:contain; background-position: center center; bottom: 35px}
 dialog bubble letter:nth-child(1) { left: 28px}
@@ -13,7 +13,7 @@ dialog bubble letter:nth-child(2) { left:90px;}
 dialog bubble letter:nth-child(3) { left: 150px}
 
 spellbook { width:100%; height:100vh; position:fixed; top:5vh; text-align: center; left:0px; z-index:9500;}
-spellbook spell { width:8vw; height:8vw; max-width:8vh; max-height: 8vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
+spellbook spell { width:12vw; height:12vw; max-width:12vh; max-height: 12vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
 
 oquonie.white { background-color:white; }
 oquonie.black { background-color:black; }
@@ -21,9 +21,9 @@ oquonie.pillars { background-color:lightgrey; }
 oquonie.hiversaires { background-color:lightgrey; }
 oquonie.tear { background-color:lightgrey; }
 
-stage { width:100vh; height:100vh; position:absolute; left:calc(50% - (100vh/2)); top:calc(50% - (100vh/2)); will-change:top,left,transform; }
+stage { width:130vh; height:130vh; position:absolute; left:calc(50vw - (130vh/2)); top:calc(65vh - (130vh/2)); will-change:top,left,transform; }
 @media screen and (orientation:portrait) {
-  stage { width:100vw; height:100vw; position:absolute; left:calc(50% - (100vw/2)); top:calc(50% - (100vw/2)); will-change:top,left,transform; }
+  stage { width:130vw; height:130vw; position:absolute; left:calc(50vw - (130vw/2)); top:calc(55vh - (130vw/2)); will-change:top,left,transform; }
 }
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
 stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000; will-change: transform; }
