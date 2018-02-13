@@ -111,20 +111,26 @@ function Stage()
 
   this.animate = function(x,y)
   {
-    var xSlant = x - y;
-    var ySlant = -x - y;
-    $(this.element).transition({ marginLeft: (xSlant * 0.5)+"%",marginTop: (ySlant * 0.5)+"%" }, oquonie.speed);
-    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
-    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
+    this.center(x,y);
   }
 
   this.center = function(x,y)
   {
     var xSlant = x - y;
     var ySlant = -x - y;
-    $(this.element).css("margin-left",(xSlant * 0.5)+"%").css("margin-top",(ySlant * 0.5)+"%");
-    $(this.parallax_over).transition({ marginLeft: (xSlant * 1.0)+"%",marginTop: (ySlant * 1.0)+"%" }, oquonie.speed);
-    $(this.parallax_under).transition({ marginLeft: (xSlant * 0.125)+"%",marginTop: (ySlant * 0.125)+"%" }, oquonie.speed);
+    this.move_parallax(this.element,        0.5,   xSlant, ySlant);
+    this.move_parallax(this.parallax_over,  1.0,   xSlant, ySlant);
+    this.move_parallax(this.parallax_under, 0.125, xSlant, ySlant);
+  }
+
+  this.move_parallax = function(e, mult, x, y)
+  {
+    $(e).css({
+      "transition" : "transform " + (oquonie.speed/1000)+"s",
+      "-webkit-transition" : "-webkit-transform " + (oquonie.speed/1000)+"s",
+      "transform" : "translate("+(mult*x)+"%,"+(mult*y)+"%)",
+      "-webkit-transform" : "translate("+(mult*x)+"%,"+(mult*y)+"%)"
+    });
   }
 
   this.set_theme = function(theme)
