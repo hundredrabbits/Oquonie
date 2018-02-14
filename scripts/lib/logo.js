@@ -1,22 +1,49 @@
 // Drool.
 
-function Logo(is_looping)
+function Logo(is_looping = false)
 {
+  this.el = document.createElement("splash");
+  this.el.style.position = "fixed";
+  this.el.style.top = "0px";
+  this.el.style.left = "0px";
+  this.el.style.width = "100vw";
+  this.el.style.height = "100vh";
+  this.el.style.backgroundColor = "#000";
+  this.el.style.zIndex = "9999";
+  this.el.style.display = "block";
+
+  this.canvas = document.createElement("canvas");
+  this.canvas.style.display = "block";
+
+  this.el.appendChild(this.canvas)
+
   var is_looping = is_looping;
 
-  this.canvas = null;
   this.size = null;
   this.is_playing = true;
 
-  this.install = function(target_canvas,size)
+  this.install = function(size)
   {
-    this.canvas = target_canvas;
+    document.body.appendChild(this.el);
     this.size = size;
+
+    this.canvas.width = 600;
+    this.canvas.height = 600;
+    this.canvas.style.width = "300px"
+    this.canvas.style.height = "300px"
+    this.canvas.style.display = "block"
+    this.canvas.style.margin = "calc(50vh - 150px) auto"
 
     this.create_tiles();
     animate();
 
     var timer = setInterval(this.draw, 17);
+  }
+
+  this.remove = function()
+  {
+    $(this.canvas).animate({ opacity: 0 }, 1000); 
+    $(this.el).delay(1000).animate({ opacity: 0 }, 1000,() => { $(this.el).remove(); }); 
   }
 
   this.context = function()
@@ -175,6 +202,8 @@ function Logo(is_looping)
 
     this.animate_until = function(target_pos)
     {
+      if(!target_pos){ return; }
+      
       this.target_pos = target_pos;
 
       var target_el_pos = {x:target_pos.x * this.size,y:target_pos.y * this.size};

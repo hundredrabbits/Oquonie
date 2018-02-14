@@ -8,6 +8,7 @@ function Music()
   this.audio_catalog = {};
 
   this.is_muted = false;
+  this.track_ambient.volume = 0;
 
   this.play_effect = function(name)
   {
@@ -34,6 +35,7 @@ function Music()
   {
     if(this.track_ambient.name == name){ return; }
     if(DEBUG){ return; }
+    if(!this.track_ambient.name){ this.introduce(name); return; }
 
     // Fadeout
     $(this.track_ambient).animate({volume: 0}, 1000, function(){
@@ -44,6 +46,15 @@ function Music()
       if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
       $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
     });
+  }
+
+  this.introduce = function(name)
+  {
+    oquonie.music.track_ambient.pause();
+    oquonie.music.track_ambient = oquonie.music.fetch_audio(name, "ambient", "media/audio/ambient/"+name+".mp3", true);
+    this.track_ambient.volume = 0;
+    if(oquonie.music.is_muted == false){ oquonie.music.track_ambient.play(); }
+    $(oquonie.music.track_ambient).animate({volume: 1}, 1000);
   }
 
   this.fetch_audio = function(name, role, src, loop = false)

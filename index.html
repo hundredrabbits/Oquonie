@@ -6,7 +6,7 @@
     <!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
     <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.transit.min.js"></script>
-    <script type="text/javascript" src="scripts/logo.js"></script>
+    <script type="text/javascript" src="scripts/lib/logo.js"></script>
 
     <script type="text/javascript" src="scripts/core/oquonie.js"></script>
     <script type="text/javascript" src="scripts/core/dialog.js"></script>
@@ -65,32 +65,18 @@
     <title>Oquonie</title>
   </head>
   <body>
-    <div id='splash' style='position:fixed; top:0px; left:0px; width:100%; height:100%; background:black; z-index: 9999; display:block'>
-      <canvas id='logo' style='margin:calc(50vh - 150px) auto; display:block; width:300px; height:300px' width='600' height='600'></canvas>
-    </div>
     <script>
-
       var DEBUG = false;
-
       var oquonie = new Oquonie();
-      
       oquonie.install();
-      
       var keyboard = new Keyboard();
       document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
       document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
       document.addEventListener('mousedown', function(e){ oquonie.mousedown(e); }, false);
-
       var logo = new Logo(false);
-
-      setTimeout(function(){ logo.install(document.getElementById("logo"),120); }, 1500);
-      setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 7000);
-
-      $("#splash canvas").delay(DEBUG ? 100 : 7000).animate({ opacity: 0 }, 1000); 
-      $("#splash").delay(DEBUG ? 100 : 8000).animate({ opacity: 0 }, 1000,function(){
-        $(logo.element).remove();
-      }); 
-
+      logo.install(120);
+      setTimeout(function(){ logo.remove(); }, 5500);
+      setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 3000);
     </script>
   </body>
 </html>

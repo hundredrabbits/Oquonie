@@ -1,6 +1,7 @@
 function Oquonie()
 {
   this.element = document.createElement("oquonie");
+  this.element.style.opacity = 0;
 
   this.artbook = new Artbook();
   this.game = new Game();
@@ -19,6 +20,7 @@ function Oquonie()
   this.install = function()
   {
     document.body.appendChild(this.element);
+    this.element.style.opacity = 1;
 
     this.world.install();
     this.dialog.install();
