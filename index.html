@@ -86,7 +86,8 @@
       setTimeout(function(){ logo.install(document.getElementById("logo"),120); }, 1500);
       setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 7000);
 
-      $("#splash").delay(DEBUG ? 100 : 7500).animate({ opacity: 0 }, 1000,function(){
+      $("#splash canvas").delay(DEBUG ? 100 : 7000).animate({ opacity: 0 }, 1000); 
+      $("#splash").delay(DEBUG ? 100 : 8000).animate({ opacity: 0 }, 1000,function(){
         $(logo.element).remove();
       }); 
 

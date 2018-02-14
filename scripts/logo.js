@@ -15,9 +15,8 @@ function Logo(is_looping)
 
     this.create_tiles();
     animate();
-    this.draw(true);
 
-    var timer = setInterval(this.draw, 30);
+    var timer = setInterval(this.draw, 17);
   }
 
   this.context = function()
@@ -38,6 +37,8 @@ function Logo(is_looping)
     this.is_playing = false;
   }
 
+  this.frame = 0;
+
   this.draw = function(override = false)
   {
     if(override == false && !tiles_still_moving()){ logo.stop(); return; }
@@ -46,11 +47,18 @@ function Logo(is_looping)
     var offset = 200;
     for (i = 0; i < tiles.length; i++) { 
       var tile = tiles[i];
+      var max_size = (tile.size/2)-2;
+      var progress_toward_end = 1-clamp(tile.distance_from_end()/(max_size*4),0,1);
+      var progress_fade = clamp(logo.frame/10000,0,1)
+      var size = clamp(progress_toward_end * progress_fade,0,1) * max_size;
+      
+      logo.frame += 1;
       logo.context().beginPath();
-      logo.context().arc(tile.el_pos.x + offset,tile.el_pos.y + offset, (tile.size/2)-2, 0, 2 * Math.PI, false);
+      logo.context().arc(tile.el_pos.x + offset,tile.el_pos.y + offset, size, 0, 2 * Math.PI, false);
       logo.context().fillStyle = "white";
       logo.context().fill();
       logo.context().closePath();
+      logo.frame += 1
     }
   }
 
@@ -111,10 +119,17 @@ function Logo(is_looping)
     scare_tiles(6);
     return_tiles_to(5);
 
-    setTimeout(function(){ animate_return_to(4,99); }, 1000);
-    setTimeout(function(){ animate_return_to(3,99); }, 1600);
-    setTimeout(function(){ animate_return_to(2,99); }, 2200);
-    setTimeout(function(){ animate_return_to(1,99); }, 2800);
+    var speed = 300;
+
+    setTimeout(function(){ animate_return_to(9,99); }, 0);
+    setTimeout(function(){ animate_return_to(8,99); }, 1 * speed);
+    setTimeout(function(){ animate_return_to(7,99); }, 2 * speed);
+    setTimeout(function(){ animate_return_to(6,99); }, 3 * speed);
+    setTimeout(function(){ animate_return_to(5,99); }, 4 * speed);
+    setTimeout(function(){ animate_return_to(4,99); }, 5 * speed);
+    setTimeout(function(){ animate_return_to(3,99); }, 6 * speed);
+    setTimeout(function(){ animate_return_to(2,99); }, 7 * speed);
+    setTimeout(function(){ animate_return_to(1,99); }, 8 * speed);
 
     if(is_looping == true){
       setTimeout(function(){ scare_tiles(6); }, 6000);
@@ -136,6 +151,7 @@ function Logo(is_looping)
     this.pos = pos;
     this.size = size;
     this.el_pos = {x:this.pos.x * this.size,y:this.pos.y * this.size};
+    this.origin = {x:this.pos.x * this.size,y:this.pos.y * this.size};
     this.history = [];
     this.history.push({x:this.pos.x,y:this.pos.y});
 
@@ -191,6 +207,13 @@ function Logo(is_looping)
     this.neighboor_top = function(){ return tile_at({x:pos.x,y:pos.y+1},tiles); }
     this.neighboor_down = function(){ return tile_at({x:pos.x,y:pos.y-1},tiles); }
 
+    this.distance_from_end = function()
+    {
+      var a = this.origin.x - this.el_pos.x;
+      var b = this.origin.y - this.el_pos.y;
+      return Math.sqrt( a*a + b*b );
+    }
+
     this.flee = function()
     {
       var random = Math.random();
@@ -211,4 +234,5 @@ function Logo(is_looping)
       }      
     }
   }
+  function clamp(v, min, max) { return v < min ? min : v > max ? max : v; }
 }
