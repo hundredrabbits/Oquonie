@@ -1320,7 +1320,7 @@ function World()
     room.audio  = "nastazie"
     room.theme  = "black"
     room.add_event(new Wizard(1,1,"nastazie"),true)
-    room.add_event(new Gate("nephtaline", 0,-2,141,0,1))
+    room.add_event(new Door(0,-2,141,0,1))
     this.rooms[144] = room
     
     room = new Room(145);
@@ -1330,7 +1330,7 @@ function World()
     room.audio  = "nastazie"
     room.theme  = "black"
     room.add_event(new Wizard(1,1,"nephtaline"),true)
-    room.add_event(new Gate("neomine",0,-2,142,0,1))
+    room.add_event(new Door(0,-2,142,0,1))
     this.rooms[145] = room
     
     room = new Room(146);
@@ -1340,7 +1340,7 @@ function World()
     room.audio  = "nastazie"
     room.theme  = "black"
     room.add_event(new Wizard(1,1,"neomine"),true)
-    room.add_event(new Gate("nemedique", 0,-2,143,0,1))
+    room.add_event(new Door(0,-2,143,0,1))
     this.rooms[146] = room
     
     room = new Room(147);
