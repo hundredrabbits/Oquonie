@@ -1,3 +1,5 @@
+"use strict";
+
 function Noface(x,y)
 {
   Event.call(this,"noface");

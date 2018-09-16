@@ -1,3 +1,5 @@
+"use strict";
+
 function Door(x,y,room,to_x,to_y)
 {
   Event.call(this,"door");
@@ -14,7 +16,7 @@ function Door(x,y,room,to_x,to_y)
 
   this.on_collision = function()
   {
-    for (var i = 0; i < this.destinations.length; i++)
+    for (let i = 0; i < this.destinations.length; i++)
     {
       if (this.destinations[i].fn())
       {

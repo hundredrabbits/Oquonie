@@ -1,3 +1,5 @@
+"use strict";
+
 function Red(x,y,return_room)
 {
   Event.call(this,"red");
@@ -17,7 +19,7 @@ function Red(x,y,return_room)
   {
     oquonie.dialog.show(this.name,["foe","pillar","friend"]);
     keyboard.lock("red_end");
-    var return_room = this.return_room;
+    let return_room = this.return_room;
     setTimeout(function(){ 
       keyboard.lock("teleport");
       oquonie.stage.warp_to(return_room,0,0);

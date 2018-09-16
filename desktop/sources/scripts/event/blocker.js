@@ -1,3 +1,5 @@
+"use strict";
+
 function Blocker(x,y,id)
 {
   Event.call(this,"blocker");

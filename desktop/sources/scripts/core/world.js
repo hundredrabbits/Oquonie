@@ -1,3 +1,5 @@
+"use strict";
+
 function World()
 {
   this.rooms = [];
@@ -16,7 +18,7 @@ function World()
   
   this.createLobby = function()
   {
-    var room;
+    let room;
     
     room = new Room(1);
     room.floors = [ 0,25,2, 2,8,4, 2,2,2 ];
@@ -37,7 +39,7 @@ function World()
     room.audio  = "lobby";
     room.theme  = "white";
     room.add_event(new Blocker(1,1,24));
-    var ramen = new Ramen(1,0); room.add_event(ramen.mat); room.add_event(ramen); 
+    let ramen = new Ramen(1,0); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Plan(-1,2,"lobby"));
     room.add_event(new Door(-2,0,1,1,0));
     room.add_event(new Door(0,2,3,0,-1));
@@ -165,7 +167,7 @@ function World()
   
   this.createNecomedre = function()
   {
-    var room;
+    let room;
   
     room = new Room(21);
     room.floors = [ 21,21,21, 21,21,21, 21,21,21 ];
@@ -345,7 +347,7 @@ function World()
     room.steps  = [ 0,6,0, 0,0,0 ];
     room.audio  = "necomedre";
     room.theme  = "white";
-    var ramen = new Ramen(1,1,"necomedre"); room.add_event(ramen.mat); room.add_event(ramen); 
+    let ramen = new Ramen(1,1,"necomedre"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Speaker(1,-1));
     room.add_event(new Door(0,2,32,0,-1));
     room.add_event(new Door(2,0,36,-1,0));
@@ -412,7 +414,7 @@ function World()
   
   this.createNephtaline = function()
   {
-    var room;
+    let room;
   
     room = new Room(40);
     room.floors = [ 18,6,4, 5,0,30, 25,0,32 ]
@@ -621,7 +623,7 @@ function World()
     room.steps  = [ 0,0,0, 0,7,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    var ramen = new Ramen(1,1,"nephtaline"); room.add_event(ramen.mat); room.add_event(ramen); 
+    let ramen = new Ramen(1,1,"nephtaline"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Door(2,0,58,-1,0))
     room.add_event(new Door(0,-2,56,0,1))
     this.rooms[57] = room
@@ -662,7 +664,7 @@ function World()
   
   this.createNeomine = function()
   {
-    var room;
+    let room;
   
     room = new Room(60);
     room.floors = [ 1,4,18, 1,4,1, 1,23,1 ]
@@ -674,7 +676,7 @@ function World()
     room.add_event(new Door(2,1,62,-1,1))
     room.add_event(new Plan(2,0,"neomine"))
     room.add_event(new Gate("neomine",0,-2,3,0,1)) // 60 - 3
-    var door = new Door(2,-1,61,-1,-1);
+    let door = new Door(2,-1,61,-1,-1);
     door.add_destination(function() { 
         return oquonie.player.id == "nastazie";
     }, 154,-1,-1);
@@ -713,7 +715,7 @@ function World()
     room.audio  = "neomine"
     room.theme  = "black"
     room.add_event(new Blocker(0,0,9))
-    var ramen = new Ramen(-1,1,"neomine"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
+    let ramen = new Ramen(-1,1,"neomine"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
     room.add_event(new Door(2,1,66,-1,1))
     room.add_event(new Door(2,0,64,-1,0))
     room.add_event(new Door(2,-1,62,-1,-1))
@@ -823,7 +825,7 @@ function World()
   
   this.createNestorine = function()
   {
-    var room;
+    let room;
   
     room = new Room(80);
     room.floors = [ 35,35,7, 34,8,35, 35,34,35 ]
@@ -918,7 +920,7 @@ function World()
     room.steps  = [ 0,1,0, 0,0,0 ]
     room.audio  = "nestorine"
     room.theme  = "white"
-    var ramen = new Ramen(1,1,"nestorine"); room.add_event(ramen.mat); room.add_event(ramen); 
+    let ramen = new Ramen(1,1,"nestorine"); room.add_event(ramen.mat); room.add_event(ramen); 
     room.add_event(new Door(-2,0,91,1,0))
     this.rooms[88] = room
     
@@ -1016,7 +1018,7 @@ function World()
   
   this.createNemedique = function()
   {
-    var room;
+    let room;
     
     room = new Room(100);
     room.floors = [ 10,31,10, 10,4,6, 10,5,10 ]
@@ -1036,7 +1038,7 @@ function World()
     room.steps  = [ 0,7,0, 0,0,0 ]
     room.audio  = "nemedique"
     room.theme  = "white"
-    var ramen = new Ramen(1,1,"nemedique"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
+    let ramen = new Ramen(1,1,"nemedique"); room.add_event(ramen.mat,true); room.add_event(ramen,true); 
     room.add_event(new Door(0,2,102,0,-1))
     room.add_event(new Gate("necomedre",2,0,103,-1,0)) // 101 - 103
     room.add_event(new Door(-2,0,100,1,0))
@@ -1146,7 +1148,7 @@ function World()
   {
     // 122-129
     
-    var room;
+    let room;
   
     room = new Room(130);
     room.floors = [ 36,39,36, 39,8,39, 36,39,36 ]
@@ -1356,6 +1358,8 @@ function World()
   
   this.createSecrets = function()
   {
+    let room;
+    
     // Cat Wizard 1
     room = new Room(148);
     room.floors = [ 0,0,0, 1,1,1, 0,0,0 ]

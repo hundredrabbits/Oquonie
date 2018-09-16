@@ -1,3 +1,5 @@
+"use strict";
+
 function PillarBase(x,y,character)
 {
   Event.call(this,"pillarbase");

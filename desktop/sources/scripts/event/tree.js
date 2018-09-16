@@ -1,3 +1,5 @@
+"use strict";
+
 function Tree(x,y)
 {
   Event.call(this,"tree");

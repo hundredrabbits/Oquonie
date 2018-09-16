@@ -1,3 +1,5 @@
+"use strict";
+
 function Overlay()
 {
   this.element = this.element = document.createElement("overlay");

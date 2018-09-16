@@ -1,3 +1,5 @@
+"use strict";
+
 function Shadow(x,y)
 {
   Tile.call(this,"shadow");

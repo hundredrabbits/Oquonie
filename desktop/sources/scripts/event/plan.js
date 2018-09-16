@@ -1,3 +1,5 @@
+"use strict";
+
 function Plan(x,y,id)
 {
   Event.call(this,"door");

@@ -1,3 +1,5 @@
+"use strict";
+
 function Owl(x,y)
 {
   Event.call(this,"owl");

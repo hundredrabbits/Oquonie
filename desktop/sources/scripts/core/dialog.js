@@ -1,3 +1,5 @@
+"use strict";
+
 function Dialog()
 {
   this.element = this.element = document.createElement("dialog");

@@ -1,3 +1,5 @@
+"use strict";
+
 function Petunia(x,y)
 {
   Event.call(this,"petunia");

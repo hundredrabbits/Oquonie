@@ -1,3 +1,5 @@
+"use strict";
+
 function Wizard(x,y,id)
 {
   Event.call(this,"wizard");
@@ -24,7 +26,7 @@ function Wizard(x,y,id)
 
   this.on_collision = function()
   {
-    var path = "media/graphics/wizard/"+this.id+".";
+    let path = "media/graphics/wizard/"+this.id+".";
     if(oquonie.player.id == this.id){ 
       oquonie.dialog.show(this.id,["friend","unlocked",this.id],path); 
       console.warn("Already is "+this.id); 

@@ -1,3 +1,5 @@
+"use strict";
+
 function Interface()
 {
   this.element = this.element = document.createElement("interface");

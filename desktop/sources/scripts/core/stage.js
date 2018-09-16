@@ -1,3 +1,5 @@
+"use strict";
+
 function Stage()
 {
   this.element = document.createElement("stage");
@@ -39,8 +41,8 @@ function Stage()
 
     oquonie.player.move_at(x,y);
     
-    var numPillars = oquonie.spellbook.pillars.length;
-    var theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
+    let numPillars = oquonie.spellbook.pillars.length;
+    let theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
 
     oquonie.stage.set_theme(theme);
 
@@ -49,7 +51,7 @@ function Stage()
     $(this.element).css("opacity",0);
     $(this.element).animate({ opacity: "1" }, oquonie.speed/2);
 
-    var audio = this.room.audio;
+    let audio = this.room.audio;
     if (audio == "lobby")
     {
       if (numPillars >= 5)
@@ -66,16 +68,16 @@ function Stage()
 
   this.look = function()
   {
-    for (var i = 0; i < this.room.events.length; i++){
+    for (let i = 0; i < this.room.events.length; i++){
       this.room.events[i].on_sight();
     }
   }
 
   this.tiles_at = function(x,y)
   {
-    var tiles = [];
-    for (var i = 0; i < this.room.events.length; i++){
-      var tile = this.room.events[i];
+    let tiles = [];
+    for (let i = 0; i < this.room.events.length; i++){
+      let tile = this.room.events[i];
       if(tile.x == x && tile.y == y){ tiles.push(tile); }
     }
     return tiles;
@@ -116,8 +118,8 @@ function Stage()
 
   this.center = function(x,y)
   {
-    var xSlant = x - y;
-    var ySlant = -x - y;
+    let xSlant = x - y;
+    let ySlant = -x - y;
     this.move_parallax(this.element,        0.5,   xSlant, ySlant);
     this.move_parallax(this.parallax_over,  1.0,   xSlant, ySlant);
     this.move_parallax(this.parallax_under, 0.125, xSlant, ySlant);
@@ -184,8 +186,8 @@ function Stage()
 
     oquonie.player.move_at(x,y);
 
-    var numPillars = oquonie.spellbook.pillars.length;
-    var theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
+    let numPillars = oquonie.spellbook.pillars.length;
+    let theme = (numPillars >= 5 && this.room.theme != "pillars") ? "black" : this.room.theme;
     oquonie.stage.set_theme(theme);
 
     this.look();
@@ -200,8 +202,8 @@ function Stage()
   {
     if(time < 1){ return; }
 
-    var r1 = Math.random() * 6;
-    var r2 = Math.random() * 6;
+    let r1 = Math.random() * 6;
+    let r2 = Math.random() * 6;
 
     $(this.element).css("margin-top",r2).css("margin-left",r1);
     setTimeout(function(){ oquonie.stage.shake(radius,time-1); }, 50);

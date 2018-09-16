@@ -1,3 +1,5 @@
+"use strict";
+
 function Shark(x,y,is_transformer = true)
 {
   Event.call(this,"shark");
@@ -22,7 +24,7 @@ function Shark(x,y,is_transformer = true)
     }
     else if(oquonie.player.id == "catfishbird"){
       keyboard.lock("teleport");
-      var w = this.warp;
+      let w = this.warp;
       setTimeout(function(){ oquonie.stage.warp_to(9,0,0); }, 500);      
     }
     else if(this.is_transformer == true && oquonie.player.id != "necomedre"){
@@ -38,7 +40,7 @@ function Shark(x,y,is_transformer = true)
 
   this.on_sight = function()
   {
-    var animation_state = "away";
+    let animation_state = "away";
 
     if(this.is_transformer == true && oquonie.player.id != "necomedre"){
       animation_state = "active";

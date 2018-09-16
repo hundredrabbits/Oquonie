@@ -1,3 +1,5 @@
+"use strict";
+
 function Cameo(id,x,y,dialog)
 {
   Event.call(this,"cameo");

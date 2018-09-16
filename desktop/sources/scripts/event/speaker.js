@@ -1,3 +1,5 @@
+"use strict";
+
 function Speaker(x,y,id = "disc")
 {
   Event.call(this,id);

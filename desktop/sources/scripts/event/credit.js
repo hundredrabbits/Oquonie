@@ -1,3 +1,5 @@
+"use strict";
+
 function Credit(x,y,id)
 {
   Event.call(this,"credit");

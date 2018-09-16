@@ -65,24 +65,24 @@
   </head>
   <body>
     <script>
-      var DEBUG = true;
+      let DEBUG = true;
 
-      var oquonie = new Oquonie();
+      let oquonie = new Oquonie();
       oquonie.install();
 
-      var keyboard = new Keyboard();
+      let keyboard = new Keyboard();
 
       document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
       document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
       document.onmousedown = function(e){ oquonie.mousedown(e); };
 
       if(!DEBUG){
-        var logo = new Logo(false);
+        let logo = new Logo(false);
         logo.install(120);
         setTimeout(function(){ logo.remove(); }, 5500);  
       }
       
-      setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 3000);
+      setTimeout(function(){ oquonie.start(); oquonie.walkthrough.walk_all(); }, DEBUG ? 100 : 3000);
     </script>
   </body>
 </html>

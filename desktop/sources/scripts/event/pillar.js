@@ -1,3 +1,5 @@
+"use strict";
+
 function Pillar(x,y,character,warp = 1)
 {
   Event.call(this,"pillar");
@@ -28,7 +30,7 @@ function Pillar(x,y,character,warp = 1)
       oquonie.dialog.show("owl",["pillar","friend",this.character]);
     } else {
       keyboard.lock("teleport");
-      var w = this.warp;
+      let w = this.warp;
       setTimeout(function(){ oquonie.stage.warp_to(w,0,0); }, 500);
     }
   }

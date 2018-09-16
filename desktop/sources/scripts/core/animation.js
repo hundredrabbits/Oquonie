@@ -1,3 +1,5 @@
+"use strict";
+
 function Animation(name,frames)
 {
   this.name = name;

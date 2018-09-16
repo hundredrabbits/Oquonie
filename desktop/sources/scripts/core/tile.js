@@ -1,3 +1,5 @@
+"use strict";
+
 function Tile(type = "unknown")
 {
   this.element = document.createElement("tile");
@@ -7,17 +9,17 @@ function Tile(type = "unknown")
 
   this.update = function(depth_offset = 0)
   {
-    var p = this.position_at(this.x,this.y);
-    var top = p[0];
-    var left = p[1];
+    let p = this.position_at(this.x,this.y);
+    let top = p[0];
+    let left = p[1];
 
     $(this.element).css("top",p[0]).css("left",p[1]).css("z-index",this.depth(depth_offset));
   }
 
   this.position_at = function(x,y)
   {
-    var top = "0px";
-    var left = "0px";
+    let top = "0px";
+    let left = "0px";
 
     if(x == 1 && y == 1){ top = "40%"; left = "50%"; }
     if(x == 1 && y == 0){ top = "45%"; left = "60%"; }
@@ -52,7 +54,7 @@ function Tile(type = "unknown")
 
   this.depth = function(offset = 0)
   {
-    var zIndex = offset;
+    let zIndex = offset;
 
     if(this.x == 1 && this.y == 1){   zIndex += 1; }
     if(this.x == 1 && this.y == 0){   zIndex += 2; }
@@ -82,8 +84,8 @@ function Tile(type = "unknown")
 
   this.animate = function()
   {
-    var origin = parseInt(this.position_at(this.x,this.y)[0]);
-    var offset = (origin*(1+(Math.random()/20)));
+    let origin = parseInt(this.position_at(this.x,this.y)[0]);
+    let offset = (origin*(1+(Math.random()/20)));
     $(this.element).css("opacity", 0).css("top", offset+"%").animate({ opacity: 1, top: origin+"%" }, oquonie.speed);
   }
 }

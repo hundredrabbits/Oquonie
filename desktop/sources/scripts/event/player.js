@@ -1,3 +1,5 @@
+"use strict";
+
 function Player()
 {
   Event.call(this,"player");
@@ -36,13 +38,13 @@ function Player()
       return;
     }
 
-    var destination = [this.x + x, this.y + y];
-    var target_tiles = oquonie.stage.tiles_at(this.x + x, this.y + y);
-    var target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
+    let destination = [this.x + x, this.y + y];
+    let target_tiles = oquonie.stage.tiles_at(this.x + x, this.y + y);
+    let target_floor = oquonie.stage.floor_at(this.x + x, this.y + y);
 
-    var elicits_collision_bump = target_tiles.length == 0;
-    var colliders = [];
-    for (var i = 0; i < target_tiles.length; i++)
+    let elicits_collision_bump = target_tiles.length == 0;
+    let colliders = [];
+    for (let i = 0; i < target_tiles.length; i++)
     {
       elicits_collision_bump = elicits_collision_bump || target_tiles[i].elicits_collision_bump();
       if (target_tiles[i].is_collider())
@@ -59,12 +61,12 @@ function Player()
       if(x == 1 && y == 0){ $(this.element).attr("orientation","back").attr("direction","right"); }
     }
 
-    var mid_walk = this.animator.state.indexOf("walk") != -1;
+    let mid_walk = this.animator.state.indexOf("walk") != -1;
 
     if(colliders.length > 0){
       if (elicits_collision_bump) {
         this.bump_against(x,y);
-        for (var i = 0; i < colliders.length; i++) {
+        for (let i = 0; i < colliders.length; i++) {
           console.log("Blocked by: "+colliders[i].constructor.name);
           if (colliders[i].elicits_collision_bump() == true){
             colliders[i].receive_bump();
@@ -93,7 +95,7 @@ function Player()
       oquonie.music.play_effect("walk");
     }
 
-    for (var i = 0; i < target_tiles.length; i++)
+    for (let i = 0; i < target_tiles.length; i++)
     {
       target_tiles[i].on_step();
     }

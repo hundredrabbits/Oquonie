@@ -1,3 +1,5 @@
+"use strict";
+
 function Event(subtype)
 {
   Tile.call(this,"event");
@@ -15,14 +17,14 @@ function Event(subtype)
     this.x += x;
     this.y += y;
 
-    var p = this.position_at(this.x,this.y,200);
-    var _y = p[0];
-    var _x = p[1];
-    var _z = p[2];
+    let p = this.position_at(this.x,this.y,200);
+    let _y = p[0];
+    let _x = p[1];
+    let _z = p[2];
 
     $(this.element).finish();
 
-    var target = this.animator;
+    let target = this.animator;
     target.set_state("walk.front");
 
     if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("walk.front"); }
@@ -44,9 +46,9 @@ function Event(subtype)
     this.x = x;
     this.y = y;
 
-    var p = this.position_at(this.x,this.y,200);
-    var _y = p[0];
-    var _x = p[1];
+    let p = this.position_at(this.x,this.y,200);
+    let _y = p[0];
+    let _x = p[1];
 
     $(this.element).css('top', _y).css('left', _x);
   }
@@ -54,7 +56,7 @@ function Event(subtype)
   this.stand_by_door = function(x,y)
   {
     $(this.element).finish();
-    var target = this.animator;
+    let target = this.animator;
     x = -x;
     y = -y;
     if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
@@ -80,27 +82,27 @@ function Event(subtype)
 
   this.bump_up = function(x,y)
   {
-    var animator = this.animator;
+    let animator = this.animator;
     if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
     if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
     
     $(this.element).finish();
-    var origin_pos_y = parseInt(this.element.style.top);
+    let origin_pos_y = parseInt(this.element.style.top);
     $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
   }
 
   this.bump_against = function(x,y)
   {
-    var animator = this.animator;
+    let animator = this.animator;
     if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
     if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
     
-    var xSlant = x - y;
-    var ySlant = (-x - y) * 0.5;
+    let xSlant = x - y;
+    let ySlant = (-x - y) * 0.5;
 
     $(this.element).finish();
-    var origin_pos_x = parseInt(this.element.style.left);
-    var origin_pos_y = parseInt(this.element.style.top);
+    let origin_pos_x = parseInt(this.element.style.left);
+    let origin_pos_y = parseInt(this.element.style.top);
 
     $(this.element).css("top", origin_pos_y + 0.5 * ySlant + "%").css("left", origin_pos_x + 0.5 * xSlant + "%");
     $(this.element).animate({ top: origin_pos_y+"%", left: origin_pos_x+"%" }, oquonie.speed/2);
@@ -109,7 +111,7 @@ function Event(subtype)
   this.receive_bump = function()
   {
     $(this.element).finish();
-    var origin_pos_y = parseInt(this.element.style.top);
+    let origin_pos_y = parseInt(this.element.style.top);
     $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
   }
 

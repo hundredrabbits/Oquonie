@@ -1,8 +1,10 @@
+"use strict";
+
 function Floor(pos,id,type)
 {
   Tile.call(this,"floor");
 
-  var t = [[-1,1],[0,1],[1,1],[-1,0],[0,0],[1,0],[-1,-1],[0,-1],[1,-1]];
+  let t = [[-1,1],[0,1],[1,1],[-1,0],[0,0],[1,0],[-1,-1],[0,-1],[1,-1]];
   this.x = t[pos][0];
   this.y = t[pos][1];
   this.id = id;

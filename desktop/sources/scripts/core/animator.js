@@ -1,3 +1,5 @@
+"use strict";
+
 function Animator(host)
 {
   this.host = host;
@@ -17,12 +19,12 @@ function Animator(host)
   {
     if(!this.animations[this.state]){ return; }
 
-    var anim = this.animations[this.state];
-    var width = $(this.host.element).width();
-    var height = $(this.host.element).height();
-    var frames = unique(this.animations[this.state].frames).length;
+    let anim = this.animations[this.state];
+    let width = $(this.host.element).width();
+    let height = $(this.host.element).height();
+    let frames = unique(this.animations[this.state].frames).length;
 
-    var art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id+"." : "")+this.state}.png`;
+    let art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id+"." : "")+this.state}.png`;
 
     if(this.last_art_id != art_id){
       this.last_art_id = art_id;
@@ -41,10 +43,10 @@ function Animator(host)
       this.preload_container.removeChild(this.preload_container.lastChild);
     }
 
-    for (var animName in this.animations)
+    for (let animName in this.animations)
     {
-      var art_id = "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+animName+".png";
-      var image = new Image();
+      let art_id = "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+animName+".png";
+      let image = new Image();
       image.src = art_id;
       this.preload_container.appendChild(image);
     }
@@ -62,7 +64,7 @@ function Animator(host)
 
 function unique(list)
 {
-  var result = [];
+  let result = [];
   $.each(list, function(i, e) {
       if ($.inArray(e, result) == -1) result.push(e);
   });

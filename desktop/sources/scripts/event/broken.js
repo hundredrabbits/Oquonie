@@ -1,3 +1,5 @@
+"use strict";
+
 function Broken(x,y,id,room,to_x,to_y)
 {
   Event.call(this,"broken");
@@ -23,7 +25,7 @@ function Broken(x,y,id,room,to_x,to_y)
   this.on_sight = function()
   {
     if(oquonie.spellbook.pillars.length < 5){ return; }
-    var wall_id = oquonie.stage.wall_at(this.x,this.y);
+    let wall_id = oquonie.stage.wall_at(this.x,this.y);
     oquonie.artbook.set_art("#wall_"+wall_id,"media/graphics/broken/"+this.id+".png");
   }
 }

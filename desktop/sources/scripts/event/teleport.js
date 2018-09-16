@@ -1,3 +1,5 @@
+"use strict";
+
 function Teleport(x,y,room,to_x = 0,to_y = 0, reset = false)
 {
   Event.call(this,"teleport");
@@ -17,9 +19,9 @@ function Teleport(x,y,room,to_x = 0,to_y = 0, reset = false)
   this.on_step = function()
   {
     keyboard.lock("teleport");
-    var r = this.room;
-    var to_x = this.to_x;
-    var to_y = this.to_y;
+    let r = this.room;
+    let to_x = this.to_x;
+    let to_y = this.to_y;
     setTimeout(function(){ oquonie.stage.warp_to(r,to_x,to_y); }, 500);
 
     if (this.reset)

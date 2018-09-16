@@ -1,3 +1,5 @@
+"use strict";
+
 function Ghost(x,y)
 {
   Event.call(this,"ghost");

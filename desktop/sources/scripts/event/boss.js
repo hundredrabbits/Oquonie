@@ -1,3 +1,5 @@
+"use strict";
+
 function Boss(x,y, reset)
 {
   Event.call(this,"boss");

@@ -1,3 +1,5 @@
+"use strict";
+
 function PillarGate(x,y,room,to_x,to_y)
 {
   Event.call(this,"gate");
@@ -24,8 +26,8 @@ function PillarGate(x,y,room,to_x,to_y)
 
   this.on_sight = function()
   {
-    var wall_id = oquonie.stage.wall_at(this.x,this.y);
-    var src = !this.missing_pillar() ? "media/graphics/wall/gate.red.open.png" : "media/graphics/wall/gate.red.close.png";
+    let wall_id = oquonie.stage.wall_at(this.x,this.y);
+    let src = !this.missing_pillar() ? "media/graphics/wall/gate.red.open.png" : "media/graphics/wall/gate.red.close.png";
     oquonie.artbook.set_art("#wall_"+wall_id, src);
   }
 

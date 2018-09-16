@@ -1,3 +1,5 @@
+"use strict";
+
 function Artbook()
 {
   this.asset_catalog = {};
@@ -5,14 +7,14 @@ function Artbook()
   this.element_registry_unique_id = 0;
   this.class_unique_id = 0;
 
-  var stylesheet_element = document.createElement("style");
+  let stylesheet_element = document.createElement("style");
   stylesheet_element.type = "text/css";
   stylesheet_element.title = "artbook";
   stylesheet_element.appendChild(document.createTextNode(""));
   
   document.head.appendChild(stylesheet_element);
 
-  for (var i = 0; i < document.styleSheets.length; i++)
+  for (let i = 0; i < document.styleSheets.length; i++)
   {
     if (document.styleSheets[i].title == stylesheet_element.title)
     {
@@ -25,14 +27,14 @@ function Artbook()
   {
     if (!(asset_url in this.asset_catalog))
     {
-      var className = "artbook_" + this.class_unique_id;
+      let className = "artbook_" + this.class_unique_id;
       this.class_unique_id++;
       
       this.stylesheet.insertRule("." + className + "{background-image:url("+asset_url+")}", 0);
       this.asset_catalog[asset_url] = className;
     }
 
-    var id = this.get_element_id(selector);
+    let id = this.get_element_id(selector);
 
     if (id == null)
     {
@@ -53,10 +55,10 @@ function Artbook()
 
   this.remove_art = function(selector)
   {
-    var id = this.get_element_id(selector);
+    let id = this.get_element_id(selector);
     if (id in this.element_registry)
     {
-      var asset_url = this.element_registry[id];
+      let asset_url = this.element_registry[id];
       if (asset_url in this.asset_catalog) {
         $(selector).removeClass(this.asset_catalog[asset_url]);
       }
@@ -66,7 +68,7 @@ function Artbook()
 
   this.get_element_id = function(selector)
   {
-    var element = $(selector)[0];
+    let element = $(selector)[0];
 
     if (element == null)
     {

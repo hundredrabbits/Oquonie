@@ -1,3 +1,5 @@
+"use strict";
+
 function Ramen(x,y,character = null)
 {
   Event.call(this,"ramen");
@@ -158,7 +160,7 @@ function RamenMat(x,y)
 
   this.on_sight = function()
   {
-    var width = $(this.element).width();
+    let width = $(this.element).width();
     this.element.style.backgroundSize = `${width}px ${width*1.5}px`;
     this.element.style.backgroundPosition = "0px center";
     this.element.style.display = "none"

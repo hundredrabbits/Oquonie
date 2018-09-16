@@ -1,3 +1,5 @@
+"use strict";
+
 function Keyboard()
 {
   this.locks = [];
@@ -78,7 +80,7 @@ function Keyboard()
 
   this.unlock = function(lock_name)
   {
-    var target = this.locks.indexOf(lock_name);
+    let target = this.locks.indexOf(lock_name);
     if(target > -1) {
       this.locks.splice(target, 1);
       console.info("Unlocked: ",lock_name);
