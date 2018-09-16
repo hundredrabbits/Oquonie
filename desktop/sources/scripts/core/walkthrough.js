@@ -166,6 +166,7 @@ function Walkthrough()
 
   this.walk_all = function()
   {
+    oquonie.speed = 50;
     oquonie.player.set_id("necomedre");
     this.room = 29;
     this.inputs = chapter_all;

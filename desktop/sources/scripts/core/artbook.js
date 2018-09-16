@@ -14,7 +14,7 @@ function Artbook()
   
   document.head.appendChild(stylesheet_element);
 
-  for (let i = 0; i < document.styleSheets.length; i++)
+  for(let i = 0; i < document.styleSheets.length; i++)
   {
     if (document.styleSheets[i].title == stylesheet_element.title)
     {

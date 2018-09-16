@@ -74,7 +74,7 @@ function Oquonie()
 
     oquonie.player.animator.animate();
 
-    for (let i = 0; i < oquonie.stage.room.events.length; i++){
+    for(let i = 0; i < oquonie.stage.room.events.length; i++){
       oquonie.stage.room.events[i].animator.animate();
     }
   }
@@ -83,5 +83,4 @@ function Oquonie()
   {
     clearTimeout(this.animation_timer);
   }
-
 }

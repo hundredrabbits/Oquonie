@@ -37,7 +37,7 @@ function Room(id)
     this.element.innerHTML = "";
 
     // Floor
-    for (let i = 0; i < this.floors.length; i++){
+    for(let i = 0; i < this.floors.length; i++){
       let tile = new Floor(i,this.floors[i],"floor");
       tile.element.setAttribute("id","floor_"+i);
       this.element.appendChild(tile.element);
@@ -45,7 +45,7 @@ function Room(id)
     }
 
     // Wall
-    for (let i = 0; i < this.walls.length; i++){
+    for(let i = 0; i < this.walls.length; i++){
       let tile = new Wall(i,this.walls[i],"wall");
       tile.element.setAttribute("id","wall_"+i);
       this.element.appendChild(tile.element);
@@ -53,14 +53,14 @@ function Room(id)
     }
 
     // Steps
-    for (let i = 0; i < this.steps.length; i++){
+    for(let i = 0; i < this.steps.length; i++){
       let tile = new Step(i,this.steps[i],"step");
       this.element.appendChild(tile.element);
       // tile.animate();
     }
 
     // Events
-    for (let i = 0; i < this.events.length; i++){
+    for(let i = 0; i < this.events.length; i++){
       let event = this.events[i];
       event.animator.animate();
       this.element.appendChild(event.element);
@@ -73,7 +73,7 @@ function Room(id)
   this.show = function()
   {
     // Floor
-    for (let i = 0; i < this.floors.length; i++){
+    for(let i = 0; i < this.floors.length; i++){
       let tile = new Floor(i,this.floors[i],"floor");
       tile.element.setAttribute("id","floor_"+i);
       this.element.appendChild(tile.element);
@@ -81,7 +81,7 @@ function Room(id)
     }
 
     // Wall
-    for (let i = 0; i < this.walls.length; i++){
+    for(let i = 0; i < this.walls.length; i++){
       let tile = new Wall(i,this.walls[i],"wall");
       tile.element.setAttribute("id","wall_"+i);
       this.element.appendChild(tile.element);
@@ -89,7 +89,7 @@ function Room(id)
     }
 
     // Steps
-    for (let i = 0; i < this.steps.length; i++){
+    for(let i = 0; i < this.steps.length; i++){
       let tile = new Step(i,this.steps[i],"step");
       this.element.appendChild(tile.element);
       tile.animate();

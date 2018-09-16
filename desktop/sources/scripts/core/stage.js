@@ -68,7 +68,7 @@ function Stage()
 
   this.look = function()
   {
-    for (let i = 0; i < this.room.events.length; i++){
+    for(let i = 0; i < this.room.events.length; i++){
       this.room.events[i].on_sight();
     }
   }
@@ -76,7 +76,7 @@ function Stage()
   this.tiles_at = function(x,y)
   {
     let tiles = [];
-    for (let i = 0; i < this.room.events.length; i++){
+    for(let i = 0; i < this.room.events.length; i++){
       let tile = this.room.events[i];
       if(tile.x == x && tile.y == y){ tiles.push(tile); }
     }

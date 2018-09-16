@@ -43,7 +43,7 @@ function Animator(host)
       this.preload_container.removeChild(this.preload_container.lastChild);
     }
 
-    for (let animName in this.animations)
+    for(let animName in this.animations)
     {
       let art_id = "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+animName+".png";
       let image = new Image();
