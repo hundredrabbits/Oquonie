@@ -3,7 +3,6 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-    <!-- <script type="text/javascript" src="scripts/jquery.js"></script> -->
     <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="scripts/jquery.transit.min.js"></script>
     <script type="text/javascript" src="scripts/lib/logo.js"></script>
@@ -66,16 +65,23 @@
   </head>
   <body>
     <script>
-      var DEBUG = false;
+      var DEBUG = true;
+
       var oquonie = new Oquonie();
       oquonie.install();
+
       var keyboard = new Keyboard();
+
       document.onkeyup = function(event){ keyboard.listen_onkeyup(event); };
       document.onkeydown = function(event){ keyboard.listen_onkeydown(event); };
-      document.addEventListener('mousedown', function(e){ oquonie.mousedown(e); }, false);
-      var logo = new Logo(false);
-      logo.install(120);
-      setTimeout(function(){ logo.remove(); }, 5500);
+      document.onmousedown = function(e){ oquonie.mousedown(e); };
+
+      if(!DEBUG){
+        var logo = new Logo(false);
+        logo.install(120);
+        setTimeout(function(){ logo.remove(); }, 5500);  
+      }
+      
       setTimeout(function(){ oquonie.start(); }, DEBUG ? 100 : 3000);
     </script>
   </body>

@@ -43,12 +43,12 @@ function Wizard(x,y,id)
 
   this.hide_notification = function()
   {
-    $(this.notification).css("display","none");
+    this.notification.style.display = "none"
   }
 
   this.show_notification = function()
   {
-    $(this.notification).css("display","block");
+    this.notification.style.display = "block"
   }
 
   this.update_notification = function()

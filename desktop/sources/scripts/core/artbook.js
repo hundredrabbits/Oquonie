@@ -9,7 +9,9 @@ function Artbook()
   stylesheet_element.type = "text/css";
   stylesheet_element.title = "artbook";
   stylesheet_element.appendChild(document.createTextNode(""));
+  
   document.head.appendChild(stylesheet_element);
+
   for (var i = 0; i < document.styleSheets.length; i++)
   {
     if (document.styleSheets[i].title == stylesheet_element.title)

@@ -22,20 +22,20 @@ function Animator(host)
     var height = $(this.host.element).height();
     var frames = unique(this.animations[this.state].frames).length;
 
-    var art_id = "media/graphics/"+this.host.name+"/"+(this.host.id ? this.host.id+"." : "")+this.state+".png";
-    if (this.last_art_id != art_id)
-    {
+    var art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id+"." : "")+this.state}.png`;
+
+    if(this.last_art_id != art_id){
       this.last_art_id = art_id;
       oquonie.artbook.set_art(this.host.element, art_id);
     }
     
-    $(this.host.element).css('background-size',(width*frames)+"px "+(width*1.5)+"px");
-    $(this.host.element).css('background-position',(anim.run() * -width + width)+"px center");
+    this.host.element.style.backgroundSize = `${width*frames}px ${width*1.5}px`;
+    this.host.element.style.backgroundPosition = `${anim.run() * -width + width}px center`;
   }
 
   this.preload = function()
   {
-    $(this.preload_container).css("display", "none");
+    this.preload_container.style.display = "none";
     oquonie.element.appendChild(this.preload_container);
     while (this.preload_container.lastChild != null) {
       this.preload_container.removeChild(this.preload_container.lastChild);

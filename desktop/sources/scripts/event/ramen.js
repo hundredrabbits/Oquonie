@@ -81,11 +81,11 @@ function Ramen(x,y,character = null)
   {
     if(oquonie.spellbook.has_ramen(oquonie.player.id)){
       this.id = "active";
-      $(this.element).css("display","block");
+      this.element.style.display = "block"
     }
     else{
       this.id = "away";
-      $(this.element).css("display","none");
+      this.element.style.display = "none"
       this.mat.show();
     }
   }
@@ -96,7 +96,7 @@ function Ramen(x,y,character = null)
       if (!this.first_sight) {
         $(this.element).animate({ opacity: 0 }, oquonie.speed*3);
       } else {
-        $(this.element).css("display","none");
+        this.element.style.display = "none"
       }
       this.mat.show();
     }
@@ -105,12 +105,12 @@ function Ramen(x,y,character = null)
 
   this.hide_notification = function()
   {
-    $(this.notification).css("display","none");
+    this.notification.style.display = "none"
   }
 
   this.show_notification = function()
   {
-    $(this.notification).css("display","block");
+    this.notification.style.display = "block"
     oquonie.artbook.set_art(this.notification,"media/graphics/notification/"+this.lobby_spell()+".png");
   }
 
@@ -159,16 +159,16 @@ function RamenMat(x,y)
   this.on_sight = function()
   {
     var width = $(this.element).width();
-    $(this.element).css('background-size',(width)+"px "+(width*1.5)+"px");
-    $(this.element).css('background-position',"0px center");
-    $(this.element).css("display","none");
+    this.element.style.backgroundSize = `${width}px ${width*1.5}px`;
+    this.element.style.backgroundPosition = "0px center";
+    this.element.style.display = "none"
     oquonie.artbook.set_art(this.element,"media/graphics/ramen/mat.png");
   }
 
   this.show = function()
   {
     this.blocking = true;
-    $(this.element).css("display","block");
+    this.element.style.display = "block"
   }
 
   this.update(20);

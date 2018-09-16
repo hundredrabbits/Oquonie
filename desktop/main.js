@@ -1,53 +1,83 @@
-const {app, BrowserWindow, webFrame} = require('electron')
+const {app, BrowserWindow, webFrame, Menu} = require('electron')
 const path = require('path')
 const url = require('url')
+const shell = require('electron').shell;
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is garbage collected.
 let win
 
-function createWindow () {
-  // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 500, backgroundColor: '#000000', resizable:true, autoHideMenuBar: true,icon: __dirname + '/icon.ico'})
+let is_shown = true;
 
-  win.loadURL(`file://${__dirname}/index.html`)
+app.win = null;
 
-  // Open the DevTools.
-  // win.webContents.openDevTools()
-
-  // Emitted when the window is closed.
-  win.on('closed', () => {
-    // Dereference the window object, usually you would store windows
-    // in an array if your app supports multi windows, this is the time
-    // when you should delete the corresponding element.
-    win = null
+app.on('ready', () => 
+{
+  app.win = new BrowserWindow({
+    width: 800, 
+    height: 600, 
+    minWidth:640, 
+    minHeight:480, 
+    frame:false, 
+    autoHideMenuBar: true,
+    backgroundColor: '#000000', 
+    resizable:true, 
+    autoHideMenuBar: true,
+    icon: __dirname + '/icon.ico'
   })
+
+  app.win.loadURL(`file://${__dirname}/sources/index.html`);
+  app.inspect();
+
+  app.win.on('closed', () => {
+    win = null
+    app.quit()
+  })
+
+  app.win.on('hide',function() {
+    is_shown = false;
+  })
+
+  app.win.on('show',function() {
+    is_shown = true;
+  })
+
+  app.on('window-all-closed', () => 
+  {
+    app.quit()
+  })
+
+  app.on('activate', () => {
+    if (app.win === null) {
+      createWindow()
+    }
+  })
+})
+
+app.inspect = function()
+{
+  app.win.toggleDevTools();
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.toggle_fullscreen = function()
+{
+  app.win.setFullScreen(app.win.isFullScreen() ? false : true);
+}
 
-// Quit when all windows are closed.
-app.on('window-all-closed', () => {
-  // On macOS it is common for applications and their menu bar
-  // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-})
-
-app.on('activate', () => {
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  if (win === null) {
-    createWindow()
+app.toggle_visible = function()
+{
+  if(process.platform == "win32"){
+    if(!app.win.isMinimized()){ app.win.minimize(); } else{ app.win.restore(); }
   }
   else{
-    
+    if(is_shown && !app.win.isFullScreen()){ app.win.hide(); } else{ app.win.show(); }
   }
-})
+}
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+app.inject_menu = function(menu)
+{
+  try{
+    Menu.setApplicationMenu(Menu.buildFromTemplate(menu));
+  }
+  catch(err){
+    console.warn("Cannot inject menu.")
+  }  
+}
