@@ -70,6 +70,7 @@ function Keyboard()
     console.info("escape");
     oquonie.dialog.hide();
     oquonie.overlay.hide();
+    if(logo){ logo.remove(); }
   }
 
   this.lock = function(lock_name)

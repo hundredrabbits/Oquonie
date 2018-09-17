@@ -90,4 +90,14 @@ function Music()
     $(this.track_ambient).animate({volume: 1}, 1000);
     this.is_muted = false;
   }
+
+  this.toggle_ambience = function()
+  {
+    if(this.track_ambient.volume == 1){
+      this.pause_ambience();
+    }
+    else{
+      this.resume_ambience();
+    }
+  }
 }

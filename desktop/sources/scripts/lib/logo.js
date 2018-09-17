@@ -19,14 +19,20 @@ function Logo(is_looping = false)
 
   this.el.appendChild(this.canvas)
 
-  let is_looping = is_looping;
-
   this.size = null;
   this.is_playing = true;
+  this.is_active = false;
+  this.fps = 60;
 
-  this.install = function(size)
+  this.install = function(host)
   {
-    document.body.appendChild(this.el);
+    host.appendChild(this.el);
+  }
+
+  this.start = function(size)
+  {
+    this.is_active = true;
+
     this.size = size;
 
     this.canvas.width = 600;
@@ -41,11 +47,18 @@ function Logo(is_looping = false)
     this.create_tiles();
     animate();
 
-    let timer = setInterval(this.draw, 17);
+    this.refresh();
+  }
+
+  this.refresh = function()
+  {
+    setTimeout(() => { logo.draw(); requestAnimationFrame(logo.refresh); }, 1000/logo.fps);
   }
 
   this.remove = function()
   {
+    if(this.canvas.style.opacity == 0){ return; }
+
     this.canvas.style.opacity = 0;
     setTimeout(() => { this.el.style.opacity = 0; },500)
     setTimeout(() => { document.body.removeChild(this.el); },1500)
@@ -63,9 +76,9 @@ function Logo(is_looping = false)
 
   this.stop = function()
   {
-    if(logo.is_playing == false){ return; }
+    if(this.is_playing == false){ return; }
 
-    setTimeout(function(){ logo.draw(true); }, 50);
+    setTimeout(() => { this.draw(true); }, 50);
     this.is_playing = false;
   }
 
@@ -73,24 +86,24 @@ function Logo(is_looping = false)
 
   this.draw = function(override = false)
   {
-    if(override == false && !tiles_still_moving()){ logo.stop(); return; }
+    if(override == false && !this.tiles_still_moving()){ this.stop(); return; }
 
-    logo.clear();
+    this.clear();
     let offset = 200;
     for (i = 0; i < tiles.length; i++) { 
       let tile = tiles[i];
       let max_size = (tile.size/2)-2;
       let progress_toward_end = 1-clamp(tile.distance_from_end()/(max_size*4),0,1);
-      let progress_fade = clamp(logo.frame/10000,0,1)
+      let progress_fade = clamp(this.frame/10000,0,1)
       let size = clamp(progress_toward_end * progress_fade,0,1) * max_size;
       
-      logo.frame += 1;
-      logo.context().beginPath();
-      logo.context().arc(tile.el_pos.x + offset,tile.el_pos.y + offset, size, 0, 2 * Math.PI, false);
-      logo.context().fillStyle = "white";
-      logo.context().fill();
-      logo.context().closePath();
-      logo.frame += 1
+      this.frame += 1;
+      this.context().beginPath();
+      this.context().arc(tile.el_pos.x + offset,tile.el_pos.y + offset, size, 0, 2 * Math.PI, false);
+      this.context().fillStyle = "white";
+      this.context().fill();
+      this.context().closePath();
+      this.frame += 1
     }
   }
 
@@ -127,21 +140,21 @@ function Logo(is_looping = false)
   {
     if(id == -1){ return; }
     tiles[id].animate_until(tiles[id].history[step]);
-    setTimeout(function(){ animate_return_to(step,id-1); }, 10);
+    setTimeout(() => { animate_return_to(step,id-1); }, 10);
   }
 
   function animate_to(step,id)
   {
     if(id == 100){ return; }
     tiles[id].animate_until(tiles[id].history[step]);
-    setTimeout(function(){ animate_to(step,id+1); }, 10);
+    setTimeout(() => { animate_to(step,id+1); }, 10);
   }
 
-  function tiles_still_moving()
+  this.tiles_still_moving = function()
   {
     for (i = 0; i < tiles.length; i++) { 
       let tile = tiles[i];
-      if(tile.offset().x != 0 || tile.offset().y != 0){ logo.is_playing = true; return true; }
+      if(tile.offset().x != 0 || tile.offset().y != 0){ this.is_playing = true; return true; }
     }
     return false;
   }
@@ -153,26 +166,26 @@ function Logo(is_looping = false)
 
     let speed = 300;
 
-    setTimeout(function(){ animate_return_to(9,99); }, 0);
-    setTimeout(function(){ animate_return_to(8,99); }, 1 * speed);
-    setTimeout(function(){ animate_return_to(7,99); }, 2 * speed);
-    setTimeout(function(){ animate_return_to(6,99); }, 3 * speed);
-    setTimeout(function(){ animate_return_to(5,99); }, 4 * speed);
-    setTimeout(function(){ animate_return_to(4,99); }, 5 * speed);
-    setTimeout(function(){ animate_return_to(3,99); }, 6 * speed);
-    setTimeout(function(){ animate_return_to(2,99); }, 7 * speed);
-    setTimeout(function(){ animate_return_to(1,99); }, 8 * speed);
+    setTimeout(() => { animate_return_to(9,99); }, 0);
+    setTimeout(() => { animate_return_to(8,99); }, 1 * speed);
+    setTimeout(() => { animate_return_to(7,99); }, 2 * speed);
+    setTimeout(() => { animate_return_to(6,99); }, 3 * speed);
+    setTimeout(() => { animate_return_to(5,99); }, 4 * speed);
+    setTimeout(() => { animate_return_to(4,99); }, 5 * speed);
+    setTimeout(() => { animate_return_to(3,99); }, 6 * speed);
+    setTimeout(() => { animate_return_to(2,99); }, 7 * speed);
+    setTimeout(() => { animate_return_to(1,99); }, 8 * speed);
 
     if(is_looping == true){
-      setTimeout(function(){ scare_tiles(6); }, 6000);
-      setTimeout(function(){ return_tiles_to(1); }, 6000);
+      setTimeout(() => { scare_tiles(6); }, 6000);
+      setTimeout(() => { return_tiles_to(1); }, 6000);
       
-      setTimeout(function(){ animate_to(2,0); }, 6500);
-      setTimeout(function(){ animate_to(3,0); }, 7500);
-      setTimeout(function(){ animate_to(4,0); }, 8000);
-      setTimeout(function(){ animate_to(5,0); }, 8500);
+      setTimeout(() => { animate_to(2,0); }, 6500);
+      setTimeout(() => { animate_to(3,0); }, 7500);
+      setTimeout(() => { animate_to(4,0); }, 8000);
+      setTimeout(() => { animate_to(5,0); }, 8500);
 
-      setTimeout(function(){ animate(); }, 11500);
+      setTimeout(() => { animate(); }, 11500);
     }
   }
 
@@ -220,7 +233,7 @@ function Logo(is_looping = false)
 
       if(target_el_pos.x != this.el_pos.x || target_el_pos.y != this.el_pos.y){
         let target = this;
-        setTimeout(function(){ target.animate_until(target_pos); }, 5);
+        setTimeout(() => { target.animate_until(target_pos); }, 5);
       }
     }
 

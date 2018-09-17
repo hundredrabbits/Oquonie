@@ -2,7 +2,7 @@ body { background:#eee; overflow: hidden }
 
 oquonie, stage, room, tile, dialog, spellbook, spell, parallax { display:block; }
 
-oquonie { width:100vw; height:100vh; transition: background-color 1s, opacity 1s; position: relative; overflow: hidden;}
+oquonie { width:100vw; height:100vh; transition: background-color 1s, opacity 1s; position: relative; overflow: hidden; -webkit-app-region: drag;}
 
 dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed; opacity: 0; will-change: opacity; }
 dialog portrait, oquonie dialog bubble { display:block; width:400px; height:400px; left:50%; bottom:0%; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }

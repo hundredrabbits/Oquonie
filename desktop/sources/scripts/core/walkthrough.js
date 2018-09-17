@@ -33,21 +33,21 @@ function Walkthrough()
   // Chapter 2
 
   let nephtaline_pillar_stage = [R,R,R,R,R,R,D,D,D,R,R,U,L,L,U,U,U,R,R,R,U,R,D,D,D,R,R,R,R,R,U,L,L,L,U,R,R,R,R,R,R,R,R,R,R,L,L,L,U,U];
-  let nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U,U];
+  let nephtaline_pillar_pillar = [U,U,R,R,R,R,R,D,D,D,D,D,L,L,U,U,D,L,L,L,U,U,U,U,U,R,R,R,L,L,D,D,D,U,U,U,U,U];
 
   let nephtaline_pillar = [];
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_stage);
   nephtaline_pillar = nephtaline_pillar.concat(nephtaline_pillar_pillar);
 
   let necomedre_pillar_stage = [R,R,R,U,U,U,L,L,L,D,D,D,L,L,L,U,U,U,R,R,R,U,U,U,U,D,D,D,L,L,L,L,U,R,R,R,R,R,R,R,R,R,R,U,U,U,R,R,R,D,D,D,R,U,U,U,L,L,L,D,D,D,R,R,R];
-  let necomedre_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U,U];
+  let necomedre_pillar_pillar = [R,R,R,R,R,U,R,R,U,U,U];
 
   let necomedre_pillar = [];
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_stage);
   necomedre_pillar = necomedre_pillar.concat(necomedre_pillar_pillar);
 
   let nestorine_pillar_stage = ["Tneomine",U,U,U,R,R,R,U,U,U,R,D,R,R,U,U,D,L,L,U,U,R,D,D,L,U,R,D,L,L,U,U,D,R,R,U,U,L,D,D,R,U,L,L,U,R,R,U,L,D,R,R,R,L,U,L,D,R,R,R,R,R,R,R,R,R,U,U,U,L,L,L,D,D,D,D,D,D,R,R,R,R,R,R];
-  let nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U,U];
+  let nestorine_pillar_pillar = [D,D,D,L,L,L,D,D,D,L,L,U,L,L,L,L,U,U,U];
 
   let nestorine_pillar = [];
   nestorine_pillar = nestorine_pillar.concat(nestorine_pillar_stage);
@@ -164,9 +164,10 @@ function Walkthrough()
     oquonie.stage.enter_room(oquonie.player.location);
   }
 
-  this.walk_all = function()
+  this.walk_all = function(speed = oquonie.speed)
   {
-    oquonie.speed = 50;
+    oquonie.speed = speed;  
+
     oquonie.player.set_id("necomedre");
     this.room = 29;
     this.inputs = chapter_all;
@@ -174,8 +175,10 @@ function Walkthrough()
     this.run();
   }
 
-  this.walk_chapter0 = function()
+  this.walk_chapter0 = function(speed = oquonie.speed)
   {
+    oquonie.speed = speed;  
+
     oquonie.player.set_id("necomedre");
     this.room = 29;
     this.inputs = chapter_0;
@@ -183,8 +186,10 @@ function Walkthrough()
     this.run();
   }
 
-  this.walk_chapter1 = function()
+  this.walk_chapter1 = function(speed = oquonie.speed)
   {
+    oquonie.speed = speed;  
+
     oquonie.player.set_id("necomedre");
     this.room = 1;
     this.inputs = chapter_1;
@@ -192,8 +197,10 @@ function Walkthrough()
     this.run();
   }
 
-  this.walk_chapter2 = function()
+  this.walk_chapter2 = function(speed = oquonie.speed)
   {
+    oquonie.speed = speed;  
+      
     oquonie.player.set_id("necomedre");
     this.room = 9;
     this.inputs = chapter_2;
@@ -201,8 +208,10 @@ function Walkthrough()
     this.run();
   }
 
-  this.walk_chapter3 = function()
+  this.walk_chapter3 = function(speed = oquonie.speed)
   {
+    oquonie.speed = speed;  
+
     oquonie.player.set_id("necomedre");
     this.room = 3;
     this.inputs = chapter_3;
@@ -210,17 +219,10 @@ function Walkthrough()
     this.run();
   }
 
-  this.walk_chapter4 = function()
+  this.walk_secrets = function(speed = oquonie.speed)
   {
-    oquonie.player.set_id("nastazie");
-    this.room = 4;
-    this.inputs = chapter_4;
-    oquonie.stage.enter_room(this.room);
-    this.run();
-  }
+    oquonie.speed = speed;  
 
-  this.walk_secrets = function()
-  {
     oquonie.player.set_id("nastazie");
     this.room = 1;
     this.inputs = secrets;
@@ -269,7 +271,7 @@ function Walkthrough()
   this.analysis = function()
   {
     let unused_rooms = [];
-    for(room in oquonie.world.rooms){
+    for(let room in oquonie.world.rooms){
       if(!oquonie.world.rooms[room].is_known){
         unused_rooms.push(oquonie.world.rooms[room])
       }
