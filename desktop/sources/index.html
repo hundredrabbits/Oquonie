@@ -100,10 +100,17 @@
         logo = new Logo(false);
         logo.install(document.body);
         logo.start(120);
-        setTimeout(function(){ logo.remove(); }, 5500);  
+        logo.el.id = "logo"
+        setTimeout(function(){ 
+          logo.remove(); 
+          
+        }, 5500);  
       }
+
+      setTimeout(() => { oquonie.start(); },7000);
       
-      oquonie.start();
+
+
     </script>
   </body>
 </html>

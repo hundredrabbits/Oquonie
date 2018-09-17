@@ -22,7 +22,6 @@ function Oquonie()
   this.install = function()
   {
     document.body.appendChild(this.element);
-    this.element.style.opacity = 1;
 
     this.world.install();
     this.dialog.install();
@@ -36,6 +35,7 @@ function Oquonie()
   {
     console.info("Starting Oquonie");
 
+    this.element.style.opacity = 1;
     this.walkthrough.start();
     this.spellbook.hide();
     animate();
