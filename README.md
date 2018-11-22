@@ -6,4 +6,4 @@ Feel free to send pull requests if you find an issue that you wish to correct.
 
 ## License
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (CC).
+The code is under the [MIT LICENSE](LICENSE.md), the assets are [BY-NC-SA 4.0](http://wiki.xxiivv.com/license). Please do not resell the assets.
