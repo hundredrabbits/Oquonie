@@ -1,33 +1,28 @@
-"use strict";
+'use strict'
 
-function Owl(x,y)
-{
-  Event.call(this,"owl");
+function Owl (x, y) {
+  Event.call(this, 'owl')
 
-  this.x = x;
-  this.y = y;
+  this.x = x
+  this.y = y
 
-  this.animator.add(new Animation("idle",[1,1,1,1,1,2,3,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]));
+  this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
-  this.is_collider = function()
-  {
-    return true;
+  this.is_collider = function () {
+    return true
   }
 
-  this.on_collision = function()
-  {
-    if(oquonie.spellbook.pillars.length > 0){
-      oquonie.dialog.show(this.name,["guide","locked","pillar"]);
-    }
-    else{
-      oquonie.dialog.show(this.name,["door","guide","friend"]);
+  this.on_collision = function () {
+    if (oquonie.spellbook.pillars.length > 0) {
+      oquonie.dialog.show(this.name, ['guide', 'locked', 'pillar'])
+    } else {
+      oquonie.dialog.show(this.name, ['door', 'guide', 'friend'])
     }
   }
 
-  this.on_sight = function()
-  {
-    oquonie.game.save();
+  this.on_sight = function () {
+    oquonie.game.save()
   }
 
-  this.update(20);
+  this.update(20)
 }

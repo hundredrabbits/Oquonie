@@ -1,132 +1,119 @@
-"use strict";
+'use strict'
 
-function Event(subtype)
-{
-  Tile.call(this,"event");
-  
-  this.location = 0;
-  this.name = subtype;
-  this.state = "idle";
-  this.animator = new Animator(this);
-  this.is_mirrored = false;
+function Event (subtype) {
+  Tile.call(this, 'event')
 
-  $(this.element).addClass(subtype);
+  this.location = 0
+  this.name = subtype
+  this.state = 'idle'
+  this.animator = new Animator(this)
+  this.is_mirrored = false
 
-  this.move_by = function(x,y)
-  {
-    this.x += x;
-    this.y += y;
+  $(this.element).addClass(subtype)
 
-    let p = this.position_at(this.x,this.y,200);
-    let _y = p[0];
-    let _x = p[1];
-    let _z = p[2];
+  this.move_by = function (x, y) {
+    this.x += x
+    this.y += y
 
-    $(this.element).finish();
+    let p = this.position_at(this.x, this.y, 200)
+    let _y = p[0]
+    let _x = p[1]
+    let _z = p[2]
 
-    let target = this.animator;
-    target.set_state("walk.front");
+    $(this.element).finish()
 
-    if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("walk.front"); }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("walk.back"); }
-    
-    keyboard.lock("moving");
-    setTimeout(function(){ keyboard.unlock("moving"); }, oquonie.speed * 0.5);
+    let target = this.animator
+    target.set_state('walk.front')
 
-    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function(){
-      if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
-      if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("idle.back"); }
-    });
-    
-    oquonie.stage.animate(this.x,this.y);
+    if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('walk.front') }
+    if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('walk.back') }
+
+    keyboard.lock('moving')
+    setTimeout(function () { keyboard.unlock('moving') }, oquonie.speed * 0.5)
+
+    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
+      if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
+      if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('idle.back') }
+    })
+
+    oquonie.stage.animate(this.x, this.y)
   }
 
-  this.move_at = function(x,y)
-  {
-    this.x = x;
-    this.y = y;
+  this.move_at = function (x, y) {
+    this.x = x
+    this.y = y
 
-    let p = this.position_at(this.x,this.y,200);
-    let _y = p[0];
-    let _x = p[1];
+    let p = this.position_at(this.x, this.y, 200)
+    let _y = p[0]
+    let _x = p[1]
 
-    $(this.element).css('top', _y).css('left', _x);
+    $(this.element).css('top', _y).css('left', _x)
   }
 
-  this.stand_by_door = function(x,y)
-  {
-    $(this.element).finish();
-    let target = this.animator;
-    x = -x;
-    y = -y;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ target.set_state("idle.front"); }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ target.set_state("idle.back"); }
-    target.animate();
+  this.stand_by_door = function (x, y) {
+    $(this.element).finish()
+    let target = this.animator
+    x = -x
+    y = -y
+    if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
+    if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('idle.back') }
+    target.animate()
   }
 
-  this.is_collider = function()
-  {
-    return false;
+  this.is_collider = function () {
+    return false
   }
 
-  this.elicits_collision_bump = function()
-  {
-    return true;
+  this.elicits_collision_bump = function () {
+    return true
   }
 
-  this.mirror = function()
-  {
-    this.is_mirrored = true;
-    $(this.element).addClass("mirror");
+  this.mirror = function () {
+    this.is_mirrored = true
+    $(this.element).addClass('mirror')
   }
 
-  this.bump_up = function(x,y)
-  {
-    let animator = this.animator;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
-    
-    $(this.element).finish();
-    let origin_pos_y = parseInt(this.element.style.top);
-    $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
+  this.bump_up = function (x, y) {
+    let animator = this.animator
+    if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
+    if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
+
+    $(this.element).finish()
+    let origin_pos_y = parseInt(this.element.style.top)
+    $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
-  this.bump_against = function(x,y)
-  {
-    let animator = this.animator;
-    if(x == 0 && y == -1 || x == -1 && y == 0){ animator.set_state("idle.front"); }
-    if(x == 0 && y == 1 || x == 1 && y == 0){ animator.set_state("idle.back"); }
-    
-    let xSlant = x - y;
-    let ySlant = (-x - y) * 0.5;
+  this.bump_against = function (x, y) {
+    let animator = this.animator
+    if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
+    if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
 
-    $(this.element).finish();
-    let origin_pos_x = parseInt(this.element.style.left);
-    let origin_pos_y = parseInt(this.element.style.top);
+    let xSlant = x - y
+    let ySlant = (-x - y) * 0.5
 
-    $(this.element).css("top", origin_pos_y + 0.5 * ySlant + "%").css("left", origin_pos_x + 0.5 * xSlant + "%");
-    $(this.element).animate({ top: origin_pos_y+"%", left: origin_pos_x+"%" }, oquonie.speed/2);
+    $(this.element).finish()
+    let origin_pos_x = parseInt(this.element.style.left)
+    let origin_pos_y = parseInt(this.element.style.top)
+
+    $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
+    $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
   }
 
-  this.receive_bump = function()
-  {
-    $(this.element).finish();
-    let origin_pos_y = parseInt(this.element.style.top);
-    $(this.element).css("top", (origin_pos_y-0.5)+"%").animate({ top: origin_pos_y+"%" }, oquonie.speed/2);
+  this.receive_bump = function () {
+    $(this.element).finish()
+    let origin_pos_y = parseInt(this.element.style.top)
+    $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
-  this.on_collision = function()
-  {
+  this.on_collision = function () {
     // console.log("On collision, no effect");
   }
 
-  this.on_step = function()
-  {
+  this.on_step = function () {
     // console.log("On step, no effect");
   }
 
-  this.on_sight = function()
-  {
+  this.on_sight = function () {
     // console.log("On sight, no effect");
   }
 }

@@ -1,6 +1,5 @@
-"use strict";
+'use strict'
 
-function Sprite()
-{
-  this.element = document.createElement("sprite");
+function Sprite () {
+  this.element = document.createElement('sprite')
 }

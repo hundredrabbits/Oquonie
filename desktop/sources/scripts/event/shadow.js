@@ -1,9 +1,8 @@
-"use strict";
+'use strict'
 
-function Shadow(x,y)
-{
-  Tile.call(this,"shadow");
+function Shadow (x, y) {
+  Tile.call(this, 'shadow')
 
-  this.x = x;
-  this.y = y;
+  this.x = x
+  this.y = y
 }
