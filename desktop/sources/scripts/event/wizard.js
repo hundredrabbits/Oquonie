@@ -22,7 +22,7 @@ function Wizard (x, y, id) {
   }
 
   this.on_collision = function () {
-    let path = 'media/graphics/wizard/' + this.id + '.'
+    const path = 'media/graphics/wizard/' + this.id + '.'
     if (oquonie.player.id == this.id) {
       oquonie.dialog.show(this.id, ['friend', 'unlocked', this.id], path)
       console.warn('Already is ' + this.id)

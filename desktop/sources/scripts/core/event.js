@@ -15,21 +15,21 @@ function Event (subtype) {
     this.x += x
     this.y += y
 
-    let p = this.position_at(this.x, this.y, 200)
-    let _y = p[0]
-    let _x = p[1]
-    let _z = p[2]
+    const p = this.position_at(this.x, this.y, 200)
+    const _y = p[0]
+    const _x = p[1]
+    const _z = p[2]
 
     $(this.element).finish()
 
-    let target = this.animator
+    const target = this.animator
     target.set_state('walk.front')
 
     if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('walk.front') }
     if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('walk.back') }
 
-    keyboard.lock('moving')
-    setTimeout(function () { keyboard.unlock('moving') }, oquonie.speed * 0.5)
+    oquonie.player.lock('moving')
+    setTimeout(function () { oquonie.player.unlock('moving') }, oquonie.speed * 0.5)
 
     $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
       if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
@@ -43,16 +43,16 @@ function Event (subtype) {
     this.x = x
     this.y = y
 
-    let p = this.position_at(this.x, this.y, 200)
-    let _y = p[0]
-    let _x = p[1]
+    const p = this.position_at(this.x, this.y, 200)
+    const _y = p[0]
+    const _x = p[1]
 
     $(this.element).css('top', _y).css('left', _x)
   }
 
   this.stand_by_door = function (x, y) {
     $(this.element).finish()
-    let target = this.animator
+    const target = this.animator
     x = -x
     y = -y
     if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
@@ -74,26 +74,26 @@ function Event (subtype) {
   }
 
   this.bump_up = function (x, y) {
-    let animator = this.animator
+    const animator = this.animator
     if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
     if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
 
     $(this.element).finish()
-    let origin_pos_y = parseInt(this.element.style.top)
+    const origin_pos_y = parseInt(this.element.style.top)
     $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
   this.bump_against = function (x, y) {
-    let animator = this.animator
+    const animator = this.animator
     if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
     if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
 
-    let xSlant = x - y
-    let ySlant = (-x - y) * 0.5
+    const xSlant = x - y
+    const ySlant = (-x - y) * 0.5
 
     $(this.element).finish()
-    let origin_pos_x = parseInt(this.element.style.left)
-    let origin_pos_y = parseInt(this.element.style.top)
+    const origin_pos_x = parseInt(this.element.style.left)
+    const origin_pos_y = parseInt(this.element.style.top)
 
     $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
     $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
@@ -101,7 +101,7 @@ function Event (subtype) {
 
   this.receive_bump = function () {
     $(this.element).finish()
-    let origin_pos_y = parseInt(this.element.style.top)
+    const origin_pos_y = parseInt(this.element.style.top)
     $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 

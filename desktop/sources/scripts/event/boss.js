@@ -24,13 +24,13 @@ function Boss (x, y, reset) {
 
     if (this.is_gone === true) { return }
 
-    keyboard.lock('boss')
+    oquonie.player.lock('boss')
 
     setTimeout(function () { oquonie.stage.shake(5, 80) }, 1500)
     setTimeout(function () { oquonie.stage.destroy() }, 2000)
     setTimeout(function () { oquonie.player.transform('necomedre') }, 2300)
     setTimeout(function () { oquonie.stage.set_theme('black') }, 2300)
-    setTimeout(function () { keyboard.unlock('boss') }, 7000)
+    setTimeout(function () { oquonie.player.unlock('boss') }, 7000)
 
     this.animator.set_state('ghost')
 

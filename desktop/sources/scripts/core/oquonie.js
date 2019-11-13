@@ -4,6 +4,8 @@ function Oquonie () {
   this.element = document.createElement('oquonie')
   this.element.style.opacity = 0
 
+  this.acels = new Acels(this)
+
   this.artbook = new Artbook()
   this.game = new Game()
   this.world = new World()
@@ -20,6 +22,12 @@ function Oquonie () {
 
   this.install = function () {
     document.body.appendChild(this.element)
+
+    this.acels.set('File', 'Move', 'ArrowUp', () => { oquonie.player.try_move(0, 1) })
+    this.acels.set('File', 'Move', 'ArrowRight', () => { oquonie.player.try_move(1, 0) })
+    this.acels.set('File', 'Move', 'ArrowDown', () => { oquonie.player.try_move(0, -1) })
+    this.acels.set('File', 'Move', 'ArrowLeft', () => { oquonie.player.try_move(-1, 0) })
+    this.acels.install(window)
 
     this.world.install()
     this.dialog.install()
@@ -49,10 +57,10 @@ function Oquonie () {
       return
     }
 
-    if (keyboard.locks.length > 0) { console.warn('Keyboard has locks: ', keyboard.locks); return }
+    if (oquonie.player.locks.length > 0) { console.warn('Keyboard has locks: ', oquonie.player.locks); return }
 
-    let ratio_x = e.clientX / window.innerWidth
-    let ratio_y = e.clientY / window.innerHeight
+    const ratio_x = e.clientX / window.innerWidth
+    const ratio_y = e.clientY / window.innerHeight
 
     if (ratio_y < 0.5 && ratio_x < 0.5) {
       oquonie.player.try_move(0, 1)

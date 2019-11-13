@@ -23,7 +23,7 @@ function HiversairesGate (x, y, room, to_x, to_y) {
   }
 
   this.on_sight = function () {
-    let wall_id = oquonie.stage.wall_at(this.x, this.y)
+    const wall_id = oquonie.stage.wall_at(this.x, this.y)
     if (wall_id != null) {
       oquonie.artbook.set_art('#wall_' + wall_id, 'media/graphics/wall/gate.hiversaires.' + (oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
     }

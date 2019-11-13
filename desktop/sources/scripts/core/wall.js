@@ -3,7 +3,7 @@
 function Wall (pos, id, type) {
   Tile.call(this, 'wall ' + (pos < 3 ? 'left' : 'right'))
 
-  let t = [[-1, 2], [0, 2], [1, 2], [2, 1], [2, 0], [2, -1]]
+  const t = [[-1, 2], [0, 2], [1, 2], [2, 1], [2, 0], [2, -1]]
   this.x = t[pos][0]
   this.y = t[pos][1]
   this.id = id

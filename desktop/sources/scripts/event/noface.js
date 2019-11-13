@@ -15,7 +15,7 @@ function Noface (x, y) {
   this.on_collision = function () {
     console.log(oquonie.player.id)
     if (oquonie.player.id == 'catfishbird') {
-      keyboard.lock('teleport')
+      oquonie.player.lock('teleport')
       setTimeout(function () { oquonie.stage.warp_to(130, 0, 0) }, 500)
       oquonie.dialog.show('noface', ['help', 'friend', 'pillar'])
     } else if (oquonie.spellbook.pillars.length < 5) {

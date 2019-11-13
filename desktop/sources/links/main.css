@@ -1,4 +1,4 @@
-body { background:#000; overflow: hidden }
+body { background:#000; overflow: hidden; will-change:auto !important; }
 
 canvas#logo { position: fixed; top:calc(50vh - 150px); left:calc(50vw - 150px); transition: opacity 500ms}
 

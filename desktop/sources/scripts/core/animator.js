@@ -16,12 +16,12 @@ function Animator (host) {
   this.animate = function () {
     if (!this.animations[this.state]) { return }
 
-    let anim = this.animations[this.state]
-    let width = $(this.host.element).width()
-    let height = $(this.host.element).height()
-    let frames = unique(this.animations[this.state].frames).length
+    const anim = this.animations[this.state]
+    const width = $(this.host.element).width()
+    const height = $(this.host.element).height()
+    const frames = unique(this.animations[this.state].frames).length
 
-    let art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
+    const art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
 
     if (this.last_art_id != art_id) {
       this.last_art_id = art_id
@@ -39,9 +39,9 @@ function Animator (host) {
       this.preload_container.removeChild(this.preload_container.lastChild)
     }
 
-    for (let animName in this.animations) {
-      let art_id = 'media/graphics/' + this.host.name + '/' + (this.host.id ? this.host.id + '.' : '') + animName + '.png'
-      let image = new Image()
+    for (const animName in this.animations) {
+      const art_id = 'media/graphics/' + this.host.name + '/' + (this.host.id ? this.host.id + '.' : '') + animName + '.png'
+      const image = new Image()
       image.src = art_id
       this.preload_container.appendChild(image)
     }
@@ -56,7 +56,7 @@ function Animator (host) {
 }
 
 function unique (list) {
-  let result = []
+  const result = []
   $.each(list, function (i, e) {
     if ($.inArray(e, result) == -1) result.push(e)
   })

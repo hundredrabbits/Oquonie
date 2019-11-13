@@ -24,8 +24,8 @@ function Pillar (x, y, character, warp = 1) {
       this.on_sight()
       oquonie.dialog.show('owl', ['pillar', 'friend', this.character])
     } else {
-      keyboard.lock('teleport')
-      let w = this.warp
+      oquonie.player.lock('teleport')
+      const w = this.warp
       setTimeout(function () { oquonie.stage.warp_to(w, 0, 0) }, 500)
     }
   }

@@ -31,7 +31,6 @@ function Music () {
 
   this.play_ambient = function (name) {
     if (this.track_ambient.name == name) { return }
-    if (DEBUG) { return }
     if (!this.track_ambient.name) { this.introduce(name); return }
 
     // Fadeout
@@ -54,9 +53,9 @@ function Music () {
   }
 
   this.fetch_audio = function (name, role, src, loop = false) {
-    let audio_id = role + '_' + name
+    const audio_id = role + '_' + name
     if (!(audio_id in this.audio_catalog)) {
-      let audio = new Audio()
+      const audio = new Audio()
       audio.name = name
       audio.src = src
       audio.loop = loop

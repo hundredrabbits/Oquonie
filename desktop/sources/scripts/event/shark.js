@@ -19,8 +19,8 @@ function Shark (x, y, is_transformer = true) {
     if (oquonie.player.id == 'document') {
       oquonie.player.transform('necomedre')
     } else if (oquonie.player.id == 'catfishbird') {
-      keyboard.lock('teleport')
-      let w = this.warp
+      oquonie.player.lock('teleport')
+      const w = this.warp
       setTimeout(function () { oquonie.stage.warp_to(9, 0, 0) }, 500)
     } else if (this.is_transformer == true && oquonie.player.id != 'necomedre') {
       oquonie.player.transform('necomedre')

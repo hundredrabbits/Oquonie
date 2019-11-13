@@ -15,21 +15,21 @@ function Red (x, y, return_room) {
 
   this.on_collision = function () {
     oquonie.dialog.show(this.name, ['foe', 'pillar', 'friend'])
-    keyboard.lock('red_end')
-    let return_room = this.return_room
+    oquonie.player.lock('red_end')
+    const return_room = this.return_room
     setTimeout(function () {
-      keyboard.lock('teleport')
+      oquonie.player.lock('teleport')
       oquonie.stage.warp_to(return_room, 0, 0)
     }, 1500)
     setTimeout(function () {
       oquonie.dialog.hide()
-      keyboard.unlock('red_end')
+      oquonie.player.unlock('red_end')
     }, 7000)
   }
 
   this.on_sight = function () {
-    keyboard.lock('red_delay')
-    setTimeout(function () { keyboard.unlock('red_delay') }, 1000)
+    oquonie.player.lock('red_delay')
+    setTimeout(function () { oquonie.player.unlock('red_delay') }, 1000)
   }
 
   this.update(20)

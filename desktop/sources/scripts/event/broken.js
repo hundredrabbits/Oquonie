@@ -21,7 +21,7 @@ function Broken (x, y, id, room, to_x, to_y) {
 
   this.on_sight = function () {
     if (oquonie.spellbook.pillars.length < 5) { return }
-    let wall_id = oquonie.stage.wall_at(this.x, this.y)
+    const wall_id = oquonie.stage.wall_at(this.x, this.y)
     oquonie.artbook.set_art('#wall_' + wall_id, 'media/graphics/broken/' + this.id + '.png')
   }
 }

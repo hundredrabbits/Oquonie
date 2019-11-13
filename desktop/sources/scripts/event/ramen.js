@@ -135,7 +135,7 @@ function RamenMat (x, y) {
   }
 
   this.on_sight = function () {
-    let width = $(this.element).width()
+    const width = $(this.element).width()
     this.element.style.backgroundSize = `${width}px ${width * 1.5}px`
     this.element.style.backgroundPosition = '0px center'
     this.element.style.display = 'none'

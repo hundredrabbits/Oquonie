@@ -22,8 +22,8 @@ function PillarGate (x, y, room, to_x, to_y) {
   }
 
   this.on_sight = function () {
-    let wall_id = oquonie.stage.wall_at(this.x, this.y)
-    let src = !this.missing_pillar() ? 'media/graphics/wall/gate.red.open.png' : 'media/graphics/wall/gate.red.close.png'
+    const wall_id = oquonie.stage.wall_at(this.x, this.y)
+    const src = !this.missing_pillar() ? 'media/graphics/wall/gate.red.open.png' : 'media/graphics/wall/gate.red.close.png'
     oquonie.artbook.set_art('#wall_' + wall_id, src)
   }
 

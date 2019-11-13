@@ -50,7 +50,7 @@ function Game () {
     if (localStorage.pillar_nemedique == 'true') { oquonie.spellbook.add_pillar('nemedique') }
     if (localStorage.pillar_nastazie == 'true') { oquonie.spellbook.add_pillar('nastazie') }
 
-    let is_muted = localStorage.is_muted == 'true'
+    const is_muted = localStorage.is_muted == 'true'
     if (is_muted != oquonie.music.is_muted) {
       if (is_muted) {
         oquonie.music.pause_ambience()

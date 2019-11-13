@@ -67,7 +67,7 @@ function Keyboard () {
   }
 
   this.unlock = function (lock_name) {
-    let target = this.locks.indexOf(lock_name)
+    const target = this.locks.indexOf(lock_name)
     if (target > -1) {
       this.locks.splice(target, 1)
       console.info('Unlocked: ', lock_name)

@@ -15,10 +15,10 @@ function Teleport (x, y, room, to_x = 0, to_y = 0, reset = false) {
   }
 
   this.on_step = function () {
-    keyboard.lock('teleport')
-    let r = this.room
-    let to_x = this.to_x
-    let to_y = this.to_y
+    oquonie.player.lock('teleport')
+    const r = this.room
+    const to_x = this.to_x
+    const to_y = this.to_y
     setTimeout(function () { oquonie.stage.warp_to(r, to_x, to_y) }, 500)
 
     if (this.reset) {

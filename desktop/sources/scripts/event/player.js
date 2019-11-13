@@ -17,6 +17,23 @@ function Player () {
 
   this.element.appendChild(this.shadow.element)
 
+  this.locks = []
+
+  this.lock = (lock_name) => {
+    console.log('Added lock: ', lock_name)
+    this.locks.push(lock_name)
+  }
+
+  this.unlock = (lock_name) => {
+    const target = this.locks.indexOf(lock_name)
+    if (target > -1) {
+      this.locks.splice(target, 1)
+      console.info('Unlocked: ', lock_name)
+    } else {
+      console.warn('No lock named: ', lock_name)
+    }
+  }
+
   this.set_id = function (new_id) {
     if (this.id != new_id) {
       this.id = new_id
@@ -34,12 +51,12 @@ function Player () {
       return
     }
 
-    let destination = [this.x + x, this.y + y]
-    let target_tiles = oquonie.stage.tiles_at(this.x + x, this.y + y)
-    let target_floor = oquonie.stage.floor_at(this.x + x, this.y + y)
+    const destination = [this.x + x, this.y + y]
+    const target_tiles = oquonie.stage.tiles_at(this.x + x, this.y + y)
+    const target_floor = oquonie.stage.floor_at(this.x + x, this.y + y)
 
     let elicits_collision_bump = target_tiles.length == 0
-    let colliders = []
+    const colliders = []
     for (let i = 0; i < target_tiles.length; i++) {
       elicits_collision_bump = elicits_collision_bump || target_tiles[i].elicits_collision_bump()
       if (target_tiles[i].is_collider()) {
@@ -54,7 +71,7 @@ function Player () {
       if (x == 1 && y == 0) { $(this.element).attr('orientation', 'back').attr('direction', 'right') }
     }
 
-    let mid_walk = this.animator.state.indexOf('walk') != -1
+    const mid_walk = this.animator.state.indexOf('walk') != -1
 
     if (colliders.length > 0) {
       if (elicits_collision_bump) {
@@ -121,7 +138,7 @@ function Player () {
 
   this.transform = function (spell) {
     console.log('Transform(init): ' + spell)
-    keyboard.lock('transform')
+    oquonie.player.lock('transform')
 
     if (spell == 'catfishbird') {
       oquonie.game.save()
@@ -159,7 +176,7 @@ function Player () {
 
   this.transform_done = function () {
     console.log('Transform(done)')
-    keyboard.unlock('transform')
+    oquonie.player.unlock('transform')
     oquonie.player.animator.set_state('idle.front')
   }
 

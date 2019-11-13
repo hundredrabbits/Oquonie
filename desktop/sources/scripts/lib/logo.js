@@ -73,15 +73,15 @@ function Logo (is_looping = false) {
     this.clear()
 
     for (let i = 0; i < this.tiles.length; i++) {
-      let tile = this.tiles[i]
+      const tile = this.tiles[i]
       tile.draw(this.context())
       this.frame += 1
     }
   }
 
   this.tile_at = function (target_pos) {
-    for (let id in this.tiles) {
-      let tile = this.tiles[id]
+    for (const id in this.tiles) {
+      const tile = this.tiles[id]
       if (tile.pos.x != target_pos.x) { continue }
       if (tile.pos.y != target_pos.y) { continue }
       return tile
@@ -93,7 +93,7 @@ function Logo (is_looping = false) {
     let id = 0
     for (let x = 0; x < 10; x++) {
       for (let y = 0; y < 10; y++) {
-        let pos = { x: x, y: y }
+        const pos = { x: x, y: y }
         this.tiles.push(new Rabbit(id, pos, this.size / 5))
         id += 1
       }
@@ -177,9 +177,9 @@ function Logo (is_looping = false) {
 
       this.target_pos = target_pos
 
-      let target_el_pos = { x: target_pos.x * this.size, y: target_pos.y * this.size }
+      const target_el_pos = { x: target_pos.x * this.size, y: target_pos.y * this.size }
 
-      let to_move = { x: target_el_pos.x - this.el_pos.x, y: target_el_pos.y - this.el_pos.y }
+      const to_move = { x: target_el_pos.x - this.el_pos.x, y: target_el_pos.y - this.el_pos.y }
 
       if (to_move.x > 0) { this.el_pos.x += 1 } else if (to_move.x < 0) { this.el_pos.x -= 1 }
       if (to_move.y > 0) { this.el_pos.y += 1 } else if (to_move.y < 0) { this.el_pos.y -= 1 }
@@ -192,8 +192,8 @@ function Logo (is_looping = false) {
     // Logic
 
     this.is_known = function (target) {
-      for (let id in this.history) {
-        let pos = this.history[id]
+      for (const id in this.history) {
+        const pos = this.history[id]
         if (pos.x == target.x && pos.y == target.y) {
           return true
         }
@@ -206,7 +206,7 @@ function Logo (is_looping = false) {
     }
 
     this.free_ns = function () {
-      let a = []
+      const a = []
 
       if (this.is_free({ x: this.pos.x - 1, y: this.pos.y })) { a.push({ x: this.pos.x - 1, y: this.pos.y }) }
       if (this.is_free({ x: this.pos.x + 1, y: this.pos.y })) { a.push({ x: this.pos.x + 1, y: this.pos.y }) }
@@ -217,13 +217,13 @@ function Logo (is_looping = false) {
     }
 
     this.flee = function () {
-      let random = Math.random()
+      const random = Math.random()
 
       this.history.push({ x: this.pos.x, y: this.pos.y })
 
-      let ns = this.free_ns()
+      const ns = this.free_ns()
 
-      let target = ns[Math.floor(Math.random() * ns.length)]
+      const target = ns[Math.floor(Math.random() * ns.length)]
 
       if (target) {
         this.pos.x = target.x

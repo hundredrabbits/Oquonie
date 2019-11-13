@@ -47,7 +47,7 @@ function Spellbook () {
 
   this.remove_spell = function (spell_name) {
     console.log('Removed spell: ' + spell_name)
-    let index = this.spells.indexOf(spell_name)
+    const index = this.spells.indexOf(spell_name)
     this.spells.splice(index, 1)
     oquonie.music.play_interface('interface.spellbook.remove')
     this.update()
@@ -89,9 +89,9 @@ function Spellbook () {
     if (this.spells.length < 3) { return }
     if (this.id == 'nastazie') { return }
 
-    let target_spell = this.spells[0].split('_')[0]
+    const target_spell = this.spells[0].split('_')[0]
 
-    let a = {}
+    const a = {}
     for (let i = 0; i < this.spells.length; i++) {
       a[this.spells[i].split('_')[0]] = a[this.spells[i].split('_')[0]] ? a[this.spells[i].split('_')[0]] + 1 : 1
     }
@@ -115,7 +115,7 @@ function Spellbook () {
     this.clear()
 
     for (let i = 0; i < this.spells.length; i++) {
-      let spell_name = this.spells[i].split('_')[0]
+      const spell_name = this.spells[i].split('_')[0]
       if (i == 0) { oquonie.artbook.set_art(this.spell1, 'media/graphics/spellbook/' + spell_name + '.png') }
       if (i == 1) { oquonie.artbook.set_art(this.spell2, 'media/graphics/spellbook/' + spell_name + '.png') }
       if (i == 2) { oquonie.artbook.set_art(this.spell3, 'media/graphics/spellbook/' + spell_name + '.png') }

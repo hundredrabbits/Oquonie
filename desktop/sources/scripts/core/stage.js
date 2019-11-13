@@ -38,8 +38,8 @@ function Stage () {
 
     oquonie.player.move_at(x, y)
 
-    let numPillars = oquonie.spellbook.pillars.length
-    let theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
+    const numPillars = oquonie.spellbook.pillars.length
+    const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
 
     oquonie.stage.set_theme(theme)
 
@@ -67,9 +67,9 @@ function Stage () {
   }
 
   this.tiles_at = function (x, y) {
-    let tiles = []
+    const tiles = []
     for (let i = 0; i < this.room.events.length; i++) {
-      let tile = this.room.events[i]
+      const tile = this.room.events[i]
       if (tile.x == x && tile.y == y) { tiles.push(tile) }
     }
     return tiles
@@ -106,8 +106,8 @@ function Stage () {
   }
 
   this.center = function (x, y) {
-    let xSlant = x - y
-    let ySlant = -x - y
+    const xSlant = x - y
+    const ySlant = -x - y
     this.move_parallax(this.element, 0.5, xSlant, ySlant)
     this.move_parallax(this.parallax_over, 1.0, xSlant, ySlant)
     this.move_parallax(this.parallax_under, 0.125, xSlant, ySlant)
@@ -115,9 +115,9 @@ function Stage () {
 
   this.move_parallax = function (e, mult, x, y) {
     $(e).css({
-      'transition': 'transform ' + (oquonie.speed / 1000) + 's',
+      transition: 'transform ' + (oquonie.speed / 1000) + 's',
       '-webkit-transition': '-webkit-transform ' + (oquonie.speed / 1000) + 's',
-      'transform': 'translate(' + (mult * x) + '%,' + (mult * y) + '%)',
+      transform: 'translate(' + (mult * x) + '%,' + (mult * y) + '%)',
       '-webkit-transform': 'translate(' + (mult * x) + '%,' + (mult * y) + '%)'
     })
   }
@@ -147,7 +147,7 @@ function Stage () {
   this.pan_down = function () {
     oquonie.player.land()
     $(this.element).css('top', '-100vh').delay(300).animate({ top: 0 }, oquonie.speed * 10, function () {
-      keyboard.unlock('teleport')
+      oquonie.player.unlock('teleport')
     })
   }
 
@@ -168,8 +168,8 @@ function Stage () {
 
     oquonie.player.move_at(x, y)
 
-    let numPillars = oquonie.spellbook.pillars.length
-    let theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
+    const numPillars = oquonie.spellbook.pillars.length
+    const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
     oquonie.stage.set_theme(theme)
 
     this.look()
@@ -183,8 +183,8 @@ function Stage () {
   this.shake = function (radius, time) {
     if (time < 1) { return }
 
-    let r1 = Math.random() * 6
-    let r2 = Math.random() * 6
+    const r1 = Math.random() * 6
+    const r2 = Math.random() * 6
 
     $(this.element).css('margin-top', r2).css('margin-left', r1)
     setTimeout(function () { oquonie.stage.shake(radius, time - 1) }, 50)

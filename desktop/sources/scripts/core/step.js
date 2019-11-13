@@ -3,9 +3,9 @@
 function Step (pos, id, type) {
   Tile.call(this, 'step ' + (pos < 3 ? 'left' : 'right'))
 
-  let t = [[-2, 1], [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2]]
-  let x = t[pos][0]
-  let y = t[pos][1]
+  const t = [[-2, 1], [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2]]
+  const x = t[pos][0]
+  const y = t[pos][1]
 
   this.x = t[pos][0]
   this.y = t[pos][1]

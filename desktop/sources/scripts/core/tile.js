@@ -7,9 +7,9 @@ function Tile (type = 'unknown') {
   this.y = 0
 
   this.update = function (depth_offset = 0) {
-    let p = this.position_at(this.x, this.y)
-    let top = p[0]
-    let left = p[1]
+    const p = this.position_at(this.x, this.y)
+    const top = p[0]
+    const left = p[1]
 
     $(this.element).css('top', p[0]).css('left', p[1]).css('z-index', this.depth(depth_offset))
   }
@@ -79,8 +79,8 @@ function Tile (type = 'unknown') {
   }
 
   this.animate = function () {
-    let origin = parseInt(this.position_at(this.x, this.y)[0])
-    let offset = (origin * (1 + (Math.random() / 20)))
+    const origin = parseInt(this.position_at(this.x, this.y)[0])
+    const offset = (origin * (1 + (Math.random() / 20)))
     $(this.element).css('opacity', 0).css('top', offset + '%').animate({ opacity: 1, top: origin + '%' }, oquonie.speed)
   }
 }
