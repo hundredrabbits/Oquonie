@@ -15,7 +15,7 @@ function Stage () {
     this.parallax_under.setAttribute('class', 'under')
   }
 
-  this.enter_room = function (room_id, x = 0, y = 0) {
+  this.enterRoom = function (room_id, x = 0, y = 0) {
     console.log('Entering Room: ' + room_id)
 
     if (!oquonie.world.rooms[room_id]) {
@@ -36,12 +36,12 @@ function Stage () {
     this.room.is_known = true
     oquonie.player.location = room_id
 
-    oquonie.player.move_at(x, y)
+    oquonie.player.moveAt(x, y)
 
     const numPillars = oquonie.spellbook.pillars.length
     const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
 
-    oquonie.stage.set_theme(theme)
+    oquonie.stage.setTheme(theme)
 
     this.look()
     this.center(oquonie.player.x, oquonie.player.y)
@@ -62,11 +62,11 @@ function Stage () {
 
   this.look = function () {
     for (let i = 0; i < this.room.events.length; i++) {
-      this.room.events[i].on_sight()
+      this.room.events[i].onSight()
     }
   }
 
-  this.tiles_at = function (x, y) {
+  this.tilesAt = function (x, y) {
     const tiles = []
     for (let i = 0; i < this.room.events.length; i++) {
       const tile = this.room.events[i]
@@ -75,7 +75,7 @@ function Stage () {
     return tiles
   }
 
-  this.floor_at = function (x, y) {
+  this.floorAt = function (x, y) {
     if (x == -1 && y == 1) { return this.room.floors[0] }
     if (x == 0 && y == 1) { return this.room.floors[1] }
     if (x == 1 && y == 1) { return this.room.floors[2] }
@@ -91,7 +91,7 @@ function Stage () {
     return null
   }
 
-  this.wall_at = function (x, y) {
+  this.wallAt = function (x, y) {
     if (x == -1 && y == 2) { return 0 }
     if (x == 0 && y == 2) { return 1 }
     if (x == 1 && y == 2) { return 2 }
@@ -122,7 +122,7 @@ function Stage () {
     })
   }
 
-  this.set_theme = function (theme) {
+  this.setTheme = function (theme) {
     oquonie.element.setAttribute('class', theme)
 
     $(this.room.element).css('z-index', (theme == 'pillars' ? 1000 : 3000))
@@ -130,13 +130,13 @@ function Stage () {
 
   //
 
-  this.warp_to = function (room, x, y) {
+  this.warpTo = function (room, x, y) {
     console.log('Teleporting to: ' + room)
     this.pan_up()
 
     oquonie.music.play_effect('teleport')
     setTimeout(function () { oquonie.stage.pan_down() }, (oquonie.speed * 10) + 400)
-    setTimeout(function () { oquonie.stage.load_room(room, x, y) }, (oquonie.speed * 10))
+    setTimeout(function () { oquonie.stage.loadRoom(room, x, y) }, (oquonie.speed * 10))
   }
 
   this.pan_up = function (speed = oquonie.speed * 10) {
@@ -151,7 +151,7 @@ function Stage () {
     })
   }
 
-  this.load_room = function (room_id, x, y) {
+  this.loadRoom = function (room_id, x, y) {
     console.log('Loading Room: ' + room_id)
 
     if (!oquonie.world.rooms[room_id]) {
@@ -166,11 +166,11 @@ function Stage () {
     this.room.show()
     this.room.is_known = true
 
-    oquonie.player.move_at(x, y)
+    oquonie.player.moveAt(x, y)
 
     const numPillars = oquonie.spellbook.pillars.length
     const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
-    oquonie.stage.set_theme(theme)
+    oquonie.stage.setTheme(theme)
 
     this.look()
     this.center(oquonie.player.x, oquonie.player.y)

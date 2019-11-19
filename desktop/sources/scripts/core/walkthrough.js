@@ -130,7 +130,7 @@ function Walkthrough () {
       oquonie.game.new()
     }
 
-    oquonie.stage.enter_room(oquonie.player.location)
+    oquonie.stage.enterRoom(oquonie.player.location)
   }
 
   this.default = function () {
@@ -139,7 +139,7 @@ function Walkthrough () {
 
   this.manual = function () {
     oquonie.speed = 300
-    oquonie.player.set_id('nastazie')
+    oquonie.player.setId('nastazie')
     oquonie.player.location = 142
 
     oquonie.spellbook.add_ramen('necomedre')
@@ -155,63 +155,63 @@ function Walkthrough () {
     oquonie.spellbook.add_pillar('nestorine')
     oquonie.spellbook.add_pillar('nemedique')
     oquonie.spellbook.add_pillar('nastazie')
-    oquonie.stage.enter_room(oquonie.player.location)
+    oquonie.stage.enterRoom(oquonie.player.location)
   }
 
   this.walk_all = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('necomedre')
+    oquonie.player.setId('necomedre')
     this.room = 29
     this.inputs = chapter_all
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
   this.walk_chapter0 = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('necomedre')
+    oquonie.player.setId('necomedre')
     this.room = 29
     this.inputs = chapter_0
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
   this.walk_chapter1 = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('necomedre')
+    oquonie.player.setId('necomedre')
     this.room = 1
     this.inputs = chapter_1
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
   this.walk_chapter2 = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('necomedre')
+    oquonie.player.setId('necomedre')
     this.room = 9
     this.inputs = chapter_2
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
   this.walk_chapter3 = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('necomedre')
+    oquonie.player.setId('necomedre')
     this.room = 3
     this.inputs = chapter_3
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
   this.walk_secrets = function (speed = oquonie.speed) {
     oquonie.speed = speed
 
-    oquonie.player.set_id('nastazie')
+    oquonie.player.setId('nastazie')
     this.room = 1
     this.inputs = secrets
 
@@ -222,7 +222,7 @@ function Walkthrough () {
     oquonie.spellbook.add_pillar('nemedique')
     oquonie.spellbook.add_pillar('nastazie')
 
-    oquonie.stage.enter_room(this.room)
+    oquonie.stage.enterRoom(this.room)
     this.run()
   }
 
@@ -235,7 +235,7 @@ function Walkthrough () {
     if (oquonie.player.locks.length <= 0) {
       console.log('walkthrough run:', section, counter, this.inputs[0])
       counter++
-      if (this.inputs[0] == 'U') { keyboard.key_arrow_up(); this.inputs.shift() } else if (this.inputs[0] == 'D') { keyboard.key_arrow_down(); this.inputs.shift() } else if (this.inputs[0] == 'L') { keyboard.key_arrow_left(); this.inputs.shift() } else if (this.inputs[0] == 'R') { keyboard.key_arrow_right(); this.inputs.shift() } else if (this.inputs[0] == '') { keyboard.key_escape(); this.inputs.shift() } else if (this.inputs[0][0] == 'W') { oquonie.stage.enter_room(parseInt(this.inputs[0].substr(1))); this.inputs.shift() } else if (this.inputs[0][0] == '_') { section = this.inputs[0]; console.log('walkthrough section:', section); counter = 0; this.inputs.shift() } else if (this.inputs[0][0] == 'T') { oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift() } else if (this.inputs[0][0] == 'S') { oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift() }
+      if (this.inputs[0] == 'U') { keyboard.key_arrow_up(); this.inputs.shift() } else if (this.inputs[0] == 'D') { keyboard.key_arrow_down(); this.inputs.shift() } else if (this.inputs[0] == 'L') { keyboard.key_arrow_left(); this.inputs.shift() } else if (this.inputs[0] == 'R') { keyboard.key_arrow_right(); this.inputs.shift() } else if (this.inputs[0] == '') { keyboard.key_escape(); this.inputs.shift() } else if (this.inputs[0][0] == 'W') { oquonie.stage.enterRoom(parseInt(this.inputs[0].substr(1))); this.inputs.shift() } else if (this.inputs[0][0] == '_') { section = this.inputs[0]; console.log('walkthrough section:', section); counter = 0; this.inputs.shift() } else if (this.inputs[0][0] == 'T') { oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift() } else if (this.inputs[0][0] == 'S') { oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift() }
     }
 
     setTimeout(function () { oquonie.walkthrough.run() }, oquonie.speed * 2)

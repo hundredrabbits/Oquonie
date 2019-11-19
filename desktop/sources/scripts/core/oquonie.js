@@ -49,7 +49,7 @@ function Oquonie () {
 
   this.reset = function () {
     oquonie.game.new()
-    oquonie.stage.enter_room(25, 0, 0)
+    oquonie.stage.enterRoom(25, 0, 0)
   }
 
   this.mousedown = function (e) {
