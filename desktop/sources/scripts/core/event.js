@@ -39,7 +39,7 @@ function Event (subtype) {
     oquonie.stage.animate(this.x, this.y)
   }
 
-  this.move_at = function (x, y) {
+  this.moveAt = function (x, y) {
     this.x = x
     this.y = y
 
@@ -60,7 +60,7 @@ function Event (subtype) {
     target.animate()
   }
 
-  this.is_collider = function () {
+  this.isCollider = function () {
     return false
   }
 
@@ -73,7 +73,7 @@ function Event (subtype) {
     $(this.element).addClass('mirror')
   }
 
-  this.bump_up = function (x, y) {
+  this.bumpUp = function (x, y) {
     const animator = this.animator
     if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
     if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
@@ -83,7 +83,7 @@ function Event (subtype) {
     $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
-  this.bump_against = function (x, y) {
+  this.bumpAgainst = function (x, y) {
     const animator = this.animator
     if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
     if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
@@ -105,15 +105,15 @@ function Event (subtype) {
     $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
-  this.on_collision = function () {
+  this.onCollision = function () {
     // console.log("On collision, no effect");
   }
 
-  this.on_step = function () {
+  this.onStep = function () {
     // console.log("On step, no effect");
   }
 
-  this.on_sight = function () {
+  this.onSight = function () {
     // console.log("On sight, no effect");
   }
 }

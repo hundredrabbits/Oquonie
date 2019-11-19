@@ -23,7 +23,7 @@ function Dialog () {
   this.show = function (host_name, message, path = null, audio_name = null) {
     console.log('Dialog with: ' + host_name)
 
-    if (path == null) { path = 'media/graphics/' + host_name + '/' }
+    if (!path) { path = 'media/graphics/' + host_name + '/' }
     if (audio_name == null) { audio_name = host_name }
 
     oquonie.artbook.set_art(this.portrait, path + 'portrait.png')

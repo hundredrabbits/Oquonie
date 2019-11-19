@@ -135,6 +135,26 @@ function World () {
     room.add_event(new Tree(0, 0))
     this.rooms[11] = room
 
+    room = new Room(12)
+    room.floors = [116, 117, 115, 116, 118, 115, 116, 119, 116]
+    room.walls = [106, 105, 104, 107, 108, 109]
+    room.steps = [0, 0, 0, 0, 12, 0]
+    room.audio = 'lobby'
+    room.theme = 'white'
+    room.add_event(new Blocker(1, 1, 32))
+    room.add_event(new Blocker(1, 0, 32))
+    room.add_event(new Blocker(1, -1, 34))
+
+    room.add_event(new Blocker(-1, 1, 31))
+    room.add_event(new Blocker(-1, 0, 31))
+    room.add_event(new Blocker(-1, -1, 33))
+    room.add_event(new Blocker(0, 1, 35))
+    room.add_event(new Ninj(1, 0))
+    room.add_event(new Rek(-1, 1))
+    room.add_event(new Toy(-1, -1))
+    room.add_event(new Tip(0, 1))
+    this.rooms[12] = room
+
     // 12-13
 
     room = new Room(14)
@@ -833,10 +853,11 @@ function World () {
 
     room = new Room(81)
     room.floors = [34, 35, 35, 35, 35, 35, 34, 35, 34]
-    room.walls = [34, 35, 34, 25, 15, 25]
+    room.walls = [34, 110, 34, 25, 15, 25]
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
+    room.add_event(new Door(0, 2, 12, 0, -1))
     room.add_event(new Door(-2, 0, 83, 1, 0))
     room.add_event(new Door(0, -2, 84, 0, 1))
     this.rooms[81] = room
