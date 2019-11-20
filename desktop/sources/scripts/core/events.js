@@ -223,7 +223,7 @@ function Blocker (x, y, id) {
 
   this.update(20)
 
-  if (this.id != 0) { oquonie.artbook.set_art(this.element, 'media/graphics/blocker/' + this.id + '.png') }
+  if (this.id != 0) { oquonie.artbook.setArt(this.element, 'media/graphics/blocker/' + this.id + '.png') }
 }
 
 function Boss (x, y, reset) {
@@ -291,7 +291,7 @@ function Broken (x, y, id, room, to_x, to_y) {
   this.onSight = function () {
     if (oquonie.spellbook.pillars.length < 5) { return }
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
-    oquonie.artbook.set_art('#wall_' + wall_id, 'media/graphics/broken/' + this.id + '.png')
+    oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/broken/' + this.id + '.png')
   }
 }
 
@@ -392,7 +392,7 @@ function Gate (requirement, x, y, room, to_x, to_y) {
   this.onSight = function () {
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
     if (wall_id != null) {
-      oquonie.artbook.set_art('#wall_' + wall_id, 'media/graphics/wall/gate.' + this.requirement + '.' + (this.requirement == oquonie.player.id || oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
+      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.' + this.requirement + '.' + (this.requirement == oquonie.player.id || oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
     }
   }
 }
@@ -449,7 +449,7 @@ function HiversairesGate (x, y, room, to_x, to_y) {
   this.onSight = function () {
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
     if (wall_id != null) {
-      oquonie.artbook.set_art('#wall_' + wall_id, 'media/graphics/wall/gate.hiversaires.' + (oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
+      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.hiversaires.' + (oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
     }
   }
 }
@@ -543,24 +543,24 @@ function Petunia (x, y) {
   this.onCollision = function () {
     oquonie.dialog.show('petunia', ['confusion1', 'confusion3', 'confusion2'])
 
-    oquonie.artbook.set_art('#wall_0', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    oquonie.artbook.set_art('#wall_1', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    oquonie.artbook.set_art('#wall_2', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    oquonie.artbook.set_art('#wall_3', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    oquonie.artbook.set_art('#wall_4', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    oquonie.artbook.set_art('#wall_5', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
-    // oquonie.artbook.set_art("#wall_6","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
+    oquonie.artbook.setArt('#wall_0', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    oquonie.artbook.setArt('#wall_1', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    oquonie.artbook.setArt('#wall_2', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    oquonie.artbook.setArt('#wall_3', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    oquonie.artbook.setArt('#wall_4', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    oquonie.artbook.setArt('#wall_5', 'media/graphics/wall/' + parseInt(Math.random() * 37) + '.png')
+    // oquonie.artbook.setArt("#wall_6","media/graphics/wall/"+parseInt(Math.random() * 37)+".png");
 
-    oquonie.artbook.set_art('#floor_0', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_1', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_2', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_3', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_4', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_5', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_6', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_7', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    oquonie.artbook.set_art('#floor_8', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
-    // oquonie.artbook.set_art("#floor_9","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
+    oquonie.artbook.setArt('#floor_0', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_1', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_2', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_3', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_4', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_5', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_6', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_7', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    oquonie.artbook.setArt('#floor_8', 'media/graphics/floor/' + parseInt(Math.random() * 40) + '.png')
+    // oquonie.artbook.setArt("#floor_9","media/graphics/floor/"+parseInt(Math.random() * 40)+".png");
   }
 
   this.update(20)
@@ -665,7 +665,7 @@ function PillarGate (x, y, room, to_x, to_y) {
   this.onSight = function () {
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
     const src = !this.missing_pillar() ? 'media/graphics/wall/gate.red.open.png' : 'media/graphics/wall/gate.red.close.png'
-    oquonie.artbook.set_art('#wall_' + wall_id, src)
+    oquonie.artbook.setArt('#wall_' + wall_id, src)
   }
 
   this.missing_pillar = function () {
@@ -795,7 +795,7 @@ function Ramen (x, y, character = null) {
 
   this.show_notification = function () {
     this.notification.style.display = 'block'
-    oquonie.artbook.set_art(this.notification, 'media/graphics/notification/' + this.lobby_spell() + '.png')
+    oquonie.artbook.setArt(this.notification, 'media/graphics/notification/' + this.lobby_spell() + '.png')
   }
 
   this.update_notification = function () {
@@ -837,7 +837,7 @@ function RamenMat (x, y) {
     this.element.style.backgroundSize = `${width}px ${width * 1.5}px`
     this.element.style.backgroundPosition = '0px center'
     this.element.style.display = 'none'
-    oquonie.artbook.set_art(this.element, 'media/graphics/ramen/mat.png')
+    oquonie.artbook.setArt(this.element, 'media/graphics/ramen/mat.png')
   }
 
   this.show = function () {
@@ -1061,7 +1061,7 @@ function Wizard (x, y, id) {
 
   this.notification = document.createElement('notification')
   this.element.appendChild(this.notification)
-  oquonie.artbook.set_art(this.notification, 'media/graphics/notification/' + this.id + '.png')
+  oquonie.artbook.setArt(this.notification, 'media/graphics/notification/' + this.id + '.png')
 
   this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 

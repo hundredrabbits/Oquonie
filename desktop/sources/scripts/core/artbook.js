@@ -20,7 +20,7 @@ function Artbook () {
     }
   }
 
-  this.set_art = function (selector, assetUrl) {
+  this.setArt = function (selector, assetUrl) {
     if (!(assetUrl in this.asset_catalog)) {
       const className = 'artbook_' + this.class_unique_id
       this.class_unique_id++

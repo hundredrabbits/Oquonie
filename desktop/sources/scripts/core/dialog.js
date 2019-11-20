@@ -28,12 +28,12 @@ function Dialog () {
     if (!path) { path = 'media/graphics/' + hostName + '/' }
     if (audio_name == null) { audio_name = hostName }
 
-    oquonie.artbook.set_art(this.portrait, path + 'portrait.png')
+    oquonie.artbook.setArt(this.portrait, path + 'portrait.png')
     $(this.element).animate({ opacity: 1 }, oquonie.speed, function () {})
 
-    oquonie.artbook.set_art(this.letter1, 'media/graphics/camilare/' + message[0] + '.png')
-    oquonie.artbook.set_art(this.letter2, 'media/graphics/camilare/' + message[1] + '.png')
-    oquonie.artbook.set_art(this.letter3, 'media/graphics/camilare/' + message[2] + '.png')
+    oquonie.artbook.setArt(this.letter1, 'media/graphics/camilare/' + message[0] + '.png')
+    oquonie.artbook.setArt(this.letter2, 'media/graphics/camilare/' + message[1] + '.png')
+    oquonie.artbook.setArt(this.letter3, 'media/graphics/camilare/' + message[2] + '.png')
 
     this.content = message
 

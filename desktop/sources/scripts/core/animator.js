@@ -19,14 +19,15 @@ function Animator (host) {
     if (!this.animations[this.state]) { return }
 
     const anim = this.animations[this.state]
-    const width = $(this.host.element).width()
-    const frames = unique(this.animations[this.state].frames).length
+    const width = this.host.element.offsetWidth
+
+    const frames = uniq(this.animations[this.state].frames).length
 
     const artId = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
 
     if (this.last_artId !== artId) {
       this.last_artId = artId
-      oquonie.artbook.set_art(this.host.element, artId)
+      oquonie.artbook.setArt(this.host.element, artId)
     }
 
     this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
@@ -54,14 +55,6 @@ function Animator (host) {
       this.animate()
     }
   }
-}
-
-function unique (list) {
-  const result = []
-  $.each(list, function (i, e) {
-    if ($.inArray(e, result) == -1) result.push(e)
-  })
-  return result
 }
 
 function Animation (name, frames) {

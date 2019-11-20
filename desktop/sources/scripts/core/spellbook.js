@@ -118,9 +118,9 @@ function Spellbook () {
 
     for (let i = 0; i < this.spells.length; i++) {
       const spell_name = this.spells[i].split('_')[0]
-      if (i == 0) { oquonie.artbook.set_art(this.spell1, 'media/graphics/spellbook/' + spell_name + '.png') }
-      if (i == 1) { oquonie.artbook.set_art(this.spell2, 'media/graphics/spellbook/' + spell_name + '.png') }
-      if (i == 2) { oquonie.artbook.set_art(this.spell3, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i == 0) { oquonie.artbook.setArt(this.spell1, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i == 1) { oquonie.artbook.setArt(this.spell2, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i == 2) { oquonie.artbook.setArt(this.spell3, 'media/graphics/spellbook/' + spell_name + '.png') }
     }
   }
 

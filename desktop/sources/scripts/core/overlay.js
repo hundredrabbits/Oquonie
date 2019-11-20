@@ -12,7 +12,7 @@ function Overlay () {
   }
 
   this.show = function (message) {
-    oquonie.artbook.set_art(this.element, 'media/graphics/plan/' + message + '.png')
+    oquonie.artbook.setArt(this.element, 'media/graphics/plan/' + message + '.png')
     $(this.element).animate({ opacity: 1 }, oquonie.speed)
 
     this.content = message
