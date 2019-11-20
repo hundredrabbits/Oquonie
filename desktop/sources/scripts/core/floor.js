@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Floor (pos, id, type) {
   Tile.call(this, 'floor')
 

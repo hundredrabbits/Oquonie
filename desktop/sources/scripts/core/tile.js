@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Tile (type = 'unknown') {
   this.element = document.createElement('tile')
   this.element.className = type

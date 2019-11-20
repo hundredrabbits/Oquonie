@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Overlay () {
   this.element = this.element = document.createElement('overlay')
 

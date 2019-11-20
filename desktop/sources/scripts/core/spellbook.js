@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Spellbook () {
   this.element = document.createElement('spellbook')
   this.spell1 = document.createElement('spell')

@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Music () {
   this.track_ambient = new Audio()
   this.track_effect = new Audio()

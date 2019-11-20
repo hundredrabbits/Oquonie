@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function World () {
   this.rooms = []
 

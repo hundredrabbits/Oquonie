@@ -24,7 +24,7 @@ oquonie.pillars { background-color:lightgrey; }
 oquonie.hiversaires { background-color:lightgrey; }
 oquonie.tear { background-color:lightgrey; }
 
-stage { width:130vh; height:130vh; position:absolute; left:calc(50vw - (130vh/2)); top:calc(65vh - (140vh/2)); will-change:top,left,transform; }
+stage { width:100vh; height:100vh; position:absolute; left:calc(50vw - 50vh); top:0; will-change:top,left,transform; }
 stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
 stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000; will-change: transform; }
 stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
@@ -47,6 +47,18 @@ tile.shadow { background-image:url(../media/graphics/player/shadow.png); width:1
 tile.event notification { width:100%;height:100%;top:-15%; left:10%; }
 
 overlay { position:absolute; display:block; width:100vw; height:100vh; z-index:8000; background-size:contain; background-position:center center; background-repeat: no-repeat; background-color: white; top:0px; left:0px; opacity:0; will-change: opacity;}
+
+/* Guides */
+
+/*
+stage { border:1px solid blue; }
+stage room { border:1px solid purple; }
+stage room tile { border:1px solid red; }
+stage room tile.wall { border:1px solid cyan; }
+stage room tile.floor { border:1px solid pink; }
+stage room tile.step { border:1px solid green; }
+*/
+
 
 @media screen and (orientation:portrait) {
   stage { width:130vw; height:130vw; position:absolute; left:calc(50vw - (130vw/2)); top:calc(55vh - (130vw/2)); will-change:top,left,transform; }

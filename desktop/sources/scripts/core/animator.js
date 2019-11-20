@@ -1,11 +1,13 @@
 'use strict'
 
+/* global oquonie */
+
 function Animator (host) {
   this.host = host
   this.animations = {}
   this.state = 'idle'
   this.orientation = null
-  this.last_art_id = null
+  this.last_artId = null
   this.preload_container = document.createElement('preload')
 
   this.add = function (animation) {
@@ -18,14 +20,13 @@ function Animator (host) {
 
     const anim = this.animations[this.state]
     const width = $(this.host.element).width()
-    const height = $(this.host.element).height()
     const frames = unique(this.animations[this.state].frames).length
 
-    const art_id = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
+    const artId = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
 
-    if (this.last_art_id != art_id) {
-      this.last_art_id = art_id
-      oquonie.artbook.set_art(this.host.element, art_id)
+    if (this.last_artId !== artId) {
+      this.last_artId = artId
+      oquonie.artbook.set_art(this.host.element, artId)
     }
 
     this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
@@ -40,15 +41,15 @@ function Animator (host) {
     }
 
     for (const animName in this.animations) {
-      const art_id = 'media/graphics/' + this.host.name + '/' + (this.host.id ? this.host.id + '.' : '') + animName + '.png'
+      const artId = 'media/graphics/' + this.host.name + '/' + (this.host.id ? this.host.id + '.' : '') + animName + '.png'
       const image = new Image()
-      image.src = art_id
+      image.src = artId
       this.preload_container.appendChild(image)
     }
   }
 
-  this.set_state = function (new_state, update_immediately = true) {
-    this.state = new_state
+  this.set_state = function (newState, update_immediately = true) {
+    this.state = newState
     if (update_immediately) {
       this.animate()
     }
@@ -61,4 +62,15 @@ function unique (list) {
     if ($.inArray(e, result) == -1) result.push(e)
   })
   return result
+}
+
+function Animation (name, frames) {
+  this.name = name
+  this.frames = frames
+  this.frame = 0
+
+  this.run = function () {
+    this.frame += 1
+    return this.frames[this.frame % this.frames.length]
+  }
 }

@@ -20,13 +20,13 @@ function Artbook () {
     }
   }
 
-  this.set_art = function (selector, asset_url) {
-    if (!(asset_url in this.asset_catalog)) {
+  this.set_art = function (selector, assetUrl) {
+    if (!(assetUrl in this.asset_catalog)) {
       const className = 'artbook_' + this.class_unique_id
       this.class_unique_id++
 
-      this.stylesheet.insertRule('.' + className + '{background-image:url(' + asset_url + ')}', 0)
-      this.asset_catalog[asset_url] = className
+      this.stylesheet.insertRule('.' + className + '{background-image:url(' + assetUrl + ')}', 0)
+      this.asset_catalog[assetUrl] = className
     }
 
     const id = this.get_element_id(selector)
@@ -36,21 +36,21 @@ function Artbook () {
     }
 
     if (id in this.element_registry) {
-      if (this.element_registry[id] == asset_url) {
+      if (this.element_registry[id] == assetUrl) {
         return
       }
       this.remove_art(selector)
     }
-    this.element_registry[id] = asset_url
-    $(selector).addClass(this.asset_catalog[asset_url])
+    this.element_registry[id] = assetUrl
+    $(selector).addClass(this.asset_catalog[assetUrl])
   }
 
   this.remove_art = function (selector) {
     const id = this.get_element_id(selector)
     if (id in this.element_registry) {
-      const asset_url = this.element_registry[id]
-      if (asset_url in this.asset_catalog) {
-        $(selector).removeClass(this.asset_catalog[asset_url])
+      const assetUrl = this.element_registry[id]
+      if (assetUrl in this.asset_catalog) {
+        $(selector).removeClass(this.asset_catalog[assetUrl])
       }
       delete this.element_registry[id]
     }

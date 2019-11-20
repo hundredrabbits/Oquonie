@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Wall (pos, id, type) {
   Tile.call(this, 'wall ' + (pos < 3 ? 'left' : 'right'))
 

@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Room (id) {
   this.element = document.createElement('room')
 

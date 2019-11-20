@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Stage () {
   this.element = document.createElement('stage')
   this.parallax_over = document.createElement('parallax')

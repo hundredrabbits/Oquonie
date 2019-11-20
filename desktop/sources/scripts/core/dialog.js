@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Dialog () {
   this.element = this.element = document.createElement('dialog')
 
@@ -20,11 +22,11 @@ function Dialog () {
     this.bubble.appendChild(this.letter3)
   }
 
-  this.show = function (host_name, message, path = null, audio_name = null) {
-    console.log('Dialog with: ' + host_name)
+  this.show = function (hostName, message, path = null, audio_name = null) {
+    console.log('Dialog with: ' + hostName)
 
-    if (!path) { path = 'media/graphics/' + host_name + '/' }
-    if (audio_name == null) { audio_name = host_name }
+    if (!path) { path = 'media/graphics/' + hostName + '/' }
+    if (audio_name == null) { audio_name = hostName }
 
     oquonie.artbook.set_art(this.portrait, path + 'portrait.png')
     $(this.element).animate({ opacity: 1 }, oquonie.speed, function () {})

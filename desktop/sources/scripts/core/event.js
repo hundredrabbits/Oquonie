@@ -1,5 +1,7 @@
 'use strict'
 
+/* global oquonie */
+
 function Event (subtype) {
   Tile.call(this, 'event')
 
