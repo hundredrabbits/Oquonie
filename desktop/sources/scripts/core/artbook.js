@@ -36,7 +36,7 @@ function Artbook () {
     const id = this.get_element_id(el)
 
     if (id === null) {
-      console.warn('no element for selector ' + el)
+      console.warn('Artbook', 'no element for selector ' + el)
     }
 
     if (id in this.element_registry) {

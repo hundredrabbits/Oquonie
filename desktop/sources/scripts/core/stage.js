@@ -21,7 +21,7 @@ function Stage () {
   }
 
   this.leaveRoom = (roomId, x = 0, y = 0) => {
-    console.log('Leaving Room: ' + this.room.id)
+    console.log('Stage', 'Leaving Room: ' + this.room.id)
     this.clearRoom()
     this.room = null
     this.el.style.opacity = 0
@@ -37,11 +37,11 @@ function Stage () {
     }
 
     if (!oquonie.world.rooms[roomId]) {
-      console.warn('Missing room:(' + roomId + ')')
+      console.warn('Stage', 'Missing room:(' + roomId + ')')
       return
     }
 
-    console.log('Entering Room: ' + roomId)
+    console.log('Stage', 'Entering Room: ' + roomId)
 
     oquonie.player.standByDoor(x, y)
 
@@ -80,11 +80,11 @@ function Stage () {
     }
 
     if (!oquonie.world.rooms[roomId]) {
-      console.warn('Missing room:(' + roomId + ')')
+      console.warn('Stage', 'Missing room:(' + roomId + ')')
       return
     }
 
-    console.log('Entering Room: ' + roomId)
+    console.log('Stage', 'Entering Room: ' + roomId)
 
     this.room = oquonie.world.rooms[roomId]
     this.el.appendChild(this.room.element)
@@ -143,7 +143,7 @@ function Stage () {
   //
 
   this.warpTo = function (room, x, y) {
-    console.log('Teleporting to: ' + room)
+    console.log('Stage', 'Teleporting to: ' + room)
     this.panUp()
 
     oquonie.music.play_effect('teleport')
@@ -152,13 +152,11 @@ function Stage () {
   }
 
   this.panUp = function (speed = oquonie.speed * 10) {
-    console.log('pan up')
     oquonie.player.lift(speed)
     this.el.style.transform = 'translate(0,100vh)'
   }
 
   this.panDown = function () {
-    console.log('pan down')
     oquonie.player.land()
 
     this.el.style.transition = 'opacity 0.4s, transform 0s'

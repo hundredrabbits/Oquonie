@@ -1,7 +1,7 @@
 'use strict'
 
 /* global oquonie */
-/* global setClass */
+/* global replaceClass */
 
 function Overlay () {
   this.el = document.createElement('div')

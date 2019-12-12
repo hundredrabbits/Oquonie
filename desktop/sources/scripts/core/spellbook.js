@@ -40,13 +40,13 @@ function Spellbook () {
 
   this.addSpell = function (spellName) {
     if (this.spells.length > 2) {
-      console.warn('Spellbook is full.')
+      console.warn('Spellbook', 'Is full.')
       oquonie.music.playInterface('interface.spellbook.full')
       return
     }
 
     this.show()
-    console.log('Add spell: ' + spellName)
+    console.log('Spellbook', 'Add spell: ' + spellName)
     this.spells.push(spellName)
     oquonie.music.playInterface('interface.spellbook.add')
     this.try_transform()
@@ -54,7 +54,7 @@ function Spellbook () {
   }
 
   this.removeSpell = function (spellName) {
-    console.log('Removed spell: ' + spellName)
+    console.log('Spellbook', 'Removed spell: ' + spellName)
     const index = this.spells.indexOf(spellName)
     this.spells.splice(index, 1)
     oquonie.music.playInterface('interface.spellbook.remove')
@@ -83,7 +83,7 @@ function Spellbook () {
   // Ramen
 
   this.add_ramen = function (ramenCharacter) {
-    console.log('Add Ramen: ' + ramenCharacter)
+    console.log('Spellbook', 'Add Ramen: ' + ramenCharacter)
     this.ramens.push(ramenCharacter)
   }
 
@@ -109,7 +109,7 @@ function Spellbook () {
       this.spells = []
       this.update()
     } else {
-      console.warn('Not sequence')
+      console.warn('Spellbook', 'Not sequence')
     }
   }
 

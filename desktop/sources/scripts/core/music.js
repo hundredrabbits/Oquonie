@@ -1,6 +1,7 @@
 'use strict'
 
 /* global oquonie */
+/* global Audio */
 
 function Music () {
   this.track_ambient = new Audio()
@@ -55,16 +56,16 @@ function Music () {
   }
 
   this.fetch_audio = function (name, role, src, loop = false) {
-    const audio_id = role + '_' + name
-    if (!(audio_id in this.audio_catalog)) {
+    const id = role + '_' + name
+    if (!(id in this.audio_catalog)) {
       const audio = new Audio()
       audio.name = name
       audio.src = src
       audio.loop = loop
-      this.audio_catalog[audio_id] = audio
+      this.audio_catalog[id] = audio
     }
-    this.audio_catalog[audio_id].currentTime = 0
-    return this.audio_catalog[audio_id]
+    this.audio_catalog[id].currentTime = 0
+    return this.audio_catalog[id]
   }
 
   this.pause_ambience = function () {

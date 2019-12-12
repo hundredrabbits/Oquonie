@@ -26,14 +26,14 @@ function Room (id) {
     const arr = []
     for (const eventId in this.events) {
       const event = this.events[eventId]
-      if (event.id === id) { console.log(event.id, id); continue }
+      if (event.id === id) { continue }
       arr.push(event)
     }
     this.events = arr
   }
 
   this.refresh = function () {
-    console.log('refreshing room')
+    console.log('Room', 'Refreshing..')
     this.element.innerHTML = ''
 
     // Floor

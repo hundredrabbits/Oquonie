@@ -10,9 +10,6 @@ function Tile (type = 'unknown') {
 
   this.update = function (depth_offset = 0) {
     const p = this.positionAt(this.x, this.y)
-    const top = p[0]
-    const left = p[1]
-
     $(this.element).css('top', p[0]).css('left', p[1]).css('z-index', this.depth(depth_offset))
   }
 
@@ -106,8 +103,6 @@ function Step (pos, id, type) {
   Tile.call(this, 'step ' + (pos < 3 ? 'left' : 'right'))
 
   const t = [[-2, 1], [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2]]
-  const x = t[pos][0]
-  const y = t[pos][1]
 
   this.x = t[pos][0]
   this.y = t[pos][1]
@@ -1014,7 +1009,7 @@ function Ramen (x, y, character = null) {
   this.update_state = function () {
     if (this.character) { this.onSight_world() }
     if (this.location === 2) { this.onSight_lobby() }
-    this.update_notification()
+    this.updateNotification()
   }
 
   this.onSight_lobby = function () {
@@ -1040,24 +1035,24 @@ function Ramen (x, y, character = null) {
     this.first_sight = false
   }
 
-  this.hide_notification = function () {
+  this.hideNotification = function () {
     this.notification.style.display = 'none'
   }
 
-  this.show_notification = function () {
+  this.showNotification = function () {
     this.notification.style.display = 'block'
     oquonie.artbook.setArt(this.notification, 'media/graphics/notification/' + this.lobby_spell() + '.png')
   }
 
-  this.update_notification = function () {
+  this.updateNotification = function () {
     if (this.character) {
-      this.hide_notification()
+      this.hideNotification()
     } else if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
-      this.hide_notification()
+      this.hideNotification()
     } else if (oquonie.spellbook.hasSpell(this.spellName()) !== true) {
-      this.show_notification()
+      this.showNotification()
     } else {
-      this.hide_notification()
+      this.hideNotification()
     }
   }
 
@@ -1332,28 +1327,28 @@ function Wizard (x, y, id) {
       return
     }
     oquonie.spellbook.toggleSpell(this.spellName())
-    this.update_notification()
+    this.updateNotification()
     oquonie.dialog.show(this.id, ['friend', 'locked', this.id], path)
   }
 
   this.onSight = function () {
     console.log('Sighted Wizard: ' + this.id)
-    this.update_notification()
+    this.updateNotification()
   }
 
-  this.hide_notification = function () {
+  this.hideNotification = function () {
     this.notification.style.display = 'none'
   }
 
-  this.show_notification = function () {
+  this.showNotification = function () {
     this.notification.style.display = 'block'
   }
 
-  this.update_notification = function () {
+  this.updateNotification = function () {
     if (oquonie.spellbook.hasSpell(this.spellName()) === true || oquonie.player.id === this.id) {
-      this.hide_notification()
+      this.hideNotification()
     } else {
-      this.show_notification()
+      this.showNotification()
     }
   }
 

@@ -4,13 +4,12 @@ Oquonie is a textless puzzle game for iPad and iPhone created in collaboration w
 
 ## TODOs
 
+- Remove jquery from audio
+- The stage.shake event is using jquery
 - Combine game data into a single key.
-- Repair map.
 - Found issue with red character in necomedre world.
-- Fix transform animation.
 - Migrate top/left to transform.translate
 - Remove jquery
-- Complete addClass/removeClass helpers
 
 Feel free to send pull requests if you find an issue that you wish to correct.
 

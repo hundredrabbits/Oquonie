@@ -43,7 +43,7 @@ function Oquonie () {
 
   this.start = function () {
     console.clear()
-    console.info('Starting Oquonie')
+    console.info('Oquonie', 'Starting..')
 
     this.element.style.opacity = 1
     this.walkthrough.start()

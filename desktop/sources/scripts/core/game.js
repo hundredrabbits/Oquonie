@@ -11,7 +11,7 @@ function Game () {
   this.save = function () {
     this.clear()
 
-    console.info('Saving..')
+    console.info('Game', 'Saving..')
 
     localStorage.character = oquonie.player.id
     localStorage.room = oquonie.stage.room.id
@@ -34,7 +34,7 @@ function Game () {
   }
 
   this.load = function () {
-    console.info('Loading..')
+    console.info('Game', 'Loading..')
 
     oquonie.player.setId(localStorage.character)
     oquonie.player.moveIn(parseInt(localStorage.room))
@@ -71,7 +71,7 @@ function Game () {
   }
 
   this.new = function () {
-    console.info('New Game..')
+    console.info('Game', 'New Game..')
     localStorage.clear()
 
     oquonie.spellbook.reset()
