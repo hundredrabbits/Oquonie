@@ -83,6 +83,7 @@ function Music () {
   }
 
   this.toggle_ambience = function () {
+    console.log('Music', 'Toggle Ambience')
     if (this.track_ambient.volume == 1) {
       this.pause_ambience()
     } else {
