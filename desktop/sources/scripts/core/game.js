@@ -1,6 +1,7 @@
 'use strict'
 
 /* global oquonie */
+/* global localStorage */
 
 function Game () {
   this.clear = function () {

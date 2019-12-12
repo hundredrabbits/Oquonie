@@ -42,6 +42,7 @@ function Oquonie () {
   }
 
   this.start = function () {
+    console.clear()
     console.info('Starting Oquonie')
 
     this.element.style.opacity = 1

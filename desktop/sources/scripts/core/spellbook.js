@@ -108,9 +108,9 @@ function Spellbook () {
   }
 
   this.clear = function () {
-    oquonie.artbook.remove_art(this.spell1)
-    oquonie.artbook.remove_art(this.spell2)
-    oquonie.artbook.remove_art(this.spell3)
+    oquonie.artbook.unsetArt(this.spell1)
+    oquonie.artbook.unsetArt(this.spell2)
+    oquonie.artbook.unsetArt(this.spell3)
   }
 
   this.update = function () {

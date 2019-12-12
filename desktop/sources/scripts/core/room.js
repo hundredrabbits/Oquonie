@@ -32,6 +32,7 @@ function Room (id) {
   }
 
   this.refresh = function () {
+    console.log('refreshing room')
     this.element.innerHTML = ''
 
     // Floor

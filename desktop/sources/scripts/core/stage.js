@@ -195,13 +195,13 @@ function Stage () {
   this.destroy = function (step = 6) {
     if (step < 1) { return }
 
-    if (step === 6) { oquonie.artbook.setArt('#wall_1', 'media/graphics/wall/19.png') }
-    if (step === 5) { oquonie.artbook.setArt('#wall_5', 'media/graphics/wall/15.png') }
-    if (step === 4) { oquonie.artbook.setArt('#wall_3', 'media/graphics/wall/25.png') }
-    if (step === 3) { oquonie.artbook.setArt('#wall_0', 'media/graphics/wall/26.png') }
+    if (step === 6) { oquonie.artbook.setArt(document.getElementById('wall_1'), 'media/graphics/wall/19.png') }
+    if (step === 5) { oquonie.artbook.setArt(document.getElementById('wall_5'), 'media/graphics/wall/15.png') }
+    if (step === 4) { oquonie.artbook.setArt(document.getElementById('wall_3'), 'media/graphics/wall/25.png') }
+    if (step === 3) { oquonie.artbook.setArt(document.getElementById('wall_0'), 'media/graphics/wall/26.png') }
     // if(step === 2){ oquonie.artbook.setArt("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
-    if (step === 2) { oquonie.artbook.setArt('#wall_4', 'media/graphics/wall/40.png') }
-    if (step === 1) { oquonie.artbook.setArt('#wall_2', 'media/graphics/wall/15.png') }
+    if (step === 2) { oquonie.artbook.setArt(document.getElementById('wall_4'), 'media/graphics/wall/40.png') }
+    if (step === 1) { oquonie.artbook.setArt(document.getElementById('wall_2'), 'media/graphics/wall/15.png') }
 
     setTimeout(function () { oquonie.stage.destroy(step - 1) }, 50)
   }

@@ -1,32 +1,31 @@
 'use strict'
 
 /* global oquonie */
+/* global Image */
 
 function Animator (host) {
   this.host = host
   this.animations = {}
   this.state = 'idle'
   this.orientation = null
-  this.last_artId = null
-  this.preload_container = document.createElement('preload')
+  this.last = null
+  this.loader = document.createElement('preload')
 
-  this.add = function (animation) {
+  this.add = (animation) => {
     this.animations[animation.name] = animation
     this.animations[animation.name].host = this.host
   }
 
-  this.animate = function () {
+  this.animate = () => {
     if (!this.animations[this.state]) { return }
 
     const anim = this.animations[this.state]
     const width = this.host.element.offsetWidth
-
     const frames = uniq(this.animations[this.state].frames).length
-
     const artId = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
 
-    if (this.last_artId !== artId) {
-      this.last_artId = artId
+    if (this.last !== artId) {
+      this.last = artId
       oquonie.artbook.setArt(this.host.element, artId)
     }
 
@@ -34,26 +33,31 @@ function Animator (host) {
     this.host.element.style.backgroundPosition = `${anim.run() * -width + width}px center`
   }
 
-  this.preload = function () {
-    this.preload_container.style.display = 'none'
-    oquonie.element.appendChild(this.preload_container)
-    while (this.preload_container.lastChild !== null) {
-      this.preload_container.removeChild(this.preload_container.lastChild)
+  this.preload = () => {
+    this.loader.style.display = 'none'
+    oquonie.element.appendChild(this.loader)
+
+    while (this.loader.lastChild !== null) {
+      this.loader.removeChild(this.loader.lastChild)
     }
 
     for (const animName in this.animations) {
       const artId = 'media/graphics/' + this.host.name + '/' + (this.host.id ? this.host.id + '.' : '') + animName + '.png'
       const image = new Image()
       image.src = artId
-      this.preload_container.appendChild(image)
+      this.loader.appendChild(image)
     }
   }
 
-  this.set_state = function (newState, update_immediately = true) {
+  this.setState = (newState, force = true) => {
     this.state = newState
-    if (update_immediately) {
+    if (force) {
       this.animate()
     }
+  }
+
+  function uniq (arr) {
+    return arr.filter((value, index, self) => { return self.indexOf(value) === index })
   }
 }
 
@@ -62,7 +66,7 @@ function Animation (name, frames) {
   this.frames = frames
   this.frame = 0
 
-  this.run = function () {
+  this.run = () => {
     this.frame += 1
     return this.frames[this.frame % this.frames.length]
   }
