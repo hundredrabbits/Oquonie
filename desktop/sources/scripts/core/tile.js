@@ -9,7 +9,6 @@ function Tile (type = 'unknown') {
   this.y = 0
 
   this.update = function (depth_offset = 0) {
-    console.log(type)
     const p = this.positionAt(this.x, this.y)
     const top = p[0]
     const left = p[1]

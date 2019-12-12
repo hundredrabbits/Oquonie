@@ -7,7 +7,7 @@ oquonie, stage, room, tile, dialog, spellbook, spell, parallax { display:block; 
 oquonie { width:100vw; height:100vh; transition: background-color 1s, opacity 1s; position: relative; overflow: hidden; -webkit-app-region: drag; opacity: 0;}
 oquonie.ready { opacity: 1 }
 
-dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed; opacity: 0; will-change: opacity; }
+dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed; opacity: 0; will-change: opacity; transition: opacity 250ms; }
 dialog portrait, oquonie dialog bubble { display:block; width:400px; height:400px; left:50%; bottom:0%; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }
 dialog bubble { background-image:url(../media/graphics/interface/bubble.png); }
 dialog bubble letter { display:block; position:absolute; bottom:5%; width:75px; height:75px; background-size:contain; background-position: center center; bottom: 35px}
@@ -63,3 +63,9 @@ stage room tile.step { border:1px solid green; }
 @media screen and (orientation:portrait) {
   stage { width:130vw; height:130vw; position:absolute; left:calc(50vw - (130vw/2)); top:calc(55vh - (130vw/2)); will-change:top,left,transform; }
 }
+
+
+.visible { opacity: 1 }
+.invisible { opacity: 0 }
+
+

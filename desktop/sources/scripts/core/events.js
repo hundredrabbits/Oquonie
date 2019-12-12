@@ -48,7 +48,7 @@ function Player () {
   }
 
   this.try_move = function (x, y) {
-    if (oquonie.dialog.content) {
+    if (oquonie.dialog.isVisible) {
       oquonie.dialog.hide()
       return
     }
@@ -330,7 +330,7 @@ function Credit (x, y, id) {
   }
 
   this.onCollision = function () {
-    oquonie.dialog.show(this.id, ['confusion1', 'confusion3', 'confusion2'], 'media/graphics/credit/' + this.id + '.')
+    oquonie.dialog.show(this.id, ['confusion1', 'confusion3', 'confusion2'])
   }
 
   this.update(20)
@@ -1074,7 +1074,7 @@ function Wizard (x, y, id) {
   }
 
   this.onCollision = function () {
-    const path = 'media/graphics/wizard/' + this.id + '.'
+    const path = 'media/graphics/wizard/' + this.id + '.portrait.png'
     if (oquonie.player.id === this.id) {
       oquonie.dialog.show(this.id, ['friend', 'unlocked', this.id], path)
       console.warn('Already is ' + this.id)

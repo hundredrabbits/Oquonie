@@ -35,14 +35,14 @@ function Spellbook () {
   this.add_spell = function (spell_name) {
     if (this.spells.length > 2) {
       console.warn('Spellbook is full.')
-      oquonie.music.play_interface('interface.spellbook.full')
+      oquonie.music.playInterface('interface.spellbook.full')
       return
     }
 
     this.show()
     console.log('Add spell: ' + spell_name)
     this.spells.push(spell_name)
-    oquonie.music.play_interface('interface.spellbook.add')
+    oquonie.music.playInterface('interface.spellbook.add')
     this.try_transform()
     this.update()
   }
@@ -51,7 +51,7 @@ function Spellbook () {
     console.log('Removed spell: ' + spell_name)
     const index = this.spells.indexOf(spell_name)
     this.spells.splice(index, 1)
-    oquonie.music.play_interface('interface.spellbook.remove')
+    oquonie.music.playInterface('interface.spellbook.remove')
     this.update()
   }
 

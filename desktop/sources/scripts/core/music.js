@@ -19,13 +19,13 @@ function Music () {
     this.track_effect.play()
   }
 
-  this.play_interface = function (name) {
+  this.playInterface = function (name) {
     console.log('Interface: ', name)
     this.track_interface = this.fetch_audio(name, 'interface', 'media/audio/interface/' + name + '.ogg')
     this.track_interface.play()
   }
 
-  this.play_dialog = function (name) {
+  this.playDialog = function (name) {
     console.log('Dialog: ', name)
     this.track_dialog = this.fetch_audio(name, 'dialog', 'media/audio/dialog/' + name + '.ogg')
     this.track_dialog.play()
