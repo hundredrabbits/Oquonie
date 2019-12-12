@@ -118,10 +118,6 @@ function Oquonie () {
     }
   }
 
-  function makeOffset (a, b) {
-    return { x: a.x - b.x, y: a.y - b.y }
-  }
-
   function makeDistance (a, b) {
     const aa = a.x - b.x
     const bb = a.y - b.y
