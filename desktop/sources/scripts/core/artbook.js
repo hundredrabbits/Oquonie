@@ -29,7 +29,7 @@ function Artbook () {
       const className = 'artbook_' + this.class_unique_id
       this.class_unique_id++
 
-      this.stylesheet.insertRule('.' + className + '{background-image:url(' + assetUrl + ')}', 0)
+      this.stylesheet.insertRule('.' + className + '{background-image:url(' + assetUrl + ') !important}', 0)
       this.asset_catalog[assetUrl] = className
     }
 
@@ -57,7 +57,6 @@ function Artbook () {
     if (id in this.element_registry) {
       const assetUrl = this.element_registry[id]
       if (assetUrl in this.asset_catalog) {
-        console.log(el, this.asset_catalog[assetUrl])
         removeClass(el, this.asset_catalog[assetUrl])
       }
       delete this.element_registry[id]

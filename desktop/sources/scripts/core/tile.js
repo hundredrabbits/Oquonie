@@ -1,6 +1,6 @@
 'use strict'
 
-/* global oquonie */
+/* global oquonie Animation */
 
 function Tile (type = 'unknown') {
   this.element = document.createElement('tile')
@@ -302,7 +302,7 @@ function Player () {
       oquonie.dialog.hide()
       return
     }
-    if (oquonie.overlay.content) {
+    if (oquonie.overlay.isVisible) {
       oquonie.overlay.hide()
       return
     }
@@ -986,7 +986,7 @@ function Ramen (x, y, character = null) {
       // oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
       return
     }
-    oquonie.spellbook.toggle_spell(this.spell_name())
+    oquonie.spellbook.toggleSpell(this.spellName())
     oquonie.dialog.show(this.name, ['help', 'friend', oquonie.player.id])
   }
 
@@ -1050,14 +1050,14 @@ function Ramen (x, y, character = null) {
       this.hide_notification()
     } else if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
       this.hide_notification()
-    } else if (oquonie.spellbook.has_spell(this.spell_name()) !== true) {
+    } else if (oquonie.spellbook.hasSpell(this.spellName()) !== true) {
       this.show_notification()
     } else {
       this.hide_notification()
     }
   }
 
-  this.spell_name = function () {
+  this.spellName = function () {
     return this.lobby_spell() + '_' + this.location
   }
 
@@ -1163,7 +1163,7 @@ function Shark (x, y, is_transformer = true) {
       oquonie.player.transform('necomedre')
       oquonie.dialog.show('shark', ['guide', 'friend', 'necomedre'])
     } else if (oquonie.spellbook.spells.length > 0) {
-      oquonie.spellbook.remove_spells()
+      oquonie.spellbook.removeSpells()
       oquonie.dialog.show('shark', ['guide', 'friend', 'teleport'])
     }
     this.onSight()
@@ -1230,7 +1230,7 @@ function Speaker (x, y, id = 'disc') {
   }
 
   this.onSight = function () {
-    if (oquonie.music.is_muted === this.is_playing) {
+    if (oquonie.music.isMuted === this.is_playing) {
       this.toggle()
     }
   }
@@ -1312,7 +1312,7 @@ function Wizard (x, y, id) {
 
   this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
-  this.spell_name = function () {
+  this.spellName = function () {
     return this.id + '_' + this.location
   }
 
@@ -1327,7 +1327,7 @@ function Wizard (x, y, id) {
       console.warn('Already is ' + this.id)
       return
     }
-    oquonie.spellbook.toggle_spell(this.spell_name())
+    oquonie.spellbook.toggleSpell(this.spellName())
     this.update_notification()
     oquonie.dialog.show(this.id, ['friend', 'locked', this.id], path)
   }
@@ -1346,7 +1346,7 @@ function Wizard (x, y, id) {
   }
 
   this.update_notification = function () {
-    if (oquonie.spellbook.has_spell(this.spell_name()) === true || oquonie.player.id === this.id) {
+    if (oquonie.spellbook.hasSpell(this.spellName()) === true || oquonie.player.id === this.id) {
       this.hide_notification()
     } else {
       this.show_notification()

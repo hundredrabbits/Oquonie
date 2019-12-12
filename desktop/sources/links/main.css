@@ -7,16 +7,27 @@ oquonie, stage, room, tile, dialog, spellbook, spell, parallax { display:block; 
 oquonie { width:100vw; height:100vh; transition: background-color 1s, opacity 1s; position: relative; overflow: hidden; -webkit-app-region: drag; opacity: 0;}
 oquonie.ready { opacity: 1 }
 
-dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed; opacity: 0; will-change: opacity; transition: opacity 250ms; }
-dialog portrait, oquonie dialog bubble { display:block; width:400px; height:400px; left:50%; bottom:0%; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }
-dialog bubble { background-image:url(../media/graphics/interface/bubble.png); }
-dialog bubble letter { display:block; position:absolute; bottom:5%; width:75px; height:75px; background-size:contain; background-position: center center; bottom: 35px}
-dialog bubble letter:nth-child(1) { left: 28px}
-dialog bubble letter:nth-child(2) { left:90px;}
-dialog bubble letter:nth-child(3) { left: 150px}
+/* Overlays */
 
-spellbook { width:100%; height:100vh; position:fixed; top:5vh; text-align: center; left:0px; z-index:9500;}
-spellbook spell { width:12vw; height:12vw; max-width:12vh; max-height: 12vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
+div#dialog { width:100vw; height:100vh;  z-index:9000; background: RGBA(0,0,0,0.5); position: fixed;  will-change: opacity; transition: opacity 250ms; }
+div#dialog portrait, div#dialog bubble { display:block; width:400px; height:400px; left:50%; bottom:0%; margin-left:-200px; background-size:contain; background-position:center bottom; background-repeat:no-repeat; position:absolute; z-index:9000; }
+div#dialog bubble { background-image:url(../media/graphics/interface/bubble.png); display: block}
+div#dialog bubble letter { display:block; position:absolute; bottom:5%; width:75px; height:75px; background-size:contain; background-position: center center; bottom: 35px}
+div#dialog bubble letter:nth-child(1) { left: 28px}
+div#dialog bubble letter:nth-child(2) { left:90px;}
+div#dialog bubble letter:nth-child(3) { left: 150px}
+
+div#overlay { position:absolute; display:block; width:100vw; height:100vh; z-index:8000; background-size:contain; background-position:center center; background-repeat: no-repeat; background-color: white; top:0px; left:0px; will-change: opacity; transition: opacity 250ms;}
+
+div#spellbook { width:100%; height:100vh; position:fixed; top:5vh; text-align: center; left:0px; z-index:9500;}
+div#spellbook spell { width:12vw; height:12vw; max-width:12vh; max-height: 12vh; margin-top:5px; background-size:contain; background-position: center center; background-image:url(../media/graphics/spellbook/blank.png); display:inline-block; margin-right:5px}
+div#spellbook spell:nth-child(1) { background-color:blue; transition: transform 0.3s, opacity 0.4s; }
+div#spellbook spell:nth-child(2) { background-color:yellow; transition: transform 0.4s, opacity 0.4s; }
+div#spellbook spell:nth-child(3) { background-color:purple; transition: transform 0.5s, opacity 0.4s; }
+div#spellbook.invisible { opacity: 1 }
+div#spellbook.invisible spell{ transform: translate(0,-20px); opacity: 0 }
+
+/* Others */
 
 oquonie.white { background-color:white; }
 oquonie.black { background-color:black; }
@@ -45,8 +56,6 @@ tile.event { margin-top:-29%; }
 tile.event.mirror { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
 tile.shadow { background-image:url(../media/graphics/player/shadow.png); width:100%; height:100%; margin-left:0px; position: absolute; top:0px; z-index:5;}
 tile.event notification { width:100%;height:100%;top:-15%; left:10%; }
-
-overlay { position:absolute; display:block; width:100vw; height:100vh; z-index:8000; background-size:contain; background-position:center center; background-repeat: no-repeat; background-color: white; top:0px; left:0px; opacity:0; will-change: opacity;}
 
 /* Guides */
 

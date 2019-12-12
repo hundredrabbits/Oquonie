@@ -14,7 +14,7 @@ function addClass (el, cl) {
 
 function setClass (el, cl) {
   if (el.className === cl) { return }
-  el.className = cl
+  el.className = cl.trim()
 }
 
 function removeClass (el, cl) {

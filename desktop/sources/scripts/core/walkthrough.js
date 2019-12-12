@@ -231,8 +231,8 @@ function Walkthrough () {
   this.run = function () {
     if (this.inputs.length < 1) { this.end(); return }
 
-    if (oquonie.dialog.content) { oquonie.player.try_move(0, 0) }
-    if (oquonie.overlay.content) { oquonie.player.try_move(0, 0) }
+    if (oquonie.dialog.isVisible) { oquonie.player.try_move(0, 0) }
+    if (oquonie.overlay.isVisible) { oquonie.player.try_move(0, 0) }
 
     if (oquonie.player.locks.length <= 0) {
       console.log('walkthrough run:', section, counter, this.inputs[0])

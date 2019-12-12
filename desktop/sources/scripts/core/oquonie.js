@@ -35,10 +35,10 @@ function Oquonie () {
     document.onmousemove = this.onMouseMove
 
     this.world.install()
-    this.dialog.install()
-    this.overlay.install()
+    this.dialog.install(this.element)
+    this.overlay.install(this.element)
     this.stage.install()
-    this.spellbook.install()
+    this.spellbook.install(this.element)
   }
 
   this.start = function () {
@@ -47,6 +47,8 @@ function Oquonie () {
 
     this.element.style.opacity = 1
     this.walkthrough.start()
+    this.dialog.hide()
+    this.overlay.hide()
     this.spellbook.hide()
     this.animate()
     this.started = true

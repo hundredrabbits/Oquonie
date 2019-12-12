@@ -30,7 +30,7 @@ function Game () {
     localStorage.pillar_nemedique = oquonie.spellbook.has_pillar('nemedique')
     localStorage.pillar_nastazie = oquonie.spellbook.has_pillar('nastazie')
 
-    localStorage.is_muted = oquonie.music.is_muted
+    localStorage.isMuted = oquonie.music.isMuted
   }
 
   this.load = function () {
@@ -53,9 +53,9 @@ function Game () {
     if (localStorage.pillar_nemedique === 'true') { oquonie.spellbook.add_pillar('nemedique') }
     if (localStorage.pillar_nastazie === 'true') { oquonie.spellbook.add_pillar('nastazie') }
 
-    const is_muted = localStorage.is_muted === 'true'
-    if (is_muted !== oquonie.music.is_muted) {
-      if (is_muted) {
+    const isMuted = localStorage.isMuted === 'true'
+    if (isMuted !== oquonie.music.isMuted) {
+      if (isMuted) {
         oquonie.music.pause_ambience()
       } else {
         oquonie.music.resume_ambience()

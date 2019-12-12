@@ -10,7 +10,7 @@ function Music () {
 
   this.audio_catalog = {}
 
-  this.is_muted = false
+  this.isMuted = false
   this.track_ambient.volume = 0
 
   this.play_effect = function (name) {
@@ -41,7 +41,7 @@ function Music () {
 
       oquonie.music.track_ambient.pause()
       oquonie.music.track_ambient = oquonie.music.fetch_audio(name, 'ambient', 'media/audio/ambient/' + name + '.mp3', true)
-      if (oquonie.music.is_muted === false) { oquonie.music.track_ambient.play() }
+      if (oquonie.music.isMuted === false) { oquonie.music.track_ambient.play() }
       $(oquonie.music.track_ambient).animate({ volume: 1 }, 1000)
     })
   }
@@ -50,7 +50,7 @@ function Music () {
     oquonie.music.track_ambient.pause()
     oquonie.music.track_ambient = oquonie.music.fetch_audio(name, 'ambient', 'media/audio/ambient/' + name + '.mp3', true)
     this.track_ambient.volume = 0
-    if (oquonie.music.is_muted === false) { oquonie.music.track_ambient.play() }
+    if (oquonie.music.isMuted === false) { oquonie.music.track_ambient.play() }
     $(oquonie.music.track_ambient).animate({ volume: 1 }, 1000)
   }
 
@@ -68,7 +68,7 @@ function Music () {
   }
 
   this.pause_ambience = function () {
-    this.is_muted = true
+    this.isMuted = true
 
     $(this.track_ambient).animate({ volume: 0 }, 1000, function () {
       oquonie.music.track_ambient.pause()
@@ -79,7 +79,7 @@ function Music () {
     this.track_ambient.play()
     this.track_ambient.volume = 0
     $(this.track_ambient).animate({ volume: 1 }, 1000)
-    this.is_muted = false
+    this.isMuted = false
   }
 
   this.toggle_ambience = function () {
