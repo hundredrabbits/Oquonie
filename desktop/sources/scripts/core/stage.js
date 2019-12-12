@@ -5,16 +5,18 @@
 function Stage () {
   this.el = document.createElement('div')
   this.el.id = 'stage'
-  this.parallax_over = document.createElement('parallax')
-  this.parallax_under = document.createElement('parallax')
+  this.parallax_over = document.createElement('div')
+  this.parallax_over.id = 'parallax_over'
+  this.parallax_over.className = 'parallax over'
+  this.parallax_under = document.createElement('div')
+  this.parallax_under.id = 'parallax_under'
+  this.parallax_under.className = 'parallax under'
 
   this.room = null
 
   this.install = function (host) {
     this.el.appendChild(this.parallax_over)
     this.el.appendChild(this.parallax_under)
-    this.parallax_over.setAttribute('class', 'over')
-    this.parallax_under.setAttribute('class', 'under')
     host.appendChild(this.el)
   }
 
@@ -123,18 +125,14 @@ function Stage () {
   this.center = function (x, y) {
     const xSlant = x - y
     const ySlant = -x - y
-    this.moveParallax(this.el, 0.5, xSlant, ySlant)
+    this.moveParallax(this.room.element, 0.5, xSlant, ySlant)
     this.moveParallax(this.parallax_over, 1.0, xSlant, ySlant)
     this.moveParallax(this.parallax_under, 0.125, xSlant, ySlant)
   }
 
-  this.moveParallax = function (e, mult, x, y) {
-    // $(e).css({
-    //   transition: 'transform ' + (oquonie.speed / 1000) + 's',
-    //   '-webkit-transition': '-webkit-transform ' + (oquonie.speed / 1000) + 's',
-    //   transform: 'translate(' + (mult * x) + '%,' + (mult * y) + '%)',
-    //   '-webkit-transform': 'translate(' + (mult * x) + '%,' + (mult * y) + '%)'
-    // })
+  this.moveParallax = function (el, mult, x, y) {
+    el.style.transform = `translate(${mult * x}%, ${mult * y}%)`
+    el.style.transition = `transform: ${oquonie.speed}ms`
   }
 
   this.setTheme = function (theme) {

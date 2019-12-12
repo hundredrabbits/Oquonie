@@ -2,7 +2,7 @@ body { background:#000; overflow: hidden; will-change:auto !important; }
 
 canvas#logo { position: fixed; top:calc(50vh - 150px); left:calc(50vw - 150px); transition: opacity 500ms}
 
-oquonie, room, tile, spell, parallax { display:block; }
+oquonie, tile, spell, parallax { display:block; }
 
 oquonie { width:100vw; height:100vh; transition: background-color 1s, opacity 1s; position: relative; overflow: hidden; -webkit-app-region: drag; opacity: 0;}
 oquonie.ready { opacity: 1 }
@@ -27,17 +27,17 @@ div#spellbook spell:nth-child(3) { transition: transform 0.5s, opacity 0.4s; }
 div#spellbook.invisible { opacity: 1 }
 div#spellbook.invisible spell{ transform: translate(0,-20px); opacity: 0 }
 
-div#stage { width:100vh; height:100vh; position:absolute; left:calc(50vw - 50vh); top:0; will-change:top,left,transform; transition: opacity 0.4s, transform 3s; }
-div#stage room { width:100%; height:100%; margin-top:5vh; position: relative; }
-div#stage parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000; will-change: transform; }
-div#stage parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
-div#stage parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
-.black div#stage parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
-.black div#stage parallax.under { background-image:url(../media/graphics/effects/parallax.4.png); }
-.tear div#stage parallax.over { display: none; }
-.tear div#stage parallax.under { background-image:url(../media/graphics/effects/parallax.5.png); }
-.pillars div#stage parallax.over { background-image:url(../media/graphics/effects/parallax.7.png); }
-.pillars div#stage parallax.under { background-image:url(../media/graphics/effects/parallax.6.png); }
+div#stage { width:100vh; height:100vh; position:absolute; left:calc(50vw - 50vh); top:0; will-change:top,left,transform; transition: opacity 0.2s, transform 3s; }
+div#stage div#room { width:100%; height:100%; margin-top:5vh; position: relative; transition: opacity 0.2s, transform 0.25s; }
+div#stage div.parallax { width: 100%;height: 100%;margin-top: 5vh;position: absolute;background-position: center center;background-size:contain; background-repeat:no-repeat; z-index: 2000; will-change: transform; transition: transform 1s;}
+div#stage div.parallax.over { background-image:url(../media/graphics/effects/parallax.1.png); }
+div#stage div.parallax.under { background-image:url(../media/graphics/effects/parallax.2.png); }
+.black div#stage div.parallax.over { background-image:url(../media/graphics/effects/parallax.3.png); }
+.black div#stage div.parallax.under { background-image:url(../media/graphics/effects/parallax.4.png); }
+.tear div#stage div.parallax.over { display: none; }
+.tear div#stage div.parallax.under { background-image:url(../media/graphics/effects/parallax.5.png); }
+.pillars div#stage div.parallax.over { background-image:url(../media/graphics/effects/parallax.7.png); }
+.pillars div#stage div.parallax.under { background-image:url(../media/graphics/effects/parallax.6.png); }
 
 /* Others */
 

@@ -3,7 +3,8 @@
 /* global oquonie Floor Wall Step */
 
 function Room (id) {
-  this.element = document.createElement('room')
+  this.element = document.createElement('div')
+  this.element.id = 'room'
 
   this.id = id
 
