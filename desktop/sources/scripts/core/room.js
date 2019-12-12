@@ -1,6 +1,6 @@
 'use strict'
 
-/* global oquonie */
+/* global oquonie Floor Wall Step */
 
 function Room (id) {
   this.element = document.createElement('room')
@@ -14,21 +14,21 @@ function Room (id) {
   this.theme = null
   this.events = []
 
-  this.add_event = function (event, is_mirrored = false) {
-    if (is_mirrored === true) { event.mirror() }
+  this.addEvent = function (event, isMirrored = false) {
+    if (isMirrored === true) { event.mirror() }
     event.location = this.id
 
     this.events.push(event)
   }
 
-  this.remove_event = function (id) {
-    const new_events = []
-    for (event_id in this.events) {
-      const event = this.events[event_id]
+  this.removeEvent = function (id) {
+    const arr = []
+    for (const eventId in this.events) {
+      const event = this.events[eventId]
       if (event.id === id) { console.log(event.id, id); continue }
-      new_events.push(event)
+      arr.push(event)
     }
-    this.events = new_events
+    this.events = arr
   }
 
   this.refresh = function () {

@@ -141,7 +141,7 @@ function Event (subtype) {
   this.name = subtype
   this.state = 'idle'
   this.animator = new Animator(this)
-  this.is_mirrored = false
+  this.isMirrored = false
 
   $(this.element).addClass(subtype)
 
@@ -203,7 +203,7 @@ function Event (subtype) {
   }
 
   this.mirror = function () {
-    this.is_mirrored = true
+    this.isMirrored = true
     $(this.element).addClass('mirror')
   }
 
@@ -466,8 +466,8 @@ function Blocker (x, y, id) {
   this.rez_easteregg = function () {
     if (oquonie.player.id !== 'nastazie') { return }
 
-    oquonie.world.rooms[43].remove_event(10)
-    oquonie.world.rooms[43].add_event(new Cameo('rez', 1, 1, ['help', 'unlocked', 'door']), true)
+    oquonie.world.rooms[43].removeEvent(10)
+    oquonie.world.rooms[43].addEvent(new Cameo('rez', 1, 1, ['help', 'unlocked', 'door']), true)
     oquonie.world.rooms[43].refresh()
   }
 

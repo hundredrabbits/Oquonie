@@ -25,10 +25,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 10))
-    room.add_event(new PillarBase(1, -1, 'nephtaline'))
-    room.add_event(new Gate('nephtaline', 0, 2, 40, -1, -1)) // 1 - 40
-    room.add_event(new Door(2, 0, 2, -1, 0))
+    room.addEvent(new Blocker(1, 1, 10))
+    room.addEvent(new PillarBase(1, -1, 'nephtaline'))
+    room.addEvent(new Gate('nephtaline', 0, 2, 40, -1, -1)) // 1 - 40
+    room.addEvent(new Door(2, 0, 2, -1, 0))
     this.rooms[1] = room
 
     room = new Room(2)
@@ -37,11 +37,11 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 24))
-    const ramen = new Ramen(1, 0); room.add_event(ramen.mat); room.add_event(ramen)
-    room.add_event(new Plan(-1, 2, 'lobby'))
-    room.add_event(new Door(-2, 0, 1, 1, 0))
-    room.add_event(new Door(0, 2, 3, 0, -1))
+    room.addEvent(new Blocker(1, 1, 24))
+    const ramen = new Ramen(1, 0); room.addEvent(ramen.mat); room.addEvent(ramen)
+    room.addEvent(new Plan(-1, 2, 'lobby'))
+    room.addEvent(new Door(-2, 0, 1, 1, 0))
+    room.addEvent(new Door(0, 2, 3, 0, -1))
     this.rooms[2] = room
 
     room = new Room(3)
@@ -50,13 +50,13 @@ function World () {
     room.steps = [0, 7, 0, 0, 7, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new PillarBase(-1, 1, 'neomine'))
-    room.add_event(new Owl(1, 1), true)
-    room.add_event(new Blocker(-1, -1, 1))
-    room.add_event(new Gate('neomine', 0, 2, 60, 0, -1)) // 3 - 60
-    room.add_event(new Door(-2, 0, 4, 1, 0))
-    room.add_event(new Door(0, -2, 2, 0, 1))
-    room.add_event(new Broken(2, 0, 1, 148, -1, 0))
+    room.addEvent(new PillarBase(-1, 1, 'neomine'))
+    room.addEvent(new Owl(1, 1), true)
+    room.addEvent(new Blocker(-1, -1, 1))
+    room.addEvent(new Gate('neomine', 0, 2, 60, 0, -1)) // 3 - 60
+    room.addEvent(new Door(-2, 0, 4, 1, 0))
+    room.addEvent(new Door(0, -2, 2, 0, 1))
+    room.addEvent(new Broken(2, 0, 1, 148, -1, 0))
     this.rooms[3] = room
 
     room = new Room(4)
@@ -65,12 +65,12 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 9))
-    room.add_event(new PillarBase(1, -1, 'nastazie'))
-    room.add_event(new Speaker(-1, 1), true)
-    room.add_event(new Door(0, 2, 14, 0, -1))
-    room.add_event(new Door(2, 0, 3, -1, 0))
-    room.add_event(new Door(0, -2, 5, 0, 1))
+    room.addEvent(new Blocker(1, 1, 9))
+    room.addEvent(new PillarBase(1, -1, 'nastazie'))
+    room.addEvent(new Speaker(-1, 1), true)
+    room.addEvent(new Door(0, 2, 14, 0, -1))
+    room.addEvent(new Door(2, 0, 3, -1, 0))
+    room.addEvent(new Door(0, -2, 5, 0, 1))
     this.rooms[4] = room
 
     room = new Room(5)
@@ -79,12 +79,12 @@ function World () {
     room.steps = [0, 7, 0, 0, 7, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new PillarBase(1, 1, 'necomedre'))
-    room.add_event(new Blocker(-1, 1, 30))
-    room.add_event(new Door(0, 2, 4, 0, -1))
-    room.add_event(new Gate('necomedre', 2, 0, 32, -1, 0)) // 5 - 32
-    room.add_event(new Door(-2, 0, 9, 1, 0))
-    room.add_event(new Door(0, -2, 6, 0, 1))
+    room.addEvent(new PillarBase(1, 1, 'necomedre'))
+    room.addEvent(new Blocker(-1, 1, 30))
+    room.addEvent(new Door(0, 2, 4, 0, -1))
+    room.addEvent(new Gate('necomedre', 2, 0, 32, -1, 0)) // 5 - 32
+    room.addEvent(new Door(-2, 0, 9, 1, 0))
+    room.addEvent(new Door(0, -2, 6, 0, 1))
     this.rooms[5] = room
 
     room = new Room(6)
@@ -93,10 +93,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 5))
-    room.add_event(new Shark(1, -1, false))
-    room.add_event(new Door(0, 2, 5, 0, -1))
-    room.add_event(new Door(2, 0, 7, -1, 0))
+    room.addEvent(new Blocker(1, 1, 5))
+    room.addEvent(new Shark(1, -1, false))
+    room.addEvent(new Door(0, 2, 5, 0, -1))
+    room.addEvent(new Door(2, 0, 7, -1, 0))
     this.rooms[6] = room
 
     room = new Room(7)
@@ -105,10 +105,10 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new PillarBase(-1, -1, 'nestorine'))
-    room.add_event(new Blocker(0, 1, 11))
-    room.add_event(new Gate('nestorine', 2, 0, 96, -1, 0)) // 7 - 96
-    room.add_event(new Door(-2, 0, 6, 1, 0))
+    room.addEvent(new PillarBase(-1, -1, 'nestorine'))
+    room.addEvent(new Blocker(0, 1, 11))
+    room.addEvent(new Gate('nestorine', 2, 0, 96, -1, 0)) // 7 - 96
+    room.addEvent(new Door(-2, 0, 6, 1, 0))
     this.rooms[7] = room
 
     // 8
@@ -119,10 +119,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new PillarBase(-1, 1, 'nemedique'))
-    room.add_event(new Gate('nemedique', 0, 2, 100, 0, -1)) // 9 - 100
-    room.add_event(new Door(2, 0, 5, -1, 0))
-    room.add_event(new Door(0, -2, 11, 0, 1))
+    room.addEvent(new PillarBase(-1, 1, 'nemedique'))
+    room.addEvent(new Gate('nemedique', 0, 2, 100, 0, -1)) // 9 - 100
+    room.addEvent(new Door(2, 0, 5, -1, 0))
+    room.addEvent(new Door(0, -2, 11, 0, 1))
     this.rooms[9] = room
 
     // 10
@@ -133,8 +133,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 9, 0, -1))
-    room.add_event(new Tree(0, 0))
+    room.addEvent(new Door(0, 2, 9, 0, -1))
+    room.addEvent(new Tree(0, 0))
     this.rooms[11] = room
 
     room = new Room(12)
@@ -143,18 +143,18 @@ function World () {
     room.steps = [0, 0, 0, 0, 12, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 32))
-    room.add_event(new Blocker(1, 0, 32))
-    room.add_event(new Blocker(1, -1, 34))
+    room.addEvent(new Blocker(1, 1, 32))
+    room.addEvent(new Blocker(1, 0, 32))
+    room.addEvent(new Blocker(1, -1, 34))
 
-    room.add_event(new Blocker(-1, 1, 31))
-    room.add_event(new Blocker(-1, 0, 31))
-    room.add_event(new Blocker(-1, -1, 33))
-    room.add_event(new Blocker(0, 1, 35))
-    room.add_event(new Ninj(1, 0))
-    room.add_event(new Rek(-1, 1))
-    room.add_event(new Toy(-1, -1))
-    room.add_event(new Tip(0, 1))
+    room.addEvent(new Blocker(-1, 1, 31))
+    room.addEvent(new Blocker(-1, 0, 31))
+    room.addEvent(new Blocker(-1, -1, 33))
+    room.addEvent(new Blocker(0, 1, 35))
+    room.addEvent(new Ninj(1, 0))
+    room.addEvent(new Rek(-1, 1))
+    room.addEvent(new Toy(-1, -1))
+    room.addEvent(new Tip(0, 1))
     this.rooms[12] = room
 
     // 12-13
@@ -165,8 +165,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'lobby'
     room.theme = 'white'
-    room.add_event(new Noface(0, 1), true)
-    room.add_event(new Door(0, -2, 4, 0, 1))
+    room.addEvent(new Noface(0, 1), true)
+    room.addEvent(new Door(0, -2, 4, 0, 1))
     this.rooms[14] = room
 
     room = new Room(15)
@@ -175,10 +175,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 98, 0]
     room.audio = 'office'
     room.theme = 'tear'
-    room.add_event(new Teleport(0, 1, 29, 0, 0, true))
-    room.add_event(new Blocker(1, 1, 15), true)
-    room.add_event(new Door(0, -2, 6, 0, -1))
-    room.add_event(new Boss(1, -1, true))
+    room.addEvent(new Teleport(0, 1, 29, 0, 0, true))
+    room.addEvent(new Blocker(1, 1, 15), true)
+    room.addEvent(new Door(0, -2, 6, 0, -1))
+    room.addEvent(new Boss(1, -1, true))
     this.rooms[15] = room
 
     // 16-20
@@ -193,9 +193,9 @@ function World () {
     room.steps = [0, 0, 0, 10, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(0, 0, 14))
-    room.add_event(new Door(2, 1, 24, -1, 1))
-    room.add_event(new Door(-1, -2, 22, 1, 1))
+    room.addEvent(new Blocker(0, 0, 14))
+    room.addEvent(new Door(2, 1, 24, -1, 1))
+    room.addEvent(new Door(-1, -2, 22, 1, 1))
     this.rooms[21] = room
 
     room = new Room(22)
@@ -204,10 +204,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 10, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 15))
-    room.add_event(new Blocker(-1, 0, 16))
-    room.add_event(new Door(-1, 2, 21, -1, -1))
-    room.add_event(new Door(0, -2, 23, 0, 1))
+    room.addEvent(new Blocker(1, 1, 15))
+    room.addEvent(new Blocker(-1, 0, 16))
+    room.addEvent(new Door(-1, 2, 21, -1, -1))
+    room.addEvent(new Door(0, -2, 23, 0, 1))
     this.rooms[22] = room
 
     room = new Room(23)
@@ -216,10 +216,10 @@ function World () {
     room.steps = [0, 10, 0, 0, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Wizard(-1, 1, 'document'), true)
-    room.add_event(new Blocker(1, 1, 15))
-    room.add_event(new Blocker(1, -1, 15))
-    room.add_event(new Door(-2, 0, 28, 1, 0))
+    room.addEvent(new Wizard(-1, 1, 'document'), true)
+    room.addEvent(new Blocker(1, 1, 15))
+    room.addEvent(new Blocker(1, -1, 15))
+    room.addEvent(new Door(-2, 0, 28, 1, 0))
     this.rooms[23] = room
 
     room = new Room(24)
@@ -228,12 +228,12 @@ function World () {
     room.steps = [10, 0, 0, 0, 10, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 14))
-    room.add_event(new Blocker(-1, -1, 16))
-    room.add_event(new Door(0, 2, 23, 0, -1))
-    room.add_event(new Door(2, 0, 27, -1, 0))
-    room.add_event(new Door(-2, 1, 21, 1, 1))
-    room.add_event(new Door(0, -2, 25, 0, 1))
+    room.addEvent(new Blocker(1, 1, 14))
+    room.addEvent(new Blocker(-1, -1, 16))
+    room.addEvent(new Door(0, 2, 23, 0, -1))
+    room.addEvent(new Door(2, 0, 27, -1, 0))
+    room.addEvent(new Door(-2, 1, 21, 1, 1))
+    room.addEvent(new Door(0, -2, 25, 0, 1))
     this.rooms[24] = room
 
     room = new Room(25)
@@ -242,10 +242,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 15))
-    room.add_event(new Blocker(1, 1, 16))
-    room.add_event(new Wizard(1, -1, 'document'))
-    room.add_event(new Door(2, 0, 28, -1, 0))
+    room.addEvent(new Blocker(-1, 1, 15))
+    room.addEvent(new Blocker(1, 1, 16))
+    room.addEvent(new Wizard(1, -1, 'document'))
+    room.addEvent(new Door(2, 0, 28, -1, 0))
     this.rooms[25] = room
 
     room = new Room(26)
@@ -254,10 +254,10 @@ function World () {
     room.steps = [0, 10, 0, 0, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 14))
-    room.add_event(new Blocker(-1, 0, 16))
-    room.add_event(new Door(0, 2, 25, 0, -1))
-    room.add_event(new Door(-2, 0, 23, 1, 0))
+    room.addEvent(new Blocker(-1, 1, 14))
+    room.addEvent(new Blocker(-1, 0, 16))
+    room.addEvent(new Door(0, 2, 25, 0, -1))
+    room.addEvent(new Door(-2, 0, 23, 1, 0))
     this.rooms[26] = room
 
     room = new Room(27)
@@ -266,11 +266,11 @@ function World () {
     room.steps = [0, 0, 0, 0, 10, 0]
     room.audio = 'office'
     room.theme = 'black'
-    room.add_event(new Blocker(-1, 1, 15))
-    room.add_event(new Speaker(0, 1, 'radio'), true)
-    room.add_event(new Blocker(1, 1, 15))
-    room.add_event(new Blocker(1, -1, 16))
-    room.add_event(new Door(0, -2, 28, 0, 1))
+    room.addEvent(new Blocker(-1, 1, 15))
+    room.addEvent(new Speaker(0, 1, 'radio'), true)
+    room.addEvent(new Blocker(1, 1, 15))
+    room.addEvent(new Blocker(1, -1, 16))
+    room.addEvent(new Door(0, -2, 28, 0, 1))
     this.rooms[27] = room
 
     room = new Room(28)
@@ -279,13 +279,13 @@ function World () {
     room.steps = [0, 10, 0, 0, 10, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 14))
-    room.add_event(new Wizard(1, 1, 'document'), true)
-    room.add_event(new Blocker(-1, -1, 16))
-    room.add_event(new Door(0, 2, 27, 0, -1))
-    room.add_event(new Door(2, 0, 23, -1, 0))
-    room.add_event(new Door(-2, 0, 25, 1, 0))
-    room.add_event(new Door(0, -2, 29, 0, 1))
+    room.addEvent(new Blocker(-1, 1, 14))
+    room.addEvent(new Wizard(1, 1, 'document'), true)
+    room.addEvent(new Blocker(-1, -1, 16))
+    room.addEvent(new Door(0, 2, 27, 0, -1))
+    room.addEvent(new Door(2, 0, 23, -1, 0))
+    room.addEvent(new Door(-2, 0, 25, 1, 0))
+    room.addEvent(new Door(0, -2, 29, 0, 1))
     this.rooms[28] = room
 
     room = new Room(29)
@@ -294,10 +294,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 15))
-    room.add_event(new Blocker(1, -1, 16))
-    room.add_event(new Door(0, 2, 28, 0, -1))
-    room.add_event(new Gate('document', 2, 0, 30, -1, 0)) // 29 - 30
+    room.addEvent(new Blocker(-1, 1, 15))
+    room.addEvent(new Blocker(1, -1, 16))
+    room.addEvent(new Door(0, 2, 28, 0, -1))
+    room.addEvent(new Gate('document', 2, 0, 30, -1, 0)) // 29 - 30
     this.rooms[29] = room
 
     room = new Room(30)
@@ -306,10 +306,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'office'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 16))
-    room.add_event(new Blocker(1, -1, 1))
-    room.add_event(new Boss(1, 0))
-    room.add_event(new Door(2, 0, 1, 0, 0))
+    room.addEvent(new Blocker(-1, 1, 16))
+    room.addEvent(new Blocker(1, -1, 1))
+    room.addEvent(new Boss(1, 0))
+    room.addEvent(new Door(2, 0, 1, 0, 0))
     this.rooms[30] = room
 
     room = new Room(31)
@@ -326,12 +326,12 @@ function World () {
     room.steps = [0, 5, 0, 0, 6, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 23))
-    room.add_event(new Owl(1, 1))
-    room.add_event(new Plan(0, 2, 'necomedre'))
-    room.add_event(new Door(2, 0, 33, -1, 0))
-    room.add_event(new Gate('necomedre', -2, 0, 5, 1, 0)) // 32 - 5
-    room.add_event(new Door(0, -2, 35, 0, 1))
+    room.addEvent(new Blocker(-1, 1, 23))
+    room.addEvent(new Owl(1, 1))
+    room.addEvent(new Plan(0, 2, 'necomedre'))
+    room.addEvent(new Door(2, 0, 33, -1, 0))
+    room.addEvent(new Gate('necomedre', -2, 0, 5, 1, 0)) // 32 - 5
+    room.addEvent(new Door(0, -2, 35, 0, 1))
     this.rooms[32] = room
 
     room = new Room(33)
@@ -340,10 +340,10 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 6]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Wizard(0, 1, 'nephtaline'), true)
-    room.add_event(new Door(2, 0, 34, -1, 0))
-    room.add_event(new Door(-2, 0, 32, 1, 0))
-    room.add_event(new Door(1, -2, 36, 1, 1))
+    room.addEvent(new Wizard(0, 1, 'nephtaline'), true)
+    room.addEvent(new Door(2, 0, 34, -1, 0))
+    room.addEvent(new Door(-2, 0, 32, 1, 0))
+    room.addEvent(new Door(1, -2, 36, 1, 1))
     this.rooms[33] = room
 
     room = new Room(34)
@@ -352,11 +352,11 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Wizard(-1, 1, 'nestorine'), true)
-    room.add_event(new Blocker(1, -1, 11))
-    room.add_event(new Gate('nestorine', 1, 2, 120, 0, -1)) // 34 - 120
-    room.add_event(new Door(2, 0, 35, -1, 0))
-    room.add_event(new Door(-2, 0, 33, 1, 0))
+    room.addEvent(new Wizard(-1, 1, 'nestorine'), true)
+    room.addEvent(new Blocker(1, -1, 11))
+    room.addEvent(new Gate('nestorine', 1, 2, 120, 0, -1)) // 34 - 120
+    room.addEvent(new Door(2, 0, 35, -1, 0))
+    room.addEvent(new Door(-2, 0, 33, 1, 0))
     this.rooms[34] = room
 
     room = new Room(35)
@@ -365,11 +365,11 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    const ramen = new Ramen(1, 1, 'necomedre'); room.add_event(ramen.mat); room.add_event(ramen)
-    room.add_event(new Speaker(1, -1))
-    room.add_event(new Door(0, 2, 32, 0, -1))
-    room.add_event(new Door(2, 0, 36, -1, 0))
-    room.add_event(new Door(-2, 0, 34, 1, 0))
+    const ramen = new Ramen(1, 1, 'necomedre'); room.addEvent(ramen.mat); room.addEvent(ramen)
+    room.addEvent(new Speaker(1, -1))
+    room.addEvent(new Door(0, 2, 32, 0, -1))
+    room.addEvent(new Door(2, 0, 36, -1, 0))
+    room.addEvent(new Door(-2, 0, 34, 1, 0))
     this.rooms[35] = room
 
     room = new Room(36)
@@ -378,11 +378,11 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Wizard(-1, 1, 'nephtaline'), true)
-    room.add_event(new Ghost(1, -1))
-    room.add_event(new Door(1, 2, 33, 1, -1))
-    room.add_event(new Door(2, 0, 37, -1, 0))
-    room.add_event(new Door(-2, 0, 35, 1, 0))
+    room.addEvent(new Wizard(-1, 1, 'nephtaline'), true)
+    room.addEvent(new Ghost(1, -1))
+    room.addEvent(new Door(1, 2, 33, 1, -1))
+    room.addEvent(new Door(2, 0, 37, -1, 0))
+    room.addEvent(new Door(-2, 0, 35, 1, 0))
     this.rooms[36] = room
 
     room = new Room(37)
@@ -391,10 +391,10 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Wizard(0, 1, 'nemedique'), true)
-    room.add_event(new Blocker(1, -1, 23))
-    room.add_event(new Door(2, 0, 38, -1, 0))
-    room.add_event(new Door(-2, 0, 36, 1, 0))
+    room.addEvent(new Wizard(0, 1, 'nemedique'), true)
+    room.addEvent(new Blocker(1, -1, 23))
+    room.addEvent(new Door(2, 0, 38, -1, 0))
+    room.addEvent(new Door(-2, 0, 36, 1, 0))
     this.rooms[37] = room
 
     room = new Room(38)
@@ -403,10 +403,10 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'necomedre'
     room.theme = 'white'
-    room.add_event(new Wizard(0, 1, 'nephtaline'), true)
-    room.add_event(new Blocker(-1, -1, 5))
-    room.add_event(new Gate('nephtaline', 2, 0, 39, -1, 0)) // 38 - 39
-    room.add_event(new Door(-2, 0, 37, 1, 0))
+    room.addEvent(new Wizard(0, 1, 'nephtaline'), true)
+    room.addEvent(new Blocker(-1, -1, 5))
+    room.addEvent(new Gate('nephtaline', 2, 0, 39, -1, 0)) // 38 - 39
+    room.addEvent(new Door(-2, 0, 37, 1, 0))
     this.rooms[38] = room
 
     room = new Room(39)
@@ -415,8 +415,8 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'warp'
     room.theme = 'white'
-    room.add_event(new Teleport(0, 0, 1))
-    room.add_event(new Gate('nephtaline', -2, 0, 38, 1, 0))
+    room.addEvent(new Teleport(0, 0, 1))
+    room.addEvent(new Gate('nephtaline', -2, 0, 38, 1, 0))
     this.rooms[39] = room
 
     room = new Room(120)
@@ -425,8 +425,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 6, 0]
     room.audio = 'pillar'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'necomedre', 5))
-    room.add_event(new Gate('nestorine', 0, -2, 34, 1, 1))
+    room.addEvent(new Pillar(0, 0, 'necomedre', 5))
+    room.addEvent(new Gate('nestorine', 0, -2, 34, 1, 1))
     this.rooms[120] = room
   }
 
@@ -439,9 +439,9 @@ function World () {
     room.steps = [0, 0, 0, 6, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Ghost(1, -1))
-    room.add_event(new Door(2, 1, 41, -1, 1))
-    room.add_event(new Gate('nephtaline', -1, -2, 1, 0, 1)) // 40 - 1
+    room.addEvent(new Ghost(1, -1))
+    room.addEvent(new Door(2, 1, 41, -1, 1))
+    room.addEvent(new Gate('nephtaline', -1, -2, 1, 0, 1)) // 40 - 1
     this.rooms[40] = room
 
     room = new Room(41)
@@ -450,8 +450,8 @@ function World () {
     room.steps = [7, 0, 0, 0, 0, 7]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Door(-2, 1, 40, 1, 1))
-    room.add_event(new Door(1, -2, 42, 1, 1))
+    room.addEvent(new Door(-2, 1, 40, 1, 1))
+    room.addEvent(new Door(1, -2, 42, 1, 1))
     this.rooms[41] = room
 
     room = new Room(42)
@@ -460,9 +460,9 @@ function World () {
     room.steps = [0, 0, 7, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Wizard(-1, 1, 'nemedique'), true)
-    room.add_event(new Door(1, 2, 41, 1, -1))
-    room.add_event(new Door(-2, -1, 43, 1, -1))
+    room.addEvent(new Wizard(-1, 1, 'nemedique'), true)
+    room.addEvent(new Door(1, 2, 41, 1, -1))
+    room.addEvent(new Door(-2, -1, 43, 1, -1))
     this.rooms[42] = room
 
     room = new Room(43)
@@ -471,9 +471,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Blocker(1, 1, 10))
-    room.add_event(new Door(-1, 2, 44, -1, -1))
-    room.add_event(new Door(2, -1, 42, -1, -1))
+    room.addEvent(new Blocker(1, 1, 10))
+    room.addEvent(new Door(-1, 2, 44, -1, -1))
+    room.addEvent(new Door(2, -1, 42, -1, -1))
     this.rooms[43] = room
 
     room = new Room(44)
@@ -482,9 +482,9 @@ function World () {
     room.steps = [0, 0, 0, 7, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Wizard(1, -1, 'neomine'))
-    room.add_event(new Door(2, 1, 45, -1, 1))
-    room.add_event(new Door(-1, -2, 43, -1, 1))
+    room.addEvent(new Wizard(1, -1, 'neomine'))
+    room.addEvent(new Door(2, 1, 45, -1, 1))
+    room.addEvent(new Door(-1, -2, 43, -1, 1))
     this.rooms[44] = room
 
     room = new Room(45)
@@ -493,10 +493,10 @@ function World () {
     room.steps = [7, 0, 0, 0, 0, 7]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, -1, 7))
-    room.add_event(new Door(-2, 1, 46, 1, 1))
-    room.add_event(new Door(1, -2, 42, 1, 1))
-    //    room.add_event(new Wizard(1,-2, spell: catDoorFork))
+    room.addEvent(new Blocker(-1, -1, 7))
+    room.addEvent(new Door(-2, 1, 46, 1, 1))
+    room.addEvent(new Door(1, -2, 42, 1, 1))
+    //    room.addEvent(new Wizard(1,-2, spell: catDoorFork))
     this.rooms[45] = room
 
     room = new Room(46)
@@ -505,12 +505,12 @@ function World () {
     room.steps = [0, 7, 0, 0, 7, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 13))
-    room.add_event(new Wizard(1, 0, 'neomine'))
-    room.add_event(new Broken(0, 2, 2, 149, 0, -1))
-    room.add_event(new Door(2, 1, 41, -1, 1))
-    room.add_event(new Door(-2, 0, 47, 1, 0))
-    room.add_event(new Door(0, -2, 51, 0, 1))
+    room.addEvent(new Blocker(-1, 1, 13))
+    room.addEvent(new Wizard(1, 0, 'neomine'))
+    room.addEvent(new Broken(0, 2, 2, 149, 0, -1))
+    room.addEvent(new Door(2, 1, 41, -1, 1))
+    room.addEvent(new Door(-2, 0, 47, 1, 0))
+    room.addEvent(new Door(0, -2, 51, 0, 1))
     this.rooms[46] = room
 
     room = new Room(47)
@@ -519,9 +519,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 1, 'necomedre'), true)
-    room.add_event(new Door(2, 0, 46, -1, 0))
-    room.add_event(new Door(0, -2, 48, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'necomedre'), true)
+    room.addEvent(new Door(2, 0, 46, -1, 0))
+    room.addEvent(new Door(0, -2, 48, 0, 1))
     this.rooms[47] = room
 
     room = new Room(48)
@@ -530,8 +530,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 47, 0, -1))
-    room.add_event(new Door(2, 0, 49, -1, 0))
+    room.addEvent(new Door(0, 2, 47, 0, -1))
+    room.addEvent(new Door(2, 0, 49, -1, 0))
     this.rooms[48] = room
 
     room = new Room(49)
@@ -540,8 +540,8 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 50, 0, -1))
-    room.add_event(new Door(-2, 0, 48, 1, 0))
+    room.addEvent(new Door(0, 2, 50, 0, -1))
+    room.addEvent(new Door(-2, 0, 48, 1, 0))
     this.rooms[49] = room
 
     room = new Room(50)
@@ -550,12 +550,12 @@ function World () {
     room.steps = [0, 7, 0, 0, 7, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Owl(1, 1))
-    room.add_event(new Blocker(1, -1, 21))
-    room.add_event(new Gate('nemedique', 0, 2, 121, 0, -1)) // 50 - 121
-    room.add_event(new Plan(2, 0, 'nephtaline'))
-    room.add_event(new Door(-2, 0, 47, 1, 0))
-    room.add_event(new Door(0, -2, 55, 0, 1))
+    room.addEvent(new Owl(1, 1))
+    room.addEvent(new Blocker(1, -1, 21))
+    room.addEvent(new Gate('nemedique', 0, 2, 121, 0, -1)) // 50 - 121
+    room.addEvent(new Plan(2, 0, 'nephtaline'))
+    room.addEvent(new Door(-2, 0, 47, 1, 0))
+    room.addEvent(new Door(0, -2, 55, 0, 1))
     this.rooms[50] = room
 
     room = new Room(51)
@@ -564,9 +564,9 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Speaker(1, 1), true)
-    room.add_event(new Door(0, 2, 50, 0, -1))
-    room.add_event(new Door(-2, 0, 48, 1, 0))
+    room.addEvent(new Speaker(1, 1), true)
+    room.addEvent(new Door(0, 2, 50, 0, -1))
+    room.addEvent(new Door(-2, 0, 48, 1, 0))
     this.rooms[51] = room
 
     /*
@@ -576,8 +576,8 @@ function World () {
     room.steps  = [ 0,0,0, 0,0,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    room.add_event(new Door(0,2,47,0,-1))
-    room.add_event(new Door(2,0,49,-1,0))
+    room.addEvent(new Door(0,2,47,0,-1))
+    room.addEvent(new Door(2,0,49,-1,0))
     this.rooms[52] = room
 
     room = new Room(53);
@@ -586,8 +586,8 @@ function World () {
     room.steps  = [ 0,0,0, 0,7,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    room.add_event(new Door(2,0,41,-1,0))
-    room.add_event(new Door(0,-2,48,0,1))
+    room.addEvent(new Door(2,0,41,-1,0))
+    room.addEvent(new Door(0,-2,48,0,1))
     this.rooms[53] = room
 
     room = new Room(54);
@@ -596,11 +596,11 @@ function World () {
     room.steps  = [ 0,7,0, 0,7,0 ]
     room.audio  = "nephtaline"
     room.theme  = "white"
-    //    room.add_event(new Wizard(1,1, spell: null))
+    //    room.addEvent(new Wizard(1,1, spell: null))
     //    > gateNestorine
     //    10 > 8|gateNestorine
-    room.add_event(new Door(-2,0,47,1,0))
-    room.add_event(new Door(0,-2,51,0,1))
+    room.addEvent(new Door(-2,0,47,1,0))
+    room.addEvent(new Door(0,-2,51,0,1))
     this.rooms[54] = room
     */
 
@@ -610,7 +610,7 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 94, 0, -1))
+    room.addEvent(new Door(0, 2, 94, 0, -1))
     this.rooms[97] = room
 
     room = new Room(55)
@@ -619,8 +619,8 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 50, 0, -1))
-    room.add_event(new Door(-2, 0, 56, 1, 0))
+    room.addEvent(new Door(0, 2, 50, 0, -1))
+    room.addEvent(new Door(-2, 0, 56, 1, 0))
     this.rooms[55] = room
 
     room = new Room(56)
@@ -629,8 +629,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 57, 0, -1))
-    room.add_event(new Door(2, 0, 55, -1, 0))
+    room.addEvent(new Door(0, 2, 57, 0, -1))
+    room.addEvent(new Door(2, 0, 55, -1, 0))
     this.rooms[56] = room
 
     room = new Room(57)
@@ -639,22 +639,22 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    const ramen = new Ramen(1, 1, 'nephtaline'); room.add_event(ramen.mat); room.add_event(ramen)
-    room.add_event(new Door(2, 0, 58, -1, 0))
-    room.add_event(new Door(0, -2, 56, 0, 1))
+    const ramen = new Ramen(1, 1, 'nephtaline'); room.addEvent(ramen.mat); room.addEvent(ramen)
+    room.addEvent(new Door(2, 0, 58, -1, 0))
+    room.addEvent(new Door(0, -2, 56, 0, 1))
     this.rooms[57] = room
 
     room = new Room(58)
     room.floors = [31, 4, 31, 4, 5, 31, 31, 31, 31]
     room.walls = [18, 7, 18, 18, 18, 18]
-    room.add_event(new Blocker(1, 1, 8))
-    room.add_event(new Blocker(1, -1, 8))
+    room.addEvent(new Blocker(1, 1, 8))
+    room.addEvent(new Blocker(1, -1, 8))
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'nephtaline'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 0, 'neomine'))
-    room.add_event(new Gate('neomine', 0, 2, 59, 0, -1)) // 58 - 59
-    room.add_event(new Door(-2, 0, 47, 1, 0))
+    room.addEvent(new Wizard(1, 0, 'neomine'))
+    room.addEvent(new Gate('neomine', 0, 2, 59, 0, -1)) // 58 - 59
+    room.addEvent(new Door(-2, 0, 47, 1, 0))
     this.rooms[58] = room
 
     room = new Room(59)
@@ -663,8 +663,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 4, 0]
     room.audio = 'warp'
     room.theme = 'white'
-    room.add_event(new Teleport(0, 0, 1))
-    room.add_event(new Gate('neomine', 0, -2, 58, 0, 1)) // 59 - 58
+    room.addEvent(new Teleport(0, 0, 1))
+    room.addEvent(new Gate('neomine', 0, -2, 58, 0, 1)) // 59 - 58
     this.rooms[59] = room
 
     room = new Room(121)
@@ -673,8 +673,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 3, 0]
     room.audio = 'pillar'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'nephtaline', 1))
-    room.add_event(new Gate('nemedique', 0, -2, 50, 0, 1)) // 121 - 50
+    room.addEvent(new Pillar(0, 0, 'nephtaline', 1))
+    room.addEvent(new Gate('nemedique', 0, -2, 50, 0, 1)) // 121 - 50
     this.rooms[121] = room
   }
 
@@ -687,15 +687,15 @@ function World () {
     room.steps = [0, 0, 0, 0, 4, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(0, 1, 13))
-    room.add_event(new Door(2, 1, 62, -1, 1))
-    room.add_event(new Plan(2, 0, 'neomine'))
-    room.add_event(new Gate('neomine', 0, -2, 3, 0, 1)) // 60 - 3
+    room.addEvent(new Blocker(0, 1, 13))
+    room.addEvent(new Door(2, 1, 62, -1, 1))
+    room.addEvent(new Plan(2, 0, 'neomine'))
+    room.addEvent(new Gate('neomine', 0, -2, 3, 0, 1)) // 60 - 3
     const door = new Door(2, -1, 61, -1, -1)
     door.add_destination(function () {
       return oquonie.player.id === 'nastazie'
     }, 154, -1, -1)
-    room.add_event(door)
+    room.addEvent(door)
     this.rooms[60] = room
 
     room = new Room(61)
@@ -704,10 +704,10 @@ function World () {
     room.steps = [0, 0, 3, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(-1, 1, 19))
-    room.add_event(new Wizard(0, 1, 'nestorine'), true)
-    room.add_event(new Blocker(1, 1, 19))
-    room.add_event(new Door(-2, -1, 60, 1, -1))
+    room.addEvent(new Blocker(-1, 1, 19))
+    room.addEvent(new Wizard(0, 1, 'nestorine'), true)
+    room.addEvent(new Blocker(1, 1, 19))
+    room.addEvent(new Door(-2, -1, 60, 1, -1))
     this.rooms[61] = room
 
     room = new Room(62)
@@ -716,11 +716,11 @@ function World () {
     room.steps = [3, 0, 3, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'necomedre', true)) // requiresPillar
-    room.add_event(new Blocker(0, -1, 23))
-    room.add_event(new Gate('necomedre', 2, 0, 71, -1, 0)) // 62 - 71
-    room.add_event(new Door(-2, 1, 60, 1, 1))
-    room.add_event(new Door(-2, -1, 63, 1, -1))
+    room.addEvent(new Wizard(1, 1, 'necomedre', true)) // requiresPillar
+    room.addEvent(new Blocker(0, -1, 23))
+    room.addEvent(new Gate('necomedre', 2, 0, 71, -1, 0)) // 62 - 71
+    room.addEvent(new Door(-2, 1, 60, 1, 1))
+    room.addEvent(new Door(-2, -1, 63, 1, -1))
     this.rooms[62] = room
 
     room = new Room(63)
@@ -729,11 +729,11 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(0, 0, 9))
-    const ramen = new Ramen(-1, 1, 'neomine'); room.add_event(ramen.mat, true); room.add_event(ramen, true)
-    room.add_event(new Door(2, 1, 66, -1, 1))
-    room.add_event(new Door(2, 0, 64, -1, 0))
-    room.add_event(new Door(2, -1, 62, -1, -1))
+    room.addEvent(new Blocker(0, 0, 9))
+    const ramen = new Ramen(-1, 1, 'neomine'); room.addEvent(ramen.mat, true); room.addEvent(ramen, true)
+    room.addEvent(new Door(2, 1, 66, -1, 1))
+    room.addEvent(new Door(2, 0, 64, -1, 0))
+    room.addEvent(new Door(2, -1, 62, -1, -1))
     this.rooms[63] = room
 
     room = new Room(64)
@@ -742,11 +742,11 @@ function World () {
     room.steps = [3, 3, 3, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 21))
-    room.add_event(new Wizard(1, 0, 'nephtaline', true))
-    room.add_event(new Door(-2, 1, 68, 1, 1))
-    room.add_event(new Door(-2, 0, 63, 1, 0))
-    room.add_event(new Door(-2, -1, 65, 1, -1))
+    room.addEvent(new Blocker(1, 1, 21))
+    room.addEvent(new Wizard(1, 0, 'nephtaline', true))
+    room.addEvent(new Door(-2, 1, 68, 1, 1))
+    room.addEvent(new Door(-2, 0, 63, 1, 0))
+    room.addEvent(new Door(-2, -1, 65, 1, -1))
     this.rooms[64] = room
 
     room = new Room(65)
@@ -755,9 +755,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Wizard(0, 1, 'nestorine'), true)
-    room.add_event(new Blocker(1, 0, 1))
-    room.add_event(new Door(2, -1, 64, -1, -1))
+    room.addEvent(new Wizard(0, 1, 'nestorine'), true)
+    room.addEvent(new Blocker(1, 0, 1))
+    room.addEvent(new Door(2, -1, 64, -1, -1))
     this.rooms[65] = room
 
     room = new Room(66)
@@ -766,12 +766,12 @@ function World () {
     room.steps = [3, 3, 3, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 13))
-    room.add_event(new Owl(1, 0))
-    //    room.add_event(new Door(0,2,photoBooth))
-    room.add_event(new Door(-2, 1, 63, 1, 1))
-    room.add_event(new Door(-2, 0, 67, 1, 0))
-    room.add_event(new Door(-2, -1, 68, 1, -1))
+    room.addEvent(new Blocker(1, 1, 13))
+    room.addEvent(new Owl(1, 0))
+    //    room.addEvent(new Door(0,2,photoBooth))
+    room.addEvent(new Door(-2, 1, 63, 1, 1))
+    room.addEvent(new Door(-2, 0, 67, 1, 0))
+    room.addEvent(new Door(-2, -1, 68, 1, -1))
     this.rooms[66] = room
 
     room = new Room(67)
@@ -780,8 +780,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Wizard(0, 1, 'nestorine'), true)
-    room.add_event(new Door(2, 0, 66, -1, 0))
+    room.addEvent(new Wizard(0, 1, 'nestorine'), true)
+    room.addEvent(new Door(2, 0, 66, -1, 0))
     this.rooms[67] = room
 
     room = new Room(68)
@@ -790,11 +790,11 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Ghost(-1, 1), true)
-    room.add_event(new Door(2, 1, 64, -1, 1))
-    room.add_event(new HiversairesGate(0, 2, 153, 0, -1))
-    room.add_event(new Door(2, 0, 69, -1, 0))
-    room.add_event(new Door(2, -1, 66, -1, -1))
+    room.addEvent(new Ghost(-1, 1), true)
+    room.addEvent(new Door(2, 1, 64, -1, 1))
+    room.addEvent(new HiversairesGate(0, 2, 153, 0, -1))
+    room.addEvent(new Door(2, 0, 69, -1, 0))
+    room.addEvent(new Door(2, -1, 66, -1, -1))
     this.rooms[68] = room
 
     room = new Room(69)
@@ -803,10 +803,10 @@ function World () {
     room.steps = [0, 3, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Speaker(1, 1))
-    room.add_event(new Blocker(-1, 1, 11))
-    room.add_event(new Gate('nestorine', 2, 0, 70, -1, 0)) // 69 - 70
-    room.add_event(new Door(-2, 0, 68, 1, 0))
+    room.addEvent(new Speaker(1, 1))
+    room.addEvent(new Blocker(-1, 1, 11))
+    room.addEvent(new Gate('nestorine', 2, 0, 70, -1, 0)) // 69 - 70
+    room.addEvent(new Door(-2, 0, 68, 1, 0))
     this.rooms[69] = room
 
     room = new Room(70)
@@ -815,14 +815,14 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'warp'
     room.theme = 'black'
-    room.add_event(new Teleport(0, 0, 1))
-    room.add_event(new Door(-1, 2, 70, -1, -1))
-    room.add_event(new Door(0, 2, 70, 0, -1))
-    room.add_event(new Door(1, 2, 70, 1, -1))
-    room.add_event(new Door(2, 1, 70, -1, 1))
-    room.add_event(new Door(2, 0, 70, -1, 0))
-    room.add_event(new Door(2, -1, 70, -1, 1))
-    room.add_event(new Gate('nestorine', -2, 0, 69, 1, 0))
+    room.addEvent(new Teleport(0, 0, 1))
+    room.addEvent(new Door(-1, 2, 70, -1, -1))
+    room.addEvent(new Door(0, 2, 70, 0, -1))
+    room.addEvent(new Door(1, 2, 70, 1, -1))
+    room.addEvent(new Door(2, 1, 70, -1, 1))
+    room.addEvent(new Door(2, 0, 70, -1, 0))
+    room.addEvent(new Door(2, -1, 70, -1, 1))
+    room.addEvent(new Gate('nestorine', -2, 0, 69, 1, 0))
     this.rooms[70] = room
 
     room = new Room(71)
@@ -831,8 +831,8 @@ function World () {
     room.steps = [0, 3, 0, 0, 0, 0]
     room.audio = 'pillar'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'neomine', 3))
-    room.add_event(new Gate('necomedre', -2, 0, 62, 1, 0)) // 71 - 62
+    room.addEvent(new Pillar(0, 0, 'neomine', 3))
+    room.addEvent(new Gate('necomedre', -2, 0, 62, 1, 0)) // 71 - 62
     this.rooms[71] = room
 
     // 72-79
@@ -847,10 +847,10 @@ function World () {
     room.steps = [0, 7, 0, 0, 7, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, 1, 23))
-    room.add_event(new Teleport(1, 1, 7, 0, 0))
-    room.add_event(new Door(-2, 0, 81, 1, 0))
-    room.add_event(new Door(0, -2, 82, 0, 1))
+    room.addEvent(new Blocker(-1, 1, 23))
+    room.addEvent(new Teleport(1, 1, 7, 0, 0))
+    room.addEvent(new Door(-2, 0, 81, 1, 0))
+    room.addEvent(new Door(0, -2, 82, 0, 1))
     this.rooms[80] = room
 
     room = new Room(81)
@@ -859,9 +859,9 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Door(0, 2, 12, 0, -1))
-    room.add_event(new Door(-2, 0, 83, 1, 0))
-    room.add_event(new Door(0, -2, 84, 0, 1))
+    room.addEvent(new Door(0, 2, 12, 0, -1))
+    room.addEvent(new Door(-2, 0, 83, 1, 0))
+    room.addEvent(new Door(0, -2, 84, 0, 1))
     this.rooms[81] = room
 
     room = new Room(82)
@@ -870,9 +870,9 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, -1, 11))
-    room.add_event(new Door(-2, 0, 84, 1, 0))
-    room.add_event(new Door(0, -2, 85, 0, 1))
+    room.addEvent(new Blocker(-1, -1, 11))
+    room.addEvent(new Door(-2, 0, 84, 1, 0))
+    room.addEvent(new Door(0, -2, 85, 0, 1))
     this.rooms[82] = room
 
     room = new Room(83)
@@ -881,9 +881,9 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Blocker(-1, -1, 23))
-    room.add_event(new Door(-2, 0, 86, 1, 0))
-    room.add_event(new Door(0, -2, 87, 0, 1))
+    room.addEvent(new Blocker(-1, -1, 23))
+    room.addEvent(new Door(-2, 0, 86, 1, 0))
+    room.addEvent(new Door(0, -2, 87, 0, 1))
     this.rooms[83] = room
 
     room = new Room(84)
@@ -892,10 +892,10 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Owl(1, 1))
-    room.add_event(new Blocker(-1, -1, 11))
-    room.add_event(new Door(-2, 0, 87, 1, 0))
-    room.add_event(new Door(0, -2, 88, 0, 1))
+    room.addEvent(new Owl(1, 1))
+    room.addEvent(new Blocker(-1, -1, 11))
+    room.addEvent(new Door(-2, 0, 87, 1, 0))
+    room.addEvent(new Door(0, -2, 88, 0, 1))
     this.rooms[84] = room
 
     room = new Room(85)
@@ -904,10 +904,10 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Ghost(1, 0))
-    room.add_event(new Plan(2, 0, 'nestorine'))
-    room.add_event(new Door(-2, 0, 88, 1, 0))
-    room.add_event(new Door(0, -2, 89, 0, 1))
+    room.addEvent(new Ghost(1, 0))
+    room.addEvent(new Plan(2, 0, 'nestorine'))
+    room.addEvent(new Door(-2, 0, 88, 1, 0))
+    room.addEvent(new Door(0, -2, 89, 0, 1))
     this.rooms[85] = room
 
     room = new Room(86)
@@ -916,7 +916,7 @@ function World () {
     room.steps = [0, 1, 0, 0, 0, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Door(-2, 0, 80, 1, 0))
+    room.addEvent(new Door(-2, 0, 80, 1, 0))
     this.rooms[86] = room
 
     room = new Room(87)
@@ -925,8 +925,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Speaker(1, 1))
-    room.add_event(new Door(0, -2, 91, 0, 1))
+    room.addEvent(new Speaker(1, 1))
+    room.addEvent(new Door(0, -2, 91, 0, 1))
     this.rooms[87] = room
 
     room = new Room(88)
@@ -935,8 +935,8 @@ function World () {
     room.steps = [0, 1, 0, 0, 0, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    const ramen = new Ramen(1, 1, 'nestorine'); room.add_event(ramen.mat); room.add_event(ramen)
-    room.add_event(new Door(-2, 0, 91, 1, 0))
+    const ramen = new Ramen(1, 1, 'nestorine'); room.addEvent(ramen.mat); room.addEvent(ramen)
+    room.addEvent(new Door(-2, 0, 91, 1, 0))
     this.rooms[88] = room
 
     room = new Room(89)
@@ -945,8 +945,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    //    room.add_event(new Door(2,0,photobooth))
-    room.add_event(new Door(0, -2, 80, 0, 1))
+    //    room.addEvent(new Door(2,0,photobooth))
+    room.addEvent(new Door(0, -2, 80, 0, 1))
     this.rooms[89] = room
 
     room = new Room(90)
@@ -955,8 +955,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 6, 0]
     room.audio = 'pillar'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'nestorine', 7))
-    room.add_event(new Gate('nephtaline', 0, -2, 93, 0, 1)) // 90 - 93
+    room.addEvent(new Pillar(0, 0, 'nestorine', 7))
+    room.addEvent(new Gate('nephtaline', 0, -2, 93, 0, 1)) // 90 - 93
     this.rooms[90] = room
 
     room = new Room(91)
@@ -965,10 +965,10 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 1, 'nephtaline', true))// requiresPillar:
-    room.add_event(new Blocker(1, -1, 23))
-    room.add_event(new Door(-2, 0, 93, 1, 0))
-    room.add_event(new Door(0, -2, 94, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nephtaline', true))// requiresPillar:
+    room.addEvent(new Blocker(1, -1, 23))
+    room.addEvent(new Door(-2, 0, 93, 1, 0))
+    room.addEvent(new Door(0, -2, 94, 0, 1))
     this.rooms[91] = room
 
     room = new Room(92)
@@ -977,8 +977,8 @@ function World () {
     room.steps = [0, 1, 0, 0, 0, 0]
     room.audio = 'warp'
     room.theme = 'white'
-    room.add_event(new Teleport(0, 0, 1))
-    room.add_event(new Gate('nemedique', -2, 0, 94, 1, 0))
+    room.addEvent(new Teleport(0, 0, 1))
+    room.addEvent(new Gate('nemedique', -2, 0, 94, 1, 0))
     this.rooms[92] = room
 
     room = new Room(93)
@@ -987,11 +987,11 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 1, 'nemedique'))
-    room.add_event(new Blocker(1, -1, 11))
-    room.add_event(new Gate('nephtaline', 0, 2, 90, 0, -1)) // 93 - 90
-    room.add_event(new Door(-2, 0, 80, 1, 0))
-    room.add_event(new Door(0, -2, 95, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nemedique'))
+    room.addEvent(new Blocker(1, -1, 11))
+    room.addEvent(new Gate('nephtaline', 0, 2, 90, 0, -1)) // 93 - 90
+    room.addEvent(new Door(-2, 0, 80, 1, 0))
+    room.addEvent(new Door(0, -2, 95, 0, 1))
     this.rooms[93] = room
 
     room = new Room(94)
@@ -1000,9 +1000,9 @@ function World () {
     room.steps = [0, 3, 0, 0, 0, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 1, 'nemedique'))
-    room.add_event(new Gate('nemedique', 2, 0, 92, -1, 0)) // 94 - 92
-    room.add_event(new Door(-2, 0, 95, 1, 0))
+    room.addEvent(new Wizard(1, 1, 'nemedique'))
+    room.addEvent(new Gate('nemedique', 2, 0, 92, -1, 0)) // 94 - 92
+    room.addEvent(new Door(-2, 0, 95, 1, 0))
     this.rooms[94] = room
 
     room = new Room(95)
@@ -1011,10 +1011,10 @@ function World () {
     room.steps = [0, 1, 0, 0, 1, 0]
     room.audio = 'nestorine'
     room.theme = 'white'
-    room.add_event(new Wizard(1, 1, 'nemedique'), true)
-    room.add_event(new Blocker(-1, -1, 23))
-    room.add_event(new Door(-2, 0, 80, 1, 0))
-    room.add_event(new Door(0, -2, 80, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nemedique'), true)
+    room.addEvent(new Blocker(-1, -1, 23))
+    room.addEvent(new Door(-2, 0, 80, 1, 0))
+    room.addEvent(new Door(0, -2, 80, 0, 1))
     this.rooms[95] = room
 
     room = new Room(96)
@@ -1023,8 +1023,8 @@ function World () {
     room.steps = [0, 1, 0, 0, 0, 0]
     room.audio = 'warp'
     room.theme = 'white'
-    room.add_event(new Teleport(0, 0, 80, 0, 0))
-    room.add_event(new Gate('nestorine', -2, 0, 7, 1, 0)) // 96 - 7
+    room.addEvent(new Teleport(0, 0, 80, 0, 0))
+    room.addEvent(new Gate('nestorine', -2, 0, 7, 1, 0)) // 96 - 7
     this.rooms[96] = room
 
     // 97-99
@@ -1039,10 +1039,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'nemedique'
     room.theme = 'white'
-    room.add_event(new Wizard(-1, 1, 'nestorine'), true)
-    room.add_event(new PillarGate(0, 2, 104, 0, -1))
-    room.add_event(new Door(2, 0, 101, -1, 0))
-    room.add_event(new Gate('nemedique', 0, -2, 9, 0, 1)) // 100 - 9
+    room.addEvent(new Wizard(-1, 1, 'nestorine'), true)
+    room.addEvent(new PillarGate(0, 2, 104, 0, -1))
+    room.addEvent(new Door(2, 0, 101, -1, 0))
+    room.addEvent(new Gate('nemedique', 0, -2, 9, 0, 1)) // 100 - 9
     this.rooms[100] = room
 
     room = new Room(101)
@@ -1051,10 +1051,10 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'nemedique'
     room.theme = 'white'
-    const ramen = new Ramen(1, 1, 'nemedique'); room.add_event(ramen.mat, true); room.add_event(ramen, true)
-    room.add_event(new Door(0, 2, 102, 0, -1))
-    room.add_event(new Gate('necomedre', 2, 0, 103, -1, 0)) // 101 - 103
-    room.add_event(new Door(-2, 0, 100, 1, 0))
+    const ramen = new Ramen(1, 1, 'nemedique'); room.addEvent(ramen.mat, true); room.addEvent(ramen, true)
+    room.addEvent(new Door(0, 2, 102, 0, -1))
+    room.addEvent(new Gate('necomedre', 2, 0, 103, -1, 0)) // 101 - 103
+    room.addEvent(new Door(-2, 0, 100, 1, 0))
     this.rooms[101] = room
 
     room = new Room(102)
@@ -1063,9 +1063,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 7, 0]
     room.audio = 'nemedique'
     room.theme = 'white'
-    room.add_event(new Shark(0, 1), true)
-    room.add_event(new Door(0, -2, 101, 0, 1))
-    room.add_event(new Broken(2, 0, 2, 150, -1, 0))
+    room.addEvent(new Shark(0, 1), true)
+    room.addEvent(new Door(0, -2, 101, 0, 1))
+    room.addEvent(new Broken(2, 0, 2, 150, -1, 0))
 
     this.rooms[102] = room
 
@@ -1075,8 +1075,8 @@ function World () {
     room.steps = [0, 6, 0, 0, 0, 0]
     room.audio = 'pillar'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'nemedique', 9))
-    room.add_event(new Gate('necomedre', -2, 0, 101, 1, 0)) // 103 - 101
+    room.addEvent(new Pillar(0, 0, 'nemedique', 9))
+    room.addEvent(new Gate('necomedre', -2, 0, 101, 1, 0)) // 103 - 101
     this.rooms[103] = room
 
     room = new Room(104) // End Room
@@ -1085,7 +1085,7 @@ function World () {
     room.steps = [0, 0, 0, 0, 11, 0]
     room.audio = 'nepturne'
     room.theme = 'finale'
-    room.add_event(new Red(0, 1, 106/* 9 */), true)
+    room.addEvent(new Red(0, 1, 106/* 9 */), true)
     this.rooms[104] = room
 
     /*
@@ -1095,8 +1095,8 @@ function World () {
     room.steps  = [ 0,6,0, 0,0,0 ]
     room.audio  = "warp"
     room.theme  = "white"
-    room.add_event(new Teleport(0,0,0,0))
-    room.add_event(new Door(-2,0,101,1,0))
+    room.addEvent(new Teleport(0,0,0,0))
+    room.addEvent(new Door(-2,0,101,1,0))
     this.rooms[105] = room
     */
 
@@ -1106,12 +1106,12 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nepturne'
     room.theme = 'finale'
-    room.add_event(new Door(-1, 2, 107, -1, -1))
-    room.add_event(new Door(0, 2, 107, 0, -1))
-    room.add_event(new Door(1, 2, 107, 1, -1))
-    room.add_event(new Door(2, 1, 107, -1, 1))
-    room.add_event(new Door(2, 0, 107, -1, 0))
-    room.add_event(new Door(2, -1, 107, -1, -1))
+    room.addEvent(new Door(-1, 2, 107, -1, -1))
+    room.addEvent(new Door(0, 2, 107, 0, -1))
+    room.addEvent(new Door(1, 2, 107, 1, -1))
+    room.addEvent(new Door(2, 1, 107, -1, 1))
+    room.addEvent(new Door(2, 0, 107, -1, 0))
+    room.addEvent(new Door(2, -1, 107, -1, -1))
     this.rooms[106] = room
 
     room = new Room(107)
@@ -1120,13 +1120,13 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nepturne'
     room.theme = 'finale'
-    room.add_event(new Credit(0, 0, 'rekka', ['guide', 'outside', 'friend'], 'credit.rekka'))
-    room.add_event(new Door(-1, 2, 108, -1, -1))
-    room.add_event(new Door(0, 2, 108, 0, -1))
-    room.add_event(new Door(1, 2, 108, 1, -1))
-    room.add_event(new Door(2, 1, 108, -1, 1))
-    room.add_event(new Door(2, 0, 108, -1, 0))
-    room.add_event(new Door(2, -1, 108, -1, -1))
+    room.addEvent(new Credit(0, 0, 'rekka', ['guide', 'outside', 'friend'], 'credit.rekka'))
+    room.addEvent(new Door(-1, 2, 108, -1, -1))
+    room.addEvent(new Door(0, 2, 108, 0, -1))
+    room.addEvent(new Door(1, 2, 108, 1, -1))
+    room.addEvent(new Door(2, 1, 108, -1, 1))
+    room.addEvent(new Door(2, 0, 108, -1, 0))
+    room.addEvent(new Door(2, -1, 108, -1, -1))
     this.rooms[107] = room
 
     room = new Room(108)
@@ -1135,13 +1135,13 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nepturne'
     room.theme = 'finale'
-    room.add_event(new Credit(0, 0, 'devine', ['guide', 'inside', 'friend'], 'credit.devine'))
-    room.add_event(new Door(-1, 2, 11, -1, -1))
-    room.add_event(new Door(0, 2, 11, 0, -1))
-    room.add_event(new Door(1, 2, 11, 1, -1))
-    room.add_event(new Door(2, 1, 11, -1, 1))
-    room.add_event(new Door(2, 0, 11, -1, 0))
-    room.add_event(new Door(2, -1, 11, -1, -1))
+    room.addEvent(new Credit(0, 0, 'devine', ['guide', 'inside', 'friend'], 'credit.devine'))
+    room.addEvent(new Door(-1, 2, 11, -1, -1))
+    room.addEvent(new Door(0, 2, 11, 0, -1))
+    room.addEvent(new Door(1, 2, 11, 1, -1))
+    room.addEvent(new Door(2, 1, 11, -1, 1))
+    room.addEvent(new Door(2, 0, 11, -1, 0))
+    room.addEvent(new Door(2, -1, 11, -1, -1))
     this.rooms[108] = room
 
     room = new Room(109)
@@ -1150,8 +1150,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 6, 0]
     room.audio = 'nepturne'
     room.theme = 'finale'
-    room.add_event(new Wizard(0, 0, 'catfishbird'), true)
-    room.add_event(new Door(0, -2, 100, 0, 1))
+    room.addEvent(new Wizard(0, 0, 'catfishbird'), true)
+    room.addEvent(new Door(0, -2, 100, 0, 1))
     this.rooms[109] = room
 
     // 110-119
@@ -1168,9 +1168,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'nastazie'))
-    room.add_event(new Door(-1, 2, 131, -1, -1))
-    room.add_event(new Gate('nastazie', 2, 0, 147, -1, 0)) // 130 - 147
+    room.addEvent(new Wizard(1, 1, 'nastazie'))
+    room.addEvent(new Door(-1, 2, 131, -1, -1))
+    room.addEvent(new Gate('nastazie', 2, 0, 147, -1, 0)) // 130 - 147
     this.rooms[130] = room
 
     room = new Room(131)
@@ -1179,11 +1179,11 @@ function World () {
     room.steps = [0, 0, 0, 3, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 30))
-    room.add_event(new Door(0, 2, 142, 0, -1))
-    room.add_event(new Door(2, 0, 133, -1, 0))
-    room.add_event(new Door(-1, -2, 130, -1, 1))
-    // room.add_event(new Petunia(1,-1)) // Moved to Rm 154
+    room.addEvent(new Blocker(1, 1, 30))
+    room.addEvent(new Door(0, 2, 142, 0, -1))
+    room.addEvent(new Door(2, 0, 133, -1, 0))
+    room.addEvent(new Door(-1, -2, 130, -1, 1))
+    // room.addEvent(new Petunia(1,-1)) // Moved to Rm 154
     this.rooms[131] = room
 
     room = new Room(132)
@@ -1192,9 +1192,9 @@ function World () {
     room.steps = [3, 0, 0, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 0, 'nemedique'))
-    room.add_event(new Door(1, 2, 143, 1, -1))
-    room.add_event(new Door(-2, 1, 140, 1, 1))
+    room.addEvent(new Wizard(1, 0, 'nemedique'))
+    room.addEvent(new Door(1, 2, 143, 1, -1))
+    room.addEvent(new Door(-2, 1, 140, 1, 1))
     this.rooms[132] = room
 
     room = new Room(133)
@@ -1203,9 +1203,9 @@ function World () {
     room.steps = [0, 3, 0, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 0, 'neomine'))
-    room.add_event(new Door(0, 2, 142, 0, -1))
-    room.add_event(new Door(-2, 0, 139, 1, 0))
+    room.addEvent(new Wizard(1, 0, 'neomine'))
+    room.addEvent(new Door(0, 2, 142, 0, -1))
+    room.addEvent(new Door(-2, 0, 139, 1, 0))
     this.rooms[133] = room
 
     room = new Room(134)
@@ -1214,9 +1214,9 @@ function World () {
     room.steps = [0, 0, 3, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 0, 'nephtaline'))
-    room.add_event(new Door(-1, 2, 141, -1, -1))
-    room.add_event(new Door(-2, -1, 138, 1, -1))
+    room.addEvent(new Wizard(1, 0, 'nephtaline'))
+    room.addEvent(new Door(-1, 2, 141, -1, -1))
+    room.addEvent(new Door(-2, -1, 138, 1, -1))
     this.rooms[134] = room
 
     room = new Room(135)
@@ -1225,9 +1225,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(0, 1, 'nemedique'), true)
-    room.add_event(new Door(1, 2, 143, 1, -1))
-    room.add_event(new Door(2, -1, 134, -1, -1))
+    room.addEvent(new Wizard(0, 1, 'nemedique'), true)
+    room.addEvent(new Door(1, 2, 143, 1, -1))
+    room.addEvent(new Door(2, -1, 134, -1, -1))
     this.rooms[135] = room
 
     room = new Room(136)
@@ -1236,10 +1236,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'nastazie'), true)
-    room.add_event(new Door(0, 2, 142, 0, -1))
-    room.add_event(new Door(2, 0, 133, -1, 0))
-    room.add_event(new Door(0, -2, 131, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nastazie'), true)
+    room.addEvent(new Door(0, 2, 142, 0, -1))
+    room.addEvent(new Door(2, 0, 133, -1, 0))
+    room.addEvent(new Door(0, -2, 131, 0, 1))
     this.rooms[136] = room
 
     room = new Room(137)
@@ -1248,9 +1248,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Ghost(1, -1))
-    room.add_event(new Door(-1, 2, 141, -1, -1))
-    room.add_event(new Door(2, 1, 132, -1, 1))
+    room.addEvent(new Ghost(1, -1))
+    room.addEvent(new Door(-1, 2, 141, -1, -1))
+    room.addEvent(new Door(2, 1, 132, -1, 1))
     this.rooms[137] = room
 
     room = new Room(138)
@@ -1259,10 +1259,10 @@ function World () {
     room.steps = [0, 0, 0, 8, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'nemedique'), true)
-    room.add_event(new Door(0, 2, 142, 0, -1))
-    room.add_event(new Door(2, -1, 134, -1, -1))
-    room.add_event(new Door(-1, -2, 137, -1, 1))
+    room.addEvent(new Wizard(1, 1, 'nemedique'), true)
+    room.addEvent(new Door(0, 2, 142, 0, -1))
+    room.addEvent(new Door(2, -1, 134, -1, -1))
+    room.addEvent(new Door(-1, -2, 137, -1, 1))
     this.rooms[138] = room
 
     room = new Room(139)
@@ -1271,11 +1271,11 @@ function World () {
     room.steps = [0, 8, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'neomine'), true)
-    room.add_event(new Door(-1, 2, 141, -1, -1))
-    room.add_event(new Door(2, 0, 133, -1, 0))
-    room.add_event(new Door(-2, 0, 131, 1, 0))
-    room.add_event(new Door(0, -2, 136, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'neomine'), true)
+    room.addEvent(new Door(-1, 2, 141, -1, -1))
+    room.addEvent(new Door(2, 0, 133, -1, 0))
+    room.addEvent(new Door(-2, 0, 131, 1, 0))
+    room.addEvent(new Door(0, -2, 136, 0, 1))
     this.rooms[139] = room
 
     room = new Room(140)
@@ -1284,10 +1284,10 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 8]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 0, 'nephtaline'))
-    room.add_event(new Door(-1, 2, 141, -1, -1))
-    room.add_event(new Door(2, 1, 132, -1, 1))
-    room.add_event(new Door(1, -2, 135, 1, 1))
+    room.addEvent(new Wizard(1, 0, 'nephtaline'))
+    room.addEvent(new Door(-1, 2, 141, -1, -1))
+    room.addEvent(new Door(2, 1, 132, -1, 1))
+    room.addEvent(new Door(1, -2, 135, 1, 1))
     this.rooms[140] = room
 
     room = new Room(141)
@@ -1296,10 +1296,10 @@ function World () {
     room.steps = [8, 0, 0, 8, 0, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 30))
-    room.add_event(new Gate('nephtaline', 0, 2, 144, 0, -1)) // 141 - 144
-    room.add_event(new Door(-2, 1, 140, 1, 1))
-    room.add_event(new Door(-1, -2, 137, -1, 1))
+    room.addEvent(new Blocker(1, 1, 30))
+    room.addEvent(new Gate('nephtaline', 0, 2, 144, 0, -1)) // 141 - 144
+    room.addEvent(new Door(-2, 1, 140, 1, 1))
+    room.addEvent(new Door(-1, -2, 137, -1, 1))
     this.rooms[141] = room
 
     room = new Room(142)
@@ -1308,11 +1308,11 @@ function World () {
     room.steps = [0, 8, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 30))
-    room.add_event(new Gate('neomine', 0, 2, 145, 0, -1)) // 142 - 145
-    room.add_event(new Broken(2, 0, 4, 151, -1, 0))
-    room.add_event(new Door(-2, 0, 139, 1, 0))
-    room.add_event(new Door(0, -2, 136, 0, 1))
+    room.addEvent(new Blocker(1, 1, 30))
+    room.addEvent(new Gate('neomine', 0, 2, 145, 0, -1)) // 142 - 145
+    room.addEvent(new Broken(2, 0, 4, 151, -1, 0))
+    room.addEvent(new Door(-2, 0, 139, 1, 0))
+    room.addEvent(new Door(0, -2, 136, 0, 1))
     this.rooms[142] = room
 
     room = new Room(143)
@@ -1321,10 +1321,10 @@ function World () {
     room.steps = [0, 0, 3, 0, 0, 8]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Blocker(1, 1, 30))
-    room.add_event(new Gate('nemedique', 0, 2, 146, 0, -1)) // 143 - 146
-    room.add_event(new Door(-2, -1, 138, 1, -1))
-    room.add_event(new Door(1, -2, 135, 1, 1))
+    room.addEvent(new Blocker(1, 1, 30))
+    room.addEvent(new Gate('nemedique', 0, 2, 146, 0, -1)) // 143 - 146
+    room.addEvent(new Door(-2, -1, 138, 1, -1))
+    room.addEvent(new Door(1, -2, 135, 1, 1))
     this.rooms[143] = room
 
     room = new Room(144)
@@ -1333,8 +1333,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'nastazie'), true)
-    room.add_event(new Door(0, -2, 141, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nastazie'), true)
+    room.addEvent(new Door(0, -2, 141, 0, 1))
     this.rooms[144] = room
 
     room = new Room(145)
@@ -1343,8 +1343,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'nephtaline'), true)
-    room.add_event(new Door(0, -2, 142, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'nephtaline'), true)
+    room.addEvent(new Door(0, -2, 142, 0, 1))
     this.rooms[145] = room
 
     room = new Room(146)
@@ -1353,8 +1353,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 8, 0]
     room.audio = 'nastazie'
     room.theme = 'black'
-    room.add_event(new Wizard(1, 1, 'neomine'), true)
-    room.add_event(new Door(0, -2, 143, 0, 1))
+    room.addEvent(new Wizard(1, 1, 'neomine'), true)
+    room.addEvent(new Door(0, -2, 143, 0, 1))
     this.rooms[146] = room
 
     room = new Room(147)
@@ -1363,8 +1363,8 @@ function World () {
     room.steps = [0, 8, 0, 0, 0, 0]
     room.audio = 'glitch'
     room.theme = 'pillars'
-    room.add_event(new Pillar(0, 0, 'nastazie', 4))
-    room.add_event(new Gate('nastazie', -2, 0, 130, 1, 0))
+    room.addEvent(new Pillar(0, 0, 'nastazie', 4))
+    room.addEvent(new Gate('nastazie', -2, 0, 130, 1, 0))
     this.rooms[147] = room
   }
 
@@ -1378,8 +1378,8 @@ function World () {
     room.steps = [0, 8, 0, 0, 0, 0]
     room.audio = 'glitch'
     room.theme = 'black'
-    room.add_event(new Door(-2, 0, 3, 1, 0))
-    room.add_event(new Wizard(1, 0, 'catfishbird'))
+    room.addEvent(new Door(-2, 0, 3, 1, 0))
+    room.addEvent(new Wizard(1, 0, 'catfishbird'))
     this.rooms[148] = room
 
     // Cat Wizard 2
@@ -1389,8 +1389,8 @@ function World () {
     room.steps = [0, 0, 0, 0, 8, 0]
     room.audio = 'glitch'
     room.theme = 'black'
-    room.add_event(new Door(0, -2, 46, 0, 1))
-    room.add_event(new Wizard(0, 1, 'catfishbird'), true)
+    room.addEvent(new Door(0, -2, 46, 0, 1))
+    room.addEvent(new Wizard(0, 1, 'catfishbird'), true)
     this.rooms[149] = room
 
     // Cat Wizard 3
@@ -1400,9 +1400,9 @@ function World () {
     room.steps = [0, 8, 0, 0, 0, 0]
     room.audio = 'glitch'
     room.theme = 'black'
-    room.add_event(new Door(-2, 0, 102, 1, 0))
-    room.add_event(new Gate('catfishbird', 2, 0, 152, -1, 0)) // 150 - 152
-    room.add_event(new Wizard(0, 1, 'catfishbird'), true)
+    room.addEvent(new Door(-2, 0, 102, 1, 0))
+    room.addEvent(new Gate('catfishbird', 2, 0, 152, -1, 0)) // 150 - 152
+    room.addEvent(new Wizard(0, 1, 'catfishbird'), true)
     this.rooms[150] = room
 
     // Rekka & Devine
@@ -1412,9 +1412,9 @@ function World () {
     room.steps = [0, 8, 0, 0, 0, 0]
     room.audio = 'glitch'
     room.theme = 'black'
-    room.add_event(new Door(-2, 0, 142, 1, 0))
-    room.add_event(new Credit(1, 0, 'rekka'), ['confusion1', 'confusion3', 'confusion2'], true)
-    room.add_event(new Credit(0, 1, 'devine', ['confusion1', 'confusion3', 'confusion2']))
+    room.addEvent(new Door(-2, 0, 142, 1, 0))
+    room.addEvent(new Credit(1, 0, 'rekka'), ['confusion1', 'confusion3', 'confusion2'], true)
+    room.addEvent(new Credit(0, 1, 'devine', ['confusion1', 'confusion3', 'confusion2']))
     this.rooms[151] = room
 
     // Cat Teleport
@@ -1424,8 +1424,8 @@ function World () {
     room.steps = [0, 8, 0, 0, 0, 7]
     room.audio = 'glitch'
     room.theme = 'black'
-    room.add_event(new Teleport(1, 1, 9))
-    room.add_event(new Gate('catfishbird', -2, 0, 150, 1, 0)) // 152 - 150
+    room.addEvent(new Teleport(1, 1, 9))
+    room.addEvent(new Gate('catfishbird', -2, 0, 150, 1, 0)) // 152 - 150
     this.rooms[152] = room
 
     // Hiversaires
@@ -1435,11 +1435,11 @@ function World () {
     room.steps = [0, 0, 0, 0, 0, 0]
     room.audio = 'glitch'
     room.theme = 'hiversaires'
-    room.add_event(new Blocker(1, 0, 29))
-    room.add_event(new Door(0, -2, 68, 0, 1))
-    room.add_event(new Blocker(1, -1, 0))
-    room.add_event(new Blocker(-1, -1, 0))
-    room.add_event(new HiversairesSauvegarde(0, 0))
+    room.addEvent(new Blocker(1, 0, 29))
+    room.addEvent(new Door(0, -2, 68, 0, 1))
+    room.addEvent(new Blocker(1, -1, 0))
+    room.addEvent(new Blocker(-1, -1, 0))
+    room.addEvent(new HiversairesSauvegarde(0, 0))
     this.rooms[153] = room
 
     // Neomine Pig-Wizard Shuffle
@@ -1449,11 +1449,11 @@ function World () {
     room.steps = [0, 0, 3, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Blocker(-1, 1, 19))
-    room.add_event(new Blocker(1, 1, 19))
-    room.add_event(new Wizard(1, 0, 'nestorine'))
-    room.add_event(new Door(0, 2, 155, 0, -1))
-    room.add_event(new Door(-2, -1, 60, 1, -1))
+    room.addEvent(new Blocker(-1, 1, 19))
+    room.addEvent(new Blocker(1, 1, 19))
+    room.addEvent(new Wizard(1, 0, 'nestorine'))
+    room.addEvent(new Door(0, 2, 155, 0, -1))
+    room.addEvent(new Door(-2, -1, 60, 1, -1))
     this.rooms[154] = room
 
     // Petunia Lobby
@@ -1463,9 +1463,9 @@ function World () {
     room.steps = [0, 0, 0, 0, 3, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Petunia(0, 1))
-    room.add_event(new Door(0, -2, 154, 0, 1))
-    room.add_event(new Door(2, 0, 156, -1, 0))
+    room.addEvent(new Petunia(0, 1))
+    room.addEvent(new Door(0, -2, 154, 0, 1))
+    room.addEvent(new Door(2, 0, 156, -1, 0))
     this.rooms[155] = room
 
     // TODO: Daniel's room
@@ -1475,8 +1475,8 @@ function World () {
     room.steps = [0, 7, 0, 0, 0, 0]
     room.audio = 'neomine'
     room.theme = 'black'
-    room.add_event(new Credit(1, 0, 'daniel', ['confusion1', 'confusion3', 'confusion2']))
-    room.add_event(new Door(-2, 0, 155, 1, 0))
+    room.addEvent(new Credit(1, 0, 'daniel', ['confusion1', 'confusion3', 'confusion2']))
+    room.addEvent(new Door(-2, 0, 155, 1, 0))
     this.rooms[156] = room
   }
 }
