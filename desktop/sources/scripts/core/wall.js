@@ -1,6 +1,6 @@
 'use strict'
 
-/* global oquonie */
+/* global oquonie Tile */
 
 function Wall (pos, id, type) {
   Tile.call(this, 'wall ' + (pos < 3 ? 'left' : 'right'))
@@ -14,5 +14,5 @@ function Wall (pos, id, type) {
 
   this.update()
 
-  if (this.id != 0) { oquonie.artbook.setArt(this.element, 'media/graphics/wall/' + this.id + '.png') }
+  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/wall/' + this.id + '.png') }
 }

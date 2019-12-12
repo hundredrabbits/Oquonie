@@ -41,7 +41,7 @@ function Stage () {
     oquonie.player.moveAt(x, y)
 
     const numPillars = oquonie.spellbook.pillars.length
-    const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
+    const theme = (numPillars >= 5 && this.room.theme !== 'pillars') ? 'black' : this.room.theme
 
     oquonie.stage.setTheme(theme)
 
@@ -51,7 +51,7 @@ function Stage () {
     $(this.element).animate({ opacity: '1' }, oquonie.speed / 2)
 
     let audio = this.room.audio
-    if (audio == 'lobby') {
+    if (audio === 'lobby') {
       if (numPillars >= 5) {
         audio = 'lobby.3'
       } else if (numPillars > 0) {
@@ -72,35 +72,35 @@ function Stage () {
     const tiles = []
     for (let i = 0; i < this.room.events.length; i++) {
       const tile = this.room.events[i]
-      if (tile.x == x && tile.y == y) { tiles.push(tile) }
+      if (tile.x === x && tile.y === y) { tiles.push(tile) }
     }
     return tiles
   }
 
   this.floorAt = function (x, y) {
-    if (x == -1 && y == 1) { return this.room.floors[0] }
-    if (x == 0 && y == 1) { return this.room.floors[1] }
-    if (x == 1 && y == 1) { return this.room.floors[2] }
+    if (x === -1 && y === 1) { return this.room.floors[0] }
+    if (x === 0 && y === 1) { return this.room.floors[1] }
+    if (x === 1 && y === 1) { return this.room.floors[2] }
 
-    if (x == -1 && y == 0) { return this.room.floors[3] }
-    if (x == 0 && y == 0) { return this.room.floors[4] }
-    if (x == 1 && y == 0) { return this.room.floors[5] }
+    if (x === -1 && y === 0) { return this.room.floors[3] }
+    if (x === 0 && y === 0) { return this.room.floors[4] }
+    if (x === 1 && y === 0) { return this.room.floors[5] }
 
-    if (x == -1 && y == -1) { return this.room.floors[6] }
-    if (x == 0 && y == -1) { return this.room.floors[7] }
-    if (x == 1 && y == -1) { return this.room.floors[8] }
+    if (x === -1 && y === -1) { return this.room.floors[6] }
+    if (x === 0 && y === -1) { return this.room.floors[7] }
+    if (x === 1 && y === -1) { return this.room.floors[8] }
 
     return null
   }
 
   this.wallAt = function (x, y) {
-    if (x == -1 && y == 2) { return 0 }
-    if (x == 0 && y == 2) { return 1 }
-    if (x == 1 && y == 2) { return 2 }
+    if (x === -1 && y === 2) { return 0 }
+    if (x === 0 && y === 2) { return 1 }
+    if (x === 1 && y === 2) { return 2 }
 
-    if (x == 2 && y == 1) { return 3 }
-    if (x == 2 && y == 0) { return 4 }
-    if (x == 2 && y == -1) { return 5 }
+    if (x === 2 && y === 1) { return 3 }
+    if (x === 2 && y === 0) { return 4 }
+    if (x === 2 && y === -1) { return 5 }
   }
 
   this.animate = function (x, y) {
@@ -127,7 +127,7 @@ function Stage () {
   this.setTheme = function (theme) {
     oquonie.element.setAttribute('class', theme)
 
-    $(this.room.element).css('z-index', (theme == 'pillars' ? 1000 : 3000))
+    $(this.room.element).css('z-index', (theme === 'pillars' ? 1000 : 3000))
   }
 
   //
@@ -171,7 +171,7 @@ function Stage () {
     oquonie.player.moveAt(x, y)
 
     const numPillars = oquonie.spellbook.pillars.length
-    const theme = (numPillars >= 5 && this.room.theme != 'pillars') ? 'black' : this.room.theme
+    const theme = (numPillars >= 5 && this.room.theme !== 'pillars') ? 'black' : this.room.theme
     oquonie.stage.setTheme(theme)
 
     this.look()
@@ -195,13 +195,13 @@ function Stage () {
   this.destroy = function (step = 6) {
     if (step < 1) { return }
 
-    if (step == 6) { oquonie.artbook.setArt('#wall_1', 'media/graphics/wall/19.png') }
-    if (step == 5) { oquonie.artbook.setArt('#wall_5', 'media/graphics/wall/15.png') }
-    if (step == 4) { oquonie.artbook.setArt('#wall_3', 'media/graphics/wall/25.png') }
-    if (step == 3) { oquonie.artbook.setArt('#wall_0', 'media/graphics/wall/26.png') }
-    // if(step == 2){ oquonie.artbook.setArt("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
-    if (step == 2) { oquonie.artbook.setArt('#wall_4', 'media/graphics/wall/40.png') }
-    if (step == 1) { oquonie.artbook.setArt('#wall_2', 'media/graphics/wall/15.png') }
+    if (step === 6) { oquonie.artbook.setArt('#wall_1', 'media/graphics/wall/19.png') }
+    if (step === 5) { oquonie.artbook.setArt('#wall_5', 'media/graphics/wall/15.png') }
+    if (step === 4) { oquonie.artbook.setArt('#wall_3', 'media/graphics/wall/25.png') }
+    if (step === 3) { oquonie.artbook.setArt('#wall_0', 'media/graphics/wall/26.png') }
+    // if(step === 2){ oquonie.artbook.setArt("#wall_4","media/graphics/wall/gate.necomedre.open.png"); }
+    if (step === 2) { oquonie.artbook.setArt('#wall_4', 'media/graphics/wall/40.png') }
+    if (step === 1) { oquonie.artbook.setArt('#wall_2', 'media/graphics/wall/15.png') }
 
     setTimeout(function () { oquonie.stage.destroy(step - 1) }, 50)
   }

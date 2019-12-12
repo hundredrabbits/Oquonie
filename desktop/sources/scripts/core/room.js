@@ -15,7 +15,7 @@ function Room (id) {
   this.events = []
 
   this.add_event = function (event, is_mirrored = false) {
-    if (is_mirrored == true) { event.mirror() }
+    if (is_mirrored === true) { event.mirror() }
     event.location = this.id
 
     this.events.push(event)
@@ -25,7 +25,7 @@ function Room (id) {
     const new_events = []
     for (event_id in this.events) {
       const event = this.events[event_id]
-      if (event.id == id) { console.log(event.id, id); continue }
+      if (event.id === id) { console.log(event.id, id); continue }
       new_events.push(event)
     }
     this.events = new_events

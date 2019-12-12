@@ -26,7 +26,7 @@ function Dialog () {
     console.log('Dialog with: ' + hostName)
 
     if (!path) { path = 'media/graphics/' + hostName + '/' }
-    if (audio_name == null) { audio_name = hostName }
+    if (audio_name === null) { audio_name = hostName }
 
     oquonie.artbook.setArt(this.portrait, path + 'portrait.png')
     $(this.element).animate({ opacity: 1 }, oquonie.speed, function () {})

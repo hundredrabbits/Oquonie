@@ -14,7 +14,7 @@ function Artbook () {
   document.head.appendChild(stylesheet_element)
 
   for (let i = 0; i < document.styleSheets.length; i++) {
-    if (document.styleSheets[i].title == stylesheet_element.title) {
+    if (document.styleSheets[i].title === stylesheet_element.title) {
       this.stylesheet = document.styleSheets[i]
       break
     }
@@ -31,12 +31,12 @@ function Artbook () {
 
     const id = this.get_element_id(selector)
 
-    if (id == null) {
+    if (id === null) {
       console.warn('no element for selector ' + selector)
     }
 
     if (id in this.element_registry) {
-      if (this.element_registry[id] == assetUrl) {
+      if (this.element_registry[id] === assetUrl) {
         return
       }
       this.remove_art(selector)
@@ -59,7 +59,7 @@ function Artbook () {
   this.get_element_id = function (selector) {
     const element = $(selector)[0]
 
-    if (element == null) {
+    if (element === null) {
       return null
     }
 

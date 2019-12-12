@@ -37,7 +37,7 @@ function Animator (host) {
   this.preload = function () {
     this.preload_container.style.display = 'none'
     oquonie.element.appendChild(this.preload_container)
-    while (this.preload_container.lastChild != null) {
+    while (this.preload_container.lastChild !== null) {
       this.preload_container.removeChild(this.preload_container.lastChild)
     }
 

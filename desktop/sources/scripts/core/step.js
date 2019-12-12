@@ -16,5 +16,5 @@ function Step (pos, id, type) {
   this.element.setAttribute('pos', this.x + ',' + this.y)
 
   this.update(100)
-  if (this.id != 0) { oquonie.artbook.setArt(this.element, 'media/graphics/step/' + this.id + '.png') }
+  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/step/' + this.id + '.png') }
 }

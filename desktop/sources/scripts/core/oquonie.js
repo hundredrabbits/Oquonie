@@ -106,7 +106,6 @@ function Oquonie () {
 
   this.drag = () => {
     const offset = { x: this.mouseFrom.x - this.mouseTo.x, y: this.mouseFrom.y - this.mouseTo.y }
-    console.log(offset)
     if (offset.x > 0 && offset.y > 0) {
       this.player.try_move(0, 1)
     } else if (offset.x < 0 && offset.y < 0) {

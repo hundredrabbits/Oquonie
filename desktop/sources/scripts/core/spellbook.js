@@ -89,7 +89,7 @@ function Spellbook () {
 
   this.try_transform = function () {
     if (this.spells.length < 3) { return }
-    if (this.id == 'nastazie') { return }
+    if (this.id === 'nastazie') { return }
 
     const target_spell = this.spells[0].split('_')[0]
 
@@ -98,7 +98,7 @@ function Spellbook () {
       a[this.spells[i].split('_')[0]] = a[this.spells[i].split('_')[0]] ? a[this.spells[i].split('_')[0]] + 1 : 1
     }
 
-    if (a[target_spell] == 3) {
+    if (a[target_spell] === 3) {
       oquonie.player.transform(target_spell)
       this.spells = []
       this.update()
@@ -118,9 +118,9 @@ function Spellbook () {
 
     for (let i = 0; i < this.spells.length; i++) {
       const spell_name = this.spells[i].split('_')[0]
-      if (i == 0) { oquonie.artbook.setArt(this.spell1, 'media/graphics/spellbook/' + spell_name + '.png') }
-      if (i == 1) { oquonie.artbook.setArt(this.spell2, 'media/graphics/spellbook/' + spell_name + '.png') }
-      if (i == 2) { oquonie.artbook.setArt(this.spell3, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i === 0) { oquonie.artbook.setArt(this.spell1, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i === 1) { oquonie.artbook.setArt(this.spell2, 'media/graphics/spellbook/' + spell_name + '.png') }
+      if (i === 2) { oquonie.artbook.setArt(this.spell3, 'media/graphics/spellbook/' + spell_name + '.png') }
     }
   }
 
@@ -139,7 +139,7 @@ function Spellbook () {
   this.check_autohide = function () {
     clearTimeout(this.autohide_timer)
 
-    if (this.spells.length == 0) {
+    if (this.spells.length === 0) {
       this.hide()
     }
   }

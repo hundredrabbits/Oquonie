@@ -17,7 +17,7 @@ function Event (subtype) {
     this.x += x
     this.y += y
 
-    const p = this.position_at(this.x, this.y, 200)
+    const p = this.positionAt(this.x, this.y, 200)
     const _y = p[0]
     const _x = p[1]
     const _z = p[2]
@@ -27,15 +27,15 @@ function Event (subtype) {
     const target = this.animator
     target.set_state('walk.front')
 
-    if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('walk.front') }
-    if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('walk.back') }
+    if (x === 0 && y === -1 || x === -1 && y === 0) { target.set_state('walk.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { target.set_state('walk.back') }
 
     oquonie.player.lock('moving')
     setTimeout(function () { oquonie.player.unlock('moving') }, oquonie.speed * 0.5)
 
     $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
-      if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
-      if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('idle.back') }
+      if (x === 0 && y === -1 || x === -1 && y === 0) { target.set_state('idle.front') }
+      if (x === 0 && y === 1 || x === 1 && y === 0) { target.set_state('idle.back') }
     })
 
     oquonie.stage.animate(this.x, this.y)
@@ -45,7 +45,7 @@ function Event (subtype) {
     this.x = x
     this.y = y
 
-    const p = this.position_at(this.x, this.y, 200)
+    const p = this.positionAt(this.x, this.y, 200)
     const _y = p[0]
     const _x = p[1]
 
@@ -57,8 +57,8 @@ function Event (subtype) {
     const target = this.animator
     x = -x
     y = -y
-    if (x == 0 && y == -1 || x == -1 && y == 0) { target.set_state('idle.front') }
-    if (x == 0 && y == 1 || x == 1 && y == 0) { target.set_state('idle.back') }
+    if (x === 0 && y === -1 || x === -1 && y === 0) { target.set_state('idle.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { target.set_state('idle.back') }
     target.animate()
   }
 
@@ -77,8 +77,8 @@ function Event (subtype) {
 
   this.bumpUp = function (x, y) {
     const animator = this.animator
-    if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
-    if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
+    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.set_state('idle.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.set_state('idle.back') }
 
     $(this.element).finish()
     const origin_pos_y = parseInt(this.element.style.top)
@@ -87,8 +87,8 @@ function Event (subtype) {
 
   this.bumpAgainst = function (x, y) {
     const animator = this.animator
-    if (x == 0 && y == -1 || x == -1 && y == 0) { animator.set_state('idle.front') }
-    if (x == 0 && y == 1 || x == 1 && y == 0) { animator.set_state('idle.back') }
+    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.set_state('idle.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.set_state('idle.back') }
 
     const xSlant = x - y
     const ySlant = (-x - y) * 0.5

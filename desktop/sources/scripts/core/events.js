@@ -41,7 +41,7 @@ function Player () {
   }
 
   this.setId = function (new_id) {
-    if (this.id != new_id) {
+    if (this.id !== new_id) {
       this.id = new_id
       this.animator.preload()
     }
@@ -65,7 +65,7 @@ function Player () {
     const target_tiles = oquonie.stage.tilesAt(this.x + x, this.y + y)
     const target_floor = oquonie.stage.floorAt(this.x + x, this.y + y)
 
-    let elicits_collision_bump = target_tiles.length == 0
+    let elicits_collision_bump = target_tiles.length === 0
     const colliders = []
     for (let i = 0; i < target_tiles.length; i++) {
       elicits_collision_bump = elicits_collision_bump || target_tiles[i].elicits_collision_bump()
@@ -75,20 +75,20 @@ function Player () {
     }
 
     if (elicits_collision_bump) {
-      if (x == 0 && y == -1) { $(this.element).attr('orientation', 'front').attr('direction', 'right') }
-      if (x == -1 && y == 0) { $(this.element).attr('orientation', 'front').attr('direction', 'left') }
-      if (x == 0 && y == 1) { $(this.element).attr('orientation', 'back').attr('direction', 'left') }
-      if (x == 1 && y == 0) { $(this.element).attr('orientation', 'back').attr('direction', 'right') }
+      if (x === 0 && y === -1) { $(this.element).attr('orientation', 'front').attr('direction', 'right') }
+      if (x === -1 && y === 0) { $(this.element).attr('orientation', 'front').attr('direction', 'left') }
+      if (x === 0 && y === 1) { $(this.element).attr('orientation', 'back').attr('direction', 'left') }
+      if (x === 1 && y === 0) { $(this.element).attr('orientation', 'back').attr('direction', 'right') }
     }
 
-    const mid_walk = this.animator.state.indexOf('walk') != -1
+    const mid_walk = this.animator.state.indexOf('walk') !== -1
 
     if (colliders.length > 0) {
       if (elicits_collision_bump) {
         this.bumpAgainst(x, y)
         for (let i = 0; i < colliders.length; i++) {
           console.log('Blocked by: ' + colliders[i].constructor.name)
-          if (colliders[i].elicits_collision_bump() == true) {
+          if (colliders[i].elicits_collision_bump() === true) {
             colliders[i].receive_bump()
           }
           colliders[i].onCollision()
@@ -100,7 +100,7 @@ function Player () {
         this.bumpUp(x, y)
         oquonie.music.play_effect('bump.2')
       }
-    } else if (target_floor == 0) {
+    } else if (target_floor === 0) {
       console.log('Blocked by: Floor(' + target_floor + ')')
       if (!mid_walk) {
         this.bumpUp(x, y)
@@ -124,7 +124,7 @@ function Player () {
     this.direction = $(this.element).attr('direction')
     this.animation_frame = 1
 
-    if (this.direction == 'right') {
+    if (this.direction === 'right') {
       $(this.element).addClass('mirror')
     } else {
       $(this.element).removeClass('mirror')
@@ -135,13 +135,13 @@ function Player () {
   this.lift = function (speed) {
     this.animator.set_state('warp')
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x, this.y)[0]) * 0.9) + '%' }, speed)
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, speed)
     $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, speed / 2)
   }
 
   this.land = function () {
-    $(oquonie.player.element).css('top', (parseInt(this.position_at(this.x, this.y)[0]) * 0.6) + '%').delay(300).animate({ top: (parseInt(this.position_at(this.x, this.y)[0])) + '%' }, oquonie.speed * 10, function () { oquonie.player.animator.set_state('idle.front') })
-    $(oquonie.player.shadow.element).css('top', (parseInt(this.position_at(this.x, this.y)[0]) * 1.4) + '%').delay(300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 10)
+    $(oquonie.player.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 0.6) + '%').delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0])) + '%' }, oquonie.speed * 10, function () { oquonie.player.animator.set_state('idle.front') })
+    $(oquonie.player.shadow.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 1.4) + '%').delay(300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 10)
   }
 
   // Transform
@@ -150,7 +150,7 @@ function Player () {
     console.log('Transform(init): ' + spell)
     oquonie.player.lock('transform')
 
-    if (spell == 'catfishbird') {
+    if (spell === 'catfishbird') {
       oquonie.game.save()
     }
 
@@ -158,7 +158,7 @@ function Player () {
 
     oquonie.music.play_effect('transform')
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.position_at(this.x, this.y)[0]) * 0.9) + '%' }, oquonie.speed * 2, function () {
+    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, oquonie.speed * 2, function () {
       oquonie.player.transform_lift(spell)
     })
     $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, oquonie.speed * 2)
@@ -167,7 +167,7 @@ function Player () {
   this.transform_lift = function (spell) {
     console.log('Transform(lift): ' + spell)
 
-    $(oquonie.player.element).animate({ opacity: 0, top: (parseInt(this.position_at(this.x, this.y)[0]) * 0.85) + '%' }, oquonie.speed * 4, function () {
+    $(oquonie.player.element).animate({ opacity: 0, top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.85) + '%' }, oquonie.speed * 4, function () {
       oquonie.player.transform_character(spell)
     })
   }
@@ -178,7 +178,7 @@ function Player () {
     oquonie.player.setId(spell)
     oquonie.stage.look()
 
-    $(oquonie.player.element).animate({ opacity: 1 }, oquonie.speed * 2).delay(1000).animate({ top: oquonie.player.position_at(oquonie.player.x, oquonie.player.y)[0] }, oquonie.speed * 8, function () {
+    $(oquonie.player.element).animate({ opacity: 1 }, oquonie.speed * 2).delay(1000).animate({ top: oquonie.player.positionAt(oquonie.player.x, oquonie.player.y)[0] }, oquonie.speed * 8, function () {
       oquonie.player.transform_done()
     })
     $(oquonie.player.shadow.element).delay(1300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 8)
@@ -205,16 +205,16 @@ function Blocker (x, y, id) {
   }
 
   this.elicits_collision_bump = function () {
-    return this.id != 0
+    return this.id !== 0
   }
 
   this.onCollision = function () {
-    if (this.id != 0) { oquonie.music.play_effect('bump.1') }
-    if (oquonie.player.location == 43) { this.rez_easteregg() }
+    if (this.id !== 0) { oquonie.music.play_effect('bump.1') }
+    if (oquonie.player.location === 43) { this.rez_easteregg() }
   }
 
   this.rez_easteregg = function () {
-    if (oquonie.player.id != 'nastazie') { return }
+    if (oquonie.player.id !== 'nastazie') { return }
 
     oquonie.world.rooms[43].remove_event(10)
     oquonie.world.rooms[43].add_event(new Cameo('rez', 1, 1, ['help', 'unlocked', 'door']), true)
@@ -223,7 +223,7 @@ function Blocker (x, y, id) {
 
   this.update(20)
 
-  if (this.id != 0) { oquonie.artbook.setArt(this.element, 'media/graphics/blocker/' + this.id + '.png') }
+  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/blocker/' + this.id + '.png') }
 }
 
 function Boss (x, y, reset) {
@@ -380,7 +380,7 @@ function Gate (requirement, x, y, room, to_x, to_y) {
   }
 
   this.onCollision = function () {
-    if (this.requirement != oquonie.player.id && oquonie.player.id != 'nastazie') {
+    if (this.requirement !== oquonie.player.id && oquonie.player.id !== 'nastazie') {
       console.warn('Gate requires: ' + this.requirement + ', is ' + oquonie.player.id)
       oquonie.dialog.show('owl', ['door', 'locked', this.requirement])
       return
@@ -391,8 +391,8 @@ function Gate (requirement, x, y, room, to_x, to_y) {
 
   this.onSight = function () {
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
-    if (wall_id != null) {
-      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.' + this.requirement + '.' + (this.requirement == oquonie.player.id || oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
+    if (wall_id !== null) {
+      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.' + this.requirement + '.' + (this.requirement === oquonie.player.id || oquonie.player.id === 'nastazie' ? 'open' : 'close') + '.png')
     }
   }
 }
@@ -438,7 +438,7 @@ function HiversairesGate (x, y, room, to_x, to_y) {
   }
 
   this.onCollision = function () {
-    if (oquonie.player.id != 'nastazie') {
+    if (oquonie.player.id !== 'nastazie') {
       oquonie.dialog.show('owl', ['hiversaires1', 'hiversaires2', 'hiversaires3'])
       return
     }
@@ -448,8 +448,8 @@ function HiversairesGate (x, y, room, to_x, to_y) {
 
   this.onSight = function () {
     const wall_id = oquonie.stage.wallAt(this.x, this.y)
-    if (wall_id != null) {
-      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.hiversaires.' + (oquonie.player.id == 'nastazie' ? 'open' : 'close') + '.png')
+    if (wall_id !== null) {
+      oquonie.artbook.setArt('#wall_' + wall_id, 'media/graphics/wall/gate.hiversaires.' + (oquonie.player.id === 'nastazie' ? 'open' : 'close') + '.png')
     }
   }
 }
@@ -487,7 +487,7 @@ function Noface (x, y) {
 
   this.onCollision = function () {
     console.log(oquonie.player.id)
-    if (oquonie.player.id == 'catfishbird') {
+    if (oquonie.player.id === 'catfishbird') {
       oquonie.player.lock('teleport')
       setTimeout(function () { oquonie.stage.warpTo(130, 0, 0) }, 500)
       oquonie.dialog.show('noface', ['help', 'friend', 'pillar'])
@@ -622,7 +622,7 @@ function PillarBase (x, y, character) {
   }
 
   this.onCollision = function () {
-    if (oquonie.spellbook.has_pillar(this.character) == true) {
+    if (oquonie.spellbook.has_pillar(this.character) === true) {
       oquonie.dialog.show('owl', ['pillar', 'friend', this.character])
     } else {
       oquonie.dialog.show('owl', ['pillar', 'foe', this.character])
@@ -716,11 +716,11 @@ function Ramen (x, y, character = null) {
 
   this.isCollider = function () {
     if (this.character) { return !oquonie.spellbook.has_ramen(this.character) }
-    if (this.location == 2) { return true }
+    if (this.location === 2) { return true }
   }
 
   this.lobby_spell = function () {
-    if (oquonie.player.id == 'necomedre') { return 'nestorine' } else if (oquonie.player.id == 'nestorine') { return 'nephtaline' } else if (oquonie.player.id == 'neomine') { return 'necomedre' } else { return 'nemedique' }
+    if (oquonie.player.id === 'necomedre') { return 'nestorine' } else if (oquonie.player.id === 'nestorine') { return 'nephtaline' } else if (oquonie.player.id === 'neomine') { return 'necomedre' } else { return 'nemedique' }
   }
 
   // On Collision
@@ -729,12 +729,12 @@ function Ramen (x, y, character = null) {
     oquonie.music.play_effect('bump.1')
 
     if (this.character) { this.onCollision_world() }
-    if (this.location == 2) { this.onCollision_lobby() }
+    if (this.location === 2) { this.onCollision_lobby() }
     this.update_state()
   }
 
   this.onCollision_lobby = function () {
-    if (oquonie.spellbook.has_ramen(oquonie.player.id) != true) {
+    if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
       console.warn('Ramen for ' + oquonie.player.id + ' is unfound.')
       // oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
       return
@@ -744,7 +744,7 @@ function Ramen (x, y, character = null) {
   }
 
   this.onCollision_world = function () {
-    if (oquonie.spellbook.has_ramen(this.character) == true) {
+    if (oquonie.spellbook.has_ramen(this.character) === true) {
       console.warn('Ramen for ' + oquonie.player.id + ' was already found.')
       return
     }
@@ -762,7 +762,7 @@ function Ramen (x, y, character = null) {
 
   this.update_state = function () {
     if (this.character) { this.onSight_world() }
-    if (this.location == 2) { this.onSight_lobby() }
+    if (this.location === 2) { this.onSight_lobby() }
     this.update_notification()
   }
 
@@ -801,9 +801,9 @@ function Ramen (x, y, character = null) {
   this.update_notification = function () {
     if (this.character) {
       this.hide_notification()
-    } else if (oquonie.spellbook.has_ramen(oquonie.player.id) != true) {
+    } else if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
       this.hide_notification()
-    } else if (oquonie.spellbook.has_spell(this.spell_name()) != true) {
+    } else if (oquonie.spellbook.has_spell(this.spell_name()) !== true) {
       this.show_notification()
     } else {
       this.hide_notification()
@@ -906,13 +906,13 @@ function Shark (x, y, is_transformer = true) {
 
   this.onCollision = function () {
     // Failsafe
-    if (oquonie.player.id == 'document') {
+    if (oquonie.player.id === 'document') {
       oquonie.player.transform('necomedre')
-    } else if (oquonie.player.id == 'catfishbird') {
+    } else if (oquonie.player.id === 'catfishbird') {
       oquonie.player.lock('teleport')
       const w = this.warp
       setTimeout(function () { oquonie.stage.warpTo(9, 0, 0) }, 500)
-    } else if (this.is_transformer == true && oquonie.player.id != 'necomedre') {
+    } else if (this.is_transformer === true && oquonie.player.id !== 'necomedre') {
       oquonie.player.transform('necomedre')
       oquonie.dialog.show('shark', ['guide', 'friend', 'necomedre'])
     } else if (oquonie.spellbook.spells.length > 0) {
@@ -925,7 +925,7 @@ function Shark (x, y, is_transformer = true) {
   this.onSight = function () {
     let animation_state = 'away'
 
-    if (this.is_transformer == true && oquonie.player.id != 'necomedre') {
+    if (this.is_transformer === true && oquonie.player.id !== 'necomedre') {
       animation_state = 'active'
     } else if (oquonie.spellbook.spells.length > 0) {
       animation_state = 'active'
@@ -962,7 +962,7 @@ function Speaker (x, y, id = 'disc') {
   }
 
   this.toggle = function () {
-    if (this.is_playing == true) {
+    if (this.is_playing === true) {
       this.stop()
     } else {
       this.play()
@@ -983,7 +983,7 @@ function Speaker (x, y, id = 'disc') {
   }
 
   this.onSight = function () {
-    if (oquonie.music.is_muted == this.is_playing) {
+    if (oquonie.music.is_muted === this.is_playing) {
       this.toggle()
     }
   }
@@ -1075,7 +1075,7 @@ function Wizard (x, y, id) {
 
   this.onCollision = function () {
     const path = 'media/graphics/wizard/' + this.id + '.'
-    if (oquonie.player.id == this.id) {
+    if (oquonie.player.id === this.id) {
       oquonie.dialog.show(this.id, ['friend', 'unlocked', this.id], path)
       console.warn('Already is ' + this.id)
       return
@@ -1099,7 +1099,7 @@ function Wizard (x, y, id) {
   }
 
   this.update_notification = function () {
-    if (oquonie.spellbook.has_spell(this.spell_name()) == true || oquonie.player.id == this.id) {
+    if (oquonie.spellbook.has_spell(this.spell_name()) === true || oquonie.player.id === this.id) {
       this.hide_notification()
     } else {
       this.show_notification()

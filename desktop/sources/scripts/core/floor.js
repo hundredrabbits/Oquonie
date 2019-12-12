@@ -14,5 +14,5 @@ function Floor (pos, id, type) {
 
   this.update(5)
 
-  if (this.id != 0) { oquonie.artbook.setArt(this.element, 'media/graphics/floor/' + this.id + '.png') }
+  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/floor/' + this.id + '.png') }
 }

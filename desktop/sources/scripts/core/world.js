@@ -1,6 +1,6 @@
 'use strict'
 
-/* global oquonie */
+/* global oquonie Door Blocker Gate Wizard Gate Room Pillar Shark Teleport Credit Ramen Owl Speaker Ghost Plan PillarBase Broken Petunia Tree Ninj Rek Toy Tip Boss PillarGate Red HiversairesSauvegarde HiversairesGate Noface */
 
 function World () {
   this.rooms = []
@@ -693,7 +693,7 @@ function World () {
     room.add_event(new Gate('neomine', 0, -2, 3, 0, 1)) // 60 - 3
     const door = new Door(2, -1, 61, -1, -1)
     door.add_destination(function () {
-      return oquonie.player.id == 'nastazie'
+      return oquonie.player.id === 'nastazie'
     }, 154, -1, -1)
     room.add_event(door)
     this.rooms[60] = room
