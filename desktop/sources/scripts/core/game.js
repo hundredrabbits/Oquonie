@@ -37,7 +37,7 @@ function Game () {
     console.info('Loading..')
 
     oquonie.player.setId(localStorage.character)
-    oquonie.player.location = parseInt(localStorage.room)
+    oquonie.player.moveIn(parseInt(localStorage.room))
 
     if (localStorage.ramen_necomedre === 'true') { oquonie.spellbook.add_ramen('necomedre') }
     if (localStorage.ramen_nephtaline === 'true') { oquonie.spellbook.add_ramen('nephtaline') }
@@ -76,7 +76,7 @@ function Game () {
 
     oquonie.spellbook.reset()
 
-    oquonie.player.location = 29
+    oquonie.player.moveIn(29)
     oquonie.player.setId('necomedre')
 
     return 'Created a new game.'

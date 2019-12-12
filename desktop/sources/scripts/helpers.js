@@ -21,3 +21,8 @@ function removeClass (el, cl) {
   if (!hasClass(el, cl)) { return }
   el.className = el.className.replace(cl, '').trim()
 }
+
+function replaceClass (el, a, b) {
+  removeClass(el, a)
+  addClass(el, b)
+}

@@ -184,7 +184,11 @@ function Event (subtype) {
     $(this.element).css('top', _y).css('left', _x)
   }
 
-  this.stand_by_door = function (x, y) {
+  this.moveIn = (room) => {
+    this.location = room
+  }
+
+  this.standByDoor = function (x, y) {
     $(this.element).finish()
     const target = this.animator
     x = -x
@@ -297,7 +301,7 @@ function Player () {
     }
   }
 
-  this.try_move = function (x, y) {
+  this.tryMove = function (x, y) {
     if (oquonie.dialog.isVisible) {
       oquonie.dialog.hide()
       return
@@ -661,13 +665,13 @@ function Ghost (x, y) {
 
   this.onSight = function () {
     $(this.element).delay(oquonie.speed * 5).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 10, function () {
-      this.is_known = true
+      this.isKnown = true
     })
   }
 
   this.onStep = function () {
     $(this.element).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 5, function () {
-      this.is_known = true
+      this.isKnown = true
     })
   }
 

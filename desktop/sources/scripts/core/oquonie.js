@@ -23,10 +23,10 @@ function Oquonie () {
     document.body.appendChild(this.element)
 
     this.acels.set('File', 'Restart Game', 'CmdOrCtrl+Backspace', () => { this.reset() })
-    this.acels.set('Move', 'Move Up', 'ArrowUp', () => { this.player.try_move(0, 1) })
-    this.acels.set('Move', 'Move Right', 'ArrowRight', () => { this.player.try_move(1, 0) })
-    this.acels.set('Move', 'Move Down', 'ArrowDown', () => { this.player.try_move(0, -1) })
-    this.acels.set('Move', 'Move Left', 'ArrowLeft', () => { this.player.try_move(-1, 0) })
+    this.acels.set('Move', 'Move Up', 'ArrowUp', () => { this.player.tryMove(0, 1) })
+    this.acels.set('Move', 'Move Right', 'ArrowRight', () => { this.player.tryMove(1, 0) })
+    this.acels.set('Move', 'Move Down', 'ArrowDown', () => { this.player.tryMove(0, -1) })
+    this.acels.set('Move', 'Move Left', 'ArrowLeft', () => { this.player.tryMove(-1, 0) })
     this.acels.set('Audio', 'Toggle Ambience', 'M', () => { this.music.toggle_ambience() })
     this.acels.install(window)
 
@@ -37,7 +37,7 @@ function Oquonie () {
     this.world.install()
     this.dialog.install(this.element)
     this.overlay.install(this.element)
-    this.stage.install()
+    this.stage.install(this.element)
     this.spellbook.install(this.element)
   }
 
@@ -60,10 +60,11 @@ function Oquonie () {
   }
 
   this.animate = () => {
-    this.animation_timer = setTimeout(() => { this.animate() }, 200)
+    this.animation_timer = setTimeout(() => { this.animate() }, 2000)
 
     this.player.animator.animate()
 
+    if (!this.stage.room) { return }
     for (let i = 0; i < this.stage.room.events.length; i++) {
       this.stage.room.events[i].animator.animate()
     }
@@ -97,26 +98,26 @@ function Oquonie () {
   this.poke = () => {
     const ratio = { x: this.mouseTo.x / window.innerWidth, y: this.mouseTo.y / window.innerHeight }
     if (ratio.y < 0.5 && ratio.x < 0.5) {
-      this.player.try_move(0, 1)
+      this.player.tryMove(0, 1)
     } else if (ratio.y < 0.5 && ratio.x > 0.5) {
-      this.player.try_move(1, 0)
+      this.player.tryMove(1, 0)
     } else if (ratio.y > 0.5 && ratio.x < 0.5) {
-      this.player.try_move(-1, 0)
+      this.player.tryMove(-1, 0)
     } else if (ratio.y > 0.5 && ratio.x > 0.5) {
-      this.player.try_move(0, -1)
+      this.player.tryMove(0, -1)
     }
   }
 
   this.drag = () => {
     const offset = { x: this.mouseFrom.x - this.mouseTo.x, y: this.mouseFrom.y - this.mouseTo.y }
     if (offset.x > 0 && offset.y > 0) {
-      this.player.try_move(0, 1)
+      this.player.tryMove(0, 1)
     } else if (offset.x < 0 && offset.y < 0) {
-      this.player.try_move(0, -1)
+      this.player.tryMove(0, -1)
     } else if (offset.x < 0 && offset.y > 0) {
-      this.player.try_move(1, 0)
+      this.player.tryMove(1, 0)
     } else if (offset.x > 0 && offset.y < 0) {
-      this.player.try_move(-1, 0)
+      this.player.tryMove(-1, 0)
     }
   }
 

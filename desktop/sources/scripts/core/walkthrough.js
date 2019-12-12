@@ -142,7 +142,7 @@ function Walkthrough () {
   this.manual = function () {
     oquonie.speed = 300
     oquonie.player.setId('nastazie')
-    oquonie.player.location = 142
+    oquonie.player.moveIn(142)
 
     oquonie.spellbook.add_ramen('necomedre')
     oquonie.spellbook.add_ramen('nephtaline')
@@ -231,13 +231,13 @@ function Walkthrough () {
   this.run = function () {
     if (this.inputs.length < 1) { this.end(); return }
 
-    if (oquonie.dialog.isVisible) { oquonie.player.try_move(0, 0) }
-    if (oquonie.overlay.isVisible) { oquonie.player.try_move(0, 0) }
+    if (oquonie.dialog.isVisible) { oquonie.player.tryMove(0, 0) }
+    if (oquonie.overlay.isVisible) { oquonie.player.tryMove(0, 0) }
 
     if (oquonie.player.locks.length <= 0) {
       console.log('walkthrough run:', section, counter, this.inputs[0])
       counter++
-      if (this.inputs[0] === 'U') { oquonie.player.try_move(0, 1); this.inputs.shift() } else if (this.inputs[0] === 'D') { oquonie.player.try_move(0, -1); this.inputs.shift() } else if (this.inputs[0] === 'L') { oquonie.player.try_move(-1, 0); this.inputs.shift() } else if (this.inputs[0] === 'R') { oquonie.player.try_move(1, 0); this.inputs.shift() } else if (this.inputs[0] === '') { oquonie.player.try_move(0, 0); this.inputs.shift() } else if (this.inputs[0][0] === 'W') { oquonie.stage.enterRoom(parseInt(this.inputs[0].substr(1))); this.inputs.shift() } else if (this.inputs[0][0] === '_') { section = this.inputs[0]; console.log('walkthrough section:', section); counter = 0; this.inputs.shift() } else if (this.inputs[0][0] === 'T') { oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift() } else if (this.inputs[0][0] === 'S') { oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift() }
+      if (this.inputs[0] === 'U') { oquonie.player.tryMove(0, 1); this.inputs.shift() } else if (this.inputs[0] === 'D') { oquonie.player.tryMove(0, -1); this.inputs.shift() } else if (this.inputs[0] === 'L') { oquonie.player.tryMove(-1, 0); this.inputs.shift() } else if (this.inputs[0] === 'R') { oquonie.player.tryMove(1, 0); this.inputs.shift() } else if (this.inputs[0] === '') { oquonie.player.tryMove(0, 0); this.inputs.shift() } else if (this.inputs[0][0] === 'W') { oquonie.stage.enterRoom(parseInt(this.inputs[0].substr(1))); this.inputs.shift() } else if (this.inputs[0][0] === '_') { section = this.inputs[0]; console.log('walkthrough section:', section); counter = 0; this.inputs.shift() } else if (this.inputs[0][0] === 'T') { oquonie.player.transform(this.inputs[0].substr(1)); this.inputs.shift() } else if (this.inputs[0][0] === 'S') { oquonie.speed = parseInt(this.inputs[0].substr(1)); this.inputs.shift() }
     }
 
     setTimeout(function () { oquonie.walkthrough.run() }, oquonie.speed * 2)
@@ -251,7 +251,7 @@ function Walkthrough () {
   this.analysis = function () {
     const unused_rooms = []
     for (const room in oquonie.world.rooms) {
-      if (!oquonie.world.rooms[room].is_known) {
+      if (!oquonie.world.rooms[room].isKnown) {
         unused_rooms.push(oquonie.world.rooms[room])
       }
     }

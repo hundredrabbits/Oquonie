@@ -14,10 +14,12 @@ function Overlay () {
 
   this.show = function (message) {
     oquonie.artbook.setArt(this.el, `media/graphics/plan/${message}.png`)
-    setClass(this.el, 'visible')
+    replaceClass(this.el, 'invisible', 'visible')
+    this.isVisible = true
   }
 
   this.hide = function () {
-    setClass(this.el, 'invisible')
+    replaceClass(this.el, 'visible', 'invisible')
+    this.isVisible = false
   }
 }

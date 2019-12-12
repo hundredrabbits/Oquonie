@@ -31,7 +31,7 @@ function Music () {
     this.track_dialog.play()
   }
 
-  this.play_ambient = function (name) {
+  this.playAmbient = function (name) {
     if (this.track_ambient.name === name) { return }
     if (!this.track_ambient.name) { this.introduce(name); return }
 
