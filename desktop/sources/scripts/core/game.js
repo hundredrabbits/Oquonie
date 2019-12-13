@@ -31,13 +31,6 @@ function Game () {
       if (data.ramen[name] === true) { oquonie.spellbook.addRamen(name) }
       if (data.pillar[name] === true) { oquonie.spellbook.addPillar(name) }
     }
-
-    oquonie.music.isMuted = data.mute
-    if (data.mute) {
-      oquonie.music.pause_ambience()
-    } else {
-      oquonie.music.resume_ambience()
-    }
   }
 
   this.isFound = function () {
@@ -63,8 +56,7 @@ function Game () {
         nestorine: oquonie.spellbook.hasPillar('nestorine'),
         nemedique: oquonie.spellbook.hasPillar('nemedique'),
         nastazie: oquonie.spellbook.hasPillar('nastazie')
-      },
-      mute: oquonie.music.isMuted
+      }
     }
   }
 }

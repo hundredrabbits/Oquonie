@@ -347,18 +347,18 @@ function Player () {
       console.log('Blocked by: Edge')
       if (!mid_walk) {
         this.bumpUp(x, y)
-        oquonie.music.play_effect('bump.2')
+        oquonie.music.playEffect('bump.2')
       }
     } else if (target_floor === 0) {
       console.log('Blocked by: Floor(' + target_floor + ')')
       if (!mid_walk) {
         this.bumpUp(x, y)
-        oquonie.music.play_effect('bump.3')
+        oquonie.music.playEffect('bump.3')
       }
     } else {
       this.move_by(x, y)
       console.log('Moved to: Floor(' + this.x + ',' + this.y + ')')
-      oquonie.music.play_effect('walk')
+      oquonie.music.playEffect('walk')
     }
 
     for (let i = 0; i < target_tiles.length; i++) {
@@ -405,7 +405,7 @@ function Player () {
 
     this.animator.setState('warp')
 
-    oquonie.music.play_effect('transform')
+    oquonie.music.playEffect('transform')
 
     $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, oquonie.speed * 2, function () {
       oquonie.player.transform_lift(spell)
@@ -458,7 +458,7 @@ function Blocker (x, y, id) {
   }
 
   this.onCollision = function () {
-    if (this.id !== 0) { oquonie.music.play_effect('bump.1') }
+    if (this.id !== 0) { oquonie.music.playEffect('bump.1') }
     if (oquonie.player.location === 43) { this.rez_easteregg() }
   }
 
@@ -511,7 +511,7 @@ function Boss (x, y, reset) {
 
     $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 2)
     this.is_gone = true
-    oquonie.music.play_effect('teleport')
+    oquonie.music.playEffect('teleport')
     oquonie.dialog.show('boss', ['document', 'teleport', 'guide'])
   }
 
@@ -604,7 +604,7 @@ function Door (x, y, room, to_x, to_y) {
         break
       }
     }
-    oquonie.music.play_effect('bump.2')
+    oquonie.music.playEffect('bump.2')
   }
 
   this.add_destination = function (conditionFn, room, to_x, to_y) {
@@ -635,7 +635,7 @@ function Gate (requirement, x, y, room, to_x, to_y) {
       return
     }
     oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
-    oquonie.music.play_effect('bump.2')
+    oquonie.music.playEffect('bump.2')
   }
 
   this.onSight = function () {
@@ -692,7 +692,7 @@ function HiversairesGate (x, y, room, to_x, to_y) {
       return
     }
     oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
-    oquonie.music.play_effect('bump.2')
+    oquonie.music.playEffect('bump.2')
   }
 
   this.onSight = function () {
@@ -873,7 +873,7 @@ function PillarBase (x, y, character) {
     } else {
       oquonie.dialog.show('owl', ['pillar', 'foe', this.character])
     }
-    oquonie.music.play_effect('bump.1')
+    oquonie.music.playEffect('bump.1')
   }
 
   this.onSight = function () {
@@ -940,7 +940,7 @@ function Plan (x, y, id) {
   this.onCollision = function () {
     oquonie.overlay.show(this.id)
     oquonie.dialog.show('owl', ['help', 'guide', 'friend'])
-    oquonie.music.play_effect('bump.2')
+    oquonie.music.playEffect('bump.2')
   }
 }
 
@@ -972,7 +972,7 @@ function Ramen (x, y, character = null) {
   // On Collision
 
   this.onCollision = function () {
-    oquonie.music.play_effect('bump.1')
+    oquonie.music.playEffect('bump.1')
 
     if (this.character) { this.onCollision_world() }
     if (this.location === 2) { this.onCollision_lobby() }
@@ -1075,7 +1075,7 @@ function RamenMat (x, y) {
   }
 
   this.onCollision = function () {
-    oquonie.music.play_effect('bump.1')
+    oquonie.music.playEffect('bump.1')
   }
 
   this.onSight = function () {
@@ -1192,46 +1192,25 @@ function Speaker (x, y, id = 'disc') {
   this.y = y
   this.id = id
   this.animator.state = 'on'
-  this.is_playing = true
 
   this.isCollider = function () {
     return true
   }
 
   this.onCollision = function () {
-    this.toggle()
+    oquonie.music.toggleAmbience()
     oquonie.dialog.show(
       this.id,
-      ['outside', this.is_playing ? 'correct' : 'incorrect', 'sound'],
+      ['outside', oquonie.music.isPlaying() ? 'correct' : 'incorrect', 'sound'],
       null,
-      this.id + '_' + (this.is_playing ? 'off' : 'on'))
-  }
+      this.id + '_' + (oquonie.music.isPlaying() ? 'off' : 'on'))
 
-  this.toggle = function () {
-    if (this.is_playing === true) {
-      this.stop()
-    } else {
-      this.play()
-    }
-    console.log('Speaker', this.is_playing)
-  }
-
-  this.play = function () {
-    this.is_playing = true
-    this.animator.setState('on')
-    oquonie.music.resume_ambience()
-  }
-
-  this.stop = function () {
-    this.is_playing = false
-    this.animator.setState('off')
-    oquonie.music.pause_ambience()
+    setTimeout(() => { this.animator.setState(oquonie.music.isPlaying() ? 'on' : 'off') }, 350)
   }
 
   this.onSight = function () {
-    if (oquonie.music.isMuted === this.is_playing) {
-      this.toggle()
-    }
+    console.log(oquonie.music.isMuted)
+    this.animator.setState(oquonie.music.isPlaying() ? 'on' : 'off')
   }
 
   this.update(20)

@@ -148,7 +148,7 @@ function Stage () {
     console.log('Stage', 'Teleporting to: ' + room)
     this.panUp()
 
-    oquonie.music.play_effect('teleport')
+    oquonie.music.playEffect('teleport')
     setTimeout(() => { this.loadRoom(room, x, y) }, (oquonie.speed * 10))
     setTimeout(() => { this.panDown() }, (oquonie.speed * 10) + 400)
   }

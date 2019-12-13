@@ -27,7 +27,7 @@ function Oquonie () {
     this.acels.set('Move', 'Move Right', 'ArrowRight', () => { this.player.tryMove(1, 0) })
     this.acels.set('Move', 'Move Down', 'ArrowDown', () => { this.player.tryMove(0, -1) })
     this.acels.set('Move', 'Move Left', 'ArrowLeft', () => { this.player.tryMove(-1, 0) })
-    this.acels.set('Audio', 'Toggle Ambience', 'M', () => { this.music.toggle_ambience() })
+    this.acels.set('Audio', 'Toggle Ambience', 'M', () => { this.music.toggleAmbience() })
     this.acels.install(window)
 
     document.onmousedown = this.onMouseDown
@@ -47,9 +47,11 @@ function Oquonie () {
 
     this.element.style.opacity = 1
     this.walkthrough.start()
+    this.music.start()
     this.dialog.hide()
     this.overlay.hide()
     this.spellbook.hide()
+
     this.animate()
     this.started = true
   }
