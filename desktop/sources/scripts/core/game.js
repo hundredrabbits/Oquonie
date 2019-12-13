@@ -4,81 +4,77 @@
 /* global localStorage */
 
 function Game () {
-  this.clear = function () {
-    document.cookie.split(';').forEach(function (c) { document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/') })
+  this.reset = function () {
+    console.info('Game', 'New Game..')
+    localStorage.clear()
+    oquonie.spellbook.reset()
+    oquonie.player.moveIn(29)
+    oquonie.player.setId('necomedre')
   }
 
   this.save = function () {
-    this.clear()
-
     console.info('Game', 'Saving..')
-
-    localStorage.character = oquonie.player.id
-    localStorage.room = oquonie.stage.room.id
-
-    localStorage.ramen_necomedre = oquonie.spellbook.has_ramen('necomedre')
-    localStorage.ramen_nephtaline = oquonie.spellbook.has_ramen('nephtaline')
-    localStorage.ramen_neomine = oquonie.spellbook.has_ramen('neomine')
-    localStorage.ramen_nestorine = oquonie.spellbook.has_ramen('nestorine')
-    localStorage.ramen_nemedique = oquonie.spellbook.has_ramen('nemedique')
-    localStorage.ramen_nastazie = oquonie.spellbook.has_ramen('nastazie')
-
-    localStorage.pillar_necomedre = oquonie.spellbook.has_pillar('necomedre')
-    localStorage.pillar_nephtaline = oquonie.spellbook.has_pillar('nephtaline')
-    localStorage.pillar_neomine = oquonie.spellbook.has_pillar('neomine')
-    localStorage.pillar_nestorine = oquonie.spellbook.has_pillar('nestorine')
-    localStorage.pillar_nemedique = oquonie.spellbook.has_pillar('nemedique')
-    localStorage.pillar_nastazie = oquonie.spellbook.has_pillar('nastazie')
-
-    localStorage.isMuted = oquonie.music.isMuted
+    localStorage.setItem('save', JSON.stringify(this.serialize()))
+    console.log(localStorage.getItem('save'))
   }
 
   this.load = function () {
     console.info('Game', 'Loading..')
 
-    oquonie.player.setId(localStorage.character)
-    oquonie.player.moveIn(parseInt(localStorage.room))
+    const data = JSON.parse(localStorage.getItem('save'))
 
-    if (localStorage.ramen_necomedre === 'true') { oquonie.spellbook.add_ramen('necomedre') }
-    if (localStorage.ramen_nephtaline === 'true') { oquonie.spellbook.add_ramen('nephtaline') }
-    if (localStorage.ramen_neomine === 'true') { oquonie.spellbook.add_ramen('neomine') }
-    if (localStorage.ramen_nestorine === 'true') { oquonie.spellbook.add_ramen('nestorine') }
-    if (localStorage.ramen_nemedique === 'true') { oquonie.spellbook.add_ramen('nemedique') }
-    if (localStorage.ramen_nastazie === 'true') { oquonie.spellbook.add_ramen('nastazie') }
+    console.log(data)
 
-    if (localStorage.pillar_necomedre === 'true') { oquonie.spellbook.add_pillar('necomedre') }
-    if (localStorage.pillar_nephtaline === 'true') { oquonie.spellbook.add_pillar('nephtaline') }
-    if (localStorage.pillar_neomine === 'true') { oquonie.spellbook.add_pillar('neomine') }
-    if (localStorage.pillar_nestorine === 'true') { oquonie.spellbook.add_pillar('nestorine') }
-    if (localStorage.pillar_nemedique === 'true') { oquonie.spellbook.add_pillar('nemedique') }
-    if (localStorage.pillar_nastazie === 'true') { oquonie.spellbook.add_pillar('nastazie') }
+    oquonie.player.setId(data.character)
+    oquonie.player.moveIn(data.room)
 
-    const isMuted = localStorage.isMuted === 'true'
-    if (isMuted !== oquonie.music.isMuted) {
-      if (isMuted) {
-        oquonie.music.pause_ambience()
-      } else {
-        oquonie.music.resume_ambience()
-      }
+    if (data.ramen.necomedre === true) { oquonie.spellbook.addRamen('necomedre') }
+    if (data.ramen.nephtaline === true) { oquonie.spellbook.addRamen('nephtaline') }
+    if (data.ramen.neomine === true) { oquonie.spellbook.addRamen('neomine') }
+    if (data.ramen.nestorine === true) { oquonie.spellbook.addRamen('nestorine') }
+    if (data.ramen.nemedique === true) { oquonie.spellbook.addRamen('nemedique') }
+    if (data.ramen.nastazie === true) { oquonie.spellbook.addRamen('nastazie') }
+
+    if (data.pillar.necomedre === true) { oquonie.spellbook.addPillar('necomedre') }
+    if (data.pillar.nephtaline === true) { oquonie.spellbook.addPillar('nephtaline') }
+    if (data.pillar.neomine === true) { oquonie.spellbook.addPillar('neomine') }
+    if (data.pillar.nestorine === true) { oquonie.spellbook.addPillar('nestorine') }
+    if (data.pillar.nemedique === true) { oquonie.spellbook.addPillar('nemedique') }
+    if (data.pillar.nastazie === true) { oquonie.spellbook.addPillar('nastazie') }
+
+    oquonie.music.isMuted = data.mute
+    if (data.mute) {
+      oquonie.music.pause_ambience()
+    } else {
+      oquonie.music.resume_ambience()
     }
   }
 
-  this.is_found = function () {
-    if (localStorage.character && parseInt(localStorage.room) > 0) {
-      return true
-    }
-    return false
+  this.isFound = function () {
+    return !!localStorage.getItem('save')
   }
 
-  this.new = function () {
-    console.info('Game', 'New Game..')
-    localStorage.clear()
-
-    oquonie.spellbook.reset()
-
-    oquonie.player.moveIn(29)
-    oquonie.player.setId('necomedre')
-
-    return 'Created a new game.'
+  this.serialize = () => {
+    return {
+      room: oquonie.stage.room.id,
+      character: oquonie.player.id,
+      ramen: {
+        necomedre: oquonie.spellbook.hasRamen('necomedre'),
+        nephtaline: oquonie.spellbook.hasRamen('nephtaline'),
+        neomine: oquonie.spellbook.hasRamen('neomine'),
+        nestorine: oquonie.spellbook.hasRamen('nestorine'),
+        nemedique: oquonie.spellbook.hasRamen('nemedique'),
+        nastazie: oquonie.spellbook.hasRamen('nastazie')
+      },
+      pillar: {
+        necomedre: oquonie.spellbook.hasPillar('necomedre'),
+        nephtaline: oquonie.spellbook.hasPillar('nephtaline'),
+        neomine: oquonie.spellbook.hasPillar('neomine'),
+        nestorine: oquonie.spellbook.hasPillar('nestorine'),
+        nemedique: oquonie.spellbook.hasPillar('nemedique'),
+        nastazie: oquonie.spellbook.hasPillar('nastazie')
+      },
+      mute: oquonie.music.isMuted
+    }
   }
 }

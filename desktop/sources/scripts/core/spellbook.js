@@ -72,22 +72,22 @@ function Spellbook () {
 
   // Pillars
 
-  this.add_pillar = function (pillarCharacter) {
+  this.addPillar = function (pillarCharacter) {
     this.pillars.push(pillarCharacter)
   }
 
-  this.has_pillar = function (pillarCharacter) {
+  this.hasPillar = function (pillarCharacter) {
     return this.pillars.indexOf(pillarCharacter) > -1
   }
 
   // Ramen
 
-  this.add_ramen = function (ramenCharacter) {
+  this.addRamen = function (ramenCharacter) {
     console.log('Spellbook', 'Add Ramen: ' + ramenCharacter)
     this.ramens.push(ramenCharacter)
   }
 
-  this.has_ramen = function (ramenCharacter) {
+  this.hasRamen = function (ramenCharacter) {
     return this.ramens.indexOf(ramenCharacter) > -1
   }
 

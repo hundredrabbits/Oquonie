@@ -823,7 +823,7 @@ function Pillar (x, y, character, warp = 1) {
   this.animator.add(new Animation('idle', [1]))
 
   this.isCollider = function () {
-    return !oquonie.spellbook.has_pillar(this.character)
+    return !oquonie.spellbook.hasPillar(this.character)
   }
 
   this.onCollision = function () {
@@ -832,7 +832,7 @@ function Pillar (x, y, character, warp = 1) {
 
   this.onStep = function () {
     if (this.isCollider()) {
-      oquonie.spellbook.add_pillar(this.character)
+      oquonie.spellbook.addPillar(this.character)
       this.onSight()
       oquonie.dialog.show('owl', ['pillar', 'friend', this.character])
     } else {
@@ -843,7 +843,7 @@ function Pillar (x, y, character, warp = 1) {
   }
 
   this.onSight = function () {
-    if (oquonie.spellbook.has_pillar(this.character)) {
+    if (oquonie.spellbook.hasPillar(this.character)) {
       this.id = 'gone'
     } else {
       this.id = 'full'
@@ -868,7 +868,7 @@ function PillarBase (x, y, character) {
   }
 
   this.onCollision = function () {
-    if (oquonie.spellbook.has_pillar(this.character) === true) {
+    if (oquonie.spellbook.hasPillar(this.character) === true) {
       oquonie.dialog.show('owl', ['pillar', 'friend', this.character])
     } else {
       oquonie.dialog.show('owl', ['pillar', 'foe', this.character])
@@ -877,7 +877,7 @@ function PillarBase (x, y, character) {
   }
 
   this.onSight = function () {
-    if (oquonie.spellbook.has_pillar(this.character)) {
+    if (oquonie.spellbook.hasPillar(this.character)) {
       this.id = 'complete'
     } else {
       this.id = 'base'
@@ -915,12 +915,12 @@ function PillarGate (x, y, room, to_x, to_y) {
   }
 
   this.missing_pillar = function () {
-    if (!oquonie.spellbook.has_pillar('necomedre')) { return 'necomedre' }
-    if (!oquonie.spellbook.has_pillar('nephtaline')) { return 'nephtaline' }
-    if (!oquonie.spellbook.has_pillar('neomine')) { return 'neomine' }
-    if (!oquonie.spellbook.has_pillar('nestorine')) { return 'nestorine' }
-    if (!oquonie.spellbook.has_pillar('nemedique')) { return 'nemedique' }
-    if (!oquonie.spellbook.has_pillar('nastazie')) { return 'nastazie' }
+    if (!oquonie.spellbook.hasPillar('necomedre')) { return 'necomedre' }
+    if (!oquonie.spellbook.hasPillar('nephtaline')) { return 'nephtaline' }
+    if (!oquonie.spellbook.hasPillar('neomine')) { return 'neomine' }
+    if (!oquonie.spellbook.hasPillar('nestorine')) { return 'nestorine' }
+    if (!oquonie.spellbook.hasPillar('nemedique')) { return 'nemedique' }
+    if (!oquonie.spellbook.hasPillar('nastazie')) { return 'nastazie' }
 
     return null
   }
@@ -961,7 +961,7 @@ function Ramen (x, y, character = null) {
   this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
   this.isCollider = function () {
-    if (this.character) { return !oquonie.spellbook.has_ramen(this.character) }
+    if (this.character) { return !oquonie.spellbook.hasRamen(this.character) }
     if (this.location === 2) { return true }
   }
 
@@ -980,7 +980,7 @@ function Ramen (x, y, character = null) {
   }
 
   this.onCollision_lobby = function () {
-    if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
+    if (oquonie.spellbook.hasRamen(oquonie.player.id) !== true) {
       console.warn('Ramen for ' + oquonie.player.id + ' is unfound.')
       // oquonie.dialog.show(this.name,["help","foe",oquonie.player.id]);
       return
@@ -990,11 +990,11 @@ function Ramen (x, y, character = null) {
   }
 
   this.onCollision_world = function () {
-    if (oquonie.spellbook.has_ramen(this.character) === true) {
+    if (oquonie.spellbook.hasRamen(this.character) === true) {
       console.warn('Ramen for ' + oquonie.player.id + ' was already found.')
       return
     }
-    oquonie.spellbook.add_ramen(this.character)
+    oquonie.spellbook.addRamen(this.character)
     oquonie.dialog.show(this.name, ['help', 'friend', oquonie.player.id])
   }
 
@@ -1013,7 +1013,7 @@ function Ramen (x, y, character = null) {
   }
 
   this.onSight_lobby = function () {
-    if (oquonie.spellbook.has_ramen(oquonie.player.id)) {
+    if (oquonie.spellbook.hasRamen(oquonie.player.id)) {
       this.id = 'active'
       this.element.style.display = 'block'
     } else {
@@ -1024,7 +1024,7 @@ function Ramen (x, y, character = null) {
   }
 
   this.onSight_world = function () {
-    if (oquonie.spellbook.has_ramen(this.character)) {
+    if (oquonie.spellbook.hasRamen(this.character)) {
       if (!this.first_sight) {
         $(this.element).animate({ opacity: 0 }, oquonie.speed * 3)
       } else {
@@ -1047,7 +1047,7 @@ function Ramen (x, y, character = null) {
   this.updateNotification = function () {
     if (this.character) {
       this.hideNotification()
-    } else if (oquonie.spellbook.has_ramen(oquonie.player.id) !== true) {
+    } else if (oquonie.spellbook.hasRamen(oquonie.player.id) !== true) {
       this.hideNotification()
     } else if (oquonie.spellbook.hasSpell(this.spellName()) !== true) {
       this.showNotification()

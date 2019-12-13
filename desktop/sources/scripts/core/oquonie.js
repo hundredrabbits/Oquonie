@@ -55,7 +55,7 @@ function Oquonie () {
   }
 
   this.reset = () => {
-    this.game.new()
+    this.game.reset()
     this.stage.enterRoom(25, 0, 0)
   }
 

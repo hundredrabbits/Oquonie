@@ -124,12 +124,12 @@ function Walkthrough () {
   this.release = function () {
     oquonie.speed = 300
 
-    if (oquonie.game.is_found() === true) {
+    if (oquonie.game.isFound() === true) {
       console.warn('Found a saved game!')
       oquonie.game.load()
     } else {
       console.warn('Found no saved game?')
-      oquonie.game.new()
+      oquonie.game.reset()
     }
 
     oquonie.stage.enterRoom(oquonie.player.location)
@@ -144,19 +144,19 @@ function Walkthrough () {
     oquonie.player.setId('nastazie')
     oquonie.player.moveIn(142)
 
-    oquonie.spellbook.add_ramen('necomedre')
-    oquonie.spellbook.add_ramen('nephtaline')
-    oquonie.spellbook.add_ramen('neomine')
-    oquonie.spellbook.add_ramen('nestorine')
-    oquonie.spellbook.add_ramen('nemedique')
-    oquonie.spellbook.add_ramen('nastazie')
+    oquonie.spellbook.addRamen('necomedre')
+    oquonie.spellbook.addRamen('nephtaline')
+    oquonie.spellbook.addRamen('neomine')
+    oquonie.spellbook.addRamen('nestorine')
+    oquonie.spellbook.addRamen('nemedique')
+    oquonie.spellbook.addRamen('nastazie')
 
-    oquonie.spellbook.add_pillar('necomedre')
-    oquonie.spellbook.add_pillar('nephtaline')
-    oquonie.spellbook.add_pillar('neomine')
-    oquonie.spellbook.add_pillar('nestorine')
-    oquonie.spellbook.add_pillar('nemedique')
-    oquonie.spellbook.add_pillar('nastazie')
+    oquonie.spellbook.addPillar('necomedre')
+    oquonie.spellbook.addPillar('nephtaline')
+    oquonie.spellbook.addPillar('neomine')
+    oquonie.spellbook.addPillar('nestorine')
+    oquonie.spellbook.addPillar('nemedique')
+    oquonie.spellbook.addPillar('nastazie')
     oquonie.stage.enterRoom(oquonie.player.location)
   }
 
@@ -217,12 +217,12 @@ function Walkthrough () {
     this.room = 1
     this.inputs = secrets
 
-    oquonie.spellbook.add_pillar('necomedre')
-    oquonie.spellbook.add_pillar('nephtaline')
-    oquonie.spellbook.add_pillar('neomine')
-    oquonie.spellbook.add_pillar('nestorine')
-    oquonie.spellbook.add_pillar('nemedique')
-    oquonie.spellbook.add_pillar('nastazie')
+    oquonie.spellbook.addPillar('necomedre')
+    oquonie.spellbook.addPillar('nephtaline')
+    oquonie.spellbook.addPillar('neomine')
+    oquonie.spellbook.addPillar('nestorine')
+    oquonie.spellbook.addPillar('nemedique')
+    oquonie.spellbook.addPillar('nastazie')
 
     oquonie.stage.enterRoom(this.room)
     this.run()
