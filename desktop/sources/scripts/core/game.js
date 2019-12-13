@@ -4,6 +4,7 @@
 /* global localStorage */
 
 function Game () {
+  const characters = ['necomedre', 'nephtaline', 'neomine', 'nestorine', 'nemedique', 'nastazie']
   this.reset = function () {
     console.info('Game', 'New Game..')
     localStorage.clear()
@@ -23,24 +24,13 @@ function Game () {
 
     const data = JSON.parse(localStorage.getItem('save'))
 
-    console.log(data)
-
     oquonie.player.setId(data.character)
     oquonie.player.moveIn(data.room)
 
-    if (data.ramen.necomedre === true) { oquonie.spellbook.addRamen('necomedre') }
-    if (data.ramen.nephtaline === true) { oquonie.spellbook.addRamen('nephtaline') }
-    if (data.ramen.neomine === true) { oquonie.spellbook.addRamen('neomine') }
-    if (data.ramen.nestorine === true) { oquonie.spellbook.addRamen('nestorine') }
-    if (data.ramen.nemedique === true) { oquonie.spellbook.addRamen('nemedique') }
-    if (data.ramen.nastazie === true) { oquonie.spellbook.addRamen('nastazie') }
-
-    if (data.pillar.necomedre === true) { oquonie.spellbook.addPillar('necomedre') }
-    if (data.pillar.nephtaline === true) { oquonie.spellbook.addPillar('nephtaline') }
-    if (data.pillar.neomine === true) { oquonie.spellbook.addPillar('neomine') }
-    if (data.pillar.nestorine === true) { oquonie.spellbook.addPillar('nestorine') }
-    if (data.pillar.nemedique === true) { oquonie.spellbook.addPillar('nemedique') }
-    if (data.pillar.nastazie === true) { oquonie.spellbook.addPillar('nastazie') }
+    for (const name of characters) {
+      if (data.ramen[name] === true) { oquonie.spellbook.addRamen(name) }
+      if (data.pillar[name] === true) { oquonie.spellbook.addPillar(name) }
+    }
 
     oquonie.music.isMuted = data.mute
     if (data.mute) {

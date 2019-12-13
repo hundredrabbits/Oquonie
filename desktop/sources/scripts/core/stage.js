@@ -69,11 +69,13 @@ function Stage () {
 
   this.clearRoom = () => {
     if (!this.room) { return }
-    $(this.room.element).empty()
-    $(this.room.element).remove()
+    this.el.removeChild(this.room.element)
+    while (this.room.element.firstChild) {
+      this.room.element.removeChild(this.room.element.firstChild)
+    }
   }
 
-  this.loadRoom = function (roomId, x, y) {
+  this.loadRoom = (roomId, x, y) => {
     if (this.room) {
       this.leaveRoom(roomId, x, y)
       return
@@ -95,7 +97,7 @@ function Stage () {
 
     const numPillars = oquonie.spellbook.pillars.length
     const theme = (numPillars >= 5 && this.room.theme !== 'pillars') ? 'black' : this.room.theme
-    oquonie.stage.setTheme(theme)
+    this.setTheme(theme)
 
     this.look()
     this.center(oquonie.player.x, oquonie.player.y)
@@ -142,13 +144,13 @@ function Stage () {
 
   //
 
-  this.warpTo = function (room, x, y) {
+  this.warpTo = (room, x, y) => {
     console.log('Stage', 'Teleporting to: ' + room)
     this.panUp()
 
     oquonie.music.play_effect('teleport')
-    setTimeout(function () { oquonie.stage.loadRoom(room, x, y) }, (oquonie.speed * 10))
-    setTimeout(function () { oquonie.stage.panDown() }, (oquonie.speed * 10) + 400)
+    setTimeout(() => { this.loadRoom(room, x, y) }, (oquonie.speed * 10))
+    setTimeout(() => { this.panDown() }, (oquonie.speed * 10) + 400)
   }
 
   this.panUp = function (speed = oquonie.speed * 10) {
@@ -178,11 +180,12 @@ function Stage () {
     const r1 = Math.random() * 6
     const r2 = Math.random() * 6
 
-    $(this.el).css('margin-top', r2).css('margin-left', r1)
-    setTimeout(function () { oquonie.stage.shake(radius, time - 1) }, 50)
+    this.el.style.marginTop = r2 + 'px'
+    this.el.style.marginTop = r1 + 'px'
+    setTimeout(() => { this.shake(radius, time - 1) }, 50)
   }
 
-  this.destroy = function (step = 6) {
+  this.destroy = (step = 6) => {
     if (step < 1) { return }
 
     if (step === 6) { oquonie.artbook.setArt(document.getElementById('wall_1'), 'media/graphics/wall/19.png') }
@@ -193,7 +196,7 @@ function Stage () {
     if (step === 2) { oquonie.artbook.setArt(document.getElementById('wall_4'), 'media/graphics/wall/40.png') }
     if (step === 1) { oquonie.artbook.setArt(document.getElementById('wall_2'), 'media/graphics/wall/15.png') }
 
-    setTimeout(function () { oquonie.stage.destroy(step - 1) }, 50)
+    setTimeout(() => { this.destroy(step - 1) }, 50)
   }
 
   this.floorAt = function (x, y) {
