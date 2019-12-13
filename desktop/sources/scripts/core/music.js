@@ -51,21 +51,20 @@ function Music () {
   this.playAmbient = function (name) {
     if (this.trackAmbient.name === name) { return }
 
-
     this.trackAmbient.pause()
     this.trackAmbient = this.fetchAudio(name, 'ambient', `media/audio/ambient/${name}.mp3`, true)
     this.trackAmbient.name = name
     this.trackAmbient.play()
 
-    // if (this.trackAmbient.name) { 
+    // if (this.trackAmbient.name) {
     //   this.fadeOut(name)
-    //   return 
+    //   return
     // }
     // this.fadeIn(name)
   }
 
   this.fadeIn = (name) => {
-    console.log('Ambient','Fade In')
+    console.log('Ambient', 'Fade In')
     this.targetVolume = 1
     this.trackAmbient.pause()
     this.trackAmbient = this.fetchAudio(name, 'ambient', `media/audio/ambient/${name}.mp3`, true)
@@ -74,13 +73,13 @@ function Music () {
   }
 
   this.fadeOut = (name) => {
-    console.log('Ambient','Fading Out..')
+    console.log('Ambient', 'Fading Out..')
     this.targetVolume = 0
     setTimeout(() => {
-      console.log('Ambient','Fade Out Complete')
+      console.log('Ambient', 'Fade Out Complete')
       this.trackAmbient.name = null
       this.fadeIn(name)
-    },3000)
+    }, 3000)
 
     // this.playAmbient(name)
   }
