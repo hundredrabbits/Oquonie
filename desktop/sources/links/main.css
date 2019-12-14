@@ -49,6 +49,7 @@ oquonie.tear { background-color:lightgrey; }
 
 
 tile,notification { background-size:100%; background-position:0px center; background-repeat:repeat-x; position:absolute; width:20%; height:40%; margin-left:-10%; will-change: top,left,opacity;}
+tile { transition: top 250ms, left 250ms }
 tile.floor {  margin-top:-20%; } 
 tile.wall {margin-top:-30%; }
 tile.wall.left { -webkit-transform: scaleX(-1); transform: scaleX(-1);}
@@ -62,12 +63,12 @@ tile.event notification { width:100%;height:100%;top:-15%; left:10%; }
 /* Guides */
 
 /*
-stage { border:1px solid blue; }
-stage room { border:1px solid purple; }
-stage room tile { border:1px solid red; }
-stage room tile.wall { border:1px solid cyan; }
-stage room tile.floor { border:1px solid pink; }
-stage room tile.step { border:1px solid green; }
+div#stage { border:1px solid blue; }
+div#stage div#room { border:1px solid purple; }
+div#stage div#room tile { border:1px solid red; }
+div#stage div#room tile.wall { border:1px solid cyan; }
+div#stage div#room tile.floor { border:1px solid pink; }
+div#stage div#room tile.step { border:1px solid green; }
 */
 
 @media screen and (orientation:portrait) {

@@ -10,7 +10,9 @@ function Tile (type = 'unknown') {
 
   this.update = function (depth_offset = 0) {
     const p = this.positionAt(this.x, this.y)
-    $(this.element).css('top', p[0]).css('left', p[1]).css('z-index', this.depth(depth_offset))
+    this.element.style.top = p[0]
+    this.element.style.left = p[1]
+    this.element.style.zIndex = this.depth(depth_offset)
   }
 
   this.positionAt = function (x, y) {
@@ -80,7 +82,8 @@ function Tile (type = 'unknown') {
   this.animate = function () {
     const origin = parseInt(this.positionAt(this.x, this.y)[0])
     const offset = (origin * (1 + (Math.random() / 20)))
-    $(this.element).css('opacity', 0).css('top', offset + '%').animate({ opacity: 1, top: origin + '%' }, oquonie.speed)
+    console.log('a')
+    // $(this.element).css('opacity', 0).css('top', offset + '%').animate({ opacity: 1, top: origin + '%' }, oquonie.speed)
   }
 }
 
@@ -149,8 +152,6 @@ function Event (subtype) {
     const _x = p[1]
     const _z = p[2]
 
-    $(this.element).finish()
-
     const target = this.animator
     target.setState('walk.front')
 
@@ -159,11 +160,11 @@ function Event (subtype) {
 
     oquonie.player.lock('moving')
     setTimeout(function () { oquonie.player.unlock('moving') }, oquonie.speed * 0.5)
-
-    $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
-      if (x === 0 && y === -1 || x === -1 && y === 0) { target.setState('idle.front') }
-      if (x === 0 && y === 1 || x === 1 && y === 0) { target.setState('idle.back') }
-    })
+    console.log('b')
+    // $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
+    //   if (x === 0 && y === -1 || x === -1 && y === 0) { target.setState('idle.front') }
+    //   if (x === 0 && y === 1 || x === 1 && y === 0) { target.setState('idle.back') }
+    // })
 
     oquonie.stage.animate(this.x, this.y)
   }
@@ -173,10 +174,8 @@ function Event (subtype) {
     this.y = y
 
     const p = this.positionAt(this.x, this.y, 200)
-    const _y = p[0]
-    const _x = p[1]
-
-    $(this.element).css('top', _y).css('left', _x)
+    this.element.style.top = p[0]
+    this.element.style.left = p[1]
   }
 
   this.moveIn = (room) => {
@@ -184,7 +183,6 @@ function Event (subtype) {
   }
 
   this.standByDoor = function (x, y) {
-    $(this.element).finish()
     const target = this.animator
     x = -x
     y = -y
@@ -211,9 +209,12 @@ function Event (subtype) {
     if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
     if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
 
-    $(this.element).finish()
     const origin_pos_y = parseInt(this.element.style.top)
-    $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
+    oquonie.music.playEffect('bump.2')
+    console.log('d')
+    // this.element.style.top = (origin_pos_y - 0.5) + '%'
+    // this.element.style.top = (origin_pos_y - 0.5) + '%'
+    // $(this.element).css('top', ).animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
   this.bumpAgainst = function (x, y) {
@@ -224,18 +225,17 @@ function Event (subtype) {
     const xSlant = x - y
     const ySlant = (-x - y) * 0.5
 
-    $(this.element).finish()
     const origin_pos_x = parseInt(this.element.style.left)
     const origin_pos_y = parseInt(this.element.style.top)
 
-    $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
-    $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
+    console.log('e')
+    // $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
+    // $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
   }
 
-  this.receive_bump = function () {
-    $(this.element).finish()
+  this.receiveBump = function () {
     const origin_pos_y = parseInt(this.element.style.top)
-    $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
+    // $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
   this.onCollision = function () {
@@ -296,7 +296,7 @@ function Player () {
     }
   }
 
-  this.tryMove = function (x, y) {
+  this.tryMove = (x, y) => {
     if (oquonie.dialog.isVisible) {
       oquonie.dialog.hide()
       return
@@ -310,62 +310,59 @@ function Player () {
       return
     }
 
-    const destination = [this.x + x, this.y + y]
-    const target_tiles = oquonie.stage.tilesAt(this.x + x, this.y + y)
-    const target_floor = oquonie.stage.floorAt(this.x + x, this.y + y)
+    const pos = { x: this.x + x, y: this.y + y }
+    const tiles = oquonie.stage.tilesAt(pos.x, pos.y)
+    const colliders = tiles.filter((item) => { console.log(item); return item.isCollider() })
 
-    let elicits_collision_bump = target_tiles.length === 0
-    const colliders = []
-    for (let i = 0; i < target_tiles.length; i++) {
-      elicits_collision_bump = elicits_collision_bump || target_tiles[i].elicits_collision_bump()
-      if (target_tiles[i].isCollider()) {
-        colliders.push(target_tiles[i])
-      }
+    for (const collider of colliders) {
+      console.log('Blocked by: ' + collider.name)
+      this.bumpAgainst(x, y)
+      collider.receiveBump()
+      collider.onCollision()
+      return
     }
 
-    if (elicits_collision_bump) {
-      if (x === 0 && y === -1) { setAttribute(this.element, 'orientation', 'front'); setAttribute(this.element, 'direction', 'right') }
-      if (x === -1 && y === 0) { setAttribute(this.element, 'orientation', 'front'); setAttribute(this.element, 'direction', 'left') }
-      if (x === 0 && y === 1) { setAttribute(this.element, 'orientation', 'back'); setAttribute(this.element, 'direction', 'left') }
-      if (x === 1 && y === 0) { setAttribute(this.element, 'orientation', 'back'); setAttribute(this.element, 'direction', 'right') }
+    if (oquonie.stage.floorAt(pos.x, pos.y) === 0) {
+      console.log('Blocked by: Floor')
+      this.bumpUp(x, y)
+      return
     }
 
-    const mid_walk = this.animator.state.indexOf('walk') !== -1
-
-    if (colliders.length > 0) {
-      if (elicits_collision_bump) {
-        this.bumpAgainst(x, y)
-        for (let i = 0; i < colliders.length; i++) {
-          console.log('Blocked by: ' + colliders[i].constructor.name)
-          if (colliders[i].elicits_collision_bump() === true) {
-            colliders[i].receive_bump()
-          }
-          colliders[i].onCollision()
-        }
-      }
-    } else if (destination[0] > 1 || destination[0] < -1 || destination[1] > 1 || destination[1] < -1) {
+    if (pos.x > 1 || pos.x < -1 || pos.y > 1 || pos.y < -1) {
       console.log('Blocked by: Edge')
-      if (!mid_walk) {
-        this.bumpUp(x, y)
-        oquonie.music.playEffect('bump.2')
-      }
-    } else if (target_floor === 0) {
-      console.log('Blocked by: Floor(' + target_floor + ')')
-      if (!mid_walk) {
-        this.bumpUp(x, y)
-        oquonie.music.playEffect('bump.3')
-      }
-    } else {
-      this.move_by(x, y)
-      console.log('Moved to: Floor(' + this.x + ',' + this.y + ')')
-      oquonie.music.playEffect('walk')
+      this.bumpUp(x, y)
+      return
     }
 
-    for (let i = 0; i < target_tiles.length; i++) {
-      target_tiles[i].onStep()
-    }
+    this.moveTo(pos.x, pos.y)
+  }
 
-    this.update(20)
+  this.moveTo = (x, y) => {
+    this.x = x
+    this.y = y
+
+    const p = this.positionAt(this.x, this.y, 200)
+    const _y = p[0]
+    const _x = p[1]
+    const _z = p[2]
+
+    this.animator.setState('walk.front')
+
+    if (x === 0 && y === -1 || x === -1 && y === 0) { this.animator.setState('walk.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { this.animator.setState('walk.back') }
+
+    oquonie.player.lock('moving')
+
+    this.element.style.top = p[0]
+    this.element.style.left = p[1]
+
+    setTimeout(() => {
+      oquonie.player.unlock('moving')
+      if (x === 0 && y === -1 || x === -1 && y === 0) { this.animator.setState('idle.front') }
+      if (x === 0 && y === 1 || x === 1 && y === 0) { this.animator.setState('idle.back') }
+    }, oquonie.speed * 0.5)
+
+    oquonie.stage.animate(this.x, this.y)
   }
 
   this.update = function () {
@@ -378,19 +375,19 @@ function Player () {
     } else {
       removeClass(this.element, 'mirror')
     }
-    $(this.element).css('z-index', this.depth(20))
+    this.element.style.zIndex = this.depth(20)
   }
 
   this.lift = function (speed) {
     this.animator.setState('warp')
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, speed)
-    $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, speed / 2)
+    // $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, speed)
+    // $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, speed / 2)
   }
 
   this.land = function () {
-    $(oquonie.player.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 0.6) + '%').delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0])) + '%' }, oquonie.speed * 10, function () { oquonie.player.animator.setState('idle.front') })
-    $(oquonie.player.shadow.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 1.4) + '%').delay(300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 10)
+    // $(oquonie.player.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 0.6) + '%').delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0])) + '%' }, oquonie.speed * 10, function () { oquonie.player.animator.setState('idle.front') })
+    // $(oquonie.player.shadow.element).css('top', (parseInt(this.positionAt(this.x, this.y)[0]) * 1.4) + '%').delay(300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 10)
   }
 
   // Transform
@@ -407,18 +404,18 @@ function Player () {
 
     oquonie.music.playEffect('transform')
 
-    $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, oquonie.speed * 2, function () {
-      oquonie.player.transform_lift(spell)
-    })
-    $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, oquonie.speed * 2)
+    // $(oquonie.player.element).delay(300).animate({ top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.9) + '%' }, oquonie.speed * 2, function () {
+    //   oquonie.player.transform_lift(spell)
+    // })
+    // $(oquonie.player.shadow.element).delay(300).animate({ top: 10 + '%', opacity: 0 }, oquonie.speed * 2)
   }
 
   this.transform_lift = function (spell) {
     console.log('Transform(lift): ' + spell)
 
-    $(oquonie.player.element).animate({ opacity: 0, top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.85) + '%' }, oquonie.speed * 4, function () {
-      oquonie.player.transform_character(spell)
-    })
+    // $(oquonie.player.element).animate({ opacity: 0, top: (parseInt(this.positionAt(this.x, this.y)[0]) * 0.85) + '%' }, oquonie.speed * 4, function () {
+    //   oquonie.player.transform_character(spell)
+    // })
   }
 
   this.transform_character = function (spell) {
@@ -427,10 +424,10 @@ function Player () {
     oquonie.player.setId(spell)
     oquonie.stage.look()
 
-    $(oquonie.player.element).animate({ opacity: 1 }, oquonie.speed * 2).delay(1000).animate({ top: oquonie.player.positionAt(oquonie.player.x, oquonie.player.y)[0] }, oquonie.speed * 8, function () {
-      oquonie.player.transform_done()
-    })
-    $(oquonie.player.shadow.element).delay(1300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 8)
+    // $(oquonie.player.element).animate({ opacity: 1 }, oquonie.speed * 2).delay(1000).animate({ top: oquonie.player.positionAt(oquonie.player.x, oquonie.player.y)[0] }, oquonie.speed * 8, function () {
+    //   oquonie.player.transform_done()
+    // })
+    // $(oquonie.player.shadow.element).delay(1300).animate({ top: 0 + '%', opacity: 1 }, oquonie.speed * 8)
   }
 
   this.transform_done = function () {
@@ -509,7 +506,7 @@ function Boss (x, y, reset) {
 
     this.animator.setState('ghost')
 
-    $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 2)
+    // $(this.element).delay(oquonie.speed * 8).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 2)
     this.is_gone = true
     oquonie.music.playEffect('teleport')
     oquonie.dialog.show('boss', ['document', 'teleport', 'guide'])
@@ -659,15 +656,15 @@ function Ghost (x, y) {
   }
 
   this.onSight = function () {
-    $(this.element).delay(oquonie.speed * 5).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 10, function () {
-      this.isKnown = true
-    })
+    // $(this.element).delay(oquonie.speed * 5).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 10, function () {
+    //   this.isKnown = true
+    // })
   }
 
   this.onStep = function () {
-    $(this.element).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 5, function () {
-      this.isKnown = true
-    })
+    // $(this.element).animate({ marginTop: -35 + '%', opacity: 0 }, oquonie.speed * 5, function () {
+    //   this.isKnown = true
+    // })
   }
 
   this.update(20)
@@ -1026,7 +1023,8 @@ function Ramen (x, y, character = null) {
   this.onSight_world = function () {
     if (oquonie.spellbook.hasRamen(this.character)) {
       if (!this.first_sight) {
-        $(this.element).animate({ opacity: 0 }, oquonie.speed * 3)
+        console.log('f')
+        this.element.style.opacity = 0
       } else {
         this.element.style.display = 'none'
       }
@@ -1205,7 +1203,7 @@ function Speaker (x, y, id = 'disc') {
   }
 
   this.onSight = function () {
-    console.log(oquonie.music.isMuted)
+    console.log('music', oquonie.music.isMuted)
     this.animator.setState(oquonie.music.isPlaying() ? 'on' : 'off')
   }
 
