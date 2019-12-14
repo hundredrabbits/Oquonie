@@ -47,7 +47,7 @@ function Artbook () {
     }
     this.element_registry[id] = assetUrl
 
-    addClass(el, this.asset_catalog[assetUrl])
+    // addClass(el, this.asset_catalog[assetUrl])
   }
 
   this.unsetArt = function (el) {

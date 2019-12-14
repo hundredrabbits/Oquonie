@@ -44,7 +44,6 @@ function Oquonie () {
   }
 
   this.start = function () {
-    console.clear()
     console.info('Oquonie', 'Starting..')
 
     this.element.style.opacity = 1
@@ -67,12 +66,13 @@ function Oquonie () {
     // TODO
     // this.animation_timer = setTimeout(() => { this.animate() }, 2000)
 
-    // this.player.animator.animate()
+    this.player.animator.animate()
 
-    // if (!this.stage.room) { return }
-    // for (let i = 0; i < this.stage.room.events.length; i++) {
-    //   this.stage.room.events[i].animator.animate()
-    // }
+    if (!this.stage.room) { return }
+
+    for (const event of this.stage.room.events) {
+      event.animator.animate()
+    }
   }
 
   // Mouse Controls

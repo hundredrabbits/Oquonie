@@ -5,14 +5,14 @@
 
 function Tile (type = 'unknown') {
   this.element = document.createElement('tile')
-  this.element.className = type
   this.x = 0
   this.y = 0
 
   this.update = function (depth_offset = 0) {
     const p = this.positionAt(this.x, this.y)
-    this.element.style.top = p[0]
-    this.element.style.left = p[1]
+    const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
+    setClass(this.element, `tile ${type} ${posName}`)
+
     this.element.style.zIndex = this.depth(depth_offset)
   }
 
@@ -81,10 +81,7 @@ function Tile (type = 'unknown') {
   }
 
   this.animate = function () {
-    // const origin = parseInt(this.positionAt(this.x, this.y)[0])
-    // const offset = (origin * (1 + (Math.random() / 20)))
-    // console.log('a')
-    // $(this.element).css('opacity', 0).css('top', offset + '%').animate({ opacity: 1, top: origin + '%' }, oquonie.speed)
+    this.element.style.opacity = 1
   }
 }
 
@@ -96,26 +93,22 @@ function Wall (pos, id, type) {
   this.y = t[pos][1]
   this.id = id
 
-  this.element.setAttribute('pos', this.x + ',' + this.y)
-
   this.update()
 
-  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/wall/' + this.id + '.png') }
+  this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/wall/${this.id}.png)` : ''
 }
 
 function Step (pos, id, type) {
   Tile.call(this, 'step ' + (pos < 3 ? 'left' : 'right'))
 
   const t = [[-2, 1], [-2, 0], [-2, -1], [-1, -2], [0, -2], [1, -2]]
-
   this.x = t[pos][0]
   this.y = t[pos][1]
   this.id = id
 
-  this.element.setAttribute('pos', this.x + ',' + this.y)
-
   this.update(100)
-  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/step/' + this.id + '.png') }
+
+  this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/step/${this.id}.png)` : ''
 }
 
 function Floor (pos, id, type) {
@@ -126,23 +119,32 @@ function Floor (pos, id, type) {
   this.y = t[pos][1]
   this.id = id
 
-  this.element.setAttribute('pos', this.x + ',' + this.y)
-
   this.update(5)
 
-  if (this.id !== 0) { oquonie.artbook.setArt(this.element, 'media/graphics/floor/' + this.id + '.png') }
+  this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/floor/${this.id}.png)` : ''
 }
 
-function Event (subtype) {
+function Event (type) {
   Tile.call(this, 'event')
 
   this.location = 0
-  this.name = subtype
+  this.name = type
   this.state = 'idle'
+  this.orientation = 'front'
+  this.direction = 'left'
   this.animator = new Animator(this)
   this.isMirrored = false
 
-  addClass(this.element, subtype)
+  this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/${type}/${this.state}.png)` : ''
+
+  this.update = function (depth_offset = 0) {
+    const p = this.positionAt(this.x, this.y)
+    const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
+    const mirror = this.orientation === 'right' ? 'mirror' : ''
+    setClass(this.element, `event ${type} ${posName} ${mirror}`)
+
+    this.element.style.zIndex = this.depth(depth_offset)
+  }
 
   this.moveAt = function (x, y) {
     this.x = x
@@ -165,10 +167,6 @@ function Event (subtype) {
 
   this.isCollider = function () {
     return false
-  }
-
-  this.elicits_collision_bump = function () {
-    return true
   }
 
   this.mirror = function () {
@@ -227,7 +225,7 @@ function Player () {
   Event.call(this, 'player')
 
   this.id = ''
-  this.orientation = 'front'
+  this.orientation = ''
 
   this.animator.add(new Animation('idle.front', [1, 1, 1, 1, 1, 2, 3, 2]))
   this.animator.add(new Animation('idle.back', [1]))
@@ -241,6 +239,16 @@ function Player () {
   this.element.appendChild(this.shadow.element)
 
   this.locks = []
+
+  this.update = function (depth_offset = 0) {
+    const p = this.positionAt(this.x, this.y)
+    const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
+    const mirror = this.orientation === 'right' ? 'mirror' : ''
+    setClass(this.element, `event player ${this.state} ${this.direction} ${posName} ${mirror}`)
+
+    this.element.style.zIndex = this.depth(20)
+    this.element.style.backgroundImage = `url(media/graphics/player/${this.id}.${this.state}.${this.direction}.png)`
+  }
 
   this.isLocked = () => {
     return this.locks.length > 0
@@ -316,14 +324,17 @@ function Player () {
     oquonie.player.lock('moving')
     this.direction = vec.dir()
     this.orientation = vec.ori()
+    this.state = 'walk'
     this.setPos(pos)
-    this.animator.setState('walk.' + vec.dir())
     oquonie.stage.center(pos.x, pos.y)
 
     setTimeout(() => {
       oquonie.player.unlock('moving')
-      this.animator.setState('idle.' + vec.dir())
+      this.state = 'idle'
+      this.update()
     }, oquonie.speed * 0.5)
+
+    this.update()
   }
 
   this.setPos = (pos) => {
@@ -334,14 +345,6 @@ function Player () {
     this.element.style.left = p[1]
     this.element.style.zIndex = this.depth(20)
     this.update()
-  }
-
-  this.update = function () {
-    if (this.orientation === 'right') {
-      addClass(this.element, 'mirror')
-    } else {
-      removeClass(this.element, 'mirror')
-    }
   }
 
   this.lift = function (speed) {
@@ -412,12 +415,10 @@ function Blocker (x, y, id) {
   this.y = y
   this.id = id
 
+  this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/blocker/${id}.png)` : ''
+
   this.isCollider = function () {
     return true
-  }
-
-  this.elicits_collision_bump = function () {
-    return this.id !== 0
   }
 
   this.onCollision = function () {
@@ -826,12 +827,21 @@ function PillarBase (x, y, character) {
 
   this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
+  this.update = function (depth_offset = 0) {
+    const p = this.positionAt(this.x, this.y)
+    const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
+    setClass(this.element, `event ${this.name} ${posName}`)
+
+    this.element.style.zIndex = this.depth(depth_offset)
+    this.element.style.backgroundImage = `url(media/graphics/pillarbase/${oquonie.spellbook.hasPillar(this.character) ? 'complete' : 'base'}.idle.png)`
+  }
+
   this.isCollider = function () {
     return true
   }
 
   this.onCollision = function () {
-    if (oquonie.spellbook.hasPillar(this.character) === true) {
+    if (oquonie.spellbook.hasPillar(this.character)) {
       oquonie.dialog.show('owl', ['pillar', 'friend', this.character])
     } else {
       oquonie.dialog.show('owl', ['pillar', 'foe', this.character])

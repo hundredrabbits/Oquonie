@@ -55,25 +55,50 @@ tile.wall {margin-top:-30%; }
 tile.wall.left { -webkit-transform: scaleX(-1); transform: scaleX(-1);}
 tile.step {margin-top:-20%; -webkit-transform: scaleX(-1); transform: scaleX(-1);}
 tile.step.left { -webkit-transform: scaleX(1); transform: scaleX(1); }
-tile.event { margin-top:-29%; }
+tile.event { margin-top:-29%; background-size: auto 70%; }
+tile.event.blocker { background-size: 100%; }
 tile.event.mirror { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
+tile.event.player { background-size: auto 70%; }
+tile.event.player.warp { background-size: 200px 281px; }
 tile.shadow { background-image:url(../media/graphics/player/shadow.png); width:100%; height:100%; margin-left:0px; position: absolute; top:0px; z-index:5;}
 tile.event notification { width:100%;height:100%;top:-15%; left:10%; }
 
 /* Guides */
 
-/*
 div#stage { border:1px solid blue; }
 div#stage div#room { border:1px solid purple; }
 div#stage div#room tile { border:1px solid red; }
 div#stage div#room tile.wall { border:1px solid cyan; }
 div#stage div#room tile.floor { border:1px solid pink; }
 div#stage div#room tile.step { border:1px solid green; }
-*/
+
+.visible { opacity: 1 }
+.invisible { opacity: 0 }
+
+.pos11 { top:40%; left: 50% }
+.pos10 { top:45%; left: 60% }
+.pos1e { top:50%; left: 70% }
+.pos01 { top:45%; left: 40% }
+.pos00 { top:50%; left: 50% }
+.pos0e { top:55%; left: 60% }
+.pose1 { top:50%; left: 30% }
+.pose0 { top:55%; left: 40% }
+.posee { top:60%; left: 50% }
+
+.wall.pose2 { top:48%; left: 20% }
+.wall.pos02 { top:43%; left: 30% }
+.wall.pos12 { top:38%; left: 40% }
+.wall.pos21 { top:38%; left: 60% }
+.wall.pos20 { top:43%; left: 70% }
+.wall.pos2e { top:48%; left: 80% }
+
+.step.posf1 { top: 55%; left: 20% }
+.step.posf0 { top: 60%; left: 30% }
+.step.posfe { top: 65%; left: 40% }
+.step.posef { top: 65%; left: 60% }
+.step.pos0f { top: 60%; left: 70% }
+.step.pos1f { top: 55%; left: 80% }
 
 @media screen and (orientation:portrait) {
   div#stage { width:130vw; height:130vw; position:absolute; left:calc(50vw - (130vw/2)); top:calc(55vh - (130vw/2)); will-change:top,left,transform; }
 }
-
-.visible { opacity: 1 }
-.invisible { opacity: 0 }

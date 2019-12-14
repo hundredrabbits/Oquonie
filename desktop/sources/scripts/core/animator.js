@@ -8,6 +8,7 @@ function Animator (host) {
   this.animations = {}
   this.state = 'idle'
   this.orientation = null
+  this.direction = null
   this.last = null
   this.loader = document.createElement('preload')
 
@@ -31,7 +32,7 @@ function Animator (host) {
       oquonie.artbook.setArt(this.host.element, artId)
     }
 
-    this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
+    // this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
     this.host.element.style.backgroundPosition = `${anim.run() * -width + width}px center`
   }
 
@@ -48,7 +49,7 @@ function Animator (host) {
       oquonie.artbook.setArt(this.host.element, artId)
     }
 
-    this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
+    // this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
     this.host.element.style.backgroundPosition = `${anim.run() * -width + width}px center`
   }
 

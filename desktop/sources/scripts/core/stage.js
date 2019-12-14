@@ -54,17 +54,23 @@ function Stage () {
     oquonie.player.moveAt(x, y)
     oquonie.animate()
 
-    // Theme
-    const numPillars = oquonie.spellbook.pillars.length
-    const theme = (numPillars >= 5 && this.room.theme !== 'pillars') ? 'black' : this.room.theme
-    this.setTheme(theme)
+    this.setTheme(this.getTheme())
+    oquonie.music.playAmbient(this.getAmbient())
 
     this.look()
     this.center(oquonie.player.x, oquonie.player.y)
 
     this.el.style.opacity = 1
+  }
 
-    oquonie.music.playAmbient(this.room.audio === 'lobby' && numPillars >= 5 ? 'lobby.3' : this.room.audio === 'lobby' && numPillars > 0 ? 'lobby.2' : this.room.audio)
+  this.getTheme = () => {
+    const numPillars = oquonie.spellbook.pillars.length
+    return (numPillars >= 5 && this.room.theme !== 'pillars') ? 'black' : this.room.theme
+  }
+
+  this.getAmbient = () => {
+    const numPillars = oquonie.spellbook.pillars.length
+    return this.room.audio === 'lobby' && numPillars >= 5 ? 'lobby.3' : this.room.audio === 'lobby' && numPillars > 0 ? 'lobby.2' : this.room.audio
   }
 
   this.clearRoom = () => {
