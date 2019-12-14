@@ -16,7 +16,26 @@ function Animator (host) {
     this.animations[animation.name].host = this.host
   }
 
+  // TODO, remove animate?
+
   this.animate = () => {
+    if (!this.animations[this.state]) { return }
+
+    const anim = this.animations[this.state]
+    const width = this.host.element.offsetWidth
+    const frames = uniq(this.animations[this.state].frames).length
+    const artId = `media/graphics/${this.host.name}/${(this.host.id ? this.host.id + '.' : '') + this.state}.png`
+
+    if (this.last !== artId) {
+      this.last = artId
+      oquonie.artbook.setArt(this.host.element, artId)
+    }
+
+    this.host.element.style.backgroundSize = `${width * frames}px ${width * 1.5}px`
+    this.host.element.style.backgroundPosition = `${anim.run() * -width + width}px center`
+  }
+
+  this.update = () => {
     if (!this.animations[this.state]) { return }
 
     const anim = this.animations[this.state]
@@ -49,11 +68,10 @@ function Animator (host) {
     }
   }
 
-  this.setState = (newState, force = true) => {
-    this.state = newState
-    if (force) {
-      this.animate()
-    }
+  this.setState = (state) => {
+    console.log(state)
+    this.state = state
+    this.update()
   }
 
   function uniq (arr) {

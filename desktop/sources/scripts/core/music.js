@@ -1,6 +1,5 @@
 'use strict'
 
-/* global oquonie */
 /* global Audio */
 
 function Music () {

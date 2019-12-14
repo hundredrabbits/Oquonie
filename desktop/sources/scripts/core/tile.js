@@ -1,6 +1,7 @@
 'use strict'
 
 /* global oquonie Animation */
+/* global addClass */
 
 function Tile (type = 'unknown') {
   this.element = document.createElement('tile')
@@ -80,9 +81,9 @@ function Tile (type = 'unknown') {
   }
 
   this.animate = function () {
-    const origin = parseInt(this.positionAt(this.x, this.y)[0])
-    const offset = (origin * (1 + (Math.random() / 20)))
-    console.log('a')
+    // const origin = parseInt(this.positionAt(this.x, this.y)[0])
+    // const offset = (origin * (1 + (Math.random() / 20)))
+    // console.log('a')
     // $(this.element).css('opacity', 0).css('top', offset + '%').animate({ opacity: 1, top: origin + '%' }, oquonie.speed)
   }
 }
@@ -143,32 +144,6 @@ function Event (subtype) {
 
   addClass(this.element, subtype)
 
-  this.move_by = function (x, y) {
-    this.x += x
-    this.y += y
-
-    const p = this.positionAt(this.x, this.y, 200)
-    const _y = p[0]
-    const _x = p[1]
-    const _z = p[2]
-
-    const target = this.animator
-    target.setState('walk.front')
-
-    if (x === 0 && y === -1 || x === -1 && y === 0) { target.setState('walk.front') }
-    if (x === 0 && y === 1 || x === 1 && y === 0) { target.setState('walk.back') }
-
-    oquonie.player.lock('moving')
-    setTimeout(function () { oquonie.player.unlock('moving') }, oquonie.speed * 0.5)
-    console.log('b')
-    // $(this.element).animate({ left: _x, top: _y }, oquonie.speed, function () {
-    //   if (x === 0 && y === -1 || x === -1 && y === 0) { target.setState('idle.front') }
-    //   if (x === 0 && y === 1 || x === 1 && y === 0) { target.setState('idle.back') }
-    // })
-
-    oquonie.stage.animate(this.x, this.y)
-  }
-
   this.moveAt = function (x, y) {
     this.x = x
     this.y = y
@@ -182,13 +157,10 @@ function Event (subtype) {
     this.location = room
   }
 
-  this.standByDoor = function (x, y) {
-    const target = this.animator
-    x = -x
-    y = -y
-    if (x === 0 && y === -1 || x === -1 && y === 0) { target.setState('idle.front') }
-    if (x === 0 && y === 1 || x === 1 && y === 0) { target.setState('idle.back') }
-    target.animate()
+  this.standByDoor = (x, y) => {
+    const vec = new Pos(-x, -y)
+    this.animator.setState('idle.' + vec.dir())
+    this.animator.animate()
   }
 
   this.isCollider = function () {
@@ -209,9 +181,9 @@ function Event (subtype) {
     if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
     if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
 
-    const origin_pos_y = parseInt(this.element.style.top)
-    oquonie.music.playEffect('bump.2')
-    console.log('d')
+    // const origin_pos_y = parseInt(this.element.style.top)
+    // oquonie.music.playEffect('bump.2')
+    // console.log('d')
     // this.element.style.top = (origin_pos_y - 0.5) + '%'
     // this.element.style.top = (origin_pos_y - 0.5) + '%'
     // $(this.element).css('top', ).animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
@@ -334,48 +306,42 @@ function Player () {
       return
     }
 
-    this.moveTo(pos.x, pos.y)
+    this.moveBy(x, y)
   }
 
-  this.moveTo = (x, y) => {
-    this.x = x
-    this.y = y
-
-    const p = this.positionAt(this.x, this.y, 200)
-    const _y = p[0]
-    const _x = p[1]
-    const _z = p[2]
-
-    this.animator.setState('walk.front')
-
-    if (x === 0 && y === -1 || x === -1 && y === 0) { this.animator.setState('walk.front') }
-    if (x === 0 && y === 1 || x === 1 && y === 0) { this.animator.setState('walk.back') }
-
+  this.moveBy = (x, y) => {
+    const pos = new Pos(this.x + x, this.y + y)
+    const vec = new Pos(x, y)
+    console.log('Player', `Moving to ${pos}`)
     oquonie.player.lock('moving')
-
-    this.element.style.top = p[0]
-    this.element.style.left = p[1]
+    this.direction = vec.dir()
+    this.orientation = vec.ori()
+    this.setPos(pos)
+    this.animator.setState('walk.' + vec.dir())
+    oquonie.stage.center(pos.x, pos.y)
 
     setTimeout(() => {
       oquonie.player.unlock('moving')
-      if (x === 0 && y === -1 || x === -1 && y === 0) { this.animator.setState('idle.front') }
-      if (x === 0 && y === 1 || x === 1 && y === 0) { this.animator.setState('idle.back') }
+      this.animator.setState('idle.' + vec.dir())
     }, oquonie.speed * 0.5)
+  }
 
-    oquonie.stage.animate(this.x, this.y)
+  this.setPos = (pos) => {
+    this.x = pos.x
+    this.y = pos.y
+    const p = this.positionAt(pos.x, pos.y)
+    this.element.style.top = p[0]
+    this.element.style.left = p[1]
+    this.element.style.zIndex = this.depth(20)
+    this.update()
   }
 
   this.update = function () {
-    this.orientation = getAttribute(this.element, 'orientation')
-    this.direction = getAttribute(this.element, 'direction')
-    this.animation_frame = 1
-
-    if (this.direction === 'right') {
+    if (this.orientation === 'right') {
       addClass(this.element, 'mirror')
     } else {
       removeClass(this.element, 'mirror')
     }
-    this.element.style.zIndex = this.depth(20)
   }
 
   this.lift = function (speed) {
@@ -515,15 +481,15 @@ function Boss (x, y, reset) {
   this.update(20)
 }
 
-function Broken (x, y, id, room, to_x, to_y) {
+function Broken (x, y, id, room, toX, toY) {
   Event.call(this, 'broken')
 
   this.x = x
   this.y = y
   this.id = id
   this.room = room
-  this.to_x = to_x
-  this.to_y = to_y
+  this.toX = toX
+  this.toY = toY
 
   this.isCollider = function () {
     return true
@@ -531,7 +497,7 @@ function Broken (x, y, id, room, to_x, to_y) {
 
   this.onCollision = function () {
     if (oquonie.spellbook.pillars < 5) { return }
-    oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
+    oquonie.stage.enterRoom(this.room, this.toX, this.toY)
   }
 
   this.onSight = function () {
@@ -582,7 +548,7 @@ function Credit (x, y, id) {
   this.update(20)
 }
 
-function Door (x, y, room, to_x, to_y) {
+function Door (x, y, room, toX, toY) {
   Event.call(this, 'door')
 
   this.x = x
@@ -597,29 +563,29 @@ function Door (x, y, room, to_x, to_y) {
   this.onCollision = function () {
     for (let i = 0; i < this.destinations.length; i++) {
       if (this.destinations[i].fn()) {
-        oquonie.stage.enterRoom(this.destinations[i].room, this.destinations[i].to_x, this.destinations[i].to_y)
+        oquonie.stage.enterRoom(this.destinations[i].room, this.destinations[i].toX, this.destinations[i].toY)
         break
       }
     }
     oquonie.music.playEffect('bump.2')
   }
 
-  this.add_destination = function (conditionFn, room, to_x, to_y) {
-    this.destinations.unshift({ fn: conditionFn, room: room, to_x: to_x, to_y: to_y })
+  this.add_destination = function (conditionFn, room, toX, toY) {
+    this.destinations.unshift({ fn: conditionFn, room: room, toX: toX, toY: toY })
   }
 
-  this.add_destination(function () { return true }, room, to_x, to_y)
+  this.add_destination(function () { return true }, room, toX, toY)
 }
 
-function Gate (requirement, x, y, room, to_x, to_y) {
+function Gate (requirement, x, y, room, toX, toY) {
   Event.call(this, 'gate')
 
   this.requirement = requirement
   this.x = x
   this.y = y
   this.room = room
-  this.to_x = to_x
-  this.to_y = to_y
+  this.toX = toX
+  this.toY = toY
 
   this.isCollider = function () {
     return true
@@ -631,7 +597,7 @@ function Gate (requirement, x, y, room, to_x, to_y) {
       oquonie.dialog.show('owl', ['door', 'locked', this.requirement])
       return
     }
-    oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
+    oquonie.stage.enterRoom(this.room, this.toX, this.toY)
     oquonie.music.playEffect('bump.2')
   }
 
@@ -670,14 +636,14 @@ function Ghost (x, y) {
   this.update(20)
 }
 
-function HiversairesGate (x, y, room, to_x, to_y) {
+function HiversairesGate (x, y, room, toX, toY) {
   Event.call(this, 'hiversaires_gate')
 
   this.x = x
   this.y = y
   this.room = room
-  this.to_x = to_x
-  this.to_y = to_y
+  this.toX = toX
+  this.toY = toY
 
   this.isCollider = function () {
     return true
@@ -688,7 +654,7 @@ function HiversairesGate (x, y, room, to_x, to_y) {
       oquonie.dialog.show('owl', ['hiversaires1', 'hiversaires2', 'hiversaires3'])
       return
     }
-    oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
+    oquonie.stage.enterRoom(this.room, this.toX, this.toY)
     oquonie.music.playEffect('bump.2')
   }
 
@@ -884,14 +850,14 @@ function PillarBase (x, y, character) {
   this.update(20)
 }
 
-function PillarGate (x, y, room, to_x, to_y) {
+function PillarGate (x, y, room, toX, toY) {
   Event.call(this, 'gate')
 
   this.x = x
   this.y = y
   this.room = room
-  this.to_x = to_x
-  this.to_y = to_y
+  this.toX = toX
+  this.toY = toY
 
   this.isCollider = function () {
     return true
@@ -902,7 +868,7 @@ function PillarGate (x, y, room, to_x, to_y) {
       oquonie.dialog.show('owl', ['pillar', 'foe', this.missing_pillar()])
       return
     }
-    oquonie.stage.enterRoom(this.room, this.to_x, this.to_y)
+    oquonie.stage.enterRoom(this.room, this.toX, this.toY)
   }
 
   this.onSight = function () {
@@ -1210,14 +1176,14 @@ function Speaker (x, y, id = 'disc') {
   this.update(20)
 }
 
-function Teleport (x, y, room, to_x = 0, to_y = 0, reset = false) {
+function Teleport (x, y, room, toX = 0, toY = 0, reset = false) {
   Event.call(this, 'teleport')
 
   this.x = x
   this.y = y
   this.room = room
-  this.to_x = to_x
-  this.to_y = to_y
+  this.toX = toX
+  this.toY = toY
   this.reset = reset
 
   this.isCollider = function () {
@@ -1227,9 +1193,9 @@ function Teleport (x, y, room, to_x = 0, to_y = 0, reset = false) {
   this.onStep = function () {
     oquonie.player.lock('teleport')
     const r = this.room
-    const to_x = this.to_x
-    const to_y = this.to_y
-    setTimeout(function () { oquonie.stage.warpTo(r, to_x, to_y) }, 500)
+    const toX = this.toX
+    const toY = this.toY
+    setTimeout(function () { oquonie.stage.warpTo(r, toX, toY) }, 500)
 
     if (this.reset) {
       oquonie.spellbook.reset()
@@ -1402,4 +1368,29 @@ function Tip (x, y) {
   }
 
   this.update(20)
+}
+
+function Pos (x, y) {
+  this.x = x
+  this.y = y
+
+  this.eq = (x, y) => {
+    return this.x === x && this.y === y
+  }
+
+  this.dir = () => {
+    return this.x > 0 || this.y > 0 ? 'back' : 'front'
+  }
+
+  this.ori = () => {
+    return (this.x === -1 && this.y === 0) || (this.x === 0 && this.y === 1) ? 'left' : 'right'
+  }
+
+  this.vec = (pos) => {
+    return new Pos(this.x - pos.x, this.y - pos.y)
+  }
+
+  this.toString = () => {
+    return `${this.x},${this.y}`
+  }
 }

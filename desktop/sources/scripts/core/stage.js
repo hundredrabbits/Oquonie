@@ -120,10 +120,6 @@ function Stage () {
     return tiles
   }
 
-  this.animate = function (x, y) {
-    this.center(x, y)
-  }
-
   this.center = function (x, y) {
     const xSlant = x - y
     const ySlant = -x - y

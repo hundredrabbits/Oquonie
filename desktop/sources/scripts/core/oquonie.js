@@ -1,5 +1,7 @@
 'use strict'
 
+/* global Acels Artbook Game World Music Dialog Overlay Stage Player Spellbook Walkthrough */
+
 function Oquonie () {
   this.element = document.createElement('oquonie')
   this.element.style.opacity = 0
@@ -62,14 +64,15 @@ function Oquonie () {
   }
 
   this.animate = () => {
-    this.animation_timer = setTimeout(() => { this.animate() }, 2000)
+    // TODO
+    // this.animation_timer = setTimeout(() => { this.animate() }, 2000)
 
-    this.player.animator.animate()
+    // this.player.animator.animate()
 
-    if (!this.stage.room) { return }
-    for (let i = 0; i < this.stage.room.events.length; i++) {
-      this.stage.room.events[i].animator.animate()
-    }
+    // if (!this.stage.room) { return }
+    // for (let i = 0; i < this.stage.room.events.length; i++) {
+    //   this.stage.room.events[i].animator.animate()
+    // }
   }
 
   // Mouse Controls
