@@ -16,8 +16,8 @@ function Room (id) {
   this.events = []
 
   this.addEvent = function (event, isMirrored = false) {
-    if (isMirrored === true) { event.mirror() }
     event.location = this.id
+    event.orientation = isMirrored ? 'right' : 'left'
 
     this.events.push(event)
   }
@@ -100,6 +100,7 @@ function Room (id) {
       event.animator.animate()
       this.element.appendChild(event.element)
       event.animate()
+      event.update(20)
     }
 
     this.element.appendChild(oquonie.player.element)

@@ -66,14 +66,14 @@ function Artbook () {
   this.get_element_id = function (el) {
     if (!el) { return null }
 
-    if (!el.hasOwnProperty('artbook_id')) {
-      if (el.hasOwnProperty('id')) {
-        el.artbook_id = el.id
-      } else {
-        el.artbook_id = 'artbook_id_' + this.element_registry_unique_id
-        this.element_registry_unique_id++
-      }
-    }
+    // if (!el.hasOwnProperty('artbook_id')) {
+    //   if (el.hasOwnProperty('id')) {
+    //     el.artbook_id = el.id
+    //   } else {
+    //     el.artbook_id = 'artbook_id_' + this.element_registry_unique_id
+    //     this.element_registry_unique_id++
+    //   }
+    // }
     return el.artbook_id
   }
 }

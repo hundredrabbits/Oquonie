@@ -1,7 +1,7 @@
 'use strict'
 
-/* global oquonie Animation */
-/* global addClass */
+/* global oquonie Animation Animator */
+/* global setClass */
 
 function Tile (type = 'unknown') {
   this.element = document.createElement('tile')
@@ -9,7 +9,6 @@ function Tile (type = 'unknown') {
   this.y = 0
 
   this.update = function (depth_offset = 0) {
-    const p = this.positionAt(this.x, this.y)
     const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
     setClass(this.element, `tile ${type} ${posName}`)
 
@@ -138,7 +137,6 @@ function Event (type) {
   this.element.style.backgroundImage = this.id !== 0 ? `url(media/graphics/${type}/${this.state}.png)` : ''
 
   this.update = function (depth_offset = 0) {
-    const p = this.positionAt(this.x, this.y)
     const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
     const mirror = this.orientation === 'right' ? 'mirror' : ''
     setClass(this.element, `event ${type} ${posName} ${mirror}`)
@@ -146,65 +144,13 @@ function Event (type) {
     this.element.style.zIndex = this.depth(depth_offset)
   }
 
-  this.moveAt = function (x, y) {
-    this.x = x
-    this.y = y
-
-    const p = this.positionAt(this.x, this.y, 200)
-    this.element.style.top = p[0]
-    this.element.style.left = p[1]
-  }
-
-  this.moveIn = (room) => {
-    this.location = room
-  }
-
-  this.standByDoor = (x, y) => {
-    const vec = new Pos(-x, -y)
-    this.animator.setState('idle.' + vec.dir())
-    this.animator.animate()
-  }
-
   this.isCollider = function () {
     return false
   }
 
-  this.mirror = function () {
-    this.isMirrored = true
-    addClass(this.element, 'mirror')
-  }
-
-  this.bumpUp = function (x, y) {
-    const animator = this.animator
-    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
-    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
-
-    // const origin_pos_y = parseInt(this.element.style.top)
-    // oquonie.music.playEffect('bump.2')
-    // console.log('d')
-    // this.element.style.top = (origin_pos_y - 0.5) + '%'
-    // this.element.style.top = (origin_pos_y - 0.5) + '%'
-    // $(this.element).css('top', ).animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
-  }
-
-  this.bumpAgainst = function (x, y) {
-    const animator = this.animator
-    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
-    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
-
-    const xSlant = x - y
-    const ySlant = (-x - y) * 0.5
-
-    const origin_pos_x = parseInt(this.element.style.left)
-    const origin_pos_y = parseInt(this.element.style.top)
-
-    console.log('e')
-    // $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
-    // $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
-  }
-
   this.receiveBump = function () {
-    const origin_pos_y = parseInt(this.element.style.top)
+    console.log('Bumped!')
+    // const origin_pos_y = parseInt(this.element.style.top)
     // $(this.element).css('top', (origin_pos_y - 0.5) + '%').animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
   }
 
@@ -241,7 +187,6 @@ function Player () {
   this.locks = []
 
   this.update = function (depth_offset = 0) {
-    const p = this.positionAt(this.x, this.y)
     const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
     const mirror = this.orientation === 'right' ? 'mirror' : ''
     setClass(this.element, `event player ${this.state} ${this.direction} ${posName} ${mirror}`)
@@ -269,11 +214,32 @@ function Player () {
     }
   }
 
-  this.setId = function (new_id) {
-    if (this.id !== new_id) {
-      this.id = new_id
-      this.animator.preload()
-    }
+  this.setId = function (id) {
+    if (this.id === id) { return }
+    this.id = id
+    this.animator.preload()
+  }
+
+  this.moveAt = function (x, y) {
+    this.x = x
+    this.y = y
+  }
+
+  this.moveIn = (room) => {
+    this.location = room
+  }
+
+  this.enter = (room, x, y) => {
+    this.location = room
+    this.x = x
+    this.y = y
+    this.update()
+  }
+
+  this.standByDoor = (x, y) => {
+    const vec = new Pos(-x, -y)
+    this.animator.setState('idle.' + vec.dir())
+    this.animator.animate()
   }
 
   this.tryMove = (x, y) => {
@@ -292,7 +258,7 @@ function Player () {
 
     const pos = { x: this.x + x, y: this.y + y }
     const tiles = oquonie.stage.tilesAt(pos.x, pos.y)
-    const colliders = tiles.filter((item) => { console.log(item); return item.isCollider() })
+    const colliders = tiles.filter((item) => { return item.isCollider() })
 
     for (const collider of colliders) {
       console.log('Blocked by: ' + collider.name)
@@ -337,12 +303,41 @@ function Player () {
     this.update()
   }
 
+  this.bumpUp = function (x, y) {
+    const animator = this.animator
+    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
+
+    // const origin_pos_y = parseInt(this.element.style.top)
+    // oquonie.music.playEffect('bump.2')
+    // console.log('d')
+    // this.element.style.top = (origin_pos_y - 0.5) + '%'
+    // this.element.style.top = (origin_pos_y - 0.5) + '%'
+    // $(this.element).css('top', ).animate({ top: origin_pos_y + '%' }, oquonie.speed / 2)
+  }
+
+  this.bumpAgainst = function (x, y) {
+    const animator = this.animator
+    if (x === 0 && y === -1 || x === -1 && y === 0) { animator.setState('idle.front') }
+    if (x === 0 && y === 1 || x === 1 && y === 0) { animator.setState('idle.back') }
+
+    const xSlant = x - y
+    const ySlant = (-x - y) * 0.5
+
+    const origin_pos_x = parseInt(this.element.style.left)
+    const origin_pos_y = parseInt(this.element.style.top)
+
+    console.log('e')
+    // $(this.element).css('top', origin_pos_y + 0.5 * ySlant + '%').css('left', origin_pos_x + 0.5 * xSlant + '%')
+    // $(this.element).animate({ top: origin_pos_y + '%', left: origin_pos_x + '%' }, oquonie.speed / 2)
+  }
+
   this.setPos = (pos) => {
     this.x = pos.x
     this.y = pos.y
     const p = this.positionAt(pos.x, pos.y)
-    this.element.style.top = p[0]
-    this.element.style.left = p[1]
+    // this.element.style.top = p[0]
+    // this.element.style.left = p[1]
     this.element.style.zIndex = this.depth(20)
     this.update()
   }
@@ -828,7 +823,6 @@ function PillarBase (x, y, character) {
   this.animator.add(new Animation('idle', [1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
 
   this.update = function (depth_offset = 0) {
-    const p = this.positionAt(this.x, this.y)
     const posName = `pos${this.x === -2 ? 'f' : this.x === -1 ? 'e' : this.x}${this.y === -2 ? 'f' : this.y === -1 ? 'e' : this.y}`
     setClass(this.element, `event ${this.name} ${posName}`)
 

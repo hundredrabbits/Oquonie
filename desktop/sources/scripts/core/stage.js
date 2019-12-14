@@ -50,8 +50,8 @@ function Stage () {
     this.room.show()
     this.room.isKnown = true
 
-    oquonie.player.moveIn(roomId)
-    oquonie.player.moveAt(x, y)
+    oquonie.player.enter(roomId, x, y)
+    oquonie.player.update()
     oquonie.animate()
 
     this.setTheme(this.getTheme())

@@ -114,9 +114,9 @@ function Spellbook () {
   }
 
   this.clear = function () {
-    oquonie.artbook.unsetArt(this.spell1)
-    oquonie.artbook.unsetArt(this.spell2)
-    oquonie.artbook.unsetArt(this.spell3)
+    this.spell1.style.backgroundImage = ''
+    this.spell2.style.backgroundImage = ''
+    this.spell3.style.backgroundImage = ''
   }
 
   this.update = function () {
@@ -124,9 +124,9 @@ function Spellbook () {
 
     for (let i = 0; i < this.spells.length; i++) {
       const spellName = this.spells[i].split('_')[0]
-      if (i === 0) { oquonie.artbook.setArt(this.spell1, 'media/graphics/spellbook/' + spellName + '.png') }
-      if (i === 1) { oquonie.artbook.setArt(this.spell2, 'media/graphics/spellbook/' + spellName + '.png') }
-      if (i === 2) { oquonie.artbook.setArt(this.spell3, 'media/graphics/spellbook/' + spellName + '.png') }
+      if (i === 0) { this.spell1.style.backgroundImage = 'url(media/graphics/spellbook/' + spellName + '.png)' }
+      if (i === 1) { this.spell2.style.backgroundImage = 'url(media/graphics/spellbook/' + spellName + '.png)' }
+      if (i === 2) { this.spell3.style.backgroundImage = 'url(media/graphics/spellbook/' + spellName + '.png)' }
     }
   }
 

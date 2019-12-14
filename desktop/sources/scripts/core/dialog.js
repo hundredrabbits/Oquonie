@@ -26,11 +26,11 @@ function Dialog () {
 
   this.show = (host, message, path) => {
     console.log('Dialog', host, path)
-    oquonie.artbook.setArt(this.portrait, path || `media/graphics/${host}/portrait.png`)
+    this.portrait.style.backgroundImage = 'url(' + (path || `media/graphics/${host}/portrait.png`) + ')'
+    this.letter1.style.backgroundImage = 'url(media/graphics/camilare/' + message[0] + '.png)'
+    this.letter2.style.backgroundImage = 'url(media/graphics/camilare/' + message[1] + '.png)'
+    this.letter3.style.backgroundImage = 'url(media/graphics/camilare/' + message[2] + '.png)'
     setClass(this.el, 'visible')
-    oquonie.artbook.setArt(this.letter1, 'media/graphics/camilare/' + message[0] + '.png')
-    oquonie.artbook.setArt(this.letter2, 'media/graphics/camilare/' + message[1] + '.png')
-    oquonie.artbook.setArt(this.letter3, 'media/graphics/camilare/' + message[2] + '.png')
     oquonie.music.playDialog(host)
     oquonie.music.playInterface('interface.dialog.open')
     this.isVisible = true
