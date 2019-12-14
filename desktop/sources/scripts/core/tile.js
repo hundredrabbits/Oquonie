@@ -138,7 +138,7 @@ function Event (subtype) {
   this.animator = new Animator(this)
   this.isMirrored = false
 
-  $(this.element).addClass(subtype)
+  addClass(this.element, subtype)
 
   this.move_by = function (x, y) {
     this.x += x
@@ -203,7 +203,7 @@ function Event (subtype) {
 
   this.mirror = function () {
     this.isMirrored = true
-    $(this.element).addClass('mirror')
+    addClass(this.element, 'mirror')
   }
 
   this.bumpUp = function (x, y) {
@@ -324,10 +324,10 @@ function Player () {
     }
 
     if (elicits_collision_bump) {
-      if (x === 0 && y === -1) { $(this.element).attr('orientation', 'front').attr('direction', 'right') }
-      if (x === -1 && y === 0) { $(this.element).attr('orientation', 'front').attr('direction', 'left') }
-      if (x === 0 && y === 1) { $(this.element).attr('orientation', 'back').attr('direction', 'left') }
-      if (x === 1 && y === 0) { $(this.element).attr('orientation', 'back').attr('direction', 'right') }
+      if (x === 0 && y === -1) { setAttribute(this.element, 'orientation', 'front'); setAttribute(this.element, 'direction', 'right') }
+      if (x === -1 && y === 0) { setAttribute(this.element, 'orientation', 'front'); setAttribute(this.element, 'direction', 'left') }
+      if (x === 0 && y === 1) { setAttribute(this.element, 'orientation', 'back'); setAttribute(this.element, 'direction', 'left') }
+      if (x === 1 && y === 0) { setAttribute(this.element, 'orientation', 'back'); setAttribute(this.element, 'direction', 'right') }
     }
 
     const mid_walk = this.animator.state.indexOf('walk') !== -1
@@ -369,14 +369,14 @@ function Player () {
   }
 
   this.update = function () {
-    this.orientation = $(this.element).attr('orientation')
-    this.direction = $(this.element).attr('direction')
+    this.orientation = getAttribute(this.element, 'orientation')
+    this.direction = getAttribute(this.element, 'direction')
     this.animation_frame = 1
 
     if (this.direction === 'right') {
-      $(this.element).addClass('mirror')
+      addClass(this.element, 'mirror')
     } else {
-      $(this.element).removeClass('mirror')
+      removeClass(this.element, 'mirror')
     }
     $(this.element).css('z-index', this.depth(20))
   }
@@ -1079,10 +1079,6 @@ function RamenMat (x, y) {
   }
 
   this.onSight = function () {
-    const width = $(this.element).width()
-    this.element.style.backgroundSize = `${width}px ${width * 1.5}px`
-    this.element.style.backgroundPosition = '0px center'
-    this.element.style.display = 'none'
     oquonie.artbook.setArt(this.element, 'media/graphics/ramen/mat.png')
   }
 

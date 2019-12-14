@@ -26,3 +26,12 @@ function replaceClass (el, a, b) {
   removeClass(el, a)
   addClass(el, b)
 }
+
+function setAttribute (el, attr, val) {
+  if (el.getAttribute(attr) === val) { return }
+  el.setAttribute(attr, val)
+}
+
+function getAttribute (el, attr) {
+  return el.getAttribute(attr)
+}

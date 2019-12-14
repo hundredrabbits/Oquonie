@@ -27,7 +27,7 @@ function Music () {
     if (this.trackAmbient.volume === this.targetVolume) { return }
     if (this.trackAmbient.volume > this.targetVolume) { this.trackAmbient.volume = clamp(this.trackAmbient.volume - rate, 0, 1) }
     if (this.trackAmbient.volume < this.targetVolume) { this.trackAmbient.volume = clamp(this.trackAmbient.volume + rate, 0, 1) }
-    console.log(this.trackAmbient.volume)
+    // console.log(this.trackAmbient.volume)
   }
 
   this.playEffect = function (name) {
@@ -55,13 +55,9 @@ function Music () {
     this.trackAmbient = this.fetchAudio(name, 'ambient', `media/audio/ambient/${name}.mp3`, true)
     this.trackAmbient.name = name
     this.trackAmbient.play()
-
-    // if (this.trackAmbient.name) {
-    //   this.fadeOut(name)
-    //   return
-    // }
-    // this.fadeIn(name)
   }
+
+  // Deadcode, keep/trash?
 
   this.fadeIn = (name) => {
     console.log('Ambient', 'Fade In')
@@ -80,8 +76,6 @@ function Music () {
       this.trackAmbient.name = null
       this.fadeIn(name)
     }, 3000)
-
-    // this.playAmbient(name)
   }
 
   this.fetchAudio = function (name, role, src, loop = false) {
